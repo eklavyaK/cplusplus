@@ -1,0 +1,144 @@
+Range of int = 2^32 approx
+
+
+sizeof(//variable//) function gives the size of the variable in bytes;
+
+DATA TYPE(declaration)	         SIZE (in bytes)	                           RANGE
+
+short int	                        2	                                    -32,768 to 32,767
+unsigned short int					2										0 to 65,535
+unsigned int						4										0 to 4,294,967,295
+int									4										-2,147,483,648 to 2,147,483,647
+long int							4										-2,147,483,648 to 2,147,483,647
+unsigned long int					8										0 to 4,294,967,295
+long long int						8										-(2^63) to (2^63)-1
+unsigned long long int				8										0 to 18,446,744,073,709,551,615
+signed char							1										-128 to 127
+unsigned char						1										0 to 255
+float								4	 
+double								8	 
+long double							12	 
+wchar_t								2 or 4									1 wide character
+bool(true or false)
+=======================================================================================================================================================================================
+
+#include is used to inculde the files(or inbuilt packages) in a c++ program which is followed by the name of the file enclosed in <//filename//>
+
+
+main() function is the function from the excution of the program starts. semicolon marks the end of the statement.
+
+
+cout<<//to be printed//              for example: std::cout<<"Hello\n World"; here \n is used to place the cursor on the nextline
+
+
+return 0; at the end of the main function denotes the successful execution of the main function;
+
+
+'using namespace std'              Now let’s see what namespace std is :
+std is an abbreviation of standard. std is the standard namespace. We can assume namespace as package here std is a namespace where cout, cin and a lot of other 
+things are defined in it. you can also call these functions using std::cout , std::cin etc. 
+What using does :
+The keyword using technically means, use this whenever you can. This refers, in this case, to the std namespace. 
+So whenever the computer comes across cout, cin, endl or anything of that matter, it will read it as std::cout, std::cin or std::endl.
+So if 'using namespace std' is defined initially in the program then no need to write std always before cout or cin.
+
+
+cin>> is used to take input from console before taking the input in a variable we must declare the variable in which we're taking the input.
+for that we must have the prior knowledge of the type of input. 
+=======================================================================================================================================================================================
+to get multiple inputs of same type we can get all of them by writing just one line 
+for example:
+
+```
+#include<iostream>
+using namespace std;
+int main(){
+	int a,b,c;
+	cin>>a>>b>>c;
+	cout<<a<<b<<c;
+	}
+
+```
+=======================================================================================================================================================================================
+The endl is a predefined object of iostream class. It is used to insert a new line characters and flushes the stream.
+
+=======================================================================================================================================================================================
+loops and switch case statements are exactly same as in java. Also,  in switch case you can write multiple statements in a case without using curly braces { }.
+
+=======================================================================================================================================================================================
+operators in c++ are same as in java. But there are some differences in excution like in java the order of excution of a expression is well defined(from left to right)
+but it is not defined in c++. like for ex:
+
+```
+int a = 0;
+int b = a++ + a;           // here printing the value of b gives 1 in java. For java the expression in b is excuted from left to right so the value of a++
+                           // is 0 but just after a++ excutes the value of a changes to 1 and when a is again added to a++ it is added as 1 so b = 0 + 1 = 1
+````
+some differences include:
+For an expression like:
+
+a = foo() + bar();
+In Java, the evaluation order is well-defined (left to right). C++ does not specify whether foo() or bar() is evaluated first.
+Stuff like:
+i = i++;
+is undefined in C++, but again well-defined in Java.
+In C++, performing right-shifts on negative numbers is implementation-defined/undefined; whereas in Java it is well-defined.
+Also, in C++, the operators &, | and ^ are purely bitwise operators. In Java, they can be bitwise or logical operators, depending on the context.
+
+
+The assignments operators like a -=b means a= a-b; this can be also used for +,/,* and %
+
+
+ternary statement(condition?x:y) works same as in java
+
+=======================================================================================================================================================================================
+on writing multiple values separated by commas then the last value will assigned to the variable
+for ex: a = (2,3,4)               // a = 4 is assigned
+=======================================================================================================================================================================================
+
+casting can be done in same way as java for ex: - 
+int b = (int)expression containing double float long variables;
+in c++ if a the data type of the expression is assigned to the highest data type of the variable in the expression
+if all the variables are of int type then the value of the result will be of int type, it is not influenced by the type of the variable which is storing the value
+for ex:
+{
+	int name;
+	int a = 7;
+	int b = 2;
+	float c = a/b;
+	cout<<c;                     //prints 3
+	return 0;	
+}
+{
+	int name;
+	int a = 7;
+	int b = 2;
+	float c = (float)a/b;
+	cout<<c;                    // prints 3.5
+	return 0;	
+}
+{
+	int name;
+	int a = 7;
+	int b = 2;
+	int c = (float)a/b;
+	cout<<c;					//prints 3
+	return 0;	
+}
+
+Another way of casting is Conversion using Cast operator: A Cast operator is an unary operator which forces one data type to be converted into another data type.
+C++ supports four types of casting:
+1. Static Cast:
+{
+    float f = 3.5;
+    int a = f; // this is how you do in C
+    int b = static_cast<int>(f);
+    cout << b;                                             // output: 3
+}
+
+2. Dynamic Cast: https://www.geeksforgeeks.org/dynamic-_cast-in-cpp/
+3. Const Cast: https://www.geeksforgeeks.org/casting-operators-in-c-set-1-const_cast/
+4. Reinterpret Cast: https://www.geeksforgeeks.org/reinterpret_cast-in-cpp/
+
+=======================================================================================================================================================================================
+&(//variable//) operator is used to get the reference of the memory of a  variable 
