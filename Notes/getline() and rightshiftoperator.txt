@@ -1,0 +1,203 @@
+(>>) operator:
+{
+    (>>) operator takes everything till it's first delimiter. It has 3 delimiters:
+    
+    1. Space
+    2. enter
+    3. non-data type input can also act as "semi-delimiter"
+
+    Let's understand the explanation of these delimiters one by one:
+    
+    Space and enter: These are standard delimiters because, they'll be ignored until a input which is same as data type is found.
+    As soon as input is found it'll take everything till the first delimmiter(space, enter or non-data type input) is found again.
+    for ex:- 
+    ``````````
+    int n; 
+    cin>>n;
+    ```````````
+    if input of the above code is:
+
+    ````````````````````````````````````
+    89834 --------->it takes everything before first enter or space and cursor is placed just before delimiter(space, enter, non-datatype)
+    239849sadfas ------>it takes everything till 23849 and leaves the cursor just before 's'
+                23 --------->it ignores all the preceeding spaces and takes 23 as input and leaves the cursor just after 23(because delimmiter is enter)
+                 _
+                  |
+                  | ------->here it ignores all the spaces and enters and finally finds 34 which is taken as input, cursor is placed before 's'(because delimiter non-datatype)
+         34sdfa  _|
+    ````````````````````````````````````
+    This is same for string inputs, let's understand a code
+    ````````````````````````````````````
+    int n;
+    string s;
+    cin>>n;
+    cin>>s;
+    ````````````````````````````````````
+    If the input of the above code is:
+    ```````````````````````````````````
+                  23432asdfas ----------->preceeding spaces are ignored and n takes 23432 and s takes asdfas
+                    _
+                     |
+                     | --------->preceeding spaces and enter are ignored and n takes 23 s takes lkkj234234
+        23lkkj234234_|
+                    _
+    898              |
+                     | --------->n takes 898 and all the spaces enters are ignored then s takes 67lkkj234234
+        67lkkj234234_|
+}
+
+getline() function:
+{
+    This is very important. So let's understand what precisely it does:-
+
+    1. It takes input as string only (i.e. getline(cin,k)---> k must be of string type. If it's another type then compiler throws error)
+    2. The only delimiter it has is enter.
+    3. It starts input from the position where cursor is present.
+    4. It starts taking everything as input till it encounters it's delimiter( which is enter) for the first time.
+    5. Whenever it encounters it's delimiter(enter) it stops taking input.
+    6. On encountering enter it doesn't take it as input (i.e. it doesn't add '\n' to the end of the input string)
+    7. Though it doesn't take enter as input (i.e. '\n') it places the cursor after it(i.e. on the start of next line).
+
+    Now let's understand it with help of some example:-
+
+    ````````````````````
+    string s[5];
+    for(int i = 0; i<5; i++)
+    {
+        getline(cin,s[i]);
+        cout<<s[i];
+    }
+    ````````````````````
+    If input to the given code is:-
+    `````````````````````
+    <if we press enter 5 times> ----------> all strings will be empty (s[i] = "" , for all 0<=i<5)
+                             _
+    sadfdjk                   |
+    saddkkj                   |
+    909nil                    | -----------> each line will be stored in one array variable
+    23'903 09324  09';jk 00983|              4rth row will be in s[3] with all spaces and special characters as one string line
+    234233331\n              _|              5th row will have everything as one line string and \n as two end characters of string
+    `````````````````````
+    Now let's use getline in combination with (>>) operator, where things becomes confusing. Let's understand with the help of actual code:
+    ```````````````````
+    #include <iostream>
+    using namespace std;
+    int main()
+    {
+        string dummy;
+        string s[5];
+        int n, sum = 0;
+        for (int i = 0; i < 11; i++)
+        {
+            if (i < 1)                //this line for number of testcases which generally comes in first line, since we
+                cin >> n;             //we are writing only one loop we have to write this condition 
+            else if (i % 2 == 1)
+            {
+                cin >> n;             //the program is about adding the numbers in every test case and display the strings
+                sum = sum + n;
+            }
+            else
+            {
+                getline(cin, dummy);    //this is line is given because as soon as a number is accepted through (>>) operator,
+                getline(cin, s[i/2-1]);  //the cursor is placed left at the end of the number, so when getline starts to accept the input
+                                        //string it takes everything till it encounters '\n' ( for below input dummy takes nothing just "")
+                                        //and then cursor is placed on the next line for s[i] to take actual input
+            }
+        }
+        cout << sum << endl;
+        for(int i = 0; i<5; i++) cout << s[i] << endl;
+        return 0;
+    }
+    ```````````````````````````
+    input is:
+    `````````````````
+    10
+    1
+    Eklavya Kumar
+    2
+    Eklavya Kumar
+    3
+    Eklavya Kumar
+    4
+    Eklavya Kumar
+    5
+    Eklavya kumar
+    `````````````````
+    output is:
+    `````````````````
+    15
+    Eklavya Kumar
+    Eklavya Kumar
+    Eklavya Kumar
+    Eklavya Kumar
+    Eklavya kumar
+    `````````````````                        
+}
+
+Conclusion:
+{
+    When to use just (>>) operator?
+    {
+        1. for all types of inputs except involving string
+        2. in case of strings inputs can be taken just by (>>) operator when a line doesn't have two or more words separated by spaces
+        3. if strings in lines are separated by spaces but we need to store one token of string as one input then we can freely use just (>>) operator
+        
+        for ex:
+        ``````````
+        12 23 6523
+        2
+        askldhfjh
+        alksjkdhf
+        5
+        asdkflj;kj
+        laskdjjfkj
+        as;dl;lkfkj
+        asdlklkj
+        asdlkkj
+        1
+        asdkj
+        3
+        sjdfkjj
+        adslkj
+        asdfnni
+        ```````````
+        or
+        ``````````
+        2
+        asd sdfsa
+        3
+        sadfa lkjlkj sdl
+        1
+        sadlkj
+        8
+        sldkfjl ksjdjlak lkjksd lkjsdl jlskdl lklkjd lksdd lkjsd
+        ````````````
+    }
+    When getline() method becomes necessary?
+    1. when we need to taken input a lines where words are separated by spaces and number of words in a line is not defined.
+    2. when we want to skip everything till the end of the line. (it's better to use ignore in this case)
+
+    for ex:-
+    ```````````````
+    5
+    sdafk lkjsd lkjsad
+    asldkjj
+    lkjksdflkljl lkjsdlkja lkjsdkj lkjsdflkjkl
+    sdalfkj laskjdklj lkjlksalj lkjk kj l jks 
+    sdfj lklds
+    ````````````````
+    or
+    ```````````````
+    5
+    6
+    3 0 923 8 829 98           //if we want only the first number and ignore the rest of the line we 
+    6                          //can use get line instead of running for loop multiple times for each line
+    239988  8 982 100 1000 83
+    3
+    23 983 2
+    4
+    398 34 238 92
+    1
+    57
+    ````````````````
+}
