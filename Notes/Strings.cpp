@@ -51,12 +51,18 @@ int main()
 	cout<<s1+" "+s2<<endl;  //prints: Messi Ronaldo
 	//adding 2 strings
 	string s3 = s1+ " " +s2;
+	//string x = s1+ " "+23;   //like java we cannot add anything to string using just double quotes, inorder to add a integer we must
+	//first convert to string using to_string();
+	string x = s1+ " "+to_string(23);cout<<x<<endl;
 	cout<<s3<<endl;          //prints: Messi Ronaldo
 	s3.append(s1);
 	cout<<s3<<endl;       //prints: Messi RonaldoMessi
 	
 	//obtaining a character from string: string in c++ is basically is a character array. we can treat it as a character array
 	cout<<s3[2]<<endl;   //prints: s
+	cout<<s.at(2)<<endl;  //prints: s       at function performs the same task this can also be used to set character at a index in string 
+	//s.at(2) = 'r';
+	//cout<<s.at(2)<<endl;  /prints: r
 	
 	s3.clear();          //clear() method is used to empty the string
 	cout<<s3<<endl;//prints nothing
@@ -134,3 +140,46 @@ int main()
 	
 	return 0;
 }
+/*Output:
+sssssss
+What it the password
+come
+when will pandemic end
+when
+will
+pandemic
+ end
+no third wave
+no third wave
+Messi Ronaldo
+Messi 23
+Messi Ronaldo
+Messi RonaldoMessi
+s
+s
+
+1
+0
+s3 is empty
+-1
+1
+0
+elephantwhale
+8
+-1
+elephantandwhale
+16
+16
+whale
+3244
+32429878
+23408.093000 okay
+342344324509 okay
+116 okay
+aaadeeehhllnnptw
+AAADEEEHHLLNNPTW
+aaadeeehhllnnptw
+999988874300
+9999988888764332220
+}{sslkkjfdda^^^?>><9999988888764332220****)((&&%%
+*/

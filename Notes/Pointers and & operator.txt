@@ -5,6 +5,8 @@ a int pointer.
 
 & operator is used to give the location of the variable in memory;
 
+to declare more than one pointer in one line we do: int *x, *y, *z;          //this declares three pointers of int type
+
 ex:-
 ````
 int main()
@@ -33,7 +35,28 @@ output:
 5543
 0x61ff04
 `````
-
+=======================================================================================================================================================================================
+To make two variables point to the same location we store the reference of one which declared first to another which is of same type
+ex:
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+	int a = 10;
+	cout<<a<<endl;
+	int &b = a;    //variable b is of type same as a (int type) and it points to the same location as a;
+	cout<<b<<endl;
+	cout<<&a<<endl;
+	cout<<&b<<endl;
+	return 1;
+}
+/*Output:
+10
+10
+0x61ff08
+0x61ff08
+*/
+=======================================================================================================================================================================================
 pointer of array variable gives the memory location of its first element
 for ex:
 ````int main()
@@ -48,6 +71,7 @@ output:
 10
 0x61fee8
 ``````
+=======================================================================================================================================================================================
 
 pointer arithmetic:
 
@@ -117,7 +141,7 @@ output:
 0 0x61fef8
 0 0x61fefc
 ````````````
-
+=======================================================================================================================================================================================
 Note: The ++ or -- operators take precedence over the * operator, and the () operators take precedence over everything else(* or ++ or --).
 Note: ++*p is same as ++(*p) because here ++ operator cannot take precedence over * because ++ operation is performed on *p not solely on p, here the value at pointed location is 
 increased
@@ -161,7 +185,7 @@ output:
 4199048
 6422284
 ```````````
-
+=======================================================================================================================================================================================
 Actually as the program moves on, the variables are assigned the consecutive variables are assigned the consecutive memory locations. So if we change the above code by declaring
 a few more variables even without performing any operations on them, the output of the above code will change drastically
 ````````````
@@ -203,8 +227,7 @@ when we declare a array in c++ (like for ex: int arr[] = {3,3243,234,23111};) th
 but it is not a independent pointer variable, it is a constant pointer which cannot be modified, so we cannot all the pointer operations on it, like we cannot perform normal increment or decrement operations on it.
 if we declare another pointer variable of type int and assign it arr then it also points to the first element of the arr but it is an independent pointer variable and we can 
 perform all the operations of pointer on it, like increment
-
-
+=======================================================================================================================================================================================
 
 Pointer of a pointer:
 ex:-
@@ -233,6 +256,7 @@ output:
 0x61ff08
 10
 `````
+=======================================================================================================================================================================================
 Pointers can be used for various purposes like for ex:-
 we want a variable to be accessed in another function. As we know when we pass parameters to a function we only pass the values of the variables to the function  not the actual 
 variables. But we can access the variables of calling function by passing the reference to the called function.

@@ -1,0 +1,27 @@
+=======================================================================================================================================================================================
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{                         //in cout statement first the expression part is evaluated then printing work is done
+	int i=0; string s = "ababababab";  //ex:- in this program the output is different than expected like we expect output as 0 4
+    //in the first iteration but control first goes and evaluates the expression before printing i and value of i gets increased to 1
+    //the result of the expression is printed but increased value of i is printed; 
+	while(i<10)                          
+		cout<<i<<" "<<(i++ + 4)<<endl;
+    i=0;
+    while(i<10)
+        cout<<s[i]<<s[++i]<<" ";    //here also expression (++i) is first evaluated then printing work is done which we can see in the output
+}
+/*Output:
+1 4
+2 5
+3 6
+4 7
+5 8
+6 9
+7 10
+8 11
+9 12
+bb aa bb aa bb aa bb aa bb
+*/
+=======================================================================================================================================================================================

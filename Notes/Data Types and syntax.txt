@@ -1,5 +1,22 @@
 Range of int = 2^32 approx
 
+To terminate the furthur excution of a c++ code write ````````exit(<any int value>)````````` at the position where code has to end.
+=======================================================================================================================================================================================
+
+const keyword in c++ is same as final keyword in java, where we cannot change the value of the variable declared with keyword const once
+initialized at the time of declaration. We cannot initialize the const variable in another line after declaring. We must initialize it in the same as declaration.
+ex:
+```````````
+#include<iostream>
+int main()
+{
+	const int k = 23;
+	cout<<k<<endl;        //prints: 23
+	//k = 45;             //we cannot change the value of k, it'll throw an error
+	return 0;
+}
+`````````````````
+=======================================================================================================================================================================================
 
 sizeof(//variable//) function gives the size of the variable in bytes;
 
@@ -20,6 +37,9 @@ double								8
 long double							12	 
 wchar_t								2 or 4									1 wide character
 bool(true or false)
+
+
+Maximum number of characters in the name of a variable in c++ is 255.
 =======================================================================================================================================================================================
 
 #include is used to inculde the files(or inbuilt packages) in a c++ program which is followed by the name of the file enclosed in <//filename//>
@@ -98,6 +118,7 @@ for ex: a = (2,3,4)               // a = 4 is assigned
 
 casting can be done in same way as java for ex: - 
 int b = (int)expression containing double float long variables;
+int b = int(expression) performs the same operation as above one;
 in c++ if a the data type of the expression is assigned to the highest data type of the variable in the expression
 if all the variables are of int type then the value of the result will be of int type, it is not influenced by the type of the variable which is storing the value
 for ex:

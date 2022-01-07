@@ -1,22 +1,12 @@
-#include <iostream>
-#include <string>
+#include <bits/stdc++.h>
 using namespace std;
+/*In a class when you pass a object as argument then the reference of the object is not passed. The receiving object is created as new 
+object of the class and it receives a copy of the variables values of the variables stored in object passed. Any change made to the 
+the object which receives the values of the passed object does not affect the original object.*/
+
 int main()
 {
-	long long int i;
-	cin>>i;
-	while(i>1)
-	{
-		int detect = 0;
-		for(long long int j = 2;j<i;j++)
-		{
-			if(i%j==0)
-			{detect = 1;break;}
-		}
-		if(detect == 1)
-			cout<<"not prime"<<endl;
-		else cout<<"prime"<<endl;
-		cin>>i;
-	}
-	return 0;
+    int n = 10;
+    for(int i = n; i>=0; i--){cout<<i<<endl;n++;}
+    return 0;
 }

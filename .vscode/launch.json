@@ -1,0 +1,38 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Launch HashMapAndTreeMapExplained",
+            "request": "launch",
+            "mainClass": "HashMapAndTreeMapExplained"
+        },
+        {
+            "type": "java",
+            "name": "Launch testfile",
+            "request": "launch",
+            "mainClass": "testfile"
+        },
+        {
+            "type": "java",
+            "name": "Launch testfile2",
+            "request": "launch",
+            "mainClass": "testfile2"
+        },
+        {
+            "type": "java",
+            "name": "Launch testfile3",
+            "request": "launch",
+            "mainClass": "testfile3"
+        }
+    ]
+}
