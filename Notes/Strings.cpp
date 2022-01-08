@@ -102,6 +102,14 @@ int main()
 	cout<<s<<endl;                   //prints: whale
 	
 	//conversion to and from other types
+	/*stof - convert str to a float
+	stod - convert str to a double
+	stold - convert str to a long double
+	stoi - convert str to an int
+	stol - convert str to a long
+	stoul - convert str to an unsigned long
+	stoll - convert str to a long long
+	stoull - convert str to an unsigned long long*/
 	s = "3242";
 	k = stoi(s);                    //stoi(string) function is used to convert string to integer
 	cout<<k+2<<endl;                //prints: 3244

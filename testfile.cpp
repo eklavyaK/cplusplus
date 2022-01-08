@@ -1,19 +1,27 @@
-#include<iostream>
-#include<vector>
+#include<bits/stdc++.h>
 using namespace std;
 int main()
 {
-    vector<int> v;
-    for(int i = 0; i<10; i++)
-        v.push_back(i+1);
-    v.push_back(23);
-    v.push_back(9823);
-    vector<int>::iterator itr;
-    //itr = v.begin();
-    itr = v.end();
-    cout<<*--itr<<endl;
-    cout<<*--itr<<endl;
-    cout<<(*itr)<<endl;
-
-    return 0;
+    int t;cin>>t;
+    while(t-->0)
+    {
+        int n; long long int h = 0l,k,sum=0l;cin>>n>>h;int a[n],b[n-1];
+        for(int i = 0; i<n; i++) cin>>a[i];
+        for(int i = 1; i<n; i++) b[i-1]=a[i]-a[i-1];
+        sort(b,b+n-1);
+        for(int i = 0; i<n-1;i++)
+        {
+            k = b[i];
+            if((n-i)*k+sum>h)
+            {
+               k = ceil((long double)(h-sum)/(n-i));
+               break;
+            }
+            else {
+                sum = sum + b[i];
+                if(i==n-2) k = h-sum;
+            }
+        }
+        cout<<k<<endl;
+    }
 }
