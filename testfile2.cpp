@@ -1,7 +1,7 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
 int main()
 {
-    string s = "23094802938";
-    cout<<stoll(s)<<endl;
+    bool a[10] = {true};
+    for(int i = 0; i<10; i++) cout<<a[i]<<endl;
 }
