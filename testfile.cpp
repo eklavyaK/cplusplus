@@ -5,47 +5,25 @@ int main()
     int t;cin>>t;
     while(t-->0)
     {
-        int n,detecta = 0,detectb = 0; string s; cin>>n>>s;
-        char a='0',b='0';
-        int l = 0, r = n-1,count=0;
-        while(l<r)
+        int n,k; string s; cin>>n>>k>>s;
+        map<char,int> map;
+        int track = 0, sum = 0;
+        for(int i = 0; i<n; i++)
+            map[s[i]]++;
+        for (auto i : map)
         {
-            if(s[l]==s[r]) {r--;l++;}
-            else {a = s[l];b=s[r];break;}
+            if(i.second>1)
+            {
+                if(i.second%2==1) {sum = sum + i.second-1;track++;}
+                else sum = sum + i.second;
+            }
+            else track++;
         }
-        if(a==b){cout<<0<<endl;continue;}
-        int count_a = 0, count_b=0;
-        int stl = l, str = r;
-        count_a++;l++;count_b++;
-        while(l<r)
-        {
-            if(s[l]==s[r]) {l++;r--;}
-            else if(s[l]==a) {count_a++;l++;}
-            else if(s[r]==a) {count_a++;r--;}
-            else {detecta = 1;break;}
-        }
-        str--;
-        while(stl<str)
-        {
-            if(s[stl]==s[str]) {stl++;str--;}
-            else if(s[stl]==b) {count_b++;stl++;}
-            else if(s[str]==b) {count_b++;str--;}
-            else {detectb = 1;break;}
-        }
-        if(count_a<=count_b)
-        {
-            if(detecta==1)
-                {if(detectb==1)cout<<-1<<endl;
-                else cout<<count_b<<endl;}
-            else cout<<count_a<<endl;
-        }
-        else
-        {
-            if(detectb==1)
-                {if(detecta==1)cout<<-1<<endl;
-                else cout<<count_a<<endl;}
-            else cout<<count_b<<endl;
-        }
-        
+        //cout<<sum<<endl;
+        int result = sum/k;
+        if(result==0) {cout<<1<<endl; continue;}
+        if(result%2==0 && sum%k+track>=k) cout<<result+1<<endl;
+        else cout<<result<<endl;
     }
+    return 0;
 }
