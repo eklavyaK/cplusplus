@@ -1,36 +1,23 @@
-#include<bits/stdc++.h>
-using namespace std;
-int main()
-{
-    int t;cin>>t;
-    while(t-->0)
-    {
-        int n,pull; cin>>n; long long int sum = 0l,k=0l;vector<int> v;
-        map<int,int> map;
-        for(int i = 0; i<n; i++) 
-        {
-            cin>>pull; 
-            if(map[pull]++==0) {v.push_back(pull);}
-            sum = sum + pull;
-        }
-        int l=0, r = v.size()-1;
-        long double mean = sum*2/n;
-        if(mean==int(mean))
-        {
-            sort(v.begin(),v.end());
-            while(l<r)
-            {
-                if(v[l]+v[r]==mean)
-                {
-                   k = k + map[v[l]]*map[v[r]];
-                   l++;r--;
-                }
-                else if(v[l]+v[r]>mean) r--;
-                else l++;
-            }
-            if(l==r && v[l]*2==mean) k = k + map[v[l]]*(map[v[l]]-1)/2;
-        }
-        else k = 0;
-        cout<<k<<endl;
-    }
-}
+    for(auto i:vstring) cout<<i<<" "; cout<<endl;
+    vstring.erase(vstring.end()-4,vstring.end());  //erase(range of references to be deleted)
+    for(auto i:vstring) cout<<i<<" "; cout<<endl<<endl;
+
+    //resizing a vector
+    vint.resize(13); //it changes the size of the vector to first 13 elements
+    for(auto i:vint) cout<<i<<" "; cout<<endl;
+    vint.resize(15,20); //since size of the original vector is 13, to make the size of the vector to 15, 
+    //two 20s addec in the end
+    for(auto i:vint) cout<<i<<" "; cout<<endl;
+    vint.resize(20);
+    for(auto i:vint) cout<<i<<" "; cout<<endl; //in case of no value given, default value in case of int vector is 0
+    vstring1.resize(10);
+    for(auto i:vstring1) cout<<i<<" "; cout<<endl; 
+    if(vstring1[9]=="") cout<<"true"<<endl; //in case of no value given, default value in case of string vector is ""
+
+    vstring1.clear(); //clear() method is used to clear everything from the vector
+    for(auto i:vstring1) cout<<i<<" "; cout<<endl; 
+
+    //assign() method is used to assign a new vector to a vector
+    v.assign(10,25);  //this method assigns vector v as vector with 10 elements all of which are 25
+    for(auto i:v) cout<<i<<" "; cout<<endl;
+    vint.assign(vint.begin(),vint.end()-5); //in this method a vector is formed by copying the values from th
