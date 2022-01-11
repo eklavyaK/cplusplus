@@ -1,6 +1,5 @@
 ****************************IMPORTANTS********************************
 
-vector
 printf
 scanf
 lambda
@@ -10,7 +9,6 @@ set
 multiset
 list
 define keyword
-auto
 indef keyword
 endif keyword
 template
