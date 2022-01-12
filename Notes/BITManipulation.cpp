@@ -1,6 +1,6 @@
  #include <iostream>
  #include <string>
- #include <bitset>
+ #include <bitset>        //all the function of binary is in this library
  #include <cmath>
  using namespace std;
  

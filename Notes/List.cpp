@@ -92,6 +92,60 @@ int main()
    advance(itr,11);
    l.emplace(itr,102);         //emplace() method is used to insert a value at particular position in list
    for(auto i : l) cout<<i<<" ";cout<<endl<<endl;
+
+   //assign() method changes a list to a completely new list
+   l.assign(10,100);    //assign(n, val) assigns n values to the list
+   for(auto i : l) cout<<i<<" "; cout<<endl;
+   l.assign(l1.begin(),l1.end());     //assign(itr1,itr2) assign copies the values from a range specified by iterators
+   for(auto i : l) cout<<i<<" "; cout<<endl;
+   for(auto i : l1) cout<<i<<" "; cout<<endl<<endl; //we can see that values of l1 are copied not moved
    
    return 0;
 }
+/*Output:
+
+c++ java c javascript php typescript python css rust go Node.js 
+1 2 3 4 5 6 7 8 9 10
+1 2 3 4 4 5 2 5 8 9 7 10 6
+1 2 3 4 4 5 2 5
+html c++ java c javascript php typescript python css rust go Node.js 
+java html c++ java c javascript php typescript python css rust go Node.js
+1 2 3 4 5 6 7 8 9 10
+
+java html c++ java c javascript php typescript python css rust go Node.js
+
+c++ java c javascript php typescript python css rust go
+
+10
+
+100
+100
+
+1 2 3 4 4 5 2 5
+1 2 3 4 4 5 2 5 8 9 7 10 6
+
+100 9 8 7 6 5 4 3 2 100
+
+2 3 4 5 6 7 8 9 100 100
+
+1 1 2 2 3 3 4 4 4 4 5 2 5 5 2 5 8 9 7 10 6 
+
+2 3 4 5 6 7 8 9 100 100 101
+2 3 4 5 6 7 8 9 100 100 101 99 99
+2 3 4 5 6 7 8 9 100 100 101 99 99 1 1 2 2 3 3 4 4 4 4 5 2 5 5 2 5 8 9 7 10 6 
+1 1 2 2 3 3 4 4 4 4 5 2 5 5 2 5 8 9 7 10 6
+
+1 1 2 2 3 3 4 4 4 4 5 2 5 5 2 5 8 9 7 10 6 21 1 1 2 2 3 3 4 4 4 4 5 2 5 5 2 5 8 9 7 10 6 21 1 1 2 2 3 3 4 4 4 4 5 2 5 5 2 5 8 9 7 10 6 21 1 1 2 2 3 3 4 4 4 4 5 2 5 5 2 5 
+8 9 7 10 6 21 1 1 2 2 3 3 4 4 4 4 5 2 
+
+5 2 5 4 4 4 4 3 3 2 2 1 1 21 6 10 7 9 8 5 2 5 5 2 5 4 4 4 4 3 3 2 2 1 1 21 6 10 7 9 8 5 2 5 5 2 5 4 4 4 4 3 3 2 2 1 1 21 6 10 7 9 8 5 2 5 5 2 5 4 4 4 4 3 3 2 2 1 1 21 6 11 6 10 7 9 8 5 2 5 5 2 5 4 4 4 4 3 3 2 2 1
+
+2 3 4 5 6 7 8 9 100 101 99 1 2 3 4 5 2 5 2 5 8 9 7 10 6
+
+2 3 4 5 6 7 8 9 100 101 99 102 1 2 3 4 5 2 5 2 5 8 9 7 10 6
+
+100 100 100 100 100 100 100 100 100 100
+1 1 2 2 3 3 4 4 4 4 5 2 5 5 2 5 8 9 7 10 6
+1 1 2 2 3 3 4 4 4 4 5 2 5 5 2 5 8 9 7 10 6
+
+*/

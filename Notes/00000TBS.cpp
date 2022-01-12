@@ -3,9 +3,7 @@
 printf
 scanf
 lambda
-map
 multimap
-set
 multiset
 list
 define keyword
