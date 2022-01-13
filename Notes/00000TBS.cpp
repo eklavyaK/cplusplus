@@ -5,7 +5,6 @@ scanf
 lambda
 multimap
 multiset
-list
 define keyword
 indef keyword
 endif keyword
