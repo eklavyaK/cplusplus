@@ -1,15 +1,13 @@
 ****************************IMPORTANTS********************************
 
+conditional sorting
 printf
 scanf
 lambda
-multimap
-multiset
 define keyword
 indef keyword
 endif keyword
 template
-Libraries
 
 
 
