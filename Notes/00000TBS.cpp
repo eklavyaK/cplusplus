@@ -1,9 +1,8 @@
 ****************************IMPORTANTS********************************
 
-conditional sorting
+
 printf
 scanf
-lambda
 define keyword
 indef keyword
 endif keyword
