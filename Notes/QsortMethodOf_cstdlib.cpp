@@ -1,5 +1,4 @@
 #include<iostream>
-#include<cstdio>
 #include<cstdlib>
 using namespace std;
 int func(const void *a, const void *b)
