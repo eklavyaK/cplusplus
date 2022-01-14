@@ -11,7 +11,7 @@ lower_bound(), __gcd()
 
 <utility> - pair<>, make_pair(), swap(), move(),
 
-<stdlib> - malloc(), free(), rand(), qsort(), NULL, bsearch(),
+<cstdlib> - malloc(), free(), rand(), qsort(), NULL, bsearch(),
 
 <iterator> - begin(), end(), advance(), next(), prev(), distance(),
 

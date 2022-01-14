@@ -1,11 +1,8 @@
 ****************************IMPORTANTS********************************
 
 
-printf
-scanf
-define keyword
-indef keyword
-endif keyword
+indef directive
+endif directive
 template
 
 
