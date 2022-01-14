@@ -3,7 +3,6 @@
 
 indef directive
 endif directive
-template
 
 
 

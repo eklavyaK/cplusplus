@@ -1,7 +1,8 @@
 {
     "files.associations": {
         "iostream": "cpp",
-        "chrono": "cpp"
+        "chrono": "cpp",
+        "cmath": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }
