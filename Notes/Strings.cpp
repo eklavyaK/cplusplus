@@ -98,7 +98,7 @@ int main()
 	k = r.size();
 	cout<<k<<endl;                   //prints: 16
 	//getting a substring
-	s = r.substr(11,5);              //substr() here is bit different from java, 11 is the index from where substring starts and is the length of substring
+	s = r.substr(11,5);              //substr() here is bit different from java, 11 is the index from where substring starts and 5 is the length of substring
 	cout<<s<<endl;                   //prints: whale
 	
 	//conversion to and from other types
