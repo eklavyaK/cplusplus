@@ -7,18 +7,11 @@
 	// Placeholders with the same ids are connected.
 	// Example:
 	"boilerplate": {
-		"prefix": "what",
+		"scope": "cpp",
+		"prefix": "forj",
 		"body": [
-		  "#include<iostream>",
-		  "",
-		  "using namespace std;",
-		  "",
-		  "int main()",
-		  "{",
-		  "\t$0",
-		  "\treturn 0;",
-		  "}"
+			"for(int j = 0; j<m; j++) $0",
 		],
-		"description": "boilerplate"
-	  }
+		"description": "forj"
+	}
 }

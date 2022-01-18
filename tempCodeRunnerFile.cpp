@@ -1,1 +1,2 @@
-for(int i = 0; i<20; i++) cout<<v[i]<<" "; cout<<endl;
+
+        cout<<count_1<<" "<<count_0<<endl;

@@ -10,7 +10,7 @@
 		"scope": "cpp",
 		"prefix": "fori",
 		"body": [
-			"for(auto i : $1)",
+			"for(auto i : $0)",
 		],
 		"description": "fori"
 	}

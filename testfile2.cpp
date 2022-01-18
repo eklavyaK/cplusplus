@@ -1,10 +1,15 @@
-#include<iostream>
-#include<string>
+#include<bits/stdc++.h>
 using namespace std;
 
 int main()
 {
-    string s = "123";
-    cout<<to_string(s[0]+s[1]+s[2]-144);
+    ios_base::sync_with_stdio(false);cin.tie(NULL);
+    int t;cin>>t;
+    while(t-->0)
+    {
+        int p = 1;
+        p = !p;
+        cout<<p;
+    }
     return 0;
 }
