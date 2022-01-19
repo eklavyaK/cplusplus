@@ -3,7 +3,8 @@
         "iostream": "cpp",
         "chrono": "cpp",
         "cmath": "cpp",
-        "valarray": "cpp"
+        "valarray": "cpp",
+        "iomanip": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }

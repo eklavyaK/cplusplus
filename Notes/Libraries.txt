@@ -20,3 +20,5 @@ lower_bound(), __gcd()
 <climits> - CHAR_MIN, CHAR_MAX, INT_MIN, INT_MAX, LONG_MIN, LONG_MAX, LLONG_MIN, LLONG_MAX,
 
 <cstdio> - printf, scanf,
+
+<iomanip> - fixed, showpoint, setw(), setprecision()

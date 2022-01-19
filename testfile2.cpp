@@ -3,13 +3,9 @@ using namespace std;
 
 int main()
 {
-    ios_base::sync_with_stdio(false);cin.tie(NULL);
-    int t;cin>>t;
-    while(t-->0)
-    {
-        int p = 1;
-        p = !p;
-        cout<<p;
-    }
+    map<int,int> map;
+    map[0] = 23423;
+    map[2] = 32432;
+    
     return 0;
 }
