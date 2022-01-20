@@ -4,7 +4,8 @@
         "chrono": "cpp",
         "cmath": "cpp",
         "valarray": "cpp",
-        "iomanip": "cpp"
+        "iomanip": "cpp",
+        "random": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }
