@@ -7,7 +7,6 @@ int main()
     int t;cin>>t;
     while(t-->0)
     {
-        int n,u,v; cin>>n>>u>>v; int a[n];
         
     }
     return 0;
