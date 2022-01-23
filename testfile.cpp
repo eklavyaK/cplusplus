@@ -7,14 +7,9 @@ int main()
     int t;cin>>t;
     while(t-->0)
     {
-        int n; cin>>n; int a[n];
-        for(int i = 0; i<n; i++) cin>>a[i]; int length = *max_element(a,a+n); 
-        string s(length+1,'a'); cout<<s<<endl;
-        for(int i = 0; i<n; i++) 
-        {
-            s[a[i]] = s[a[i]]==char(97 + i%26)?char(97+(i+1)%26):char(97+i%26);
-            cout<<s<<endl;
-        } 
+        int n; cin>>n; int a[n]; vector<int> res;
+        for(int i = 0; i<n; i++) cin>>a[i];
+        
     }
     return 0;
 }
