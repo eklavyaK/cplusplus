@@ -8,7 +8,8 @@
         "random": "cpp",
         "*.tcc": "cpp",
         "string": "cpp",
-        "bitset": "cpp"
+        "bitset": "cpp",
+        "ostream": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }
