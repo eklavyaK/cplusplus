@@ -25,3 +25,6 @@ int main()
 bb aa bb aa bb aa bb aa bb
 */
 =======================================================================================================================================================================================
+
+/*Use of pairs or 2D vectors or arrays takes more time for execution than single dimensional structures for the same amount of data*/
+/*Their use must be avoided*/

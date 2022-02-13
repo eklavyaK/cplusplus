@@ -9,26 +9,7 @@ int main()
     int tc;cin>>tc;
     while(tc-->0)
     {
-        int n; cin>>n; int a[n], b[n]; long long cost=0l; bool track=true;
-        for(int i = 0; i<n; i++) cin>>a[i];
-        for(int i = 0; i<n; i++) cin>>b[i]; 
-        for(int i = 0; i<n-1; i++) for(int j = i+1; j<n; j++) cost+=pow(a[i]+a[j],2);
-        for(int i = 0; i<n-1; i++) for(int j = i+1; j<n; j++) cost+=pow(b[i]+b[j],2);
-        while(track)
-        {
-            track=false;
-            for(int k = 0; k<n; k++) 
-            {
-                long long temp;temp = a[k];a[k]=b[k];b[k]=temp;temp=0l;
-                for(int i = 0; i<n-1; i++) for(int j = i+1; j<n; j++) temp+=pow(a[i]+a[j],2);
-                for(int i = 0; i<n-1; i++) for(int j = i+1; j<n; j++) temp+=pow(b[i]+b[j],2);
-                if(temp<cost){cost=temp;track=true;break;} if(cost==temp) continue;
-                temp = a[k];a[k]=b[k];b[k]=temp;
-            }
-        }
-        for(int i = 0; i<n; i++) cout<<a[i]<<" "; cout<<endl;
-        for(int i = 0; i<n; i++) cout<<b[i]<<" ";cout<<endl;
-        cout<<cost<<endl;
+        
     }
     return 0;
 }
