@@ -9,9 +9,8 @@ int main()
     int tc;cin>>tc;
     while(tc-->0)
     {
-        string s; cin>>s; char c='z'; int in = 0;
-        for(int i = 0; i<s.size(); i++) if(c>s[i]) {c=s[i];in=i;}
-        cout<<c<<" "<<s.substr(0,in)<<s.substr(in+1)<<endl;
+        int a,b,c; cin>>a>>b>>c;
+        if(abs(a+c-2*b)%3)cout<<1<<endl; else cout<<0<<endl;
     }
     return 0;
 }
