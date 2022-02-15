@@ -9,7 +9,8 @@ int main()
     int tc;cin>>tc;
     while(tc-->0)
     {
-        
+        long long n; cin>>n;
+        cout<<-(n-1)<<" "<<n<<endl;
     }
     return 0;
 }

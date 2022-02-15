@@ -9,7 +9,9 @@ int main()
     int tc;cin>>tc;
     while(tc-->0)
     {
-        
+        int n,detect=0; cin>>n; string s1,s2; cin>>s1>>s2;
+        for(int i = 1; i<n-1; i++) if(s1[i]=='1'&& s2[i]=='1') {detect = 1;break;}
+        if(detect) cout<<"NO"<<endl; else cout<<"YES"<<endl;
     }
     return 0;
 }
