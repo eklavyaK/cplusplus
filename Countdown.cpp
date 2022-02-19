@@ -9,9 +9,9 @@ int main()
     int tc;cin>>tc;
     while(tc-->0)
     {
-        int n; cin>>n; string s; cin>>s; int detect = 1;
-        for(int i = 0; i<n-1; i++) if(s[i]!=s[i+1]){detect = 0;cout<<i+1<<" "<<i+2<<endl;break;}
-        if(detect)cout<<-1<<" "<<-1<<endl;
+        int n; cin>>n; string s; cin>>s; int count = 0;
+        for(int i = 0; i<n-1; i++) if(s[i]!='0') count+=((s[i]-'0')+1);
+        if(s[n-1]!='0') count+=(s[n-1]-'0'); cout<<count<<endl;
     }
     return 0;
 }
