@@ -9,7 +9,13 @@ int main()
     int tc;cin>>tc;
     while(tc-->0)
     {
-        
+        int n; cin>>n; int mod = 1000000007; long long result = 1l;
+        for(int i = 1; i<=n; i++) {
+            int r_factorial = 1;for(int j = 2; j<=i; j++) r_factorial*=j;
+            for(int j = 0; j<=n; j++) {
+                
+            }
+        }
     }
     return 0;
 }
