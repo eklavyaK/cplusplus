@@ -9,7 +9,8 @@ int main()
     int tc;cin>>tc;
     while(tc-->0)
     {
-        
+        int n; cin>>n; int mod = 1000000007; long long result = n;
+        for(int i = 2; i<2*n; i++) result = (result*i) % mod; cout<<result<<endl;
     }
     return 0;
 }
