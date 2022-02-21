@@ -9,15 +9,11 @@ int main()
 	int tc;cin>>tc;
 	while(tc-->0)
 	{
-		int n,x,m; cin>>n>>x>>m;
-		int lf=x,rf=x;
-		while(m--){
-			int l,r;cin>>l>>r;
-			if((l>=lf&&l<=rf)||(r<=rf&&r>=lf)||(l<=lf&&r>=rf)){
-				lf=min(lf,l);rf=max(rf,r);
-			}
+		long long a,b,c,d; cin>>a>>b>>c>>d;
+		if(c+d<=a+b && min(a,b)>=d){
+			cout<<"yes"<<endl;
 		}
-		cout<<rf-lf+1<<endl;
+		else cout<<"no"<<endl;
 	}
 	return 0;
 }
