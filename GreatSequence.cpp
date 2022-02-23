@@ -11,46 +11,28 @@ int main()
 	cin >> tc;
 	while (tc-- > 0)
 	{
-		int n, x, k;
-		cin >> n >> x;
-		int track = 0, count = 0;
-		vector<pair<int, int>> v;
-		map<int, int> m;
-		for (int i = 0; i < n; i++)
-		{
-			cin >> k;
-			if (!m[k])
-			{
-				track++;
-				v.emplace_back(make_pair(k, 1));
-				m[k] = track;
+		long long n,x,k,count=0; cin>>n>>x; map<long long,long long> m;
+		for(int i = 0; i<n; i++){cin>>k; m[k]++;}
+		if(x==1){
+			for(auto i : m){
+				count+=i.second%2;
 			}
-			else
-				v[m[k] - 1].second++;
 		}
-		sort(v.begin(), v.end());
-		for(int i = 0; i<track; i++)m[v[i].first]=i+1;
-		for (int i = 0; i < track; i++)
-		{
-			if (m[v[i].first * x])
-			{
-				if(v[i].second>0){
-				int temp = m[v[i].first * x]-1;
-				if (v[temp].second < v[i].second)
-				{
-					count += (v[i].second-v[temp].second);
-					v[temp].second = 0;
+		else{
+			for(auto i : m){
+				if(m[i.first*x]){
+					if(i.second<m[i.first*x]){
+						m[i.first*x]-=i.second;
+					}
+					else{
+						count+=(i.second-m[i.first*x]);
+						m[i.first*x]=0;
+					}
 				}
-				else
-				{
-					v[temp].second -= v[i].second;
-				}
-				}
+				else count+=i.second;
 			}
-			else if(v[i].second>0)
-				count += v[i].second;
 		}
-		cout << count << endl;
+		cout<<count<<endl;
 	}
 	return 0;
 }
