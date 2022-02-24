@@ -9,10 +9,11 @@ int main()
 	cin.tie(NULL);
 	int tc;
 	cin >> tc;
-	while (tc-- > 0)
+	while (tc-->0)
 	{
-		long long n,x,k,count=0; cin>>n>>x; map<long long,long long> m;
-		for(int i = 0; i<n; i++){cin>>k; m[k]++;}
+		int n,x,k,count=0; cin>>n>>x; map<int,int> m; int max=0;
+		for(int i = 0; i<n; i++){cin>>k; if(k>max) max = k; m[k]++;}
+		int index = max/x;
 		if(x==1){
 			for(auto i : m){
 				count+=i.second%2;
@@ -20,7 +21,7 @@ int main()
 		}
 		else{
 			for(auto i : m){
-				if(m[i.first*x]){
+				if(i.first<=index && m[i.first*x]){
 					if(i.second<m[i.first*x]){
 						m[i.first*x]-=i.second;
 					}
