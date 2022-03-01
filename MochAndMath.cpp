@@ -9,12 +9,9 @@ int main()
 	int tc;cin>>tc;
 	while(tc-->0)
 	{
-		int n; cin>>n; int a[n]; long long sum = 0l;
-		for(int i = 0; i<n; i++)cin>>a[i];
-		for(int i = 0; i<n; i++){
-			sum+=a[i];
-		}
-		cout<<(n-(sum%n))*(sum%n)<<endl;
+		int n; cin>>n; int k,l; cin>>l;
+		while(n-->1){cin>>k; l=l&k;}
+		cout<<l<<endl;
 	}
 	return 0;
 }

@@ -9,12 +9,14 @@ int main()
 	int tc;cin>>tc;
 	while(tc-->0)
 	{
-		int n; cin>>n; int a[n]; long long sum = 0l;
-		for(int i = 0; i<n; i++)cin>>a[i];
-		for(int i = 0; i<n; i++){
-			sum+=a[i];
+		long long n; cin>>n; 
+		if(n<6) cout<<15<<endl;
+		else if(n%2){
+			cout<<(n+1)*5/2<<endl;
 		}
-		cout<<(n-(sum%n))*(sum%n)<<endl;
+		else{
+			cout<<n*5/2<<endl;
+		}
 	}
 	return 0;
 }
