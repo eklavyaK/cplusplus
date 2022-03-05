@@ -9,14 +9,9 @@ int main()
 	int tc;cin>>tc;
 	while(tc-->0)
 	{
-		int n; cin>>n; int sum = 0,s=n;
-		while(sum<n){
-			int temp=0,c=0; while(pow(3,temp)<s) temp++;
-			for(int i = 0; i<temp; i++) c+=pow(3,i);
-			if(sum+c>=n) {sum+=pow(3,temp-1);s=n-sum;}
-			else sum+=pow(3,temp);
-		}
-		cout<<sum<<endl;
+		int a,b; cin>>a>>b;
+		if(2*min(a,b)>=max(a,b) && (a+b)%3==0){cout<<"yes"<<endl;}
+		else cout<<"no"<<endl;;
 	}
 	return 0;
 }
