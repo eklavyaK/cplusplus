@@ -18,7 +18,8 @@
 			"*.tcc": "cpp",
 			"string": "cpp",
 			"bitset": "cpp",
-			"ostream": "cpp"
+			"ostream": "cpp",
+			"complex": "cpp"
 		}
 	}
 }

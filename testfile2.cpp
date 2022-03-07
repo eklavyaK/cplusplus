@@ -1,19 +1,56 @@
 #include<bits/stdc++.h>
-#define removezeros(s) s.erase(0,s.find("1")!=-1?s.find("1"):s.length()-1)
-#define binary(n,k) bitset<k>(n).to_string()
-#define makeset(_set, _collection, size_of_collection) for(int i = 0; i<size_of_collection; i++){_set.emplace_back(_collection[i]);while(i+1<size_of_collection && _collection[i+1]==_collection[i])i++;}
 using namespace std;
 
+/*from 1 to 100000 (1 lakh) there are 9592 prime numbers, these primes numbers can divide each and every composite number from 1 to
+10000000000 (10^10)*/
+
+
+vector<int> v; //this the global array declared which will store all the primes from
+int counter; //this is the actual number of primes stored in the array a after sieve is called using limits
+
+int sieve(int lim1, int lim2)
+{
+	if(lim1<=1)
+		lim1=2;
+	int range = lim2-lim1+1;
+	if(range<1) {cout<<"Not a valid range!!"<<endl;return 0;}
+	else{
+	vector<int> primes(range);
+	int multiplier = 0;
+	for(int count = 2; count<lim2; count++)
+	{
+		int start = pow(count, 2);
+		if(start>lim2) break;
+		if(start<lim1)
+		{
+			if((float)lim1/count==lim1/count)
+				multiplier = lim1/count;
+			else multiplier = lim1/count + 1;
+			while(count*multiplier<=lim2)
+			{if(primes[count*multiplier-lim1]!=1) primes[count*multiplier-lim1]=1; multiplier++;}
+		}
+		else
+		{
+			multiplier = count;
+			while(count*multiplier<=lim2)
+			{if(primes[count*multiplier-lim1]!=1) primes[count*multiplier-lim1]=1; multiplier++;}
+		}
+	}
+	for(int i = lim1;i<=lim2;i++)
+		if(primes[i-lim1]!=1){
+			v.emplace_back(i);counter++;
+		}
+	return 0;
+	}
+}
 int main()
 {
-    ios_base::sync_with_stdio(false);cin.tie(NULL);
-    int tc;cin>>tc;
-    while(tc-->0)
-    {
-        int n,k; cin>>n; vector<int> v; 
-        for(int i = 0; i<n; i++) {cin>>k; v.emplace_back(k);}
-        sort(v.begin(),v.end());for(auto i : v)cout<<i<<" ";cout<<endl; vector<int> r;makeset(r,v,n);
-        for(int i = 0; i<r.size(); i++) cout<<r[i]<<" ";cout<<endl;
-    }
-    return 0;
+	ios_base::sync_with_stdio(false);cin.tie(NULL);
+
+	int start_limit,end_limit;
+	cin>>start_limit>>end_limit;
+	sieve(start_limit, end_limit);
+	for(int i = 0; i<counter; i++) cout<<v[i]<<" ";
+
+	return 0;
 }

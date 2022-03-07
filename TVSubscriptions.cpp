@@ -10,23 +10,17 @@ int main()
 	int tc;cin>>tc;
 	while(tc-->0)
 	{
-		int n,m; cin>>n>>m; int a[m]={0}, b[n]={0}; 
-		string s[n];int k=0;bool detect = false;
-		for(int i = 0; i<n; i++){
-			cin>>s[i];int count = 0;
-			for(int j = 0; j<m; j++){
-				if(s[i][j]=='*') {a[j]++;count++;}
+		int n,k,d; cin>>n>>k>>d; map<int,int> map;
+		int a[n];for(int i = 0; i<n; i++)cin>>a[i];
+		int track=0,count=0,min = k; for(int i = 0; i<n; i++){
+			if(i<d) {if(!map[a[i]])count++;map[a[i]]++;}
+			else{
+				if(count<min)min=count;
+				map[a[track]]--;if(!map[a[track]])count--;
+				track++;if(!map[a[i]])count++;map[a[i]]++;
 			}
-			if(k<count)k=count; b[i]=count;
 		}
-		int l = *max_element(a,a+m);
-		for(int i = 0; i<n; i++){
-			for(int j = 0; j<m; j++){
-				if(a[j]==l && b[i]==k && s[i][j]=='.'){detect = true;break;}
-			}
-			if(detect)break;
-		}
-		detect?cout<<n+m-l-k-1<<endl:cout<<n+m-l-k<<endl;
+		cout<<(min<count?min:count)<<endl;
 	}
 	return 0;
 }

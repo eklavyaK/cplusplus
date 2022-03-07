@@ -12,6 +12,8 @@ int sieve(int lim1, int lim2)
 {
 	if(lim1<=1)
 		lim1=2;
+	if(lim2<=1)
+		lim2=2;
 	int range = lim2-lim1+1;
 	if(range<1) {cout<<"Not a valid range!!"<<endl;return 0;}
 	else{

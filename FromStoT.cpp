@@ -10,23 +10,20 @@ int main()
 	int tc;cin>>tc;
 	while(tc-->0)
 	{
-		int n,m; cin>>n>>m; int a[m]={0}, b[n]={0}; 
-		string s[n];int k=0;bool detect = false;
+		string s,t,p; cin>>s>>t>>p;map<char,int> map;
+		for(int i = 0; i<p.length(); i++)map[p[i]]++;
+		int n = t.length(),track=0; bool detect = false;
 		for(int i = 0; i<n; i++){
-			cin>>s[i];int count = 0;
-			for(int j = 0; j<m; j++){
-				if(s[i][j]=='*') {a[j]++;count++;}
+			if(s[track]!=t[i] && map[t[i]]<=0){
+				detect = true; break;
 			}
-			if(k<count)k=count; b[i]=count;
-		}
-		int l = *max_element(a,a+m);
-		for(int i = 0; i<n; i++){
-			for(int j = 0; j<m; j++){
-				if(a[j]==l && b[i]==k && s[i][j]=='.'){detect = true;break;}
+			else if(s[track]==t[i])track++;
+			else{
+				map[t[i]]--;
 			}
-			if(detect)break;
 		}
-		detect?cout<<n+m-l-k-1<<endl:cout<<n+m-l-k<<endl;
+		if(track!=s.length())detect = true;
+		detect?cout<<"NO"<<endl:cout<<"YES"<<endl;
 	}
 	return 0;
 }
