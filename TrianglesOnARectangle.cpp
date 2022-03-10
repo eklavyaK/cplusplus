@@ -10,12 +10,12 @@ int main()
     int tc;cin>>tc;
     while(tc-->0)
     {
-        int n; cin>>n; int a[n];
-        for(int i = 0; i<n; i++)cin>>a[i];
-        int k = *min_element(a,a+n);n = n/2;
-        for(int i = 0; i<n; i++){
-            if(a[i]==k)n++;else cout<<a[i]<<" "<<k<<endl;
-        }
+        long long w,l;cin>>w>>l; int a=0,b=0,c=0,d=0,e=0,f=0,g=0,h=0;
+        int k,n; cin>>n;for(int i = 0; i<n; i++){cin>>k;if(!a)a=k;}b=k;
+        cin>>n;for(int i = 0; i<n; i++){cin>>k;if(!c)c=k;}d=k;
+        cin>>n;for(int i = 0; i<n; i++){cin>>k;if(!e)e=k;}f=k;
+        cin>>n;for(int i = 0; i<n; i++){cin>>k;if(!g)g=k;}h=k;
+        cout<<max(w*max(f-e,h-g),l*max(b-a,d-c))<<endl;
     }
     return 0;
 }

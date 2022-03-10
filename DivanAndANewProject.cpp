@@ -10,12 +10,13 @@ int main()
     int tc;cin>>tc;
     while(tc-->0)
     {
-        int n; cin>>n; int a[n];
-        for(int i = 0; i<n; i++)cin>>a[i];
-        int k = *min_element(a,a+n);n = n/2;
-        for(int i = 0; i<n; i++){
-            if(a[i]==k)n++;else cout<<a[i]<<" "<<k<<endl;
+        int n; cin>>n; vector<pair<int,int>> v(n);long long result = 0;
+        for(int i = 0; i<n; i++){cin>>v[i].first;v[i].second=i;} vector<int> res(n);
+        sort(v.begin(),v.end());long long track = 1,count=1; for(int i = n-1; i>=0; i--){
+            if(count++%2){res[v[i].second]=-track;result+=track*v[i].first;}
+            else {result+=track*v[i].first;res[v[i].second]=track++;}
         }
+        cout<<2*result<<endl<<0<<" ";for(auto i : res) cout<<i<<" ";cout<<endl;
     }
     return 0;
 }
