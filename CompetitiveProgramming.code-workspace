@@ -19,7 +19,8 @@
 			"string": "cpp",
 			"bitset": "cpp",
 			"ostream": "cpp",
-			"complex": "cpp"
+			"complex": "cpp",
+			"array": "cpp"
 		}
 	}
 }

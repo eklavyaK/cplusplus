@@ -1,66 +1,60 @@
-200000 119737
-200000 130926
-199999 107687
-199999 169384
-200000 155575
-199999 159249
-200000 177143
-200000 115065
-199999 183438
-200000 190717
-200000 187453
-199999 124978
-200000 166023
-199999 125230
-200000 177395
-200000 119585
-199999 121320
-199999 133442
-199999 115263
-199999 101110
-200000 196268
-200000 124153
-200000 188984
-199999 110696
-200000 148572
-199999 151038
-200000 121511
-200000 134232
-200000 142641
-200000 199410
-200000 133473
-199999 187660
-199999 184125
-199999 119737
-199999 130926
-199998 107687
-199998 169384
-199999 155575
-199998 159249
-199999 177143
-199999 115065
-199998 183438
-199999 190717
-199999 187453
-199998 124978
-199999 166023
-199998 125230
-199999 177395
-199999 119585
-199998 121320
-199998 133442
-199998 115263
-199998 101110
-199999 196268
-199999 124153
-199999 188984
-199998 110696
-199999 148572
-199998 151038
-199999 121511
-199999 134232
-199999 142641
-199999 199410
-199999 133473
-199998 187660
-199998 184125
+#include<bits/stdc++.h>
+#define removezeros(s) s.erase(0,s.find("1")!=-1?s.find("1"):s.length()-1)
+#define binary(n,k) bitset<k>(n).to_string()
+#define makeset(_set, _collection, size_of_collection) for(int i = 0; i<size_of_collection; i++){_set.emplace_back(_collection[i]);while(i+1<size_of_collection && _collection[i+1]==_collection[i])i++;}
+using namespace std;
+
+int main()
+{
+	ios_base::sync_with_stdio(false);
+	cout.precision(28);cin.tie(NULL);
+
+	int n,l,k; cin>>n;
+	vector<vector<int>> x(200001);
+	vector<pair<int,int>> v(n);
+	map<int,int> m;
+	for(int i = 0; i<n; i++){
+		cin>>l>>k;
+		v[i].first=l;
+		v[i].second=k;
+		x[l].emplace_back(k);
+		m[l];
+	}
+	for(auto i : m) sort(x[i.first].begin(),x[i.first].end());
+	for(int i = 0; i<n; i++){
+		int a=v[i].first,b=v[i].second;
+		int d=1, detect = 1;
+		while(detect){
+			int u=a-d,v=b,w=a+d;
+			if(u<1){cout<<u<<" "<<b<<endl;break;}
+			else if(b-d<1){cout<<a<<" "<<b-d<<endl;break;}
+			else if(b+d>200000){cout<<a<<" "<<b+d<<endl;break;}
+			else if(w>200000){cout<<w<<" "<<b<<endl;detect=0;break;}
+			for(int j = 0; j<=d; j++){
+				int in = lower_bound(x[u+j].begin(),x[u+j].end(),v+j)-x[u+j].begin();
+				if(in>=x[u+j].size()||x[u+j][in]!=v+j){
+					cout<<u+j<<" "<<v+j<<endl;
+					detect = 0;break;
+				}
+				in = lower_bound(x[u+j].begin(),x[u+j].end(),v-j)-x[u+j].begin();
+				if(in>=x[u+j].size()||x[u+j][in]!=v-j){
+					cout<<u+j<<" "<<v-j<<endl;
+					detect = 0;break;
+				}
+				in = lower_bound(x[w-j].begin(),x[w-j].end(),v+j)-x[w-j].begin();
+				if(in>=x[w-j].size()||x[w-j][in]!=v+j){
+					cout<<w-j<<" "<<v+j<<endl;
+					detect = 0;break;
+				}
+				in = lower_bound(x[w-j].begin(),x[w-j].end(),v-j)-x[w-j].begin();
+				if(in>=x[w-j].size()||x[w-j][in]!=v-j){
+					cout<<w-j<<" "<<v-j<<endl;
+					detect = 0;break;
+				}
+			}
+			d++;
+		}
+	}
+
+	return 0;
+}
