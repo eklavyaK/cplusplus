@@ -8,80 +8,80 @@ int main()
 {
     ios_base::sync_with_stdio(false);
     cout.precision(28);cin.tie(NULL);
-    int r,c,t,in=1,temp=1; cin>>r>>c; 
-    int a[r][c];string s[r][c];
-    for(int i = 0; i<r; i++){
-        for(int j = 0; j<c; j++){
-            cin>>t;
-            s[i][j]=binary(t,4);
-        }
-    }
-    map<int,int> v;
-    for(int i = 0; i<c; i++){
-        if(s[0][i][1]=='1'){
-            a[0][i]=in;
-            v[in++]=temp;
-            temp=1;
-        }
-        else{
-            temp++;
-            a[0][i]=in;
-        }
-    }
-    map<int,int> m;
-    for(int i = 1; i<r; i++){
-        for(int j = 0; j<c; j++){
-            if(s[i][j][0]=='0' && s[i][j][3]=='0'){
-                if(a[i][j-1]==a[i-1][j]){
-                    v[a[i][j-1]]++;
-                    int k = a[i-1][j];
-                    while(m[k])k=m[k];
-                    a[i][j]=k;
-                }
-                else if(a[i][j-1]!=a[i-1][j]){
-                    int k = a[i][j-1];
-                    int l = a[i-1][j];
-                    while(m[k])k=m[k];
-                    while(m[l])l=m[l];
-                    if(l==k){
-                        a[i][j]=k;
-                        v[a[i][j]]++;
-                    }
-                    if(l<k){
-                        a[i][j]=l;
-                        v[a[i][j]]+=(1+v[k]);
-                        m[k]=l;
-                        v.erase(k);
-                    }
-                    if(l>k){
-                        a[i][j]=k;
-                        v[a[i][j]]+=(1+v[l]);
-                        m[l]=k;
-                        v.erase(l);
+
+    int n,m1,m2,l,r; cin>>n>>m1>>m2; 
+    vector<vector<int>> va(n+1),vb(n+1);
+    while(m1--){cin>>l>>r;va[r].push_back(l);va[l].push_back(r);}
+    while(m2--){cin>>l>>r;vb[r].push_back(l);vb[l].push_back(r);}
+    int cnta[n+1]={0},cntb[n+1]={0},track = 1;
+    for(int i = 1; i<=n; i++){
+        if(!cnta[i]){
+            queue<int> q;
+            q.push(i);
+            while(!q.empty()){
+                int k = q.front();q.pop();
+                cnta[k]=track;
+                for(int j = 0; j<va[k].size(); j++){
+                    if(!cnta[va[k][j]]){
+                        q.push(va[k][j]);
                     }
                 }
             }
-            else if(s[i][j][3]=='0'){
-                int k=a[i][j-1];
-                while(m[k])k=m[k];
-                a[i][j]=k;
-                v[a[i][j]]++;
+            track++;
+        }
+    }
+    track = 1;
+    for(int i = 1; i<=n; i++){
+        if(!cntb[i]){
+            queue<int> q;
+            q.push(i);
+            while(!q.empty()){
+                int k = q.front();q.pop();
+                cntb[k]=track;
+                for(int j = 0; j<vb[k].size(); j++){
+                    if(!cntb[vb[k][j]]){
+                        q.push(vb[k][j]);
+                    }
+                }
             }
-            else if(s[i][j][0]=='0'){
-                int k=a[i-1][j];
-                while(m[k])k=m[k];
-                a[i][j]=k;
-                v[a[i][j]]++;
-            }
-            else{
-                v[in]++;
-                a[i][j]=in++;
+            track++;
+        }
+    }
+    vector<pair<int,int>> v;map<int,bool> pa,pb;
+    for(int i = 2; i<=n; i++){
+        if(cnta[1]!=cnta[i]){
+            if(cntb[1]!=cntb[i] && !pb[cntb[i]] && !pa[cnta[i]]){
+                v.push_back(make_pair(1,i));
+                pa[cnta[i]]=true;
+                pb[cntb[i]]=true;
             }
         }
     }
-    vector<int> result;
-    for(auto i : v) result.push_back(i.second);
-    sort(result.begin(),result.end(),greater<int>());
-    for(auto i : result) cout<<i<<" ";
+    int index = 0; map<int,bool> detect;
+    detect[1] = true;
+    while(true){
+        index = 0;
+        for(int i = 2; i<=n; i++){
+            if(!pa[cnta[i]] && !pb[cntb[i]] && !detect[i]){
+                index = i;
+                detect[i]=true;
+            }
+        }
+        if(index){
+            for(int j = 1; j<=n; j++){
+                if(cnta[index]!=cnta[j]){
+                    if(cntb[index]!=cntb[j] && !pb[cntb[j]] && !pa[cnta[j]]){
+                        v.push_back(make_pair(index,j));
+                        pb[cntb[j]]=true;
+                        pa[cnta[j]]=true;
+                    }
+                }
+            }
+        }
+        else break;
+    }
+    cout<<v.size()<<endl;
+    for(auto i : v)cout<<i.first<<" "<<i.second<<endl;
+
     return 0;
 }

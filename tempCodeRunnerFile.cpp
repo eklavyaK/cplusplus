@@ -1,2 +1,2 @@
 
-		for(auto i : v) cout<<i<<" ";cout<<endl;
+    for(auto i : cnta) cout<<i<<endl;

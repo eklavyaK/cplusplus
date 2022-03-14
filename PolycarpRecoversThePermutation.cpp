@@ -11,22 +11,21 @@ int main()
 	int tc;cin>>tc;
 	while(tc-->0)
 	{
-		int n,k; cin>>n; int a[n+1];
-		for(int i = 1; i<=n; i++){
-			cin>>a[i];
-		}
-		if(n==1){cout<<a[1]<<endl;continue;}
-		a[0]=0;k=*min_element(a+1,a+1+n);
-		if(k<0){
-			for(int i = 1; i<=n; i++){
-				a[i]+=k;
+		int n; cin>>n; int a[n],trackl=0,trackr=0;
+		for(int i = 0; i<n; i++)cin>>a[i];vector<int> v;
+		if(a[0]!=n && a[n-1]!=n) {cout<<-1<<endl;continue;}
+		v.emplace_back(n);
+		if(a[0]==n){
+			for(int i = n-1; i>=1; i--){
+				v.emplace_back(a[i]);
 			}
 		}
-		sort(a+1,a+n+1);int min=0;
-		for(int i = 1; i<=n; i++){
-			if(a[i]-a[i-1]>min)min=a[i]-a[i-1];
+		else{
+			for(int i = n-2;i>=0; i--){
+				v.emplace_back(a[i]);
+			}
 		}
-		cout<<min<<endl;
+		for(auto i : v) cout<<i<<" ";cout<<endl;
 	}
 	return 0;
 }
