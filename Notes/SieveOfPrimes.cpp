@@ -42,6 +42,9 @@ int sieve(int t, int u)
 	}
 	return 0;
 }
+void start_again(){
+	v.clear();counter=0;
+}
 int main()
 {
 	ios_base::sync_with_stdio(false);cin.tie(NULL);
