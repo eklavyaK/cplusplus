@@ -9,7 +9,18 @@ int main(){
     cout.precision(28);cin.tie(NULL);
     int tc;cin>>tc;
     while(tc-->0){
-        
+        int n,k,c=0,cnt=0; cin>>n;map<int,int> map;
+        for(int i = 0; i<n; i++){cin>>k;map[k]++;}
+        vector<int> v;
+        for(auto i : map){
+            c=max(c,i.second);
+        }
+        if(c>n/2){
+            cout<<2*c-n<<endl;
+        }
+        else{
+            cout<<n%2<<endl;
+        }
     }
     return 0;
 }
