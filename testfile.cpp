@@ -16,24 +16,27 @@ int main(){
             va[a[i]-'a']++;
             vb[b[i]-'a']++;
         }
-        int cnt = 0;
+        int cnt = 0;bool detect = true;
         for(int i = 0; i<26; i++){
-            if(cnt+va[i]<vb[i]){
-                cout<<"No"<<endl;goto end;
+            int temp = va[i]-vb[i];
+            if(cnt+temp<0){
+                detect = false;
+                break;
             }
             else{
-                if(va[i]>vb[i] && (va[i]-vb[i])%k==0){
-                    cnt+=(va[i]-vb[i]);
+                if(temp>0 && temp%k==0){
+                    cnt+=temp;
                 }
-                else if(vb[i]>=va[i] && (vb[i]-va[i])%k==0){
-                    cnt-=(vb[i]-va[i]);
+                else if(temp<=0 && temp%k==0){
+                    cnt+=temp;
                 }
                 else{
-                    cout<<"No"<<endl;goto end;
+                    detect = false;
+                    break;
                 }
             }
         }
-        cout<<"Yes"<<endl; end:;
+        detect?cout<<"Yes"<<endl:cout<<"No"<<endl;
     }
     return 0;
 }
