@@ -8,7 +8,7 @@ int main(){
     ios_base::sync_with_stdio(false);
     cout.precision(28);cin.tie(NULL);
 
-    cout<<"What is the name of the person of the century?"<<endl;
+    
 
     return 0;
 }
