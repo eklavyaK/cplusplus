@@ -9,7 +9,25 @@ int main(){
     cout.precision(28);cin.tie(NULL);
     int tc;cin>>tc;
     while(tc-->0){
-        
+        int n,sum = 0; cin>>n; 
+        vector<pair<int,int>> v(n);
+        for(int i = 0; i<n; i++){
+            cin>>v[i].first;
+        }
+        for(int i = 0; i<n; i++){
+            cin>>v[i].second;
+        }
+        sort(v.begin(),v.end());
+        for(int i = n-1; i>=0; i--){
+            if(sum+v[i].second<v[i].first){
+                sum+=v[i].second;
+            }
+            else{
+                sum = max(sum,v[i].first);
+                break;
+            }
+        }
+        cout<<sum<<endl;
     }
     return 0;
 }

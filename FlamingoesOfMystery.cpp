@@ -7,9 +7,22 @@ using namespace std;
 int main(){
     ios_base::sync_with_stdio(false);
     cout.precision(28);cin.tie(NULL);
-    int tc;cin>>tc;
-    while(tc-->0){
-        
+    int n,temp; cin>>n;
+    int total;vector<int> v(n);
+    cout<<'?'<<' '<<1<<' '<<n<<endl<<flush;
+    cin>>total;int k = total;
+    for(int i = 2; i<n; i++){
+        cout<<'?'<<' '<<i<<' '<<n<<endl<<flush;
+        cin>>temp;
+        v[i-2]=k-temp;
+        k=temp;
+    }
+    cout<<'?'<<' '<<1<<' '<<n-1<<endl<<flush;
+    int x; cin>>x;
+    v[n-1]=total-x;
+    v[n-2]=temp-v[n-1];
+    cout<<'!'<<' ';for(auto i : v){
+        cout<<i<<' ';
     }
     return 0;
 }
