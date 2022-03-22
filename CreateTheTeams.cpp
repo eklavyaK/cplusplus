@@ -13,23 +13,16 @@ int main(){
     cout.precision(28);cin.tie(NULL);
     int tc;cin>>tc;
     while(tc-->0){
-        string s; cin>>s; 
-        int n = s.size(), a[3]={0};
-        for(int i = 0; i<n; i++){
-            if(s[i]=='R')a[1]++;
-            else if(s[i]=='P')a[2]++;
-            else a[0]++;
+        int n,x; cin>>n>>x; int a[n];
+        for(int i = 0; i<n; i++)cin>>a[i];
+        sort(a,a+n);int cnt = 0,c=1;
+        for(int i=n-1;i>=0;i--){
+            if((ll)a[i]*c>=x){
+                cnt++;c=1;
+            }
+            else c++;
         }
-        int k = max(a[0],max(a[1],a[2]));
-        if(a[0]==k){
-            cout<<string(n,'R')<<endl;
-        }
-        else if(a[1]==k){
-            cout<<string(n,'P')<<endl;
-        }
-        else{
-            cout<<string(n,'S')<<endl;
-        }
+        cout<<cnt<<endl;
     }
     return 0;
 }
