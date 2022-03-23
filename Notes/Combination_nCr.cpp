@@ -16,6 +16,7 @@ void Combination(vector<int> arr,vector<int> c,int start, int end, int index, in
 int main(){
    int n,r; cin>>n>>r;
    vector<int> arr(n),c(r);
+   
    for(int i=0;i<n;i++){
       arr[i]=i+1;
    } 

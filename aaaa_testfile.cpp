@@ -7,42 +7,31 @@ typedef long double ld;
 void Y(){std::cout<<"YES"<<std::endl;}
 void N(){std::cout<<"NO"<<std::endl;}
 using namespace std;
-
+//algorithm to get the all possible combinations of r elements from the the group of n elements
+//function format: Combination(arr, c, 0, n-1, 0, r) ----> c is a vector of size r and arr is vector of all n elements in it
+vector<vector<int>> v;
+void Combination(vector<int> arr,vector<int> c,int start, int end, int index, int r){
+	   if(index==r){
+			  v.push_back(c);
+			  return;
+	   }
+	   for(int i=start; i<=end&&end-i+1>=r-index; i++){
+			  c[index]=arr[i];
+			  Combination(arr,c,i+1,end,index+1,r);
+	   }
+}
 int main(){
 	ios_base::sync_with_stdio(false);
 	cout.precision(28);cin.tie(NULL);
-
-	int n,C;cin>>n>>C;int c,d,h;
-	map<int,ll> cost; ll result[C+1]={0};
-	for(int i = 0; i<n; i++){
-		cin>>c>>d>>h;
-		cost[c]=max((ll)d*h,cost[c]);
+	vector<int> arr(5);
+	for(int i = 1; i<=5; i++){
+		arr[i-1]=i;
 	}
-	for(auto i : cost){
-		for(int j = 1; i.first*j<=C; j++){
-			result[i.first*j]=max(result[i.first*j],i.second*j-1);
-		}
+	for(int i = 1; i<=5; i++){
+		vector<int> c(i);
+		Combination(arr,c,0,4,0);
 	}
-	for(int i = 1; i<=C; i++){
-		result[i]=max(result[i],result[i-1]);
-	}
-	vector<ll> x; vector<int> y;
-	ll temp = 0;
-	for(int i = 1; i<=C; i++){
-		if(result[i]!=temp){
-			temp=result[i];
-			x.push_back(temp);
-			y.push_back(i);
-		}
-	}
-	n=x.size();
-	int m; ll a,b; cin>>m;while(m--){
-		cin>>a>>b;
-		ll k = a*b;
-		int in = lower_bound(x.begin(),x.end(),a*b)-x.begin();
-		if(in==n){cout<<-1<<" ";}
-		else cout<<y[in]<<" ";
-	}
+	for(auto i : 
 
 	return 0;
 }
