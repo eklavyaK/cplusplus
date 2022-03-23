@@ -7,12 +7,23 @@ typedef long double ld;
 void Y(){std::cout<<"YES"<<std::endl;}
 void N(){std::cout<<"NO"<<std::endl;}
 using namespace std;
+
 int main(){
-       ios_base::sync_with_stdio(false);
-       cout.precision(28);cin.tie(NULL);
-       int tc;cin>>tc;
-       while(tc-->0){
-              
-       }
-       return 0;
+    ios_base::sync_with_stdio(false);
+    cout.precision(28);cin.tie(NULL);
+    int tc;cin>>tc;
+    while(tc-->0){
+        int x,y; cin>>x>>y;
+        if(x==0 && y==0){
+            cout<<0<<endl;
+        }
+        else{
+            ld d = pow((ll)pow(x,2)+(ll)pow(y,2),0.5);
+            if((ll)d==d){
+                cout<<1<<endl;
+            }
+            else cout<<2<<endl;
+        }
+    }
+    return 0;
 }
