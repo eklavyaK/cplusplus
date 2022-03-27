@@ -8,57 +8,67 @@ typedef long double ld;
 void Y(){std::cout<<"YES"<<std::endl;}
 void N(){std::cout<<"NO"<<std::endl;}
 using namespace std;
-int dist[2000001],result[200001],b[200001],a[200001];
-void solve(int k,int n){
-	fill(dist+1,dist+n+1,0);
-	bool detect=false;int c=0;
-	for(int i = 2; i<=n; i++){
-		if(b[a[i]]==k){
-			dist[a[i]]=++c;
-			result[a[i]]=c;
-		}
-		else{
-			if(dist[b[a[i]]]==0){
-				detect=true;
-				break;
-			}
-			else{
-				dist[a[i]]=++c;
-				result[a[i]]=c-dist[b[a[i]]];
-			}
-		}
-	}
-	if(detect){
-		cout<<-1<<endl;
-	}
-	else{
-		for(int i = 1; i<=n; i++){
-			cout<<result[i]<<" ";
-		}
-		cout<<endl;
-	}
-}
+
 int main(){
 	ios_base::sync_with_stdio(false);
 	cout.precision(28);cin.tie(NULL);
-	int tc;cin>>tc;
-	while(tc-->0){
-		int n; cin>>n; 
-		for(int i = 1; i<=n; i++){
-			cin>>b[i];
+	int n,m,q,c; cin>>n>>m>>q; int a[n+1][m+1];
+	for(int i = 1; i<=n; i++){
+		for(int j = 1; j<=m; j++){
+			cin>>c;a[i][j]=-c;
 		}
-		for(int i = 1; i<=n; i++){
-			cin>>a[i];
-		}
-		for(int i = 1; i<=n; i++){
-			if(b[i]==i){
-				if(a[1]==i){
-					result[i]=0;
-					solve(i,n);
-				}
-				else cout<<-1<<endl;break;
+	}
+	for(int j = 1; j<=m; j++){
+		int k = 0;
+		for(int i=n;i>=1;i--){
+			if(a[i][j]!=-2){
+				k=i;
+			}
+			else{
+				a[i][j]=k;
 			}
 		}
+	}
+	for(int i = 1; i<=n; i++){
+		for(int j = 1; j<=m; j++){
+			cout<<a[i][j]<<" ";
+		}
+		cout<<endl;
+	}
+	while(q--){
+		cin>>c;int r = 1;
+		int next = a[r][c];
+		while(next!=0){
+			if(next<0){
+				if(r!=n){
+					if(a[r+1][c]<0){
+						a[r][c]=r+1;
+					}
+					else a[r][c]=a[r+1][c];int k = r;
+					while(k-1>=1 && a[k-1][c]>=0){
+						a[k-1][c]=a[k--][c];
+					}
+				}
+				else a[r][c]=0;
+				if(next==-1){
+					c+=1;
+				}
+				else if(next==-3){
+					c-=1;
+				}
+			}
+			else{
+				r=next;
+			}
+			next=a[r][c];
+			for(int i = 1; i<=n; i++){
+				for(int j = 1; j<=m; j++){
+					cout<<a[i][j]<<" ";
+				}
+				cout<<endl;
+			}
+		}
+		cout<<c<<" ";
 	}
 	return 0;
 }
