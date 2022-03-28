@@ -15,7 +15,15 @@ int main(){
 	cout.precision(28);cin.tie(NULL);
 	int tc;cin>>tc;
 	while(tc-->0){
-		
+		string s,c; cin>>s>>c;
+		int n=s.size(),m=c.size();
+		int k=m-1,in=n;
+		for(int i = n-1; i>=0; i--){
+			if((in-i)%2 && k>=0 && s[i]==c[k]){
+				k--;in=i;
+			}
+		}
+		k==-1?Y():N();
 	}
 	return 0;
 }
