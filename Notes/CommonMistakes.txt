@@ -28,3 +28,13 @@ bb aa bb aa bb aa bb aa bb
 
 /*Use of pairs or 2D vectors or arrays takes more time for execution than single dimensional structures for the same amount of data*/
 /*Their use must be avoided*/
+
+
+Always write post-fix operators after the statement rather than saving the length of the program, to avoid runtime mistakes, sometimes when RHS and LHS have same variable we should 
+never use post or prefix on that variable in the same statement because, the statement at the right is excuted first and it changes the value of the variable which is different
+than what we expect it to be on the left for ex:-
+````````````````````````````````````````````````````
+int k = 4;
+arr[k]	= k++;        //here the value 4 is stored in arr[5] rather than arr[4] because the RHS is excuted first which increments the value of k to 5, so in RHS k will be taken as 4
+					  //then it'll be incremented to 5 which will act as value of k for LHS.
+=======================================================================================================================================================================================
