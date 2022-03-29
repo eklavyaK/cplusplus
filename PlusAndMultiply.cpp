@@ -15,36 +15,19 @@ int main(){
 	cout.precision(28);cin.tie(NULL);
 	int tc;cin>>tc;
 	while(tc-->0){
-		int n; cin>>n; string s; cin>>s;
-		map<ld,pair<int,int>> m;
-		int cd[n],ck[n],td=0,tk=0;
-		for(int i = 0; i<n; i++){
-			s[i]=='K'?tk++:td++;
-			ck[i]=tk;cd[i]=td;
+		ll n,a,b;cin>>n>>a>>b;
+		if(a==1){
+			if((n-1)%b==0)Y();
+			else N();continue;
 		}
-		for(int i = 0; i<n; i++){
-			int g=gcd(ck[i],cd[i]);
-			if(g==1){
-				cout<<1<<" ";
-				continue;
+		for(int i = 0;; i++){
+			int k = n-pow(a,i);
+			if(k<0)break;
+			else if(k%b==0){
+				Y();goto end;
 			}
-			ld ratio = (ld)ck[i]/cd[i];
-			int k = (ck[i]+cd[i])/g;
-			int cnt = 0,j=k-1;
-			if(m[ratio].first){
-				j=m[ratio].first+k;
-				cnt=m[ratio].second;
-			}
-			for(;j<=i;j+=k){
-				if(ratio==(ld)ck[j]/cd[j]){
-					cnt++;
-				}
-			}
-			cout<<cnt<<" ";
-			m[ratio].first=i;
-			m[ratio].second=cnt;
 		}
-		cout<<endl;
+		N();end:;
 	}
 	return 0;
 }
