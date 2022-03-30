@@ -13,9 +13,33 @@ using namespace std;
 int main(){
 	ios_base::sync_with_stdio(false);
 	cout.precision(28);cin.tie(NULL);
-	int tc;cin>>tc;
-	while(tc-->0){
-		
+	int n; cin>>n; int a[n];
+	for(int i = 0; i<n; i++){
+		cin>>a[i];
 	}
+	ll sum=0l,cnt=0;
+	map<int,int> m;
+	for(int i = 0; i<n; i++){
+		if(sum+a[i]<0){
+			if(!m.empty()){
+				map<int,int>::iterator it=m.begin();
+				if(it->first<a[i]){
+					sum+=(a[i]-it->first);
+					it->second--;m[a[i]]++;
+					if(it->second==0){
+						m.erase(it->first);
+					}
+				}
+			}
+		}
+		else{
+			sum+=a[i];
+			if(a[i]<0){
+				m[a[i]]++;
+			}
+			cnt++;
+		}
+	}
+	cout<<cnt<<endl;
 	return 0;
 }
