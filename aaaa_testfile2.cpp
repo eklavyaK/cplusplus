@@ -8,14 +8,30 @@ typedef long long ll;
 typedef long double ld;
 void Y(){std::cout<<"YES"<<std::endl;}
 void N(){std::cout<<"NO"<<std::endl;}
-using namespace std;
-
+using namespace std;int a[200001],n;
+bool possibility(int x){
+	vector<int> v(a,a+n);
+	for(int i=n-1;i>=2;i--){
+		if(v[i]<x) return false;
+		int k = min(a[i],v[i]-x)/3;
+		v[i-1]+=k;v[i-2]+=k*2;
+	}
+	return v[0]>=x & v[1]>=x;
+}
 int main(){
-   ios_base::sync_with_stdio(false);
-   cout.precision(28);cin.tie(NULL);
-   int tc;cin>>tc;
-   while(tc-->0){
-      
-   }
-   return 0;
+	ios_base::sync_with_stdio(false);
+	cout.precision(28);cin.tie(NULL);
+	int tc;cin>>tc;
+	while(tc-->0){
+		cin>>n;
+		for(int i = 0; i<n; i++)cin>>a[i];
+		int l = 0,r=*max_element(a,a+n);
+		while(l<r){
+			int mid = l+(r-l+1)/2;
+			if(possibility(mid))l=mid;
+			else r=mid-1;
+		}
+		cout<<l<<endl;
+	}
+	return 0;
 }
