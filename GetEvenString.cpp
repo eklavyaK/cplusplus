@@ -1,4 +1,3 @@
-
 #include<bits/stdc++.h>
 #define mod2 998244353ll
 #define mod1 1000000007ll
@@ -16,7 +15,20 @@ int main(){
 	cout.precision(28);cin.tie(NULL);
 	int tc;cin>>tc;
 	while(tc-->0){
-		
+		string s; cin>>s;
+		map<char,int> m;
+		int n = s.length(), cnt=0;
+		for(int i = 0; i<n; i++){
+			if(m[s[i]]){
+				m.clear();
+				cnt--;
+			}
+			else {
+				cnt++;
+				m[s[i]]=1;
+			}
+		}
+		cout<<cnt<<endl;
 	}
 	return 0;
 }

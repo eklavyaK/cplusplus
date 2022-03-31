@@ -1,4 +1,3 @@
-
 #include<bits/stdc++.h>
 #define mod2 998244353ll
 #define mod1 1000000007ll
@@ -16,7 +15,11 @@ int main(){
 	cout.precision(28);cin.tie(NULL);
 	int tc;cin>>tc;
 	while(tc-->0){
-		
+		int a,b;cin>>a>>b;
+		if(a==0){
+			cout<<1<<endl;
+		}
+		else cout<<a+b*2+1<<endl;
 	}
 	return 0;
 }

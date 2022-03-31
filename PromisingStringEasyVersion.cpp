@@ -1,4 +1,3 @@
-
 #include<bits/stdc++.h>
 #define mod2 998244353ll
 #define mod1 1000000007ll
@@ -16,7 +15,35 @@ int main(){
 	cout.precision(28);cin.tie(NULL);
 	int tc;cin>>tc;
 	while(tc-->0){
-		
+		int n; cin>>n;
+		string s; cin>>s;
+		int cp[n],cm[n];
+		if(s[0]=='+'){cp[0]=1;cm[0]=0;}
+		else {cm[0]=1;cp[0]=0;}
+		for(int i = 1; i<n; i++){
+			cp[i]=cp[i-1];
+			cm[i]=cm[i-1];
+			if(s[i]=='+'){
+				cp[i]++;
+			}
+			else{
+				cm[i]++;
+			}
+		}
+		int cnt = 0;
+		for(int i = 2; i<=n; i++){
+			for(int j = i-1; j<n; j++){
+				int l =cp[j],r=cm[j];
+				if(j-i>=0){l-=cp[j-i];r-=cm[j-i];}
+				if(l==r){
+					cnt++;
+				}
+				else if(r-l>=3 && (r-l)%3==0){
+					cnt++;
+				}
+			}
+		}
+		cout<<cnt<<endl;
 	}
 	return 0;
 }

@@ -1,4 +1,3 @@
-
 #include<bits/stdc++.h>
 #define mod2 998244353ll
 #define mod1 1000000007ll
@@ -16,7 +15,14 @@ int main(){
 	cout.precision(28);cin.tie(NULL);
 	int tc;cin>>tc;
 	while(tc-->0){
-		
+		int n; cin>>n;
+		int a[n+1]={0};
+		for(int i = 1; i<=n; i++){
+			cin>>a[i];
+		}
+		sort(a+1,a+n+1);
+		if(a[n]-a[n-1]>1)N();
+		else Y();
 	}
 	return 0;
 }
