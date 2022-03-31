@@ -1,6 +1,8 @@
 #include<bits/stdc++.h>
 #define mod2 998244353ll
 #define mod1 1000000007ll
+#define pb push_back
+#define mp make_pair
 #define removezeros(s) s.erase(0,s.find("1")!=-1?s.find("1"):s.length()-1)
 #define binary(n,k) bitset<k>(n).to_string()
 #define makeset(s,c,sizeofc) for(int i = 0; i<sizeofc; i++){s.emplace_back(c[i]);while(i+1<sizeofc && c[i+1]==c[i])i++;}
@@ -26,35 +28,22 @@ int main(){
 			if(a[i]==0){
 				t=true;r=i;
 				if((cn2+cn1)%2==0){
-					vec.push_back(make_pair(c2+cu,make_pair(l,n-r)));
-				}
-				else if(v==u){
-					if(a[u]==-2){
-						if(c2>cu-1){
-							vec.push_back(make_pair(c2,make_pair(u+1,n-r)));
-						}
-						else{
-							vec.push_back(make_pair(cu-1,make_pair(l,n-u)));
-						}
-					}
-					else{
-						if(c2>cu){
-							vec.push_back(make_pair(c2,make_pair(u+1,n-r)));
-						}
-						else{
-							vec.push_back(make_pair(cu,make_pair(l,n-u)));
-						}
-					}
+					vec.pb(mp(c2+cu,mp(l,n-r)));
 				}
 				else{
-					if(cv>cu){
-						vec.push_back(make_pair(c2,make_pair(u+1,n-r)));
+					if(u==v){
+						cv>(cu-(a[u]==-2))?
+						vec.pb(mp(cv,mp(u+1,n-r))):
+						vec.pb(mp(cu-(a[u]==-2),mp(l,n-v)));
+					}
+					else if(cv>cu){
+						vec.pb(mp(c2,mp(u+1,n-r)));
 					}
 					else{
-						vec.push_back(make_pair(c2-cv+cu,make_pair(l,n-v)));
+						vec.pb(mp(c2-cv+cu,mp(l,n-v)));
 					}
 				}
-				cn1=0,cn2=0,c2=0,l=0,r=n,u=-1,v=-1,cu=0,cv=0;
+				cn1=0,cn2=0,c2=0,u=-1,v=-1,cu=0,cv=0;
 				l=i+1;
 			}
 			else{
@@ -86,7 +75,7 @@ int main(){
 				}
 			}
 		}
-		vec.push_back(make_pair(0,make_pair(0,0)));
+		vec.pb(mp(0,mp(0,0)));
 		sort(vec.begin(),vec.end());
 		cout<<vec[vec.size()-1].second.first<<" "<<vec[vec.size()-1].second.second<<endl;
 	}
