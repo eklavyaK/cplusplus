@@ -13,21 +13,13 @@ int main(){
    ios_base::sync_with_stdio(false);
    cout.precision(28);cin.tie(NULL);
 
-   int n,m,k,c,r;cin>>n>>m>>k;int a[n+1][m+1];
-   for(int i = 1; i<=n; i++){
-      for(int j = 1; j<=m; j++){
-         cin>>a[i][j];
-      }
+   char c[5];
+   for(int i = 0; i<5; i++){
+      c[i]=char(65+rand()%26);
    }
-   while(k--){
-      cin>>c;r=1;
-      while(r!=n+1){
-         if(a[r][c]==2)r++;
-         else if(a[r][c]==1){a[r][c]=2;c++;}
-         else{a[r][c]=2;c--;}
-      }
-      cout<<c<<' ';
+   cout<<c<<endl;
+   for(int i = 0; i<5; i++){
+      cout<<c[i]<<endl;
    }
-
    return 0;
 }
