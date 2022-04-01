@@ -15,13 +15,34 @@ int main(){
 	cout.precision(28);cin.tie(NULL);
 	int tc;cin>>tc;
 	while(tc-->0){
-		ll a,b;cin>>a>>b;
-		if(a==b) cout<<0<<' '<<0<<endl;
-		else{
-			ll x=max(a,b),y=min(a,b);
-			ll k = y%(x-y);
-			cout<<(x-y)<<' '<<min(k,(x-y-k))<<endl;
+		int n; cin>>n; 
+		string r1,r2;
+		cin>>r1>>r2;
+		int cnt = 0,z=0,o=0;
+		for(int i = 0; i<n; i++){
+			if(r1[i]-'0'+r2[i]-'0'==1){
+				cnt+=2;
+				if(z==1)cnt++;
+				z=0,o=0;
+			}
+			else if(r1[i]=='0'&&r2[i]=='0'){
+				if(z==1)cnt++;
+				else z++;
+				if(o==1){
+					cnt+=2;
+					o=0;z=0;
+				}
+			}
+			else{
+				o=1;
+				if(z==1){
+					cnt+=2;
+					o=0;z=0;
+				}
+			}
 		}
+		if(z==1)cnt++;
+		cout<<cnt<<endl;
 	}
 	return 0;
 }
