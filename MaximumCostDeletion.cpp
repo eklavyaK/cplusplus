@@ -15,13 +15,24 @@ int main(){
     cout.precision(28);cin.tie(NULL);
     int tc;cin>>tc;
     while(tc-->0){
-        int a,b; cin>>a>>b;
-        if(b==1){
-            N();
+        int n,a,b; cin>>n>>a>>b;
+        string s; cin>>s;
+        if(b<0){
+            int z1=0,z2=0;
+            for(int i = 0; i<n; i++){
+                if(s[i]=='1'){
+                    while(i+1<n&&s[i]==s[i+1])i++;
+                    z1++;
+                }
+                else{
+                    while(i+1<n&&s[i]==s[i+1])i++;
+                    z2++;
+                }
+            }
+            cout<<min(z1,z2)*b+b+a*n<<endl;
         }
         else{
-            Y();
-            cout<<a<<" "<<(ll)a*b<<" "<<(ll)(b+1)*a<<endl;
+            cout<<(a+b)*n<<endl;
         }
     }
     return 0;

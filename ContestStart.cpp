@@ -15,14 +15,12 @@ int main(){
     cout.precision(28);cin.tie(NULL);
     int tc;cin>>tc;
     while(tc-->0){
-        int a,b; cin>>a>>b;
-        if(b==1){
-            N();
+        int n,x,t; cin>>n>>x>>t;
+        int k=t/x;int z = n-k;
+        if(z<0){
+            cout<<(ll)n*(n-1)/2<<endl;
         }
-        else{
-            Y();
-            cout<<a<<" "<<(ll)a*b<<" "<<(ll)(b+1)*a<<endl;
-        }
+        else cout<<((ll)z*k+(ll)k*(k-1)/2)<<endl;
     }
     return 0;
 }
