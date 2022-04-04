@@ -15,19 +15,14 @@ int main(){
     cout.precision(28);cin.tie(NULL);
     int tc;cin>>tc;
     while(tc-->0){
-        string a,b; cin>>a>>b;
-        int cnt = 0;
-        int n=a.size(),m=b.size();
-        for(int i = 0; i<n; i++){
-            for(int j = 0; j<m; j++){
-                if(a[i]==b[j]){
-                    int k = 1;
-                    while(i+k<n && j+k<m && a[i+k]==b[j+k])k++;
-                    cnt = max(k,cnt);
-                }
-            }
+        int n; cin>>n;
+        bool t = false;
+        while(n%2==0){
+            n/=2;t=true;
         }
-        cout<<n+m-2*cnt<<endl;
+        ld k = pow(n,0.5);
+        if(t && k==(int)k)Y();
+        else N();
     }
     return 0;
 }
