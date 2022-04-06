@@ -15,7 +15,19 @@ int main(){
     cout.precision(28);cin.tie(NULL);
     int tc;cin>>tc;
     while(tc-->0){
-        
+        int a,b; cin>>a>>b;
+        int cnt=0,t=0,c=b;
+        if(b==1)t++,cnt++;int k = a;
+        while(k>0){k/=(c+t);cnt++;}
+        while(true){
+            k=a;c++;int temp=0;
+            while(k>0){k/=c;temp++;}
+            if(c-b+temp<=cnt){
+                cnt=temp+c-b;
+            }
+            else break;
+        }
+        cout<<cnt<<endl;
     }
     return 0;
 }
