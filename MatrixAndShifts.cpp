@@ -9,21 +9,25 @@ typedef long double ld;
 void Y(){std::cout<<"YES"<<std::endl;}
 void N(){std::cout<<"NO"<<std::endl;}
 using namespace std;
-int m = pow(2,30);
+
 int main(){
     ios_base::sync_with_stdio(false);
     cout.precision(28);cin.tie(NULL);
-    int tc;cin>>tc;
+    int tc;cin>>tc;int d=0;
     while(tc-->0){
-        int sum = 0;
-        cout<<'?'<<' '<<m<<' '<<m+2<<endl<<flush;
-        int k; cin>>k;
-        if(k==1)sum=1;
-        for(int i = 2; i<=5; i++){
-            cout<<'?'<<' '<<m-sum<<' '<<(m-sum+pow(2,i)-pow(2,i-1))<<endl<<flush;
-            cin>>k; if(k==pow(2,i-1))sum+=k;
+        int n; cin>>n; string s[n];
+        int cnt=0, k=0;d++;
+        for(int i = 0; i<n; i++)cin>>s[i];
+        for(int i = 0; i<n; i++){
+            int c=0;
+            for(int j = 0; j<n; j++){
+                if(s[j][(i+j)%n]=='1'){
+                    c++;cnt++;
+                }
+            }
+            k=max(c,k);
         }
-        cout<<'!'<<' '<<sum<<endl<<flush;
+        cout<<cnt+n-2*k<<endl;
     }
     return 0;
 }
