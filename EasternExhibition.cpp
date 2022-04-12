@@ -15,7 +15,20 @@ int main(){
     cout.precision(28);cin.tie(NULL);
     int tc;cin>>tc;
     while(tc-->0){
-        
+        int n; cin>>n; int x[n],y[n];
+        ll sx = 0, sy = 0;
+        for(int i = 0; i<n; i++){
+            cin>>x[i]>>y[i];
+        }
+        if(n%2){
+            cout<<1<<endl;
+            continue;
+        }
+        sort(x,x+n);
+        sort(y,y+n);
+        ll a=x[n/2]-x[n/2-1]+1;
+        ll b=y[n/2]-y[n/2-1]+1;
+        cout<<a*b<<endl;
     }
     return 0;
 }
