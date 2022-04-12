@@ -9,39 +9,17 @@ typedef long double ld;
 void Y(){std::cout<<"YES"<<std::endl;}
 void N(){std::cout<<"NO"<<std::endl;}
 using namespace std;
-int m = (1<<30);
+
 int main(){
     ios_base::sync_with_stdio(false);
     cout.precision(28);cin.tie(NULL);
-    int tc;cin>>tc;
-    while(tc-->0){
-        map<int,int> m;
-        int n; cin>>n; int a[n];
-        for(int i = 0; i<n; i++){
-            cin>>a[i];m[a[i]]=1;
-        }
-        int cnt = 1;
-        for(int i = 0; i<n; i++){
-            cout<<a[i]<<" ";
-            while(i+1<n && a[i]==a[i+1]){
-                while(m[cnt]==1)cnt++;
-                cout<<cnt<<" ";i++;cnt++;
-            }
-        }
-        cout<<endl;
-        vector<int> c,v(n);
-        for(int i = 1; i<=n; i++){
-            if(!m[i])c.push_back(i);
-        }
-        vector<int>::iterator it;
-        for(int i = 0; i<n; i++){
-            v[i]=a[i];
-            it = lower_bound(c.begin(),c.end(),a[i]);
-            while(i+1<n && a[i+1]==a[i]){
-                i++;it--;v[i]=*it;c.erase(it);
-            }
-        }
-        for(auto i : v) cout<<i<<" ";cout<<endl;
-    }
+
+    ll k = 999983920;
+    cout.precision(20);
+    cout<<k+1<<endl;
+    cout<<(k+1)*(k+1)<<endl;
+    cout<<pow((k+1),2)<<endl;
+    cout<<pow(k,2)<<endl;
+
     return 0;
 }
