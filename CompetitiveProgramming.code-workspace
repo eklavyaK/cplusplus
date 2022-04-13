@@ -31,7 +31,8 @@
 			"initializer_list": "cpp",
 			"ranges": "cpp",
 			"span": "cpp",
-			"regex": "cpp"
+			"regex": "cpp",
+			"map": "cpp"
 		}
 	}
 }
