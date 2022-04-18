@@ -15,21 +15,33 @@ int main(){
     cout.precision(28);cin.tie(NULL);
     int tc;cin>>tc;
     while(tc-->0){
-        int n,a,b; cin>>n>>a>>b; int v[n];
-        for(int i = 0; i<n; i++)cin>>v[i];
-        ll sum = 0;
-        for(int i = 0; i<n; i++){
-            sum+=v[i];
-        }
-        ll dist = 0, c = 0, track = 1;
-        ll result = (ll)v[0]*b; n--;
-        while(n>0){
-            while(c<track && (v[c]-dist)*a+(sum-n*(v[c]-dist))*b<sum*b){
-                result+=(v[c]-dist)*a;sum-=v[c];dist=v[c];c++;
+        int n, k; cin>>n>>k;
+        string s; cin>>s;
+        vector<int> v(n,0),res(n);int c = k;
+        for(int i = 0; i<n && c>0; i++){
+            if(s[i]=='1' && (k&1)){
+                v[i]++;c--;
             }
-            result+=(v[track]-dist)*b;track++;n--;
+            else if(s[i]=='0' && !(k&1)){
+                v[i]++;c--;
+            }
         }
-        cout<<result<<endl;
+        if(c>0){
+            v[n-1]+=c;
+        }
+        for(int i = 0; i<n; i++){
+            if((k-v[i])&1){
+                cout<<(s[i]=='1'?'0':'1');
+            }
+            else{
+                cout<<s[i];  
+            }
+        }
+        cout<<endl;
+        for(auto i : v){
+            cout<<i<<' ';
+        }
+        cout<<endl;
     }
     return 0;
 }

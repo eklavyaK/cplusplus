@@ -17,15 +17,11 @@ int main(){
     while(tc-->0){
         int n,a,b; cin>>n>>a>>b; int v[n];
         for(int i = 0; i<n; i++)cin>>v[i];
-        ll sum = 0;
-        for(int i = 0; i<n; i++){
-            sum+=v[i];
-        }
-        ll dist = 0, c = 0, track = 1;
-        ll result = (ll)v[0]*b; n--;
+        ll dist = 0, c = 0, track = 0;
+        ll result = 0;
         while(n>0){
-            while(c<track && (v[c]-dist)*a+(sum-n*(v[c]-dist))*b<sum*b){
-                result+=(v[c]-dist)*a;sum-=v[c];dist=v[c];c++;
+            while(c<track && (v[c]-dist)*a<=n*(v[c]-dist)*b){
+                result+=(v[c]-dist)*a;dist=v[c];c++;
             }
             result+=(v[track]-dist)*b;track++;n--;
         }

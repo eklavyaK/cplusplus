@@ -13,23 +13,26 @@ using namespace std;
 int main(){
     ios_base::sync_with_stdio(false);
     cout.precision(28);cin.tie(NULL);
-    int tc;cin>>tc;
-    while(tc-->0){
-        int n,a,b; cin>>n>>a>>b; int v[n];
-        for(int i = 0; i<n; i++)cin>>v[i];
-        ll sum = 0;
+    int tc;cin>>tc;while(tc--){
+        int n,x,k; cin>>n>>x;
+        vector<int> v;
+        bool b=false;
         for(int i = 0; i<n; i++){
-            sum+=v[i];
+            cin>>k;
+            if(k!=x)
+            v.push_back(k);
+            else b=true;
         }
-        ll dist = 0, c = 0, track = 1;
-        ll result = (ll)v[0]*b; n--;
-        while(n>0){
-            while(c<track && (v[c]-dist)*a+(sum-n*(v[c]-dist))*b<sum*b){
-                result+=(v[c]-dist)*a;sum-=v[c];dist=v[c];c++;
-            }
-            result+=(v[track]-dist)*b;track++;n--;
+        ll sum = 0;
+        n=v.size();
+        for(int i = 0; i<n; i++){
+            sum+=(v[i]-x);
         }
-        cout<<result<<endl;
+        if(n==0)cout<<0<<endl;
+        else if(sum==0 || b){
+            cout<<1<<endl;
+        }
+        else cout<<2<<endl;
     }
     return 0;
 }

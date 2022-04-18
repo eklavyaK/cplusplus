@@ -9,16 +9,23 @@ typedef long double ld;
 void Y(){std::cout<<"YES"<<std::endl;}
 void N(){std::cout<<"NO"<<std::endl;}
 using namespace std;
-int a[1000];
+
 int main(){
     ios_base::sync_with_stdio(false);
     cout.precision(28);cin.tie(NULL);
-    for(int i = 0; i<1000; i++){
-        a[i]=i+1;
-    }
     int tc;cin>>tc;
     while(tc-->0){
-        int 
+        int n,a,b; cin>>n>>a>>b; int v[n];
+        for(int i = 0; i<n; i++)cin>>v[i];
+        ll dist = 0, c = 0, track = 1;
+        ll result = (ll)v[0]*b;n--;
+        while(n>0){
+            while(c<track && (v[c]-dist)*a<=n*(v[c]-dist)*b){
+                result+=(v[c]-dist)*a;dist=v[c];c++;
+            }
+            result+=(v[track]-dist)*b;track++;n--;
+        }
+        cout<<result<<endl;
     }
     return 0;
 }

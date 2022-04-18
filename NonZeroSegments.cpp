@@ -13,23 +13,19 @@ using namespace std;
 int main(){
     ios_base::sync_with_stdio(false);
     cout.precision(28);cin.tie(NULL);
-    int tc;cin>>tc;
-    while(tc-->0){
-        int n,a,b; cin>>n>>a>>b; int v[n];
-        for(int i = 0; i<n; i++)cin>>v[i];
-        ll sum = 0;
-        for(int i = 0; i<n; i++){
-            sum+=v[i];
+    int n; cin>>n; int a[n],c=0,k=0;
+    for(int i = 0; i<n; i++)cin>>a[i];
+    map<ll,int> m; m[a[0]]=1;
+    ll sum[n];sum[0]=a[0];m[0]=0;
+    for(int i = 1; i<n; i++){
+        sum[i]=a[i]+sum[i-1];
+        if(m.count(sum[i])){
+            if(m[sum[i]]>=k-1){
+                c++;k=i+1;
+            }m[sum[i]]=i+1;
         }
-        ll dist = 0, c = 0, track = 1;
-        ll result = (ll)v[0]*b; n--;
-        while(n>0){
-            while(c<track && (v[c]-dist)*a+(sum-n*(v[c]-dist))*b<sum*b){
-                result+=(v[c]-dist)*a;sum-=v[c];dist=v[c];c++;
-            }
-            result+=(v[track]-dist)*b;track++;n--;
-        }
-        cout<<result<<endl;
+        else m[sum[i]]=i+1;
     }
+    cout<<c<<endl;
     return 0;
 }
