@@ -15,17 +15,7 @@ int main(){
     cout.precision(28);cin.tie(NULL);
     int tc;cin>>tc;
     while(tc-->0){
-        int n,a,b; cin>>n>>a>>b; int v[n];
-        for(int i = 0; i<n; i++)cin>>v[i];
-        ll dist = 0, c = 0, track = 1;
-        ll result = (ll)v[0]*b;n--;
-        while(n>0){
-            while(c<track && (v[c]-dist)*a<=n*(v[c]-dist)*b){
-                result+=(v[c]-dist)*a;dist=v[c];c++;
-            }
-            result+=(v[track]-dist)*b;track++;n--;
-        }
-        cout<<result<<endl;
+        
     }
     return 0;
 }
