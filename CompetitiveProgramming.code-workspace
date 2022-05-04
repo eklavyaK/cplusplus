@@ -32,7 +32,8 @@
 			"ranges": "cpp",
 			"span": "cpp",
 			"regex": "cpp",
-			"map": "cpp"
+			"map": "cpp",
+			"limits": "cpp"
 		}
 	}
 }
