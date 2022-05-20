@@ -10,7 +10,7 @@ typedef long double ld;
 void Y(){std::cout<<"YES"<<std::endl;}
 void N(){std::cout<<"NO"<<std::endl;}
 using namespace std;
-int k;
+int k; 
 void solve(int l, int r){
     int ans = l;
     while(l<=r){
