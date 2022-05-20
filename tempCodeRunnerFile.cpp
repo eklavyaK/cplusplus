@@ -1,2 +1,2 @@
-
-    for(auto i : cnta) cout<<i<<endl;
+sum-=((ll)k*(k-1)/2);
+        cout<<sum<<endl;
