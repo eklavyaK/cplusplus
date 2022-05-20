@@ -10,7 +10,7 @@ typedef long double ld;
 void Y(){std::cout<<"YES"<<std::endl;}
 void N(){std::cout<<"NO"<<std::endl;}
 using namespace std;
- 
+
 int main(){
     rapid_iostream;
     int tc;cin>>tc;
