@@ -35,7 +35,7 @@
 			"map": "cpp",
 			"limits": "cpp"
 		},
-		"editor.quickSuggestionsDelay": 500,
+		"editor.quickSuggestionsDelay": 10,
 		"editor.snippetSuggestions": "top"
 	}
 }
