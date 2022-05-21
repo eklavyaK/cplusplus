@@ -34,6 +34,8 @@
 			"regex": "cpp",
 			"map": "cpp",
 			"limits": "cpp"
-		}
+		},
+		"editor.quickSuggestionsDelay": 500,
+		"editor.snippetSuggestions": "top"
 	}
 }
