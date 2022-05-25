@@ -19,26 +19,27 @@ Binary numbers from 0 to 2^n-1 can be used to:
 #include<vector>
 using namespace std;
 
-int a[20];int n;
+int a[20],n;
 
 void GetAllSubsets(){
-    for(int i=0;i<(1<<n);i++){
+    for(int i=0;i<(1<<n);i++){                     //all numbers from 0 to 2^n-1
         for(int j=0;j<n;j++){
-            if(i&(1<<j)) cout<<a[j]<<' ';
+            if(i&(1<<j)) cout<<a[j]<<' ';          //generation of subset using bitmask
         }
         cout<<endl;
     }
 }
 void DivideInGroupsOfTwo(){
-    for(int i=0;i<(1<<n);i++){
+    for(int i=0;i<(1<<n);i++){                     //all numbers from 0 to 2^n-1
         vector<int> v;
+        cout<<'(';
         for(int j=0;j<n;j++){
-            if(i&(1<<j)) cout<<a[j]<<' ';
+            if(i&(1<<j)) cout<<a[j]<<' ';          //generation of a group using bitmask
             else v.push_back(a[j]);
         }
-        cout<<endl;
+        cout<<") (";
         for(auto i : v)cout<<i<<' ';
-        cout<<endl<<'\n';
+        cout<<')'<<endl;
     }
 }
 int main(){ 
