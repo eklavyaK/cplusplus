@@ -1,2 +1,4 @@
 AppleDivision
 SubarraySums2
+ChessboardAndQueens
+GridPaths
