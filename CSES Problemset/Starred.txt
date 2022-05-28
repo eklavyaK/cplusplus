@@ -3,3 +3,5 @@
 **ChessboardAndQueens
 ***GridPaths
 MovieFestival
+MissingCoinSum
+CollectingNumbers2
