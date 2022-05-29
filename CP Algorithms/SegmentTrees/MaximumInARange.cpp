@@ -23,21 +23,20 @@ void segmentTree(int node, int l, int r){
     int mid = (l+r)/2;
     segmentTree(2*node,l,mid);        
     segmentTree(2*node+1,mid+1,r);
-    tree[node] = tree[2*node]+tree[2*node+1];   //building the segments using subsegments
+    tree[node] = max(tree[2*node],tree[2*node+1]);   //building the segments using subsegments
 }
-void update(int node, int l, int r, int x, int diff){
-    if(x>r || x<l)return;
-    else tree[node]+=diff;
-    if(l==r)return;
+void update(int node, int l, int r, int x, int val){
+    if(l==r){tree[node]=val;return;}
     int mid = (l+r)/2;
-    if(x<=mid)update(2*node,l,mid,x,diff);   //there is no need to carry the x,diff variables we can also declare it as global variable
-    else update(2*node+1,mid+1,r,x,diff);
+    if(x<=mid) update(2*node,l,mid,x,val);
+    else update(2*node+1,mid+1,r,x,val);
+    tree[node]=max(tree[2*node],tree[2*node+1]);
 }
 ll query(int node, int l, int r, int st, int en){
-    if(en<l || st>r)return 0;                //if range(l,r) doesn't contain any segment of range(st,en)
+    if(en<l || st>r)return INT_MIN;                //if range(l,r) doesn't contain any segment of range(st,en)
     if(st<=l && en>=r) return tree[node];    //if range(l,r) completely lie inside the segment(st,en)
     int mid = (l+r)/2;                                  
-    return query(2*node,l,mid,st,en) + query(2*node+1,mid+1,r,st,en);  //in case of partial overlap of range(l,r ) and range(st,en) we further divide the range l,r to get the accurate info
+    return max(query(2*node,l,mid,st,en), query(2*node+1,mid+1,r,st,en));  //in case of partial overlap of range(l,r ) and range(st,en) we further divide the range l,r to get the accurate info
 }
 int main(){
     rapid_iostream;
@@ -51,14 +50,17 @@ int main(){
         int type; cin>>type;  //type 1 query gives the sum of the range of values, type 2 query updates a value at a index
         if(type==1){
             int x, y; cin>>x>>y;
-            ll sum = query(1,1,n,x,y);
-            print(sum);
+            int result = query(1,1,n,x,y);
+            print(result);
         }
         else if(type==2){
             int x, val; cin>>x>>val;
-            int diff = val-a[x];
-            update(1,1,n,x,diff);
+            update(1,1,n,x,val);
             a[x]=val;
+            for(int i=1;i<=n;i++){
+                cout<<a[i]<<' ';
+            }
+            cout<<endl;
         }
     }
     return 0;
