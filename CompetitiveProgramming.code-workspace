@@ -36,7 +36,8 @@
 			"span": "cpp",
 			"regex": "cpp",
 			"map": "cpp",
-			"limits": "cpp"
+			"limits": "cpp",
+			"syncstream": "cpp"
 		},
 		"editor.quickSuggestionsDelay": 10,
 		"editor.snippetSuggestions": "top"

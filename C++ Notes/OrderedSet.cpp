@@ -8,8 +8,8 @@ using namespace std;
 #include<ext/pb_ds/tree_policy.hpp>
 using namespace __gnu_pbds;
 typedef tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update> ordered_set;
-
-int main(){
+//                          erase function of ordered set can't delete range of elements                                   //
+int main(){                       
     ios_base::sync_with_stdio(0);cin.tie(0);
     ordered_set s;
     for(int i=0;i<10;i++){
@@ -40,6 +40,11 @@ int main(){
     cout<<*s.lower_bound(67)<<endl;
     cout<<*s.lower_bound(40)<<endl;
     cout<<*s.upper_bound(45)<<endl;
+
+    cout<<"-----------------------------------------------------"<<endl;
+
+    s.erase(s.find_by_order(3));             //erase function deletes the value pointed out by the iterator
+    for(auto i : s) cout<<i<<' ';cout<<endl;
 
     cout<<"-----------------------------------------------------"<<endl;
 
@@ -74,6 +79,11 @@ int main(){
     cout<<*ds.lower_bound(45)<<endl;         //lower_bound returns the value just strictly less than or equal to the give value
     cout<<*ds.lower_bound(58)<<endl;
     cout<<*ds.upper_bound(30)<<endl;
+
+    cout<<"-----------------------------------------------------"<<endl;
+
+    ds.erase(ds.find_by_order(3));             //erase function deletes the value pointed out by the iterator
+    for(auto i : ds) cout<<i<<' ';cout<<endl;
 
     cout<<"-----------------------------------------------------"<<endl;
 
@@ -119,6 +129,11 @@ int main(){
 
     cout<<"-----------------------------------------------------"<<endl;
 
+    ms.erase(ms.find_by_order(3));             //erase function deletes the value pointed out by the iterator
+    for(auto i : ms) cout<<i<<' ';cout<<endl;
+
+    cout<<"-----------------------------------------------------"<<endl;
+
     tree<int, null_type, greater_equal<int>, rb_tree_tag, tree_order_statistics_node_update> mds;
 
     mds.insert(4);
@@ -160,7 +175,13 @@ int main(){
     cout<<*mds.upper_bound(30)<<endl;
 
     cout<<"-----------------------------------------------------"<<endl;
+
+    mds.erase(mds.find_by_order(3));             //erase function deletes the value pointed out by the iterator
+    for(auto i : mds) cout<<i<<' ';cout<<endl;
+
+    cout<<"-----------------------------------------------------"<<endl;
 }
+
 /******************************************************OUTPUT****************************************************/
 /*
 0 24 34 41 58 62 64 67 69 78 
@@ -181,11 +202,13 @@ int main(){
 41
 58
 -----------------------------------------------------
+0 24 34 58 62 64 67 69 78
+-----------------------------------------------------
 95 91 81 61 45 42 36 27 5
 -----------------------------------------------------
 45
 27
-1702057308
+41
 -----------------------------------------------------
 2
 7
@@ -199,7 +222,9 @@ int main(){
 45
 27
 -----------------------------------------------------
-2 2 4 4 5 6 7 7 10 12 34 
+95 91 81 45 42 36 27 5
+-----------------------------------------------------
+2 2 4 4 5 6 7 7 10 12 34
 -----------------------------------------------------
 5
 7
@@ -217,11 +242,13 @@ int main(){
 4
 34
 -----------------------------------------------------
+2 2 4 5 6 7 7 10 12 34 
+-----------------------------------------------------
 34 12 10 7 7 6 5 4 4 2 2
 -----------------------------------------------------
 7
 4
-0
+4
 -----------------------------------------------------
 9
 1
@@ -234,5 +261,7 @@ int main(){
 6
 2
 12
+-----------------------------------------------------
+34 12 10 7 6 5 4 4 2 2
 -----------------------------------------------------
 */
