@@ -6,3 +6,5 @@ MovieFestival
 MissingCoinSum
 CollectingNumbers2
 **JosephusProblem2
+*TasksAndDeadlines
+***NestedRangesCount (unsolved)
