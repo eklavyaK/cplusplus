@@ -8,3 +8,7 @@ CollectingNumbers2
 **JosephusProblem2
 *TasksAndDeadlines
 ***NestedRangesCount (unsolved)
+SubarrayDivisibility
+ArrayDivision
+SubarrayDistinctValues
+*SlidingMedian
