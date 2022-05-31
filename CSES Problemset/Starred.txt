@@ -12,3 +12,4 @@ SubarrayDivisibility
 ArrayDivision
 SubarrayDistinctValues
 *SlidingMedian
+*SlidingCost
