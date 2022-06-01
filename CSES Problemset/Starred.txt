@@ -13,3 +13,4 @@ ArrayDivision
 SubarrayDistinctValues
 *SlidingMedian
 *SlidingCost
+*MaximumSubarraySum2
