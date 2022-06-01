@@ -14,3 +14,4 @@ SubarrayDistinctValues
 *SlidingMedian
 *SlidingCost
 *MaximumSubarraySum2
+MinimizingCoins
