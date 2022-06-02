@@ -1,25 +1,32 @@
 {
 	"folders": [
 		{
-			"path": "."
-		},
-		{
-			"path": "..\\java"
-		},
-		{
-			"path": "..\\DSA"
-		},
-		{
+			"name": "CSES Problemset",
 			"path": "..\\CSES Problemset"
 		},
 		{
+			"name": "c++",
+			"path": "."
+		},
+		{
+			"name": "CP Algorithms",
 			"path": "..\\CP Algorithms"
 		},
 		{
+			"name": "C++ Notes",
 			"path": "..\\C++ Notes"
 		},
 		{
+			"name": "JAVA Notes",
 			"path": "..\\JAVA Notes"
+		},
+		{
+			"name": "java",
+			"path": "..\\java"
+		},
+		{
+			"name": "DSA",
+			"path": "..\\DSA"
 		}
 	],
 	"settings": {
