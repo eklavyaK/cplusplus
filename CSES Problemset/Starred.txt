@@ -16,3 +16,4 @@ SubarrayDistinctValues
 *MaximumSubarraySum2
 MinimizingCoins
 *CoinCombinations2
+*BookShop
