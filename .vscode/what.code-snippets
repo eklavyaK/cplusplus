@@ -9,12 +9,14 @@
 	"boilerplate": {
 		"prefix": "what",
 		"body": [
-		  "#include<iostream>",
-		  "",
+		  "#include<bits/stdc++.h>",
+		  "typedef long double ld;",
+		  "typedef long long ll;",
 		  "using namespace std;",
 		  "",
 		  "int main(){",
 		  "\t$0",
+		  "",
 		  "\treturn 0;",
 		  "}"
 		],
