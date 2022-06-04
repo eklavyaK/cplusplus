@@ -21,7 +21,7 @@ int main(){
     rapid_iostream;
     int tc;cin>>tc;
     while(tc-->0){
-        int n,k;cin>>n>>k;
+        ll n,k;cin>>n>>k;
         int a[n];ll sum[n];
         for(int i=0;i<n;i++){
             cin>>a[i];

@@ -1,11 +1,3 @@
-7
-1
-2
-5
-9
-16
-114514
-1000000
 #define rapid_iostream ios_base::sync_with_stdio(0);cin.tie(0)
 #define binary(n,k) bitset<k>(n).to_string()
 #include<bits/stdc++.h>

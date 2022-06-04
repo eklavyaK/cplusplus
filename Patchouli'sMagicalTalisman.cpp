@@ -51,7 +51,9 @@ int main(){
         else if(t && c){
             cout<<t+c<<endl;
         }
-        else if(t) cout<<t+1<<endl;
+        else if(t){
+            cout<<t<<endl;
+        }
         else{
             cout<<c+z-1<<endl;
         }
