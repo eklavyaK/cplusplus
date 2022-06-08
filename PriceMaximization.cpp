@@ -30,25 +30,19 @@ void codeforce(){
     int n,k; cin>>n>>k;
     int a[n];
     ll cost = 0;
-    fill(rem,rem+k+5,0);
     for(int i=0;i<n;i++)cin>>a[i];
     for(int i=0;i<n;i++){
         cost+=(a[i]/k);
-        rem[a[i]%k]++;
+        a[i]=a[i]%k;
     }
-    for(int i=k;i<2*k-1;i++){
-        for(int j=i-k+1;j<k;j++){
-            if(i-j>=k) continue;
-            if(i-j==j){
-                cost+=rem[j]/2;
-                rem[j]=rem[j]%2;
-                continue;
-            }
-            int c = rem[j],b = rem[i-j];
-            cost+=min(c,b);
-            rem[j]=max(0,c-b);
-            rem[i-j]=max(0,b-c);
+    sort(a,a+n);
+    int l = 0, r=n-1;
+    while(l<r){
+        if(a[l]+a[r]>=k){
+            cost++;
+            r--;l++;
         }
+        else l++;
     }
     cout<<cost<<endl;
 }
