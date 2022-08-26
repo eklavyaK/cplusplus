@@ -1,12 +1,12 @@
 {
 	"folders": [
 		{
-			"name": "CSES Problemset",
-			"path": "..\\CSES Problemset"
-		},
-		{
 			"name": "c++",
 			"path": "."
+		},
+		{
+			"name": "CSES Problemset",
+			"path": "..\\CSES Problemset"
 		},
 		{
 			"name": "DSA",
