@@ -2,6 +2,9 @@
 aaaa_testfile.cpp
 aaaa_testfile2.cpp
 aaaa_testfile3.cpp
+..........testfile.cpp
+..........testfile2.cpp
+..........testfile3.cpp
 # Compiled class file
 *.class
 
