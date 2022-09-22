@@ -119,6 +119,7 @@
 			"variant": "cpp"
 		},
 		"editor.quickSuggestionsDelay": 10,
-		"editor.snippetSuggestions": "top"
+		"editor.snippetSuggestions": "top",
+		"C_Cpp.errorSquiggles": "EnabledIfIncludesResolve"
 	}
 }
