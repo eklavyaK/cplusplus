@@ -1,0 +1,5 @@
+perl moss.pl -l cc cpp1.cpp cpp2.cpp
+
+format:
+
+perl <checker_file> -l <language(for c++ use cc)> <file1> <file2>
