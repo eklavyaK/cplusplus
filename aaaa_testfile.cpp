@@ -3,37 +3,48 @@
 typedef long double ld;
 typedef long long ll;
 using namespace std;
-
-
+ll mod = 1e9+7;
+const int N = 2e5+5;
+ll f[N];
+void overload(){
+	f[1] = 1; f[2] = 2;
+	for(int i=3;i<=N-2;i++){
+		f[i] = (f[i-1]+f[i-2]+1)%mod;
+	}
+}
 void code(){
-	int n,m; cin>>n>>m;
-	int a[n+1]{}, c[m];
+	int n,p; 
+	cin>>n>>p;
+	int arr[n];
+	set<int> st;
+	ll mx = pow(2,min(p,32));
+	for(int i=0;i<n;i++)cin>>arr[i];
+	sort(arr,arr+n);
 	for(int i=0;i<n;i++){
-		int k; cin>>k;
-		a[k]++;
-	}
-	priority_queue<int> u;
-	for(int i=1;i<=n;i++){
-		if(a[i])u.push(a[i]);
-	}
-	for(int i=0;i<m;i++){
-		cin>>c[i];
-	}
-	int ans = 0;
-	sort(c,c+m,greater<int>());
-	for(int i=0;i<m && !u.empty();i++){
-		int k = u.top(); u.pop();
-		if(k>c[i]){
-			ans+=c[i];
-			u.push(k-c[i]);
+		bool f = true;
+		int k = arr[i];
+		if(k>=mx)continue;
+		while(true){
+			if(k%4==0)k/=4;
+			else if(k&1 && k!=1) k = (k-1)/2;
+			else break;
+			if(st.count(k)){
+				f = false; break;
+			}
 		}
-		else ans+=k;
+		if(f)st.insert(arr[i]);
+	}
+	ll ans = 0;
+	int r = 2, l = 0;
+	for(auto i : st){
+		while(i>=r)r*=2,l++;
+		ans = (ans+f[p-l])%mod;
 	}
 	cout<<ans<<endl;
 }
-
 int main(){
 	cin.tie(0)->sync_with_stdio(0);
-	int t; cin>>t; while(t--)code();
+	overload();
+	int t=1; while(t--)code();
 	return 0;
 }

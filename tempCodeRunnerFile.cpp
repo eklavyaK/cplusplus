@@ -1,2 +1,1 @@
-
-			cout<<cnt-in<<endl;
+cin
