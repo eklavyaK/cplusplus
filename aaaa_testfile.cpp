@@ -3,48 +3,40 @@
 typedef long double ld;
 typedef long long ll;
 using namespace std;
-ll mod = 1e9+7;
-const int N = 2e5+5;
-ll f[N];
-void overload(){
-	f[1] = 1; f[2] = 2;
-	for(int i=3;i<=N-2;i++){
-		f[i] = (f[i-1]+f[i-2]+1)%mod;
-	}
-}
+
+
 void code(){
-	int n,p; 
-	cin>>n>>p;
-	int arr[n];
-	set<int> st;
-	ll mx = pow(2,min(p,32));
-	for(int i=0;i<n;i++)cin>>arr[i];
-	sort(arr,arr+n);
-	for(int i=0;i<n;i++){
-		bool f = true;
-		int k = arr[i];
-		if(k>=mx)continue;
-		while(true){
-			if(k%4==0)k/=4;
-			else if(k&1 && k!=1) k = (k-1)/2;
-			else break;
-			if(st.count(k)){
-				f = false; break;
-			}
+	int n,k; cin>>n>>k;
+	int arr[n+1]{};
+	for(int i=1;i<=n;i++)cin>>arr[i];
+	vector<int> v(arr,arr+n+1);
+	sort(v.begin(),v.end());
+	int x = 0, y = 1e9;
+	for(int i=1;i<=n-ceil((ld)(n+k)/2)+1;i++){
+		if(v[i+ceil((ld)(n+k)/2)-1]-v[i]<y-x){
+			y = v[i+ceil((ld)(n+k)/2)-1];
+			x = v[i];
 		}
-		if(f)st.insert(arr[i]);
 	}
-	ll ans = 0;
-	int r = 2, l = 0;
-	for(auto i : st){
-		while(i>=r)r*=2,l++;
-		ans = (ans+f[p-l])%mod;
+	cout<<x<<' '<<y<<endl;
+	int sum[n+1]{};
+	for(int i=1;i<=n;i++){
+		if(arr[i]>=x && arr[i]<=y)sum[i]=sum[i-1]+1;
+		else sum[i] = sum[i-1]-1;
 	}
-	cout<<ans<<endl;
+	int f = sum[n], r=n;
+	for(int i=n-1;i>=0;i--){
+		if(sum[i]==f-1){
+			if(k>1)cout<<i+1<<' '<<r<<endl;
+			else if(k==1) cout<<1<<' '<<r<<endl;
+			r = i; f--; k--;
+		}
+	}
+	cout<<endl;
 }
+
 int main(){
 	cin.tie(0)->sync_with_stdio(0);
-	overload();
-	int t=1; while(t--)code();
+	int t; cin>>t; while(t--)code();
 	return 0;
 }
