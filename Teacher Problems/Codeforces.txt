@@ -1,1 +1,2 @@
 https://codeforces.com/problemset/problem/1630/B           //excellent array ana range problem
+https://codeforces.com/contest/1648/problem/B           //interesting maths problem
