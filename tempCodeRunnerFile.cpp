@@ -1,3 +1,6 @@
-for(int i=1;i<n-1;i++){
-    //     cout<<x[i]<<' '<<y[i]<<endl;
-    // }
+while(true){
+        if(st.count(end))break;
+        st.insert(end);
+        if(end+arr[end]<=n && end+arr[end]>=1 && next[end]>=0)end = next[end];
+        else  break;
+    }
