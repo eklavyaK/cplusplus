@@ -10,7 +10,11 @@ using namespace std;
 
 
 void code(){
-    
+    int n; cin>>n;
+    if(n&1){
+        cout<<-1<<endl;
+    }
+    else cout<<1<<' '<<n/2<<endl;
 
 }
 
