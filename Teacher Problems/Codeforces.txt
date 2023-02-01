@@ -1,3 +1,5 @@
 https://codeforces.com/problemset/problem/1630/B           //excellent array ana range problem
 https://codeforces.com/contest/1648/problem/B           //interesting maths problem
 https://codeforces.com/problemset/problem/1790/F        //learning tree problem
+https://codeforces.com/contest/1554/problem/D           //interesting string problem
+https://codeforces.com/contest/1552/problem/D           //interesting problem
