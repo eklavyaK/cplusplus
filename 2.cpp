@@ -10,8 +10,10 @@ using namespace std;
 
 
 void code(){
-    string s = "asdfas";
-    cout<<s.substr(0,2)<<endl;
+    vector<int> curr;
+    for(auto i : curr){
+        cout<<i<<' ';
+    }
 
 }
 
