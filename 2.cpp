@@ -10,11 +10,15 @@ using namespace std;
 
 
 void code(){
-    vector<int> curr;
-    for(auto i : curr){
-        cout<<i<<' ';
+    int dp[2][2][2];
+    memset(dp,1,sizeof(dp));
+    for(int i=0;i<2;i++){
+        for(int j=0;j<2;j++){
+            for(int k=0;k<2;k++){
+                cout<<dp[i][j][k]<<" ";
+            }
+        }
     }
-
 }
 
 signed main(){
