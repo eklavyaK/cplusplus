@@ -5,3 +5,5 @@ https://codeforces.com/contest/1554/problem/D           //interesting string pro
 https://codeforces.com/contest/1552/problem/D           //interesting array problem
 https://codeforces.com/contest/1552/problem/C           //interesting geometry problem
 https://codeforces.com/problemset/problem/1535/D        //Classic dp and query problem
+https://codeforces.com/contest/1534/problem/D           //Good Tree Interactive problem
+https://codeforces.com/problemset/problem/1525/D        //Medium difficulty dp problem

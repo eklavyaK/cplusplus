@@ -7,47 +7,32 @@ typedef long long ll;
 typedef long double ld;
 using namespace std;
 
-int n;
-vector<int> query(int node){
-    cout<<"? "<<node<<endl<<flush;
-    vector<int> ret(n);
-    for(int i=0;i<n;i++)cin>>ret[i];
-    return ret;
-}
+
 
 void code(){
-    cin>>n;
-    vector<pair<int,int>> ans;
-    vector<int> curr = query(1);
-    int cnt_odd = 0, cnt_even = 0;
-    vector<int> odd, even;
-    for(int i=0;i<n;i++){
-        if(curr[i]==1){
-            ans.push_back({i+1,1});
-        }
-        if(curr[i]&1)odd.push_back(i+1);
-        else if(curr[i]!=0) even.push_back(i+1);
+    int k; 
+    cin>>k;
+    bool arr[k];
+    vector<int> onn, zrr;
+    for(int i=0;i<k;i++){
+        cin>>arr[i];
+        if(arr[i])onn.push_back(i);
+        else zrr.push_back(i);
     }
-    if(even.size()<=odd.size()){
-        for(auto j : even){
-            curr = query(j);
-            for(int i=0;i<n;i++){
-                if(curr[i]==1)ans.push_back({i+1,j});
-            }
-        }
+    int m = zrr.size(), n = onn.size();
+    if(!n){cout<<0<<endl; return;}
+    vector<vector<int>> dp(n,vector<int>(m,1e9));
+    dp[0][0] = abs(zrr[0]-onn[0]);
+    for(int i=1;i<m;i++){
+        dp[0][i] = min(dp[0][i-1],abs(zrr[i]-onn[0]));
     }
-    else{
-        for(auto j : odd){
-            curr = query(j);
-            for(int i=1;i<n;i++){
-                if(curr[i]==1)ans.push_back({i+1,j});
-            }
+    for(int i=1;i<n;i++){
+        dp[i][i] = dp[i-1][i-1]+abs(zrr[i]-onn[i]);
+        for(int j=i+1;j<m;j++){
+            dp[i][j] = min(dp[i][j-1],dp[i-1][j-1]+abs(zrr[j]-onn[i]));
         }
     }
-    cout<<"!"<<endl;
-    for(auto i : ans){
-        cout<<i.F<<' '<<i.S<<endl;
-    }
+    cout<<*min_element(dp[n-1].begin()+n-1,dp[n-1].end())<<endl;
 }
 
 signed main(){
