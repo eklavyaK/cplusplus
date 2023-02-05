@@ -7,3 +7,4 @@ https://codeforces.com/contest/1552/problem/C           //interesting geometry p
 https://codeforces.com/problemset/problem/1535/D        //Classic dp and query problem
 https://codeforces.com/contest/1534/problem/D           //Good Tree Interactive problem
 https://codeforces.com/problemset/problem/1525/D        //Medium difficulty dp problem
+https://codeforces.com/problemset/problem/1517/D        //Classic dp problem
