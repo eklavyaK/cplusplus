@@ -10,15 +10,8 @@ using namespace std;
 
 
 void code(){
-    int dp[2][2][2];
-    memset(dp,1,sizeof(dp));
-    for(int i=0;i<2;i++){
-        for(int j=0;j<2;j++){
-            for(int k=0;k<2;k++){
-                cout<<dp[i][j][k]<<" ";
-            }
-        }
-    }
+    cout.precision(20);
+    cout<<(1e6+1)*(1e6+1)<<endl;
 }
 
 signed main(){

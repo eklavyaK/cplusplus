@@ -1,4 +1,4 @@
-https://codeforces.com/problemset/problem/1630/B        //excellent array and range problem
+https://codeforces.com/problemset/problem/1630/B        //Classic array and range problem
 https://codeforces.com/contest/1648/problem/B           //interesting maths problem
 https://codeforces.com/problemset/problem/1790/F        //learning tree problem
 https://codeforces.com/contest/1554/problem/D           //interesting string problem
@@ -8,3 +8,7 @@ https://codeforces.com/problemset/problem/1535/D        //Classic dp and query p
 https://codeforces.com/contest/1534/problem/D           //Good Tree Interactive problem
 https://codeforces.com/problemset/problem/1525/D        //Medium difficulty dp problem
 https://codeforces.com/problemset/problem/1517/D        //Classic dp problem
+https://codeforces.com/problemset/problem/1509/C        //Easy dp
+https://codeforces.com/contest/1508/problem/B           //Interesting bitset and array problem
+https://codeforces.com/contest/1781/problem/D           //Interesting maths problem
+https://codeforces.com/problemset/problem/1775/D        //Interesting graph problem
