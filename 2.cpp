@@ -10,8 +10,9 @@ using namespace std;
 
 
 void code(){
-    cout.precision(20);
-    cout<<(1e6+1)*(1e6+1)<<endl;
+    vector<int> v({1,3,4,4,5});
+    v.erase(v.begin()+1);
+    for(auto i : v) cout<<i<<' ';cout<<endl;
 }
 
 signed main(){
