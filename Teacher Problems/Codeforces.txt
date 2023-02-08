@@ -12,3 +12,4 @@ https://codeforces.com/problemset/problem/1509/C        //Easy dp
 https://codeforces.com/contest/1508/problem/B           //Interesting bitset and array problem
 https://codeforces.com/contest/1781/problem/D           //Interesting maths problem
 https://codeforces.com/problemset/problem/1775/D        //Interesting graph problem
+https://codeforces.com/problemset/problem/1774/E        //Interesting tree problem
