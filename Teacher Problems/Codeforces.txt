@@ -13,3 +13,4 @@ https://codeforces.com/contest/1508/problem/B           //Interesting bitset and
 https://codeforces.com/contest/1781/problem/D           //Interesting maths problem
 https://codeforces.com/problemset/problem/1775/D        //Interesting graph problem
 https://codeforces.com/problemset/problem/1774/E        //Interesting tree problem
+https://codeforces.com/contest/1788/problem/E           //Classic DP + segment Tree
