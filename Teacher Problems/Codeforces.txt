@@ -14,3 +14,4 @@ https://codeforces.com/contest/1781/problem/D           //Interesting maths prob
 https://codeforces.com/problemset/problem/1775/D        //Interesting graph problem
 https://codeforces.com/problemset/problem/1774/E        //Interesting tree problem
 https://codeforces.com/contest/1788/problem/E           //Classic DP + segment Tree
+https://codeforces.com/contest/1746/problem/D           //Classic tree DP problem + classic max sum DP
