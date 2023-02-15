@@ -17,3 +17,4 @@ https://codeforces.com/contest/1788/problem/E           //Classic DP + segment T
 https://codeforces.com/contest/1746/problem/D           //Classic tree DP problem + classic max sum DP
 https://codeforces.com/problemset/problem/1739/D        //Easy tree problem
 https://codeforces.com/problemset/problem/1744/E2       //Classic maths
+https://codeforces.com/contest/1738/problem/D           //Classic maths (bad statement)
