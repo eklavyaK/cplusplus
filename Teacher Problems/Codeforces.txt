@@ -5,7 +5,7 @@ https://codeforces.com/contest/1554/problem/D           //interesting string pro
 https://codeforces.com/contest/1552/problem/D           //interesting array problem
 https://codeforces.com/contest/1552/problem/C           //interesting geometry problem
 https://codeforces.com/problemset/problem/1535/D        //Classic dp and query problem
-https://codeforces.com/contest/1534/problem/D           //Good Tree Interactive problem
+https://codeforces.com/contest/1534/problem/D           //Good tree Interactive problem
 https://codeforces.com/problemset/problem/1525/D        //Medium difficulty dp problem
 https://codeforces.com/problemset/problem/1517/D        //Classic dp problem
 https://codeforces.com/problemset/problem/1509/C        //Easy dp
@@ -13,8 +13,10 @@ https://codeforces.com/contest/1508/problem/B           //Interesting bitset and
 https://codeforces.com/contest/1781/problem/D           //Interesting maths problem
 https://codeforces.com/problemset/problem/1775/D        //Interesting graph problem
 https://codeforces.com/problemset/problem/1774/E        //Interesting tree problem
-https://codeforces.com/contest/1788/problem/E           //Classic DP + segment Tree
+https://codeforces.com/contest/1788/problem/E           //Classic DP + segment tree
 https://codeforces.com/contest/1746/problem/D           //Classic tree DP problem + classic max sum DP
 https://codeforces.com/problemset/problem/1739/D        //Easy tree problem
 https://codeforces.com/problemset/problem/1744/E2       //Classic maths
 https://codeforces.com/contest/1738/problem/D           //Classic maths (bad statement)
+https://codeforces.com/problemset/problem/1777/D        //Easy tree
+https://codeforces.com/problemset/problem/1784/B        //Interesting string problem
