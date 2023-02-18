@@ -20,3 +20,4 @@ https://codeforces.com/problemset/problem/1744/E2       //Classic maths
 https://codeforces.com/contest/1738/problem/D           //Classic maths (bad statement)
 https://codeforces.com/problemset/problem/1777/D        //Easy tree
 https://codeforces.com/problemset/problem/1784/B        //Interesting string problem
+https://codeforces.com/contest/1717/problem/D           //Classic maths
