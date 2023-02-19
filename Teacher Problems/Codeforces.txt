@@ -21,3 +21,5 @@ https://codeforces.com/contest/1738/problem/D           //Classic maths (bad sta
 https://codeforces.com/problemset/problem/1777/D        //Easy tree
 https://codeforces.com/problemset/problem/1784/B        //Interesting string problem
 https://codeforces.com/contest/1717/problem/D           //Classic maths
+https://codeforces.com/problemset/problem/1714/F        //Easy tree
+https://codeforces.com/problemset/problem/1707/B        //Easy maths
