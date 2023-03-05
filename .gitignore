@@ -8,7 +8,7 @@ aaaa_testfile3.cpp
 ..........testfile3.cpp
 # Compiled class file
 *.class
-
+*.prob
 # Log file
 *.log
 
