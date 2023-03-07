@@ -10,20 +10,60 @@ using namespace std;
 
 
 void code(){
-    int n; cin>>n;
-    vector<int> arr(n);
-    int cnt = 0;
-    for(int i=0;i<n;i++)cin>>arr[i];
-    for(int i=0;i<n;i++){
-        int l = 0, r = i;
-        while(l<=r){
-            int mid = (l+r)>>1;
-            if((i+1-mid)<=arr[mid]) r = mid-1;
-            else l = mid+1;
-        }
-        cout<<i-r<<' ';
+    int n,k; cin>>n>>k;
+    int arr[n+1]{}, ans[n+1]{};
+    vector<int> st(n+1), pos(n+1), last(k+1);
+    for(int i=1;i<=n;i++){
+        cin>>arr[i];
+        pos[i] = last[arr[i]];
+        last[arr[i]] = i;
     }
-    cout<<endl;
+    st[0] = -1; int now[2]{};
+    vector<int> cold(k+1), hot(k+1);
+    for(int i=1;i<=k;i++)cin>>cold[i];
+    for(int i=1;i<=k;i++)cin>>hot[i];
+    for(int i=1;i<=n;i++){
+        if(!pos[i]){
+            ans[i] = ans[i-1]+cold[arr[i]];
+            now[0] = i;
+        }
+        else if(now[0]==pos[i]){
+            ans[i] = ans[i-1]+hot[arr[i]];
+            now[0] = i;
+        }
+        else if(now[1]==pos[i]){
+            ans[i] = ans[i-1]+hot[arr[i]];
+            now[1] = i, st[i] = 1;
+        }
+        else{
+            int gp = !st[pos[i]];
+            int curr = ans[pos[i]];
+            for(int j=pos[i]+1;j<i;j++){
+                if(pos[j]>pos[i]) curr+=hot[arr[j]];
+                else if(st[pos[j]]==gp) curr+=hot[arr[j]];
+                else curr+=cold[arr[j]];
+            }
+            curr+=hot[arr[i]];
+            if(curr<=ans[i-1]+cold[arr[i]]){
+                curr = ans[pos[i]];
+                for(int j=pos[i]+1;j<i;j++){
+                    if(pos[j]>pos[i]) curr+=hot[arr[j]];
+                    else if(st[pos[j]]==gp) curr+=hot[arr[j]];
+                    else curr+=cold[arr[j]];
+                    st[j] = gp; ans[j] = curr;
+                    now[gp] = j;
+                }
+                st[i] = st[pos[i]];
+                now[st[i]] = i;
+                ans[i] = ans[i-1]+hot[arr[i]];
+            }
+            else{
+                ans[i] = ans[i-1]+cold[arr[i]];
+                now[0] = i;
+            }
+        }
+    }
+    cout<<ans[n]<<endl;
 }
 
 signed main(){
