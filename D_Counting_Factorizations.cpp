@@ -42,30 +42,40 @@ bool isPrime(ll n, ll k){
 ll modularInverse(ll a){
     return power(a,mod-2,mod);
 }
-ll binomialCoefficient(ll n, ll r){
-    return (((fact[n] * modularInverse(fact[r]))%mod) * modularInverse(fact[n-r]))%mod;
-}
 void code(){
     int n; cin>>n;
     vector<int> arr(2*n);
     map<int,int> m;
     fact[0] = 1;
     for(int i=1;i<2023;i++){
-        fact[i] = (fact[i]*i)%mod;
+        fact[i] = (fact[i-1]*i)%mod;
     }
     for(int i=0;i<2*n;i++){
         int k; cin>>k;
-        if(isPrime(k,5))primes.push_back(k);
+        if(!m.count(k) && isPrime(k,5))primes.push_back(k);
         m[k]++;
+    }
+    int k = primes.size();
+    if(k<n){
+        cout<<0<<endl;
+        return;
     }
     int ans = fact[n];
     for(auto i : m){
         ans = ans*modularInverse(fact[i.S])%mod;
     }
+    vector<vector<int>> f(k+1,vector<int>(n+1));
+    for(int i=1;i<=k;i++){
+        f[i][1] = f[i-1][1]+m[primes[i-1]];
+        for(int j=2;j<=min(i,n);j++){
+            f[i][j] = (f[i-1][j] + m[primes[i-1]]*f[i-1][j-1])%mod;
+        }
+    }
+    cout<<f[k][n]*ans%mod<<endl;
 }
 
 signed main(){
     cin.tie(0)->sync_with_stdio(0);
-    int t; cin>>t; while(t--)code();
+    int t=1; while(t--)code();
     return 0;
 }

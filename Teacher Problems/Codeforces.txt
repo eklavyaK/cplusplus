@@ -24,3 +24,5 @@ https://codeforces.com/contest/1717/problem/D           //Classic maths
 https://codeforces.com/problemset/problem/1714/F        //Easy tree
 https://codeforces.com/problemset/problem/1707/B        //Easy maths
 https://codeforces.com/problemset/problem/1704/D        //Classic maths
+https://codeforces.com/contest/1794/problem/D           //Standard dp
+https://codeforces.com/contest/1799/problem/D1          //Standard dp
