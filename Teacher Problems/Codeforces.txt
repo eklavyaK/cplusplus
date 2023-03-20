@@ -26,3 +26,4 @@ https://codeforces.com/problemset/problem/1707/B        //Easy maths
 https://codeforces.com/problemset/problem/1704/D        //Classic maths
 https://codeforces.com/contest/1794/problem/D           //Standard dp
 https://codeforces.com/contest/1799/problem/D1          //Standard dp
+https://codeforces.com/problemset/problem/1679/D        //Interesting graph problem
