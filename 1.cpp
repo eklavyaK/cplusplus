@@ -6,40 +6,32 @@
 typedef long long ll;
 typedef long double ld;
 using namespace std;
-int f[200005];
+
+const int N = 1e6+5;
+bool f[N];
 void code(){
     int n; cin>>n;
-    vector<vector<int>> v(n);
-    map<int,vector<int>> m;
     for(int i=0;i<n;i++){
-        int k,c;
-        cin>>k>>c;
-        v[i].push_back(c);
-        for(int j=1;j<k;j++){
-            cin>>c;
-            if(v[i].back()<c)v[i].push_back(c);
-        }
-        m[v[i].back()].push_back(i);
+        int k; cin>>k;
+        f[k] = 1;
     }
-    m[0];
+    for(int i=1e6;i>=1;i--){
+        if(f[i]) continue;
+        int g = 0;
+        for(int j=2;j*i<N;j++){
+            if(f[j*i])g = gcd(j*i,g);
+        }
+        if(g==i)f[i]=1;
+    }
     int ans = 0;
-    for(auto i : m){
-        f[i.F] = ans;
-        for(auto r : i.S){
-            int k = v[r].size();
-            for(int j=0;j<k;j++){
-                auto it = m.lower_bound(v[r][j]);
-                it--;
-                f[i.F] = max(f[i.F],f[it->F]+k-j);
-            }
-        }
-        ans = f[i.F];
+    for(int i=1;i<N;i++){
+        if(f[i])ans++;
     }
-    cout<<ans<<endl;
+    cout<<ans-n<<endl;
 }
 
 signed main(){
     cin.tie(0)->sync_with_stdio(0);
-    int t; cin>>t; while(t--)code();
+    int t=1; while(t--)code();
     return 0;
-}
+}  
