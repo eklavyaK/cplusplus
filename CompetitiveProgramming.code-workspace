@@ -120,6 +120,9 @@
 		},
 		"editor.quickSuggestionsDelay": 10,
 		"editor.snippetSuggestions": "top",
-		"C_Cpp.errorSquiggles": "EnabledIfIncludesResolve"
+		"C_Cpp.errorSquiggles": "EnabledIfIncludesResolve",
+		"editor.language.colorizedBracketPairs": [
+		
+		]
 	}
 }
