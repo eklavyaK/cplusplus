@@ -25,7 +25,7 @@ void code(){
     for(int i=0;i<m;i++){
         int r; cin>>r;
         if(curr==r-1) vv[r]=vv[r-1];
-        else vv[r] = l++;
+        else vv[r]=l++;
         curr = r;
     }
     vv[1e6+1] = -1;
