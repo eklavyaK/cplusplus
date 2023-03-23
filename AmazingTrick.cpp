@@ -24,7 +24,7 @@ void code(){
         }
         return true;
     };
-    for(int i=0;i<100;i++){
+    for(int i=0;i<1000;i++){
         random_shuffle(ans.begin()+1,ans.end());
         for(int i=1;i<=n;i++){
             nxt[ans[i]] = pos[i];
