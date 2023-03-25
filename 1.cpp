@@ -10,17 +10,17 @@ using namespace std;
 
 
 void code(){
-    int n,k,d,w; cin>>n>>k>>d>>w;
+    int n,k,x; cin>>n>>k>>x;
     int arr[n];
-    for(int i=0;i<n;i++)cin>>arr[i];
-    int ans = 0;
+    for(int i=0;i<n;i++)cin>>arr[i],arr[i]-=x;
+    int c = 0, sum[n+1]{};
     for(int i=0;i<n;i++){
-        ans++;
-        int c = k-1;
-        int open = arr[i]+w;
-        while(i+1<n && arr[i+1]<=open+d && c>0)i++,c--;
+        c+=arr[i];
+        sum[i+1] = c;
     }
-    cout<<ans<<endl;
+    for(int i=0;i<n;i++){
+        
+    }
 }
 
 signed main(){
