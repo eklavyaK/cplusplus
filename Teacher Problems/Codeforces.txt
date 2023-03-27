@@ -30,3 +30,4 @@ https://codeforces.com/problemset/problem/1679/D        //Interesting graph prob
 https://codeforces.com/problemset/problem/1613/D        //Interesting dp
 https://codeforces.com/problemset/problem/1773/A        //Amazing Probability Trick
 https://codeforces.com/contest/1806/problem/C           //Interesting maths
+https://codeforces.com/contest/1783/problem/D           //Classic dp
