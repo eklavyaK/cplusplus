@@ -6,11 +6,11 @@
 typedef long long ll;
 typedef long double ld;
 using namespace std;
-int fact[5005];
 int mod=1e9+7;
+int fact[5005];
 int f[2505][2505];
-void binomialCoefficients(int n){//coefficients for all pairs of (n,r) where r<=n
-    for(int i=0;i<=n;i++){
+void binomialCoefficients(){
+    for(int i=0;i<=2500;i++){
         for(int j=0;j<=i;j++){
             if(j==0||j==i)f[i][j]=1;
             else f[i][j] = (f[i-1][j-1]+f[i-1][j])%mod;
@@ -25,7 +25,7 @@ void code(){
     int n; 
     cin>>n>>mod;
     factorial();
-    binomialCoefficients(n/2);
+    binomialCoefficients();
     int k = (n-(n&1))>>1;
     int r = k-1, ans = 0;
     for(int i=0;i<k;i++,r++){
