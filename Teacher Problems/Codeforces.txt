@@ -33,3 +33,5 @@ https://codeforces.com/contest/1806/problem/C           //Interesting maths
 https://codeforces.com/contest/1783/problem/D           //Classic dp
 https://codeforces.com/problemset/problem/1772/F        //good graph problem
 https://codeforces.com/problemset/problem/1764/D        //Interesting maths
+https://codeforces.com/problemset/problem/1753/C        //Interesting probability dp
+https://codeforces.com/problemset/problem/1744/F        //Interesting maths and array
