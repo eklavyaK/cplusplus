@@ -8,10 +8,10 @@ typedef long double ld;
 using namespace std;
 
 
-int f[1000005];
+
 void code(){
-    int n,m; cin>>n>>m;
     
+
 }
 
 signed main(){
