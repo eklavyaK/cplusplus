@@ -38,3 +38,5 @@ https://codeforces.com/problemset/problem/1744/F        //Interesting maths and 
 https://codeforces.com/problemset/problem/1741/F        //Interesting maths problem
 https://codeforces.com/contest/1733/problem/D2          //Interesting dp
 https://codeforces.com/problemset/problem/1726/D        //Tricky graph
+https://codeforces.com/problemset/problem/1725/C        //Interesting maths
+https://codeforces.com/problemset/problem/1718/B        //Interesting maths
