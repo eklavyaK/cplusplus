@@ -40,3 +40,6 @@ https://codeforces.com/contest/1733/problem/D2          //Interesting dp
 https://codeforces.com/problemset/problem/1726/D        //Tricky graph
 https://codeforces.com/problemset/problem/1725/C        //Interesting maths
 https://codeforces.com/problemset/problem/1718/B        //Interesting maths
+https://codeforces.com/problemset/problem/1702/G2       //Classic tree
+https://codeforces.com/problemset/problem/1696/E        //Excellent series maths
+https://codeforces.com/problemset/problem/1685/B        //Excellent strings
