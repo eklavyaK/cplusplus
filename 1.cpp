@@ -8,31 +8,26 @@ typedef long double ld;
 using namespace std;
 
 
+
 void code(){
     int n; cin>>n;
-    string s[2]; cin>>s[0]>>s[1];
-    int f[n+1][2];
-    memset(f,0,sizeof(f));
-    bool k = true;
-    for(int i=1;i<=n;i++){
-        if(k){
-            if(s[1][i-1]=='*'||s[0][i-1]=='*'){
-                k = false;
-                f[i][1] = (s[0][i-1]=='*');
-                f[i][0] = (s[1][i-1]=='*');
-            }
-            continue;
+    int arr[n];
+    for(int i=0;i<n;i++)cin>>arr[i];
+    vector<int> temp(arr,arr+n);
+    sort(temp.begin(),temp.end());
+    int l = 0, r = 0;
+    map<int,queue<int>> m;
+    queue<int> q;
+    while(l<n){
+        if(r<n){
+            if(temp[r]>temp[l]) m[temp[l]].push(temp[r]), l++;
+            else q.push(temp[r]);
         }
-        if(s[0][i-1]=='*') f[i][1] = min(f[i-1][1],f[i-1][0])+2;
-        else f[i][1] = f[i-1][1]+1;
-        if(s[1][i-1]=='*') f[i][0] = min(f[i-1][0],f[i-1][1])+2;
-        else f[i][0] = f[i-1][0]+1;
+        else m[temp[l]].push(q.front()),q.pop(),l++;
+        r++;
     }
-    int ans = 0;
-    for(int i=0;i<n;i++){
-        if(s[0][i]=='*'||s[1][i]=='*') ans = min(f[i+1][0],f[i+1][1]);
-    }
-    cout<<ans<<endl;
+    for(int i=0;i<n;i++) cout<<m[arr[i]].front()<<" ", m[arr[i]].pop();
+    cout<<endl;
 }
 
 signed main(){
