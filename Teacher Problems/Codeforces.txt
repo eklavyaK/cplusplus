@@ -47,3 +47,4 @@ https://codeforces.com/problemset/problem/1672/F1       //Excellent array
 https://codeforces.com/problemset/problem/1674/G        //Interesting graph
 https://codeforces.com/problemset/problem/1680/E        //Good dp
 https://codeforces.com/problemset/problem/1646/D        //Excellent tree dp
+https://codeforces.com/problemset/problem/1638/D        //Good logic problem
