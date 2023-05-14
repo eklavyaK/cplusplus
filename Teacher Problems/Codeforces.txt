@@ -38,13 +38,15 @@ https://codeforces.com/problemset/problem/1744/F        //Interesting maths and 
 https://codeforces.com/problemset/problem/1741/F        //Interesting maths problem
 https://codeforces.com/contest/1733/problem/D2          //Interesting dp
 https://codeforces.com/problemset/problem/1726/D        //Tricky graph
-https://codeforces.com/problemset/problem/1725/C        //Interesting maths
-https://codeforces.com/problemset/problem/1718/B        //Interesting maths
-https://codeforces.com/problemset/problem/1702/G2       //Classic tree
-https://codeforces.com/problemset/problem/1696/E        //Excellent series maths
-https://codeforces.com/problemset/problem/1685/B        //Excellent strings
-https://codeforces.com/problemset/problem/1672/F1       //Excellent array
-https://codeforces.com/problemset/problem/1674/G        //Interesting graph
-https://codeforces.com/problemset/problem/1680/E        //Good dp
-https://codeforces.com/problemset/problem/1646/D        //Excellent tree dp
-https://codeforces.com/problemset/problem/1638/D        //Good logic problem
+https://codeforces.com/problemset/problem/1725/C        //Interesting maths (solved)
+https://codeforces.com/problemset/problem/1718/B        //Interesting maths (solved)
+https://codeforces.com/problemset/problem/1702/G2       //Classic tree (solved)
+https://codeforces.com/problemset/problem/1696/E        //Excellent series maths (unsolved)
+https://codeforces.com/problemset/problem/1685/B        //Excellent strings (solved)
+https://codeforces.com/problemset/problem/1672/F1       //Excellent array (unsolved)
+https://codeforces.com/problemset/problem/1674/G        //Interesting graph (solved)
+https://codeforces.com/problemset/problem/1680/E        //Good dp (solved)
+https://codeforces.com/problemset/problem/1646/D        //Excellent tree dp (unsolved)
+https://codeforces.com/problemset/problem/1638/D        //Good logic problem (unsolved)
+https://codeforces.com/problemset/problem/1632/D        //Interesting maths (solved)
+https://codeforces.com/problemset/problem/1624/F        //Excellent binary search (solved)
