@@ -50,3 +50,4 @@ https://codeforces.com/problemset/problem/1646/D        //Excellent tree dp (uns
 https://codeforces.com/problemset/problem/1638/D        //Good logic problem (unsolved)
 https://codeforces.com/problemset/problem/1632/D        //Interesting maths (solved)
 https://codeforces.com/problemset/problem/1624/F        //Excellent binary search (solved)
+https://codeforces.com/problemset/problem/1624/E        //Interesting strings (solved)
