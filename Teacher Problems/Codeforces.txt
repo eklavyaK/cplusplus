@@ -52,3 +52,4 @@ https://codeforces.com/problemset/problem/1632/D        //Interesting maths (sol
 https://codeforces.com/problemset/problem/1624/F        //Excellent binary search (solved)
 https://codeforces.com/problemset/problem/1624/E        //Interesting strings (solved)
 https://codeforces.com/problemset/problem/1619/G        //Interesting graph dsu (solved)
+https://codeforces.com/problemset/problem/1616/D        //Good maths problem (unsolved)
