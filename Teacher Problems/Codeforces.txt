@@ -54,3 +54,4 @@ https://codeforces.com/problemset/problem/1624/E        //Interesting strings (s
 https://codeforces.com/problemset/problem/1619/G        //Interesting graph dsu (solved)
 https://codeforces.com/problemset/problem/1616/D        //Good maths problem (unsolved)
 https://codeforces.com/problemset/problem/1610/D        //Excellent maths problem (solved)
+https://codeforces.com/contest/1584/problem/D           //Excellent interactive problem (solved)
