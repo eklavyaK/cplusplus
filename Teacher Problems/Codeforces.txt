@@ -55,3 +55,5 @@ https://codeforces.com/problemset/problem/1619/G        //Interesting graph dsu 
 https://codeforces.com/problemset/problem/1616/D        //Good maths problem (unsolved)
 https://codeforces.com/problemset/problem/1610/D        //Excellent maths problem (solved)
 https://codeforces.com/contest/1584/problem/D           //Excellent interactive problem (solved)
+https://codeforces.com/problemset/problem/1810/E        //Interesting graph (solved)
+https://codeforces.com/problemset/problem/1808/D        //Excellent array (solved)
