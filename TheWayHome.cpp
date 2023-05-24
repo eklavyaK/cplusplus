@@ -7,16 +7,18 @@ typedef long long ll;
 typedef long double ld;
 using namespace std;
 
-int inf = 1e15;
+int inf = 1e18;
 
 void code(){
     int n,m,p; cin>>n>>m>>p;
     vector<vector<pair<int,int>>> graph(n);
     vector<pair<int,int>> s(n);
     for(int i=0;i<n;i++) cin>>s[i].F,s[i].S=i;
+    s[n-1].F = inf;
     sort(s.begin(),s.end());
     for(int j=0;j<m;j++){
         int u,v,w; cin>>u>>v>>w;
+        u--,v--;
         graph[u].push_back({v,w});
     }
     vector<vector<int>> dis(n,vector<int>(n,inf));
@@ -27,9 +29,6 @@ void code(){
         bool done[n]{};
         while(!st.empty()){
             auto [d,ver] = *st.begin();
-            st.erase({d,ver});
-            if(done[ver]) continue;
-            done[ver] = 1;
             for(auto [v,w] : graph[ver]){
                 if(dis[node][v]>d+w){
                     st.erase({dis[node][v],v});
@@ -37,6 +36,7 @@ void code(){
                     st.insert({dis[node][v],v});
                 }
             }
+            st.erase({d,ver});
         }
     };
     for(int i=0;i<n;i++) dijkstra(i);
@@ -44,11 +44,13 @@ void code(){
     int idx = 0;
     for(int i=0;i<n;i++) if(!s[i].S) idx = i;
     dp[idx] = {0,p};
-    for(int i=idx;i<n;i++){
-        for(int j=i+1;j<m;j++){
-            if(dis[i][j]==inf) continue;
-            int extra = ceil((ld)(dis[i][j]-dp[i].S)/s[i].F);
-            dp[j] = min(dp[j],{dp[i].F+extra,extra*s[i].F-dis[i][j]+dp[i].S});
+    for(int i=idx;i<n-1;i++){
+        for(int j=i+1;j<n;j++){
+            int l = s[i].S, r = s[j].S;
+            if(dis[l][r]==inf) continue;
+            int extra = dis[l][r]>=dp[i].S?(dis[l][r]-dp[i].S+s[i].F-1)/s[i].F:0;
+            pair<int,int> now = {dp[i].F+extra,extra*s[i].F-dis[l][r]+dp[i].S};
+            if(dp[j].F>now.F || dp[j].F==now.F && dp[j].S<now.S) dp[j] = now;
         }
     }
     cout<<(dp[n-1].F==inf?-1:dp[n-1].F)<<endl;
