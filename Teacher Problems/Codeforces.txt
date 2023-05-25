@@ -58,3 +58,4 @@ https://codeforces.com/contest/1584/problem/D           //Excellent interactive 
 https://codeforces.com/problemset/problem/1810/E        //Interesting graph (solved)
 https://codeforces.com/problemset/problem/1808/D        //Excellent array (solved)
 https://codeforces.com/contest/1801/problem/D           //Excellent graph dp (unsolved)
+https://codeforces.com/contest/1837/problem/E           //Interesting maths (solved)

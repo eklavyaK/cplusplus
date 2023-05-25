@@ -10,8 +10,16 @@ using namespace std;
 
 
 void code(){
-    
-
+    int x,k; cin>>x>>k;
+    if(x%k==0){
+        cout<<2<<endl;
+        cout<<1<<endl;
+        cout<<x-1<<endl;
+    }
+    else{
+        cout<<1<<endl;
+        cout<<x<<endl;
+    }
 }
 
 signed main(){

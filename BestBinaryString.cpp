@@ -10,8 +10,15 @@ using namespace std;
 
 
 void code(){
-    
-
+    string s; cin>>s;
+    int n = s.size();
+    int ans = 0;
+    char last = '0';
+    for(int i=0;i<n;i++){
+        if(s[i]=='?') s[i]=last;
+        last = s[i];
+    }
+    cout<<s<<endl;
 }
 
 signed main(){
