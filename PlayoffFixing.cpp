@@ -44,7 +44,7 @@ void code(){
         int cntz = 0, cnta = 0, cnt = 0,com=0;
         for(int i=0;i<n;i+=2,cnt++){
             if(arr[i].F!=-1 && arr[i+1].F!=-1){
-                if(arr[i].S!=1 && arr[i+1].S!=1){
+                if((arr[i].S!=1 && arr[i+1].S!=1) || (arr[i].S==arr[i+1].S)){
                     ans = 0; 
                     return false;
                 }
