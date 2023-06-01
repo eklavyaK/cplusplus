@@ -8,10 +8,24 @@ typedef long double ld;
 using namespace std;
 
 
-
-void code(){
-    
-
+void code()
+{
+    int n,c; cin>>n>>c;
+    vector<int> arr(n);
+    set<int> st;
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+        st.insert(arr[i]);
+    }
+    int k = st.size();
+    int l = 1, r = n;
+    while(l<=r){
+        int mid = (l+r)>>1;
+        if(3*mid-2>=n) r = mid-1;
+        else l = mid+1;
+    }
+    r++;
+    cout<<max(0ll,(r-k)*c)<<endl;
 }
 
 signed main(){
