@@ -10,11 +10,13 @@ using namespace std;
 
 
 void code(){
-    string a = "adfd";
-    string b = "oijnj";
-    swap(a[0],b[1]);
-    cout<<a<<' '<<b<<endl;
-
+    int n; cin>>n;
+    int arr[n];
+    iota(arr,arr+n,1);
+    int k = (n*(n+1)/2)%n;
+    if(n%2==0) arr[0] += k;
+    for(auto i : arr) cout<<i<<' ';
+    cout<<endl;
 }
 
 signed main(){

@@ -10,11 +10,9 @@ using namespace std;
 
 
 void code(){
-    string a = "adfd";
-    string b = "oijnj";
-    swap(a[0],b[1]);
-    cout<<a<<' '<<b<<endl;
-
+    int n,k; cin>>n>>k;
+    if(k>35) cout<<n+1<<endl;
+    else cout<<min((1ll<<(k)),n+1)<<endl;
 }
 
 signed main(){

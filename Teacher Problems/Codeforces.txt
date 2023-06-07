@@ -61,3 +61,4 @@ https://codeforces.com/contest/1801/problem/D           //Excellent graph dp (un
 https://codeforces.com/contest/1837/problem/E           //Interesting maths (solved)
 https://codeforces.com/contest/1830/problem/B           //Interesting maths (solved)
 https://codeforces.com/contest/1839/problem/D           //Intersting dp (unsolved)
+https://codeforces.com/contest/1840/problem/F           //Interesting dp (solved)

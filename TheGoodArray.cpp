@@ -10,11 +10,12 @@ using namespace std;
 
 
 void code(){
-    string a = "adfd";
-    string b = "oijnj";
-    swap(a[0],b[1]);
-    cout<<a<<' '<<b<<endl;
-
+    int n,k; cin>>n>>k;
+    int ans = 0;
+    for(int i=1;i<n;i++){
+        ans = max(ans,(ll)(ceil((ld)i/k)+ceil((ld)(n-i)/k)));
+    }
+    cout<<max(ans,(ll)ceil((ld)n/k))<<endl;
 }
 
 signed main(){

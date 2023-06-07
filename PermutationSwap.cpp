@@ -10,11 +10,14 @@ using namespace std;
 
 
 void code(){
-    string a = "adfd";
-    string b = "oijnj";
-    swap(a[0],b[1]);
-    cout<<a<<' '<<b<<endl;
-
+    int n; cin>>n;
+    vector<int> arr(n);
+    for(int i=0;i<n;i++)cin>>arr[i];
+    int ans = 0;
+    for(int i=0;i<n;i++){
+        ans = gcd(abs(arr[i])-(i+1),ans);
+    }
+    cout<<ans<<endl;
 }
 
 signed main(){

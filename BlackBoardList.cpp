@@ -10,11 +10,17 @@ using namespace std;
 
 
 void code(){
-    string a = "adfd";
-    string b = "oijnj";
-    swap(a[0],b[1]);
-    cout<<a<<' '<<b<<endl;
-
+    int n; cin>>n;
+    int mx = -1e9-5, mn = 1e9+5;
+    for(int i=0;i<n;i++){
+        int k; cin>>k;
+        mn = min(mn,k);
+        mx = max(mx,k);
+    }
+    if(mn<0){
+        cout<<mn<<endl;
+    }
+    else cout<<mx<<endl;
 }
 
 signed main(){

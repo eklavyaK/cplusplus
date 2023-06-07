@@ -10,11 +10,17 @@ using namespace std;
 
 
 void code(){
-    string a = "adfd";
-    string b = "oijnj";
-    swap(a[0],b[1]);
-    cout<<a<<' '<<b<<endl;
-
+    int n; cin>>n;
+    string s; cin>>s;
+    vector<char> v;
+    for(int i=0;i<n;i++){
+        v.push_back(s[i]);
+        int k = i;
+        while(i+1<n && s[i+1]!=s[k])i++;
+        i++;
+    }
+    for(auto i : v) cout<<i;
+    cout<<endl;
 }
 
 signed main(){
