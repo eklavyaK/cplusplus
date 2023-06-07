@@ -62,3 +62,5 @@ https://codeforces.com/contest/1837/problem/E           //Interesting maths (sol
 https://codeforces.com/contest/1830/problem/B           //Interesting maths (solved)
 https://codeforces.com/contest/1839/problem/D           //Intersting dp (unsolved)
 https://codeforces.com/contest/1840/problem/F           //Interesting dp (solved)
+https://codeforces.com/contest/1840/problem/G2          //Interesting probability (unsolved)
+https://codeforces.com/contest/1838/problem/D           //Interesting string (solved)
