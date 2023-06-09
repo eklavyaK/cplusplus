@@ -10,11 +10,25 @@ using namespace std;
 
 
 void code(){
-    string a = "adfd";
-    string b = "oijnj";
-    swap(a[0],b[1]);
-    cout<<a<<' '<<b<<endl;
-
+    vector<array<int,3>> v;
+    array<int,3> curr;
+    curr[0] = 23;
+    curr[1] = 54;
+    curr[2] = 89;
+    v.push_back(curr);
+    curr[0] = 9;
+    curr[1] = 4;
+    curr[2] = 98;
+    v.push_back(curr);
+    curr[0] = 23;
+    curr[1] = 54;
+    curr[2] = 80;
+    v.push_back(curr);
+    sort(v.begin(),v.end());
+    for(auto i : v){
+        for(auto j : i) cout<<j<<' ';
+        cout<<endl;
+    }
 }
 
 signed main(){
