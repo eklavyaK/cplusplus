@@ -64,3 +64,4 @@ https://codeforces.com/contest/1839/problem/D           //Intersting dp (unsolve
 https://codeforces.com/contest/1840/problem/F           //Interesting dp (solved)
 https://codeforces.com/contest/1840/problem/G2          //Interesting probability (unsolved)
 https://codeforces.com/contest/1838/problem/D           //Interesting string (solved)
+https://codeforces.com/contest/1799/problem/D2          //Excellent dp (unsolved)
