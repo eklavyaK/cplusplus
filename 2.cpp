@@ -10,25 +10,16 @@ using namespace std;
 
 
 void code(){
-    vector<array<int,3>> v;
-    array<int,3> curr;
-    curr[0] = 23;
-    curr[1] = 54;
-    curr[2] = 89;
-    v.push_back(curr);
-    curr[0] = 9;
-    curr[1] = 4;
-    curr[2] = 98;
-    v.push_back(curr);
-    curr[0] = 23;
-    curr[1] = 54;
-    curr[2] = 80;
-    v.push_back(curr);
-    sort(v.begin(),v.end());
-    for(auto i : v){
-        for(auto j : i) cout<<j<<' ';
-        cout<<endl;
-    }
+    set<int> st;
+    st.insert(10);
+    st.insert(20);
+    st.insert(30);
+    st.insert(40);
+    st.insert(50);
+    cout<<*st.rbegin()<<endl;
+    cout<<*st.rend()<<endl;
+    cout<<*st.end()<<endl;
+    cout<<*st.begin()<<endl;
 }
 
 signed main(){

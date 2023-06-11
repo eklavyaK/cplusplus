@@ -65,3 +65,7 @@ https://codeforces.com/contest/1840/problem/F           //Interesting dp (solved
 https://codeforces.com/contest/1840/problem/G2          //Interesting probability (unsolved)
 https://codeforces.com/contest/1838/problem/D           //Interesting string (solved)
 https://codeforces.com/contest/1799/problem/D2          //Excellent dp (unsolved)
+https://codeforces.com/problemset/problem/1787/E        //Interesting maths (solved)
+https://codeforces.com/problemset/problem/1776/G        //Excellent strings (unsolved)
+https://codeforces.com/problemset/problem/1775/E        //Good maths and array (solved)
+https://codeforces.com/problemset/problem/1771/D        //Interesting tree (solved)
