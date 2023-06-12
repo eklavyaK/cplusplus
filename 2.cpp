@@ -7,23 +7,17 @@ typedef long long ll;
 typedef long double ld;
 using namespace std;
 
+template<class T>void __print(T *a){
+    for(auto i : a) cout<<i<<' ';cout<<endl;
+}
 
 
 void code(){
-    set<int> st;
-    st.insert(10);
-    st.insert(20);
-    st.insert(30);
-    st.insert(40);
-    st.insert(50);
-    cout<<*st.rbegin()<<endl;
-    cout<<*st.rend()<<endl;
-    cout<<*st.end()<<endl;
-    cout<<*st.begin()<<endl;
+    int arr[10]{};
+    __print(arr);
 }
 
 signed main(){
-    cin.tie(0)->sync_with_stdio(0);
-    int t; cin>>t; while(t--)code();
+    cin.tie(0)->sync_with_stdio(0);code();
     return 0;
 }
