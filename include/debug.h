@@ -1,6 +1,13 @@
 // #ifndef ONLINE_JUDGE
 // freopen("1err.txt", "w", stderr);
 // #endif
+
+
+
+
+
+
+
 const string fff="[ ",vvv="{",kkk=",",xxx=" ",zzz="}",yyy="]";
 #define debugvar(x)cerr<<"=> "<<#x<<xxx;__print(x);cerr<<endl;
 #define debug(x)cerr<<"=> ";__print(x);cerr<<endl;
@@ -29,6 +36,7 @@ template<class T>void __print(vector<T>v){__print(fff);for(T i:v){__print(i);__p
 template<class T>void __print(set<T>s){__print(fff);for(T i:s){__print(i);__print(xxx);}__print(yyy);}
 template<class T>void __print(multiset<T>ms){__print(fff);for(T i:ms){__print(i);__print(xxx);} __print(yyy);}
 template<class T>void __print(queue<T>q){__print(fff);while(!q.empty()){__print(q.front());q.pop();__print(xxx);}__print(yyy);}
+template<class T>void __print(priority_queue<T>q){__print(fff);while(!q.empty()){__print(q.top());q.pop();__print(xxx);}__print(yyy);}
 template<class T>void __print(stack<T>st){__print(fff);while(!st.empty()){__print(st.top());st.pop();__print(xxx);}__print(yyy);}
 template<class T,class V>void __print(pair<T,V>p){__print(vvv);__print(p.F);__print(kkk);__print(p.S);__print(zzz);}
 template<class T>void __print(T *a,int n){__print(fff);for(int i=0;i<n;i++){__print(a[i]);__print(xxx);} __print(yyy);}
