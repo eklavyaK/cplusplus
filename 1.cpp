@@ -16,14 +16,11 @@ using namespace std;
 
 
 
+
+
 void code(int TC){
-    int n; cin>>n;
-    int arr[n]{}, l2[n];
-    for(int i=0;i<n;i++){
-        for(int j=i;j<n;j++){
-            
-        }
-    }
+    
+
 }
 
 

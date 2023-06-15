@@ -69,3 +69,4 @@ https://codeforces.com/problemset/problem/1787/E        //Interesting maths (sol
 https://codeforces.com/problemset/problem/1776/G        //Excellent strings (unsolved)
 https://codeforces.com/problemset/problem/1775/E        //Good maths and array (solved)
 https://codeforces.com/problemset/problem/1771/D        //Interesting tree (solved)
+https://codeforces.com/contest/1767/problem/C           //Excellent dp (solved for n^2!)
