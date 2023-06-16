@@ -70,3 +70,5 @@ https://codeforces.com/problemset/problem/1776/G        //Excellent strings (uns
 https://codeforces.com/problemset/problem/1775/E        //Good maths and array (solved)
 https://codeforces.com/problemset/problem/1771/D        //Interesting tree (solved)
 https://codeforces.com/contest/1767/problem/C           //Excellent dp (solved for n^2!)
+https://codeforces.com/problemset/problem/1762/D        //Good maths (solved)
+https://codeforces.com/problemset/problem/1761/D        //Excellent bitswise and maths (unsolved)

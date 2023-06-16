@@ -15,16 +15,26 @@ using namespace std;
 #endif
 
 
+int query(int i, int j){
+    cout<<"? "<<i<<" "<<j<<endl<<flush;
+    cin>>i; return i;
+}
 
-const int n = 1e6+5;
+pair<int,int> run_double(int i, int j, int n){
+    for(int k=j+1;k<=n;k++){
+        int a = query(i,k);
+        int b = query(j,k);
+        if(a>b) return run_double(i,k,n);   
+        else if(a<b) return run_double(j,k,n);
+    }
+    return {i,j};
+}
 
 void code(int TC){
-    int dp[n+5][2],j;
-    dp[j][0] = dp[j][0]*3;
-    if(j+1<n+2) dp[j][0] += dp[j+1][1];
-    if(j-1>=0) dp[j][1] = dp[j-1][1]*3;
-    if(j-2>=0) dp[j][1] += dp[j-2][0];
-
+    int n; cin>>n;
+    auto [i,j] = run_double(1,2,n);
+    cout<<"! "<<i<<' '<<j<<endl<<flush;
+    cin>>n;
 }
 
 
