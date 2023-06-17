@@ -1,37 +1,83 @@
-#include<bits/stdc++.h>
-#define endl "\n"
-#define F first
-#define S second
-#define int long long
-typedef long long ll;
-typedef long double ld;
+#include <stdio.h>
+#include <iostream>
+#include <map>
+#include <cmath>
+#include <algorithm>
+#include <set>
+#include <stack>
+#include <deque>
+#include <vector>
+#include <stdlib.h>
+#include <string>
+#include <string.h>
+
 using namespace std;
-#ifndef ONLINE_JUDGE
-#include "include/debug.h"
-#else
-#define debug(c)
-#define debugarr(a,n)
-#define debugvar(c)
-#endif
 
+#define ll long long
+#define sl(n) scanf("%lld", &n)
+#define si(n) scanf("%d", &n)
+#define ss(n) scanf("%s", n)
 
+ll p[15], r[15], s1, s2, t1, t2;
 
-const int n = 1e6+5;
+ll ex_eucl(ll x, ll y)
+{
+    ll q, r, temp;
 
-void code(int TC){
-    int dp[n+5][2],j;
-    dp[j][0] = dp[j][0]*3;
-    if(j+1<n+2) dp[j][0] += dp[j+1][1];
-    if(j-1>=0) dp[j][1] = dp[j-1][1]*3;
-    if(j-2>=0) dp[j][1] += dp[j-2][0];
+    q = x/y;
 
+    r = x - q*y;
+
+    temp = s2 - q*s1;
+    s2 = s1;
+    s1 = temp;
+
+    if (r == 1)
+        return s1;
+    else return ex_eucl(y, r);
 }
 
+int main ()
+{
+    ll cs, t, i, j, k, n, x, y, ans, q, mul = 1, lcm, m,a ,b;
 
-signed main(){
-    cin.tie(0)->sync_with_stdio(0);
-    int TT = 1; cin >> TT;
-    for (int TC = 1; TC <= TT; TC++) 
-        code(TC);
+    sl(t);
+
+    for (cs = 1; cs <= t; cs++)
+    {
+        sl(x);
+
+        sl(m);
+        sl(a);
+
+        lcm = m;
+
+        for (i = 2; i <= x; i++)
+        {
+            sl(n);
+            sl(b);
+
+            s2 = 1;
+            s1 = 0;
+
+            k = ex_eucl(m, n);
+
+            k = (k%n + n)%n; //here gcd is 1, generally we'd have to mod by n/gcd
+
+            k = ((b-a)*k)%n;
+
+            lcm = m*n;
+
+            a = (a + (k*m)%lcm)%lcm;
+
+            if (a < 0)
+                a = (a + lcm)%lcm;
+
+            m = lcm;
+        }
+
+        printf("Case %lld: %lld\n", cs, a%lcm);
+    }
+
     return 0;
 }
