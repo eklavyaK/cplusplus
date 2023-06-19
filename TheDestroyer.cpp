@@ -19,8 +19,19 @@ using namespace std;
 
 
 void code(int TC){
-    
-
+    int n; cin>>n;
+    int arr[105]{};
+    for(int i=0;i<n;i++){
+        int k;cin>>k;
+        arr[k]++;
+    }
+    for(int i=0;i<102;i++){
+        if(arr[i]<arr[i+1]){
+            cout<<"NO"<<endl;
+            return;
+        }
+    }
+    cout<<"YES"<<endl;
 }
 
 

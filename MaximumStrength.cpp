@@ -19,8 +19,20 @@ using namespace std;
 
 
 void code(int TC){
-    
-
+    string a, b; cin>>a>>b;
+    if(a.size()<b.size()) swap(a,b);
+    int diff = a.size()-b.size();
+    if(diff){
+        b = string(diff,'0') + b;
+    }
+    int n = a.size(), ans = 0;
+    for(int i=0;i<n;i++){
+        if(a[i]!=b[i]){
+            ans = abs(a[i]-b[i]) + (n-1-i)*9;
+            break;
+        }
+    }
+    cout<<ans<<endl;
 }
 
 

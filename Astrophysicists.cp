@@ -19,8 +19,18 @@ using namespace std;
 
 
 void code(int TC){
-    
-
+    int n,k,g; cin>>n>>k>>g;
+    int l = ceil((ld)g/2)-1;
+    if(n*l>=k*g){
+        cout<<k*g<<endl;
+        return;
+    }
+    int last = k*g-(n-1)*l;
+    int r = last%g;
+    if(r>=l+1){
+        cout<<k*g-last-g+r<<endl;
+    }
+    else cout<<k*g-last+r<<endl;
 }
 
 

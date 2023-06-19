@@ -19,8 +19,22 @@ using namespace std;
 
 
 void code(int TC){
-    
-
+    int n; cin>>n;
+    string a, b; cin>>a>>b;
+    if(a==b){
+        cout<<0<<endl;
+        return;
+    }
+    string bb = b;
+    reverse(b.begin(),b.end());
+    int l = 0, r = 0;
+    for(int i=0;i<n;i++){
+        if(a[i]!=bb[i]) l++;
+        if(b[i]!=a[i]) r++;
+    }
+    l = max(l,1ll);
+    r = max(r,1ll);
+    cout<<min(2*l-1+((l+1)&1),2*r-1+(r&1))<<endl;
 }
 
 

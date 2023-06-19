@@ -19,14 +19,28 @@ using namespace std;
 
 
 void code(int TC){
-    
-
+    int n; cin>>n;
+    int b[n];
+    for(int i=0;i<n;i++) cin>>b[i];
+    int ans[n][n];
+    for(int i=0;i<n;i++){
+        for(int j=0;j<n;j++){
+            ans[i][j] = (i+1)*(j+1) % n;
+        }
+    }
+    for(int j=0;j<n;j++){
+        int add = ((b[j] - ans[j][j]) % n + n);
+        for(int i=0;i<n;i++){
+            cout<< (ans[i][j] + add) % n <<" ";
+        }
+        cout<<endl;
+    }
 }
 
 
 signed main(){
     cin.tie(0)->sync_with_stdio(0);
-    int TT = 1; cin >> TT;
+    int TT = 1;
     for (int TC = 1; TC <= TT; TC++) 
         code(TC);
     return 0;

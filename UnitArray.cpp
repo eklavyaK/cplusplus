@@ -19,8 +19,20 @@ using namespace std;
 
 
 void code(int TC){
-    
-
+    int n; cin>>n;
+    int a = 0, b= 0;
+    for(int i=0;i<n;i++){
+        int k; cin>>k;
+        if(k==-1) b++;
+        else a++;
+    }
+    int ans = 0, now = b;
+    for(int i=0;i<now;i++){
+        if(b&1) b--,a++,ans++;
+        else if(b>a) b--,a++, ans++;
+        else break;
+    }
+    cout<<ans<<endl;
 }
 
 
