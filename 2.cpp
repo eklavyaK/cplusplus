@@ -2,6 +2,7 @@
 #define endl "\n"
 #define F first
 #define S second
+#define cerr cout
 #define int long long
 typedef long long ll;
 typedef long double ld;
@@ -19,7 +20,7 @@ using namespace std;
 
 
 void code(int TC){
-    
+    int cnt[2]{};
 
 }
 
