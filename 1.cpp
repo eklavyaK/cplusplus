@@ -1,8 +1,7 @@
-#include<bits/stdc++.h> 
-#define endl "\n"
+#include<bits/stdc++.h>
+// #define endl "\n"
 #define F first
 #define S second
-#define cerr cout
 #define int long long
 typedef long long ll;
 typedef long double ld;
@@ -17,17 +16,40 @@ using namespace std;
 
 
 
-
-
-
+int query(int i, int j){
+    cout<<"? "<<i<<" "<<j<<endl;
+    cin>>i; return i;
+}
+ 
+struct Node{
+    int i; int j;
+    Node(int x=0, int y=0){
+        i = x; 
+        j = y;
+    }
+};
+ 
+Node run_double(int i, int j, int n){
+    for(int k=j+1;k<=n;k++){
+        int a = query(i,k);
+        int b = query(j,k);
+        if(a>b) return run_double(i,k,n);   
+        else if(a<b) return run_double(j,k,n);
+    }
+    return Node(i,j);
+}
+ 
 void code(int TC){
-    debug(TC);
-
+    int n; cin>>n;
+    auto [i,j] = run_double(1,2,n);
+    cout<<"! "<<i<<' '<<j<<endl;
+    cin>>n;
 }
 
 
 signed main(){
-    cin.tie(0)->sync_with_stdio(0);
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);cout.tie(0);cerr.tie(0);
     int TT = 1; cin >> TT;
     for (int TC = 1; TC <= TT; TC++) 
         code(TC);
