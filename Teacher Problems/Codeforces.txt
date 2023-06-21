@@ -76,3 +76,4 @@ https://codeforces.com/problemset/problem/687/B         //Classic maths
 https://codeforces.com/problemset/problem/1748/D        //Classic maths
 https://codeforces.com/contest/1734/problem/E           //Classic maths
 https://codeforces.com/problemset/problem/1729/G        //Interesting dp
+https://codeforces.com/problemset/problem/1725/F        //Excellent question on ranges
