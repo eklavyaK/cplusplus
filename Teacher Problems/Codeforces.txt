@@ -80,3 +80,4 @@ https://codeforces.com/problemset/problem/1725/F        //Excellent question on 
 https://codeforces.com/problemset/problem/1671/E        //Good Tree (Solved)
 https://codeforces.com/contest/1667/problem/B           //Interesting maths and dp (solved)
 https://codeforces.com/problemset/problem/1666/J        //Excellent dp and tree (solved)
+https://codeforces.com/problemset/problem/1654/D        //Classic maths
