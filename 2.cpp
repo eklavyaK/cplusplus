@@ -19,14 +19,8 @@ using namespace std;
 
 
 void code(int TC){
-    priority_queue<int> q;
-    q.push(1);
-    q.push(1);
-    q.push(1);
-    while(!q.empty()){
-        int k = q.top(); q.pop();
-        cout<<k<<endl;
-    }
+    
+
 }
 
 

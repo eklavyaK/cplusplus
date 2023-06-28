@@ -2,66 +2,77 @@
 #define endl "\n"
 #define F first
 #define S second
-using namespace std;
-const string fff="[ ",vvv="{",kkk=",",xxx=" ",zzz="}",yyy="]";
-#ifndef ONLINE_JUDGE
-#define debug(x)cerr<<#x<<xxx;__print(x);cerr<<endl;
-#define debug_arr(a,x)cerr<<#a<<xxx;__print(a,x);cerr<<endl;
-#else
-#define debug(x)
-#endif
-void __print(int x){cerr<<x;}
-void __print(long x){cerr<<x;}
-void __print(unsigned x){cerr<<x;}
-void __print(unsigned long x){cerr<<x;}
-void __print(long long x){cerr<<x;}
-void __print(unsigned long long x){cerr<<x;}
-void __print(float x){cerr<<x;}
-void __print(double x){cerr<<x;}
-void __print(long double x){cerr<<x;}
-void __print(char x){cerr<<x;}
-void __print(const char *x){cerr<<x;}
-void __print(const string &x){cerr<<x;}
-void __print(bool x){cerr<<x;}
-template<class T>void __print(set<T>);
-template<class T>void __print(vector<T>);
-template<class T>void __print(queue<T>);
-template<class T>void __print(stack<T>);
-template<class T>void __print(multiset<T>);
-template<class T,class V>void __print(map<T,V>m);
-template<class T,class V>void __print(pair<T,V>p);
-template<class T>void __print(vector<T>v){__print(fff);for(T i:v){__print(i);__print(xxx);} __print(yyy);}
-template<class T>void __print(set<T>s){__print(fff);for(T i:s){__print(i);__print(xxx);}__print(yyy);}
-template<class T>void __print(multiset<T>ms){__print(fff);for(T i:ms){__print(i);__print(xxx);} __print(yyy);}
-template<class T>void __print(queue<T>q){__print(fff);while(!q.empty()){__print(q.front());q.pop();__print(xxx);}__print(yyy);}
-template<class T>void __print(stack<T>st){__print(fff);while(!st.empty()){__print(st.top());st.pop();__print(xxx);}__print(yyy);}
-template<class T,class V>void __print(pair<T,V>p){__print(vvv);__print(p.F);__print(kkk);__print(p.S);__print(zzz);}
-template<class T>void __print(T *a,int n){__print(fff);for(int i=0;i<n;i++){__print(a[i]);__print(xxx);} __print(yyy);}
-template<class T,class V>void __print(map<T,V>m){__print(fff);for(auto i:m){__print(i);__print(xxx);}__print(yyy);}
 #define int long long
 typedef long long ll;
 typedef long double ld;
+using namespace std;
+#ifndef ONLINE_JUDGE
+#include "include/debug.h"
+#else
+#define debug(c)
+#define debugarr(a,n)
+#define debugvar(c)
+#endif
 
 
 
 
 
+const int N = 3e5;
+int tree[N*4], lazy[N*4], dp[N], sum[N];
+vector<pair<int,int>> X[N];
+void pushdown(int node){
+    lazy[2*node] += lazy[node];
+    tree[2*node] += lazy[node];
+    lazy[2*node+1] += lazy[node];
+    tree[2*node+1] += lazy[node];
+    lazy[node] = 0;
+}
+void update(int node, int l, int r, int st, int en, int c){
+    if(en<st || st>r || en<l) return;
+    if(st<=l && en>=r){
+        tree[node]+=c, lazy[node]+=c;
+        return;
+    }
+    int mid = (l+r)>>1;
+    update(2*node,l,mid,st,en,c);
+    update(2*node+1,mid+1,r,st,en,c);
+    tree[node] = min(tree[2*node],tree[2*node+1]);
+}
+int query(int node, int l, int r, int st, int en){
+    if(en<st || st>r || en<l) return LLONG_MAX;
+    if(st<=l && en>=r) return tree[node];
+    pushdown(node);
+    int mid = (l+r)>>1;
+    return min(query(2*node,l,mid,st,en),query(2*node+1,mid+1,r,st,en));
+}
 
 void code(int TC){
-   
+    int n,q; cin>>n>>q;
+    for(int i=0;i<n;i++){
+        cin>>dp[i];
+        update(1,0,n-1,i,i,dp[i]);
+    }
+    
+    while(q--){
+        int type; cin>>type;
+        if(type==1){
+            int l,r,c; cin>>l>>r>>c;
+            update(1,0,n-1,l,r,c);
+        }
+        else{
+            int l,r; cin>>l>>r;
+            cout<<query(1,0,n-1,l,r)<<endl<<flush;
+        }
+    }
 }
 
 
-
 signed main(){
-    #ifndef ONLINE_JUDGE
-	freopen("1err.txt", "w", stderr);
-    #endif
-    cout.precision(20);
-    cin.tie(0)->sync_with_stdio(0);
-    int TC = 1;
-    cin >> TC;
-    for (int i = 1; i <= TC; i++)
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);cout.tie(0);cerr.tie(0);
+    int TT = 1; cin >> TT;
+    for (int TC = 1; TC <= TT; TC++) 
         code(TC);
     return 0;
 }
