@@ -19,8 +19,7 @@ using namespace std;
 
 
 void code(int TC){
-    
-
+    int n; cin>>n;
 }
 
 
