@@ -83,4 +83,6 @@ https://codeforces.com/problemset/problem/1666/J        //Excellent dp and tree 
 https://codeforces.com/problemset/problem/1660/F2       //Classic dp + segmentTree (solved)
 https://codeforces.com/problemset/problem/1654/D        //Classic maths (unsolved)
 https://codeforces.com/problemset/problem/1650/G        //Classic tree (solved)
-https://codeforces.com/contest/1842/problem/E           //Classic lazy tree + dp (unsolved)
+https://codeforces.com/contest/1842/problem/E           //Classic lazy tree + dp (unsolved)     
+https://codeforces.com/contest/1845/problem/E           //Excellent dp (unsolved)
+https://codeforces.com/problemset/problem/1628/D1       //Interesting dp and maths (solved)
