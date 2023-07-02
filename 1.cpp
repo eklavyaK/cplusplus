@@ -15,19 +15,15 @@ using namespace std;
 #endif
 
 
-
-
-
 void code(int TC){
     
-
 }
 
 
 signed main(){
     ios_base::sync_with_stdio(0);
     cin.tie(0);cout.tie(0);cerr.tie(0);
-    int TT = 1; cin >> TT;
+    int TT = 1;
     for (int TC = 1; TC <= TT; TC++) 
         code(TC);
     return 0;
