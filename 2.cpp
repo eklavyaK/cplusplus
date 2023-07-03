@@ -1,4 +1,50 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
+#define endl "\n"
+#define F first
+#define S second
+#define int long long
+typedef long long ll;
+typedef long double ld;
 using namespace std;
-using V=vector<int>;
-const int MOD=1e9+7;int main(){int n,k; cin>> n>>k;V a(n);vector<int> o;for(int i=0;i<n;i++){cin>>a[i];if(a[i])o.push_back(i);}int m =o.size();vector<V> dp(m+1, V(k+1,0));dp[0][0]=1;for(int i=1;i<=n;i++)for(int j=m;j>=1;j--){int D=abs((i-1)-o[j-1]); for(int l=k;l>=D;l--){dp[j][l] = (dp[j][l]+dp[j-1][l-D])%MOD;}}int S =0;for(int i=0;i<=k;i++)if((i%2)==(k%2))S=(S+dp[m][i])%MOD,cout<<dp[m][i]<<' ';cout<<S<<endl;} 
+#ifndef ONLINE_JUDGE
+#include "include/debug.h"
+#else
+#define debug(c)
+#define debugarr(a,n)
+#define debugvar(c)
+#endif
+
+
+
+
+
+void code(int TC){
+    int T = 10;
+    for(int i=0;i<T;i++){
+        cout<<"#define deg(";
+        for(int j=0;j<=i;j++){
+            cout<<char(65+j)<<',';
+        }
+        cout<<") cerr<<\"=> \"";
+        for(int j=0;j<=i;j++){
+            cout<<"<<#"<<char(65+j)<<"<<\" \"";
+        }
+        cout<<"<<\"[\"";
+        for(int j=0;j<=i;j++){
+            cout<<"<<"<<char(65+j)<<"<<\" \"";
+        }
+        cout<<"<<\"]\"";
+        cout<<"<<endl"<<endl;
+    }
+
+}
+
+
+signed main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);cout.tie(0);cerr.tie(0);
+    int TT = 1; cin >> TT;
+    for (int TC = 1; TC <= TT; TC++) 
+        code(TC);
+    return 0;
+}
