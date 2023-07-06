@@ -26,7 +26,7 @@ freopen("1err.txt", "w", stderr);
 
 /********************************************************************
  * WARNING: This debug file doesn't work for all the data structures
- * NOTE: It works for all the primitive data types (most probably). It works for normal set, map, pair, vector, queue, priority_queue(max and min), deque, multiset.
+ * NOTE: It works for all the primitive data types (most probably). It works for normal set, map, pair, vector, queue, priority_queue(max and min), deque, multiset and array.
  * NOTE: If normal definitions of these datastructures is changed while declaration then it might not work
   *******************************************************************/
 
@@ -49,27 +49,27 @@ void __print(char x){ std::cerr<<"\'"<<x<<"\'"; }
 void __print(const char *x){ std::cerr<<"\""<<x<<"\""; }
 void __print(const std::string &x){ std::cerr<<"\""<<x<<"\""; }
 void __print(bool x){ std::cerr<<x; }
-template<typename T> void __print(std::set<T>);
-template<typename T> void __print(std::vector<T>);
-template<typename T> void __print(std::queue<T>);
-template<typename T> void __print(std::deque<T>);
-template<typename T> void __print(std::stack<T>);
-template<typename T> void __print(std::multiset<T>);
-template<typename T> void __print(std::priority_queue<T>q);
-template<typename T> void __print(min_pq(T) q);
-template<typename T, typename V> void __print(std::map<T,V>m);
-template<typename T, typename V> void __print(std::pair<T,V>p);
-template<typename T> void __print(std::vector<T>v){ std::cerr<<"[ ";for(T i:v){__print(i);std::cerr<<" ";}std::cerr<<"]"; }
-template<typename T> void __print(std::set<T>s){ std::cerr<<"[ ";for(T i:s){__print(i);std::cerr<<" ";}std::cerr<<"]"; }
-template<typename T> void __print(std::multiset<T>ms){ std::cerr<<"[ ";for(T i:ms){__print(i);std::cerr<<" ";} std::cerr<<"]"; }
-template<typename T> void __print(std::queue<T>q){ std::cerr<<"[ ";while(!q.empty()){__print(q.front());q.pop();std::cerr<<" ";}std::cerr<<"]"; }
-template<typename T> void __print(std::deque<T>q){ std::cerr<<"[ ";while(!q.empty()){__print(q.front());q.pop_front();std::cerr<<" ";}std::cerr<<"]"; }
-template<typename T> void __print(std::priority_queue<T>q){ std::cerr<<"[ ";while(!q.empty()){__print(q.top());q.pop();std::cerr<<" ";}std::cerr<<"]"; }
-template<typename T> void __print(min_pq(T) q){ std::cerr<<"[ ";while(!q.empty()){__print(q.top());q.pop();std::cerr<<" ";}std::cerr<<"]"; }
-template<typename T> void __print(std::stack<T>st){ std::cerr<<"[ ";while(!st.empty()){__print(st.top());st.pop();std::cerr<<" ";}std::cerr<<"]"; }
-template<typename T,typename V> void __print(std::pair<T,V>p){ std::cerr<<"{";__print(p.first);std::cerr<<",";__print(p.second);std::cerr<<"}"; }
-template<typename T>std::string __printarr(T *a,int n){ std::cerr<<"[ ";for(int i=0;i<n;i++){__print(a[i]);std::cerr<<" ";} std::cerr<<"]";return ""; }
-template<typename T,typename V> void __print(std::map<T,V>m){ std::cerr<<"[ ";for(auto i:m){__print(i);std::cerr<<" ";}std::cerr<<"]"; }
+template <typename T> void __print(std::set<T>);
+template <typename T> void __print(std::vector<T>);
+template <typename T> void __print(std::queue<T>);
+template <typename T> void __print(std::deque<T>);
+template <typename T> void __print(std::stack<T>);
+template <typename T> void __print(std::multiset<T>);
+template <typename T> void __print(std::priority_queue<T>q);
+template <typename T> void __print(min_pq(T) q);
+template <typename T, typename V> void __print(std::map<T,V>m);
+template <typename T, typename V> void __print(std::pair<T,V>p);
+template <typename T> void __print(std::vector<T>v){ std::cerr<<"[ ";for(T i:v){__print(i);std::cerr<<" ";}std::cerr<<"]"; }
+template <typename T> void __print(std::set<T>s){ std::cerr<<"[ ";for(T i:s){__print(i);std::cerr<<" ";}std::cerr<<"]"; }
+template <typename T> void __print(std::multiset<T>ms){ std::cerr<<"[ ";for(T i:ms){__print(i);std::cerr<<" ";} std::cerr<<"]"; }
+template <typename T> void __print(std::queue<T>q){ std::cerr<<"[ ";while(!q.empty()){__print(q.front());q.pop();std::cerr<<" ";}std::cerr<<"]"; }
+template <typename T> void __print(std::deque<T>q){ std::cerr<<"[ ";while(!q.empty()){__print(q.front());q.pop_front();std::cerr<<" ";}std::cerr<<"]"; }
+template <typename T> void __print(std::priority_queue<T>q){ std::cerr<<"[ ";while(!q.empty()){__print(q.top());q.pop();std::cerr<<" ";}std::cerr<<"]"; }
+template <typename T> void __print(min_pq(T) q){ std::cerr<<"[ ";while(!q.empty()){__print(q.top());q.pop();std::cerr<<" ";}std::cerr<<"]"; }
+template <typename T> void __print(std::stack<T>st){ std::cerr<<"[ ";while(!st.empty()){__print(st.top());st.pop();std::cerr<<" ";}std::cerr<<"]"; }
+template <typename T, typename V> void __print(std::pair<T,V>p){ std::cerr<<"{";__print(p.first);std::cerr<<",";__print(p.second);std::cerr<<"}"; }
+template <typename T>std::string __printarr(T *a,int n){ std::cerr<<"[ ";for(int i=0;i<n;i++){__print(a[i]);std::cerr<<" ";} std::cerr<<"]";return ""; }
+template <typename T, typename V> void __print(std::map<T,V>m){ std::cerr<<"[ ";for(auto i:m){__print(i);std::cerr<<" ";}std::cerr<<"]"; }
 
 void __stripSpaces(std::string &str){
     size_t pos = 0;
