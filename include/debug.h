@@ -33,9 +33,10 @@ freopen("1err.txt", "w", stderr);
 /****************************************************DEBUG TEMPLATE*******************************************/
 
 
-#define debug(...) std::cerr << ultimate_humungousaur(#__VA_ARGS__) << __printDebug(__VA_ARGS__) <<  '\n'
+#define debug(...) std::cerr << "## " << humungousaur(#__VA_ARGS__) << "=> " << ultimate_humungousaur(__VA_ARGS__) <<  '\n'
 #define debugarr(a,n) std::cerr << "## " << #a << " => " << __printarr(a,n) << '\n'
 #define min_pq(T) std::priority_queue<T,std::vector<T>,std::greater<T>>
+
 void __print(signed x){ std::cerr<<x; }
 void __print(unsigned x){ std::cerr<<x; }
 void __print(signed long x){ std::cerr<<x; }
@@ -67,7 +68,7 @@ template <typename T> void __print(std::deque<T>q){ std::cerr<<"[ ";while(!q.emp
 template <typename T> void __print(std::priority_queue<T>q){ std::cerr<<"[ ";while(!q.empty()){__print(q.top());q.pop();std::cerr<<" ";}std::cerr<<"]"; }
 template <typename T> void __print(min_pq(T) q){ std::cerr<<"[ ";while(!q.empty()){__print(q.top());q.pop();std::cerr<<" ";}std::cerr<<"]"; }
 template <typename T> void __print(std::stack<T>st){ std::cerr<<"[ ";while(!st.empty()){__print(st.top());st.pop();std::cerr<<" ";}std::cerr<<"]"; }
-template <typename T, typename V> void __print(std::pair<T,V>p){ std::cerr<<"{";__print(p.first);std::cerr<<",";__print(p.second);std::cerr<<"}"; }
+template <typename T, typename V> void __print(std::pair<T,V>p){ std::cerr<<"{";__print(p.first);std::cerr<<", ";__print(p.second);std::cerr<<"}"; }
 template <typename T>std::string __printarr(T *a,int n){ std::cerr<<"[ ";for(int i=0;i<n;i++){__print(a[i]);std::cerr<<" ";} std::cerr<<"]";return ""; }
 template <typename T, typename V> void __print(std::map<T,V>m){ std::cerr<<"[ ";for(auto i:m){__print(i);std::cerr<<" ";}std::cerr<<"]"; }
 
@@ -86,25 +87,77 @@ template <typename... Args> void __printVariableNames(const std::string &names){
     }
 }
 
-template <typename... Args> std::string ultimate_humungousaur(const std::string &names){
+template <typename... Args> std::string humungousaur(const std::string &names){
     std::stringstream debugStream;
     debugStream << names;
     std::string namesString = debugStream.str();
     __stripSpaces(namesString);
-    std::cerr << "## ";
     __printVariableNames(namesString);
-    std::cerr << "=> ";
     return "";
 }
 
-template <typename T> std::string __printDebug(const T &value){
-    __print(value); std::cerr << " "; return "";
+template <typename T> std::string ultimate_humungousaur(const T &value){
+    __print(value); std::cerr << " "; 
+    return "";
 }
 
-template <typename T, typename... Args> std::string __printDebug(const T &value, const Args &...args){
+template <typename T, typename... Args> std::string ultimate_humungousaur(const T &value, const Args &...args){
     __print(value); std::cerr << " ";
-    __printDebug(args...);
+    ultimate_humungousaur(args...);
     return "";
 }
 
 /****************************************************TEMPLATE ENDS HERE*******************************************/
+
+/****************************************************SAMPLE TESTER CODE*******************************************
+
+#include<bits/stdc++.h>
+#include "include/debug.h"
+signed main(){
+    int a = 10;
+    std::string b = "w3r32";
+    char c = '2';
+    std::vector<std::string> v({"aef","wef"});
+    std::set<int> st{23,23,432,234,2};
+    std::vector<std::pair<int,int>> z({{3,234},{34,34}});
+    long double d = 234.2399;
+    long long e = 2343234239834;
+    debug(a,b,c,d,e);
+    debug(st);
+    debug(v);
+    debug(z);
+    debug(10);
+    debug(false);
+    debug('c');
+    debug(2343.23432);
+    debug("wdef");
+    debug(203982844902839023);
+    std::deque<std::map<std::string,int>> q;
+    std::map<std::string,int> m;
+    m["w23432"] = 2323;
+    m["223432"] = a;
+    m["oiion"] = 90;
+    q.push_front(m);
+    int arr[10]{};
+    debugarr(arr,10);
+    std::priority_queue<std::pair<int,std::string>,std::vector<std::pair<int,std::string>>,std::greater<std::pair<int,std::string>>> pq;
+    pq.push({2342,"ok"});
+    pq.push({889,"ok"});
+    pq.push({54645,"ok"});
+    debug(pq);
+    std::priority_queue<std::pair<int,std::string>> spq;
+    spq.push({2342,"ok"});
+    spq.push({889,"ok"});
+    spq.push({54645,"ok"});
+    debug(spq);
+    std::multiset<long double> ms;
+    for(int i=0;i<10;i++)ms.insert(rand()%19989);
+    debug(ms);
+    std::stack<char> stk;
+    for(int i=0;i<26;i++) stk.push(65+i);
+    debug(stk);
+    debug(ms,spq,pq,m,d,e,a,b,c,e,v,st,stk);   //debugging all!!
+    return 0;
+}
+
+***************************************************************************************************************/
