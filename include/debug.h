@@ -1,6 +1,6 @@
 /***********************************************************
  * Save the template in a *.h file
- * Include the macros below in your cplusplus file at the top
+ * Include the macros below in your cplusplus file at the top (not above <bits/stdc++.h>)
  * Don't forget to replace the "include/debug.h" with the path of the *.h file
  * Also you must include all the STL structures used debug file. Best way for this is to directly include <bits/stdc++.h>
 
