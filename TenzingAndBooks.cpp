@@ -1,4 +1,3 @@
-
 #include<bits/stdc++.h>
 #define endl "\n"
 #define F first
@@ -10,8 +9,9 @@ using namespace std;
 #ifndef ONLINE_JUDGE
 #include "include/debug.h"
 #else
-#define debugarr(a,n) 42
-#define debug(...) 42
+#define debug(c)
+#define debugarr(a,n)
+#define debugvar(c)
 #endif
 
 
@@ -19,8 +19,19 @@ using namespace std;
 
 
 void code(int TC){
-    
-
+    int n, x; cin>>n>>x;
+    int curr = 0;
+    for(int i=0;i<3;i++){
+        bool f = true;
+        for(int j=0;j<n;j++){
+            int  k; cin>>k;
+            if(!f) continue;
+            if((k|x)==x) curr = curr|k;
+            else f = false;
+        }
+    }
+    if(curr==x) cout<<"YES"<<endl;
+    else cout<<"NO"<<endl;
 }
 
 

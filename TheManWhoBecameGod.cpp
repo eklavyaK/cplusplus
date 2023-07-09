@@ -1,4 +1,3 @@
-
 #include<bits/stdc++.h>
 #define endl "\n"
 #define F first
@@ -19,8 +18,23 @@ using namespace std;
 
 
 void code(int TC){
-    
-
+    int n,k; cin>>n>>k;
+    vector<int> sum;
+    int last;
+    cin>>last;
+    for(int i=0;i<n-1;i++){
+        int c; cin>>c;
+        sum.push_back(abs(last-c));
+        last = c;
+    }
+    sort(sum.begin(),sum.end());
+    debug(sum);
+    int ans = 0;
+    for(int i=n-k-1;i>=0;i--){
+        debug(i);
+        ans+=sum[i];
+    }
+    cout<<ans<<endl;
 }
 
 

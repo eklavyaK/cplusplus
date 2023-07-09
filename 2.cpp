@@ -18,39 +18,8 @@ using namespace std;
 
 
 void code(int TC){
-    int n,m,k; cin>>n>>m>>k;
-    vector<string> ans(n);
-    bool a[n][m];
-    memset(a,0,sizeof(a));
-    if(n & 1){
-        if(k < m/2){
-            cout<<"NO"<<endl;
-            return;
-        }
-        else k -= m/2, n--;
-        for(int i=0;i<m;i+=2) ans[0][i] = ans[0][i+1] = 97 + (i/2) % 26, a[0][i] = a[0][i] = 1;
-    }
-    if(k & 1){
-        cout<<"NO"<<endl;
-        return;
-    }
-    function<int(bool, int, int)> find = [&](int h, int i, int j){
-        set<char> s;
-        if(h){
-            if(i-1>0) s.insert(ans[i-1][j]), s.insert(ans[i-1][j+1]);
-            if(j-1>0) s.insert(ans[i][j-1]);
-        }
-        else{
-            if(j-1>0) s.insert(ans[i][j-1]), s.insert(ans[i+1][j-1]);
-            if(i-1>0) s.insert(ans[i-1][j]);
-        }
-        for(int c=97;c<=122;c++) if(!s.count(c)) return c;
-    };
-    for(int i=0;i<n && k>0;i++){
-        for(int j=0;j<m && k>0;j++){
+    
 
-        }
-    }
 }
 
 
