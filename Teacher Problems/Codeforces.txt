@@ -89,3 +89,6 @@ https://codeforces.com/problemset/problem/1628/D1       //Interesting dp and mat
 https://codeforces.com/problemset/problem/1614/D1       //Interesting maths (solved)
 https://codeforces.com/problemset/problem/1606/E        //Classic and excellent dp (unsolved)
 https://codeforces.com/problemset/problem/1605/D        //Classic tree (solved), tricky statement
+https://codeforces.com/problemset/problem/1822/G2       //Classic maths
+https://codeforces.com/problemset/problem/1832/E        //Interesting maths
+https://codeforces.com/problemset/problem/1811/G2       //Classic dp
