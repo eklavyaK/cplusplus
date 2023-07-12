@@ -18,8 +18,18 @@ using namespace std;
 
 
 void code(int TC){
-    
-
+    int c[4][4];
+    memset(c,0,sizeof(c));
+    for(int i=0;i<4;i++){
+        for(int j=0;j<4;j++){
+            // for(int k=0;k<5;k++){
+                // cout<<i<<j<<k<<' '<<(i+j+k)%4<<endl;
+                c[(i+j)%4][i]++;
+                c[(i+j)%4][j]++;
+            // }
+        }
+    }
+    debug(c[0][0])  ;
 }
 
 

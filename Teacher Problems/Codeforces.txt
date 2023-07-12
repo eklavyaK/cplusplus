@@ -92,3 +92,5 @@ https://codeforces.com/problemset/problem/1605/D        //Classic tree (solved),
 https://codeforces.com/problemset/problem/1822/G2       //Classic maths
 https://codeforces.com/problemset/problem/1832/E        //Interesting maths
 https://codeforces.com/problemset/problem/1811/G2       //Classic dp
+https://codeforces.com/problemset/problem/1808/E1       //Interesting dp
+https://codeforces.com/problemset/problem/1806/E        //Interesting tree dp
