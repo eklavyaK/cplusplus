@@ -9,9 +9,8 @@ using namespace std;
 #ifndef ONLINE_JUDGE
 #include "include/debug.h"
 #else
-#define debug(c)
-#define debugarr(a,n)
-#define debugvar(c)
+#define debugarr(a,n) 42
+#define debug(...) 42
 #endif
 
 
@@ -20,33 +19,33 @@ using namespace std;
 
 void code(int TC){
     int n; cin>>n;
-    vector<int> arr(n);
-    int sum = 0;
-    for(int i=0;i<n;i++)cin>>arr[i],sum+=arr[i];
-    if(sum&1){
-        cout<<"NO"<<endl;
-        return;
-    }
-    bool f = false;
-    function<bool(int)> check = [&](int r){
-        int rem = arr[0] - r;
-        vector<int> curr = arr;
-        curr[0] = r;
-        for(int i=1;i<n;i++){
-            if(curr[i]<curr[i-1]) return false;
-            curr[i] -= curr[i-1];
+    string s; cin>>s;
+    for(int i=0;i<n;i++){
+        if(i % 3 ==0 && (n-1-i) % 3 == 0){
+            cout<<"YES"<<endl;
+            return;
         }
-        if(curr[n-1]==rem) f = true;
-        return curr[n-1]<=rem;
-    };
-    int l = 0, r = arr[0];
-    while(l<=r){
-        int mid = (l+r)>>1;
-        debug(mid);
-        if(check(mid)) l = mid+1;
-        else r = mid-1;
     }
-    cout<<(f?"YES":"NO")<<endl;
+    for(int j=0;j<26;j++){
+        int f = -1;
+        for(int i=0;i<n;i++){
+            if(f==-1){
+                if(s[i]-'a'==j && i % 3 == 0) f = i;
+            }
+            else{
+                if((n-1-i) % 3 != 0) continue;
+                if((i-f-1) % 3 == 0){
+                    cout<<"YES"<<endl;
+                    return;
+                }
+                else if((i-f-1) >= 1 && (i-f-1) % 3 == 1){
+                    cout<<"YES"<<endl;
+                    return;
+                }
+            }
+        }
+    }
+    cout<<"NO"<<endl;
 }
 
 

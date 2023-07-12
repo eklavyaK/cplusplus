@@ -18,18 +18,54 @@ using namespace std;
 
 
 void code(int TC){
-    int c[4][4];
-    memset(c,0,sizeof(c));
-    for(int i=0;i<4;i++){
-        for(int j=0;j<4;j++){
-            // for(int k=0;k<5;k++){
-                // cout<<i<<j<<k<<' '<<(i+j+k)%4<<endl;
-                c[(i+j)%4][i]++;
-                c[(i+j)%4][j]++;
-            // }
-        }
+    int n; cin>>n;
+    vector<vector<int>> tree(n+1);
+    for(int i=0;i<n-1;i++){
+        int u,v; cin>>u>>v;
+        tree[u].push_back(v);
+        tree[v].push_back(u);
     }
-    debug(c[0][0])  ;
+    bool sym[n+1]{};
+    int par[n+1]{}, hash[n+1]{}, now = 0;
+    map<vector<int>,int> is;
+    function<void(int)> dfs = [&](int node){
+        vector<int> cur;
+        map<int,int> checker;
+        for(auto i : tree[node]){
+            if(i==par[node]) continue;
+            par[i] = node;
+            dfs(i);
+            checker[hash[i]]++;
+            cur.push_back(hash[i]);
+        }
+        sort(cur.begin(),cur.end());
+        if(is.count(cur)){
+            hash[node] = is[cur];
+        }
+        else hash[node] = now++;
+        bool b = 0;
+        int hashh = 0;
+        for(auto [k,c] : checker){
+            if(c & 1){
+                if(b){
+                    sym[node] = 0;
+                    return;
+                }
+                else hashh = k, b = 1;
+            }
+        }
+        if(b){
+            for(auto i : tree[node]){
+                if(i==par[node]) continue;
+                if(hashh==hash[i] && sym[i]){
+                    sym[node] = 1;
+                    return;
+                }
+            }
+        }
+    };
+    dfs(1);
+    cout<<(sym[1]?"YES":"NO")<<endl;
 }
 
 
