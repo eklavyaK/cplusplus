@@ -1,0 +1,11 @@
+Declaring int variable with bool. this makes getting 1 even when we want higher integer value
+
+Incomplete modulus shielding in an expression causing overflow or large integer value than modulus
+
+Not applying proper typecasting causing overflow in a expression
+
+Accessing element out of bound issue
+
+Mistakenly declaring lower inf value by -1e9 + 5, rather than -1e9-5
+
+Not checking division by zero corner case
