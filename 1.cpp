@@ -26,7 +26,7 @@ void code(int TC){
         tree[v].push_back(u);
     }
     bool sym[n+1]{};
-    int par[n+1]{}, hash[n+1]{}, now = 0;
+    int par[n+1]{}, hash[n+1]{}, now = 1;
     map<vector<int>,int> is;
     function<void(int)> dfs = [&](int node){
         vector<int> cur;
@@ -39,32 +39,38 @@ void code(int TC){
             cur.push_back(hash[i]);
         }
         sort(cur.begin(),cur.end());
-        if(is.count(cur)){
-            hash[node] = is[cur];
-        }
-        else hash[node] = now++;
-        bool b = 0;
-        int hashh = 0;
+        debug(cur,checker);
+        if(!is.count(cur)) is[cur] = now++;
+        hash[node] = is[cur];
+        int b = 0, hashh = 0;
         for(auto [k,c] : checker){
             if(c & 1){
+                debug(k,b);
                 if(b){
                     sym[node] = 0;
                     return;
                 }
                 else hashh = k, b = 1;
+                debug(hashh,b);
             }
         }
+        debug(node);
+        debug(b,hashh);
         if(b){
             for(auto i : tree[node]){
                 if(i==par[node]) continue;
+                debug(i,hashh,hash[i],sym[i]);
                 if(hashh==hash[i] && sym[i]){
                     sym[node] = 1;
                     return;
                 }
             }
+            sym[node] = 0;
         }
+        else sym[node] = 1;
     };
     dfs(1);
+    debugarr(sym,n+1);
     cout<<(sym[1]?"YES":"NO")<<endl;
 }
 
