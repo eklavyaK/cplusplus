@@ -8,4 +8,6 @@ Accessing element out of bound issue
 
 Mistakenly declaring lower inf value by -1e9 + 5, rather than -1e9-5
 
+Taking initial minimum as 0 while during the course of operations minimum could drop below 0
+
 Not checking division by zero corner case

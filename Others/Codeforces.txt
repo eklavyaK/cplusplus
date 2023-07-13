@@ -89,8 +89,9 @@ https://codeforces.com/problemset/problem/1628/D1       //Interesting dp and mat
 https://codeforces.com/problemset/problem/1614/D1       //Interesting maths (solved)
 https://codeforces.com/problemset/problem/1606/E        //Classic and excellent dp (unsolved)
 https://codeforces.com/problemset/problem/1605/D        //Classic tree (solved), tricky statement
-https://codeforces.com/problemset/problem/1822/G2       //Classic maths
-https://codeforces.com/problemset/problem/1832/E        //Interesting maths
-https://codeforces.com/problemset/problem/1811/G2       //Classic dp
-https://codeforces.com/problemset/problem/1808/E1       //Interesting dp
-https://codeforces.com/problemset/problem/1806/E        //Interesting tree dp
+https://codeforces.com/problemset/problem/1822/G2       //Classic maths (solved)
+https://codeforces.com/problemset/problem/1832/E        //Interesting maths (unsolved)
+https://codeforces.com/problemset/problem/1811/G2       //Classic dp (unsolved)
+https://codeforces.com/problemset/problem/1808/E1       //Interesting dp (unsolved)
+https://codeforces.com/problemset/problem/1806/E        //Interesting tree dp (solved)
+https://codeforces.com/problemset/problem/1795/E        //Classic array (solved)

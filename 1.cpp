@@ -14,64 +14,36 @@ using namespace std;
 #endif
 
 
-
+vector<int> calc(vector<int> a, int n){
+    vector<int> L(n);
+    stack<pair<int,int>> st;
+    for(int i=0;i<n;i++){
+        while(!st.empty() && st.top().F>a[i]-i) st.pop();
+        if(st.empty()){
+            L[i] = (a[i]*(a[i]+1))/2;
+            if(a[i]-(i+1)>0) L[i]-=(a[i]-(i+1))*(a[i]-i)/2;
+        }
+        else L[i] = L[st.top().S] + (a[i]*(a[i]+1) - (a[i]-(i-st.top().S))*(a[i]-(i-st.top().S)+1))/2;
+        st.push({a[i]-i,i});
+    }
+    return L;
+}
 
 
 void code(int TC){
     int n; cin>>n;
-    vector<vector<int>> tree(n+1);
-    for(int i=0;i<n-1;i++){
-        int u,v; cin>>u>>v;
-        tree[u].push_back(v);
-        tree[v].push_back(u);
-    }
-    bool sym[n+1]{};
-    int par[n+1]{}, hash[n+1]{}, now = 1;
-    map<vector<int>,int> is;
-    function<void(int)> dfs = [&](int node){
-        vector<int> cur;
-        map<int,int> checker;
-        for(auto i : tree[node]){
-            if(i==par[node]) continue;
-            par[i] = node;
-            dfs(i);
-            checker[hash[i]]++;
-            cur.push_back(hash[i]);
-        }
-        sort(cur.begin(),cur.end());
-        debug(cur,checker);
-        if(!is.count(cur)) is[cur] = now++;
-        hash[node] = is[cur];
-        int b = 0, hashh = 0;
-        for(auto [k,c] : checker){
-            if(c & 1){
-                debug(k,b);
-                if(b){
-                    sym[node] = 0;
-                    return;
-                }
-                else hashh = k, b = 1;
-                debug(hashh,b);
-            }
-        }
-        debug(node);
-        debug(b,hashh);
-        if(b){
-            for(auto i : tree[node]){
-                if(i==par[node]) continue;
-                debug(i,hashh,hash[i],sym[i]);
-                if(hashh==hash[i] && sym[i]){
-                    sym[node] = 1;
-                    return;
-                }
-            }
-            sym[node] = 0;
-        }
-        else sym[node] = 1;
-    };
-    dfs(1);
-    debugarr(sym,n+1);
-    cout<<(sym[1]?"YES":"NO")<<endl;
+    vector<int> a(n);
+    int all = 0, ans = 0;
+    for(int i=0;i<n;i++) cin>>a[i], all+=a[i];
+    vector<int> L, R;
+    L.insert(L.end(),a.begin(),a.end());
+    R.insert(R.end(),a.rbegin(),a.rend());
+    L = calc(L,n), R = calc(R,n);
+    reverse(R.begin(),R.end());
+    debug(L);
+    debug(R);
+    for(int i=0;i<n;i++) ans = max(L[i]+R[i]-2*a[i],ans);
+    cout<<all-ans<<endl;
 }
 
 
