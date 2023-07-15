@@ -96,3 +96,5 @@ https://codeforces.com/problemset/problem/1808/E1       //Interesting dp (unsolv
 https://codeforces.com/problemset/problem/1806/E        //Interesting tree dp (solved)
 https://codeforces.com/problemset/problem/1795/E        //Classic array (solved)
 https://codeforces.com/contest/1785/problem/C           //Excellent and classic lazy segtree (unsolved)
+https://codeforces.com/problemset/problem/1776/B        //Excellent dp (solved)
+https://codeforces.com/problemset/problem/1777/E        //Interesting graph (solved)
