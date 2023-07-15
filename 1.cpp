@@ -14,36 +14,31 @@ using namespace std;
 #endif
 
 
-struct Node{
-    int h, c;
-};
-
-
+const int N = 105, M = 1e9+7;
+int dp[N][20005];
+int add(int A){
+    if(A>M) A-=M;
+    return A;
+}
 void code(int TC){
-    int n,h; cin>>n>>h;
-    vector<int> arr(n);
-    for(int i=0;i<n;i++) cin>>arr[i];
-    vector<vector<Node>> dp(n,vector<Node>(n,Node{-1,-1}));
-    for(int i=0;i<n;i++) dp[i][i] = {h,0};
-    function<Node(int,int)>  join = [&](int l, int r){
-        int mid = (arr[l]+arr[r])>>1;
-        if(arr[r]-mid>h) return Node{0, 2*h};
-        else return Node{h-(arr[r]-mid),2*(arr[r]-mid)-1};
-    };
-    function<Node(int,int)> calc = [&](int l, int r){
-        if(r<l) return Node{-1,-1};
-        if(dp[l][r].h!=-1) return dp[l][r];
-        auto [nh,e] = join(l,r);
-        dp[l][r].h = nh, dp[l][r].c = 1e18;
-        for(int i=l;i<r;i++){
-            if(dp[l][i].h==-1) dp[l][i] = calc(l,i);
-            if(dp[i+1][r].h==-1) dp[i+1][r] = calc(i+1,r);
-            dp[l][r].c = min(dp[l][r].c, dp[l][i].c+dp[i+1][r].c+e+dp[l][i].h+dp[i+1][r].h-2*h);
+    int n,x; cin>>n>>x;
+    int a[n], ans = 0;
+    for(int i=0;i<n;i++) cin>>a[i], a[i]-=x;
+    sort(a,a+n);
+    for(int i=1;i<n;i++){
+        for(int j=i;j<n-1;j++){
+            for(int k=0;k<=20000;k++){
+                dp[j][k] = add(dp[j][k] + dp[j-1][k]);
+                if(k+a[j]>=0 && k+a[j]<=20000) dp[j][k+a[j]] = add(dp[j][k+a[j]]+dp[j-1][k]);
+            }
+            dp[j][a[j]+10000] = add(dp[j][a[j]+10000] + 1);
+            ans = add(ans + dp[j][10000]);
         }
-        return dp[l][r];
-    };
-    calc(0,n-1);
-    cout<<dp[0][n-1].h+dp[0][n-1].c<<endl;
+        for(int j=0;j<n;j++){
+            for(int k=0;k<=20000;k++) dp[j][k] = 0;
+        }
+    }
+    cout<<ans<<endl;
 }
 
 

@@ -1,0 +1,7 @@
+Think about binary search
+
+Think about dp
+
+Think about even, odd positions or numbers
+
+Think about performing some operation on the input to make the question straightforward
