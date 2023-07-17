@@ -14,31 +14,38 @@ using namespace std;
 #endif
 
 
-const int N = 105, M = 1e9+7;
-int dp[N][20005];
-int add(int A){
-    if(A>M) A-=M;
-    return A;
-}
+/*
+Bipartite matching is simply coloring the nodes of a graph in such a way that no two adjacent nodes have same color
+
+We can color any graph in bipartite way if it doesn't have a ODD cycle
+
+NOTE: This can be used as a criteria to check if the graph has any ODD cycle
+*/
+
+
 void code(int TC){
-    int n,x; cin>>n>>x;
-    int a[n], ans = 0;
-    for(int i=0;i<n;i++) cin>>a[i], a[i]-=x;
-    sort(a,a+n);
-    for(int i=1;i<n;i++){
-        for(int j=i;j<n-1;j++){
-            for(int k=0;k<=20000;k++){
-                dp[j][k] = add(dp[j][k] + dp[j-1][k]);
-                if(k+a[j]>=0 && k+a[j]<=20000) dp[j][k+a[j]] = add(dp[j][k+a[j]]+dp[j-1][k]);
-            }
-            dp[j][a[j]+10000] = add(dp[j][a[j]+10000] + 1);
-            ans = add(ans + dp[j][10000]);
-        }
-        for(int j=0;j<n;j++){
-            for(int k=0;k<=20000;k++) dp[j][k] = 0;
-        }
+    int n,m; cin>>n>>m;
+    vector<vector<int>> graph(n+1);
+    for(int j=0;j<m;j++){
+        int u,v; cin>>u>>v;
+        graph[u].push_back(v);
+        graph[v].push_back(u);
     }
-    cout<<ans<<endl;
+    bool possible = true;
+    vector<int> color(n+1);
+    function<void(int,int)> go = [&](int node, int col){
+        color[node] = col;
+        for(auto i : graph[node]){
+            if(color[i] && color[i]==color[node]) possible = false;
+            if(!color[i]) go(i,3^color[node]);
+        }
+    };
+    for(int i=1;i<=n;i++) if(!color[i]) go(i,1);
+    if(!possible){
+        cout<<"IMPOSSIBLE"<<endl;
+        return;
+    }
+    for(int i=1;i<=n;i++) cout<<color[i]<<" ";cout<<endl;
 }
 
 
