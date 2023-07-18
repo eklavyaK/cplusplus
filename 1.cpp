@@ -18,20 +18,8 @@ using namespace std;
 
 
 void code(int TC){
-    int n,m; cin>>n>>m;
-    vector<pair<int,int>> G(n+5);
-    for(int j=0;j<m;j++){
-        int u,v,c; cin>>u>>v>>c;
-        G[u].push_back({v,c});
-        G[v].push_back({u,c});        
-    }
-    vector<int> D(n+5,1e18);
-    D[1] = 0;
-    for(int i=0;i<n;i++){
-        for(int i=1;i<=n;i++){
-            for(int j=0;j<m;j++)
-        }
-    }
+    
+
 }
 
 
