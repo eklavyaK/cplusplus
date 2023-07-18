@@ -14,45 +14,31 @@ using namespace std;
 #endif
 
 
-/*
-Bipartite matching is simply coloring the nodes of a graph in such a way that no two adjacent nodes have same color
 
-We can color any graph in bipartite way if it doesn't have a ODD cycle
-
-NOTE: This can be used as a criteria to check if the graph has any ODD cycle
-*/
 
 
 void code(int TC){
     int n,m; cin>>n>>m;
-    vector<vector<int>> graph(n+1);
+    vector<pair<int,int>> G(n+5);
     for(int j=0;j<m;j++){
-        int u,v; cin>>u>>v;
-        graph[u].push_back(v);
-        graph[v].push_back(u);
+        int u,v,c; cin>>u>>v>>c;
+        G[u].push_back({v,c});
+        G[v].push_back({u,c});        
     }
-    bool possible = true;
-    vector<int> color(n+1);
-    function<void(int,int)> go = [&](int node, int col){
-        color[node] = col;
-        for(auto i : graph[node]){
-            if(color[i] && color[i]==color[node]) possible = false;
-            if(!color[i]) go(i,3^color[node]);
+    vector<int> D(n+5,1e18);
+    D[1] = 0;
+    for(int i=0;i<n;i++){
+        for(int i=1;i<=n;i++){
+            for(int j=0;j<m;j++)
         }
-    };
-    for(int i=1;i<=n;i++) if(!color[i]) go(i,1);
-    if(!possible){
-        cout<<"IMPOSSIBLE"<<endl;
-        return;
     }
-    for(int i=1;i<=n;i++) cout<<color[i]<<" ";cout<<endl;
 }
 
 
 signed main(){
     ios_base::sync_with_stdio(0);
     cin.tie(0);cout.tie(0);cerr.tie(0);
-    int TT = 1;
+    int TT = 1; cin >> TT;
     for (int TC = 1; TC <= TT; TC++) 
         code(TC);
     return 0;

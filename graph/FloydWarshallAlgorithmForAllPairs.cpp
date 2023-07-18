@@ -12,30 +12,24 @@ using namespace std;
 #define debugarr(a,n) 42
 #define debug(...) 42
 #endif
-
+ 
 /*
 Floyd-Warshall algorithm: can find the shortest distances between the all pairs of the nodes,
 It works in O(V^3), where V is the no of nodes
 NOTE: It is not applicable for negative cycle in graph
 */
 const int N = 505;
-vector<pair<int,int>> G[N];
 vector<vector<int>> D(N,vector<int>(N,1e15));
-
+ 
 void code(int TC){
     int n,m,q; cin>>n>>m>>q;
+    for(int i=1;i<=n;i++) D[i][i] = 0;
     while(m--){
         int u,v,c; cin>>u>>v>>c;
-        G[u].push_back({v,c});
-        G[v].push_back({u,c});
+        D[u][v] = min(D[u][v],c);
+        D[v][u] = min(D[v][u],c);
     }
-    for(int i=1;i<=n;i++) D[i][i] = 0;
-    for(int u=1;u<=n;u++){
-        for(auto [v,c] : G[u]){
-            D[u][v] = min(D[u][v],c);
-        }
-    }
-    for(int k=1;k<=n;k++){
+    for(int k=1;k<=n;k++){               //The intermediate node is in the outer loop
         for(int i=1;i<=n;i++){
             for(int j=1;j<=n;j++){
                 D[i][j] = min(D[i][j],D[i][k]+D[k][j]);
@@ -48,8 +42,8 @@ void code(int TC){
         else cout<<D[u][v]<<endl;
     }
 }
-
-
+ 
+ 
 signed main(){
     ios_base::sync_with_stdio(0);
     cin.tie(0);cout.tie(0);cerr.tie(0);
