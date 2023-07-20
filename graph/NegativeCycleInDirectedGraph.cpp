@@ -12,19 +12,19 @@ using namespace std;
 #define debugarr(a,n) 42
 #define debug(...) 42
 #endif
-
-
+ 
+ 
 /*
 Bellman-Ford algorithm is used to find the shortest route between a source and a destination,
-
+ 
 It's complexity is O(V*E), which is much more than Dijkstra
-
+ 
 ADVANTAGE OVER DIJKSTRA: It can work for negative edge weights, hence it is used to find negative cycle in a graph,
-
+ 
 first run the edges for n-1 times (n-1 iteration brings saturation), if in during nth iteration, there is a change observed, then there must be negative cycle in the graph
 */
-
-
+ 
+ 
 void code(int TC){
     int n,m; cin>>n>>m;
     vector<vector<pair<int,int>>> G(n+5);
@@ -60,8 +60,8 @@ void code(int TC){
     }
     cout<<"NO"<<endl;
 }
-
-
+ 
+ 
 signed main(){
     ios_base::sync_with_stdio(0);
     cin.tie(0);cout.tie(0);cerr.tie(0);
