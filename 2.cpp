@@ -13,40 +13,43 @@ using namespace std;
 #define debug(...) 42
 #endif
 
-/*
-Floyd-Warshall algorithm: can find the shortest distances between the all pairs of the nodes,
-It works in O(V^3), where V is the no of nodes
-NOTE: It is not applicable for negative cycle in graph
-*/
-const int N = 505;
-vector<pair<int,int>> G[N];
-vector<vector<int>> D(N,vector<int>(N,1e15));
+vector<vector<int>> Kosaraju(vector<vector<int>> G, int n){
+    stack<int> comp;
+    vector<int> V(n+5);
+    vector<vector<int>> R(n+5), C(n+5);
+    for(int u=1;u<=n;u++) for(auto v : G[u]) R[v].push_back(u);
+    function<void(int)> dfs = [&](int u){
+        V[u] = 1;
+        for(auto v : G[u]) if(!V[v]) dfs(v);
+        comp.push(u);
+    };
+    function<void(int,int)> scc = [&](int u, int c){
+        V[u] = 0; C[c].push_back(u);
+        for(auto v : R[u]) if(V[v]) scc(v,c);
+    };
+    int c = 0;
+    for(int i=1;i<=n;i++) if(!V[i]) dfs(i);
+    while(!comp.empty()){
+        int node = comp.top(); comp.pop();
+        if(V[node]) scc(node,c++);
+    }
+    return C;
+}
 
 void code(int TC){
-    int n,m,q; cin>>n>>m>>q;
+    int n,m; cin>>n>>m;
+    vector<vector<int>> G(n+5);
     while(m--){
-        int u,v,c; cin>>u>>v>>c;
-        G[u].push_back({v,c});
-        G[v].push_back({u,c});
-    }
-    for(int i=1;i<=n;i++) D[i][i] = 0;
-    for(int u=1;u<=n;u++){
-        for(auto [v,c] : G[u]){
-            D[u][v] = min(D[u][v],c);
-        }
-    }
-    for(int k=1;k<=n;k++){
-        for(int i=1;i<=n;i++){
-            for(int j=1;j<=n;j++){
-                D[i][j] = min(D[i][j],D[i][k]+D[k][j]);
-            }
-        }
-    }
-    while(q--){
         int u,v; cin>>u>>v;
-        if(D[u][v]>1e13) cout<<-1<<endl;
-        else cout<<D[u][v]<<endl;
+        G[u].push_back(v);
     }
+    int ans[n];
+    auto C = Kosaraju(G,n);
+    for(int i=0;i<n;i++){
+        for(auto j : C[i]) ans[j-1] = i+1;
+    }
+    cout<<*max_element(ans,ans+n)<<endl;
+    for(auto i : ans) cout<<i<<' ';
 }
 
 

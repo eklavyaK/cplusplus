@@ -14,48 +14,54 @@ using namespace std;
 #endif
 
 
-const int N = 1e5+5;
-vector<int> G[N];
-int V[N], P[N];
 
 
 
 void code(int TC){
     int n,m; cin>>n>>m;
-    for(int j=0;j<m;j++){
-        int u,v; cin>>u>>v;
-        G[u].push_back(v);
+    vector<tuple<int,int,int>> v(m);
+    string s; cin>>s;
+    int dis = 0;
+    for(int i=0;i<n;i++){
+        if(s[i]=='1') dis+=(1<<(n-1-i));
     }
-    vector<int> ans; bool is = false;
-    function<void(int)> dfs = [&](int u){
-        V[u] = 2;
-        for(auto v : G[u]){
-            if(!V[v]) P[v] = u, dfs(v);
-            if(!is && V[v]==2){
-                int cur = u;
-                ans.push_back(v);
-                ans.push_back(u);
-                while(cur!=v) cur = P[cur], ans.push_back(cur);
-                is = true;
+    debug(dis);
+    for(int i=0;i<m;i++){
+        int d; string s, t;
+        cin>>d>>s>>t;
+        int a = d, b = 0, c = 0;
+        for(int j=0;j<n;j++){
+            if(s[j]=='1') b+=(1<<(n-1-j));
+            if(t[j]=='1') c+=(1<<(n-1-j));
+        }
+        debug(a,b,c);
+        v[i] = {a,b,c};
+    }
+    priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>> q;
+    vector<int> D(5000,1e9), V(5000);
+    D[0] = 0;
+    q.push({0,0});
+    while(!q.empty()){
+        auto [d,u] = q.top(); q.pop();
+        D[u] = min(D[u],d);
+        for(int j=0;j<m;j++){
+            auto [a,b,c] = v[j];
+            if((c&u)==c && D[(b|u)]>D[u]+a){
+                D[(b|u)] = a+d;
+                q.push({a+d,(b|u)});
             }
         }
-        V[u] = 1;
-    };
-    for(int i=1;i<=n;i++) dfs(i);
-    if(!is){
-        cout<<"IMPOSSIBLE"<<endl;
-        return;
     }
-    else cout<<ans.size()<<endl;
-    reverse(ans.begin(),ans.end());
-    for(auto i : ans) cout<<i<<" ";cout<<endl;
+    int ans = 1e9;
+    for(int i=0;i<5000;i++) if((dis&i)==dis) ans = min(ans,D[i]);
+    cout<<(ans==1e9?-1:ans)<<endl;
 }
 
 
 signed main(){
     ios_base::sync_with_stdio(0);
     cin.tie(0);cout.tie(0);cerr.tie(0);
-    int TT = 1;
+    int TT = 1; cin >> TT;
     for (int TC = 1; TC <= TT; TC++) 
         code(TC);
     return 0;

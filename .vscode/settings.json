@@ -12,5 +12,8 @@
         "ostream": "cpp"
     },
     "C_Cpp.errorSquiggles": "Enabled",
-    "explorer.excludeGitIgnore": true
+    "explorer.excludeGitIgnore": true,
+    "editor.quickSuggestionsDelay": 2,
+    "editor.fontVariations": false,
+    "editor.fontLigatures": false
 }

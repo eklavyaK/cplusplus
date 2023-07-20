@@ -21,13 +21,13 @@ import random
 PA = random.randint(8, 9) * 100
 PB = random.randint(10, 13) * 100
 PC = random.randint(14, 17) * 100
-PD = random.randint(18, 21) * 100
-PE = random.randint(22, 25) * 100
-print("PA:",PA)
-print("PB:",PB)
-print("PC:",PC)
-print("PD:",PD)
-print("PE:",PE)
+PD = random.randint(18, 20) * 100
+PE = random.randint(21, 22) * 100
+print("A:",PA)
+print("B:",PB)
+print("C:",PC)
+print("D:",PD)
+print("E:",PE)
 
 # Problem - A
 
