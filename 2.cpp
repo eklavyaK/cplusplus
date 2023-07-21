@@ -13,43 +13,55 @@ using namespace std;
 #define debug(...) 42
 #endif
 
-vector<vector<int>> Kosaraju(vector<vector<int>> G, int n){
-    stack<int> comp;
-    vector<int> V(n+5);
-    vector<vector<int>> R(n+5), C(n+5);
-    for(int u=1;u<=n;u++) for(auto v : G[u]) R[v].push_back(u);
-    function<void(int)> dfs = [&](int u){
-        V[u] = 1;
-        for(auto v : G[u]) if(!V[v]) dfs(v);
-        comp.push(u);
-    };
-    function<void(int,int)> scc = [&](int u, int c){
-        V[u] = 0; C[c].push_back(u);
-        for(auto v : R[u]) if(V[v]) scc(v,c);
-    };
-    int c = 0;
-    for(int i=1;i<=n;i++) if(!V[i]) dfs(i);
-    while(!comp.empty()){
-        int node = comp.top(); comp.pop();
-        if(V[node]) scc(node,c++);
+const int N = 2e5+5;
+vector<vector<int>> graph(N);
+int vis[N], proc[N], mn[N], n, m, id = 0, cnt = 1;
+vector<int> ans[N];
+bool inStack[N];
+stack<int> comps;
+void dfs(int node){
+    vis[node] = 1;
+    comps.push(node);
+    inStack[node]=true;
+    proc[node]=mn[node]=++id;
+    for(auto i : graph[node]){
+        if(!vis[i]) dfs(i);
+        if(inStack[i]) mn[node] = min(mn[i],mn[node]);
     }
-    return C;
+    if(mn[node]!=proc[node])return;
+    while(true){
+        int c = comps.top();
+        mn[c] = proc[node];
+        inStack[c] = false;
+        comps.pop();
+        ans[cnt].push_back(c);
+        debug(cnt,c);
+        if(c==node)break;
+    }
+    cnt++;
+}
+void SCC(){
+    for(int i=1;i<=n;i++){
+        if(!vis[i])dfs(i);
+    }
 }
 
+
+
 void code(int TC){
-    int n,m; cin>>n>>m;
-    vector<vector<int>> G(n+5);
-    while(m--){
+    cin>>n>>m;
+    for(int j=0;j<m;j++){
         int u,v; cin>>u>>v;
-        G[u].push_back(v);
+        graph[u].push_back(v);
     }
-    int ans[n];
-    auto C = Kosaraju(G,n);
-    for(int i=0;i<n;i++){
-        for(auto j : C[i]) ans[j-1] = i+1;
+    int c[n];
+    SCC();
+    int t = 0;
+    for(int i=1;i<N;i++){
+        for(auto j : ans[i]) c[j-1] = i, t = i;
     }
-    cout<<*max_element(ans,ans+n)<<endl;
-    for(auto i : ans) cout<<i<<' ';
+    cout<<t<<endl;
+    for(auto i : c) cout<<i<<' ';
 }
 
 

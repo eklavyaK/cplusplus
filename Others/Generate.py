@@ -65,3 +65,16 @@ print("E:",PE)
 # 2300 - 0.25
 # 2400 - 0.25
 # 2500 - 0.25
+
+import webbrowser
+import time
+
+webbrowser.open(f'https://codeforces.com/problemset?tags={PA}-{PA}',new = 2)
+time.sleep(1)
+webbrowser.open(f'https://codeforces.com/problemset?tags={PB}-{PB}',new = 2)
+time.sleep(1)
+webbrowser.open(f'https://codeforces.com/problemset?tags={PC}-{PC}',new = 2)
+time.sleep(1)
+webbrowser.open(f'https://codeforces.com/problemset?tags={PD}-{PD}',new = 2)
+time.sleep(1)
+webbrowser.open(f'https://codeforces.com/problemset?tags={PE}-{PE}',new = 2)

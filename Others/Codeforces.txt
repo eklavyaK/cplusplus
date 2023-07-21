@@ -99,3 +99,5 @@ https://codeforces.com/contest/1785/problem/C           //Excellent and classic 
 https://codeforces.com/problemset/problem/1776/B        //Excellent dp (solved)
 https://codeforces.com/problemset/problem/1777/E        //Interesting graph (solved)
 https://codeforces.com/gym/104471/problem/C             //Classic dp (unsolved)
+https://codeforces.com/contest/1525/problem/E           //Classic Graph (solved)
+https://codeforces.com/contest/1525/problem/E           //Interesting maths (solved)
