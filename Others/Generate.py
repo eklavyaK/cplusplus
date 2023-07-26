@@ -69,6 +69,8 @@ print("E:",PE)
 import webbrowser
 import time
 
+webbrowser.open(f'https://codeforces.com/mashups',new = 2)
+time.sleep(1)
 webbrowser.open(f'https://codeforces.com/problemset?tags={PA}-{PA}',new = 2)
 time.sleep(1)
 webbrowser.open(f'https://codeforces.com/problemset?tags={PB}-{PB}',new = 2)
