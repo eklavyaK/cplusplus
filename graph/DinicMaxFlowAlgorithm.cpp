@@ -65,7 +65,6 @@ ll dinic(vector<vector<pair<ll,ll>>> T, ll n, ll src, ll snk){
     };
     function<ll(ll,ll)> dfs = [&](ll u, ll pushed){
         if(u == snk) return pushed;
-        debug(u,pushed);
         for(;id[u] < (ll) G[u].size();id[u]++){
             auto [v, c] = G[u][id[u]];
             if(L[v] != L[u] + 1 || c <= 0) continue;
@@ -78,6 +77,18 @@ ll dinic(vector<vector<pair<ll,ll>>> T, ll n, ll src, ll snk){
     };
     if(snk == src) return -1ll;
     while(bfs()) id.assign(n+5,0), max_flo += dfs(src,8e18);
+
+    // id.assign(n+5,0);
+    // vector<pair<int,int>> cut_edges;                   //finding the min cut edges
+    // function<void(int)> construct = [&](int u){
+    // 	for(;id[u] < (ll) G[u].size();id[u]++){
+    // 		auto [v, c] = G[u][id[u]];
+    // 		if(L[v] == L[u] + 1) construct(v);
+    // 		else if(L[v] == -1 && c<=0) cut_edges.push_back({u,v});
+    // 	}
+    // };
+    // construct(src);
+
     return max_flo;
 }
 
