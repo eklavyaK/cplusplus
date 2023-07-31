@@ -12,7 +12,24 @@ using namespace std;
 #define debugarr(a,n) 42
 #define debug(...) 42
 #endif
+/*
+The main idea behind centroid decomposition is to recursively decompose a given tree into subtrees in such a way that each subtree's size is roughly half of the original tree.
 
+APPROACH:
+     To find the centroid of a subtree S:
+          run a dfs considering one vertex as root, simultaneously store the size of subtree at each node
+          first candidate for centroid is root
+          now check whether root has a child whose subtree size > size(S)/2
+          if such child exists then that is new centroid candidate
+          repeat the steps till you find centroid (centroid will always exist for a tree)
+          don't check the vertices which were old centroid candidates, because they've been proven as not centroid
+     
+     After centroid is found for a subtree mark the centroid
+     Now find the centroid of each child's subtree of the current centroid, those centroids will be children of current centroid
+     By repeating this process recursively we finally get the centroid tree
+
+COMPLEXITY: O(n * log(n))
+*/
 vector<int> centroidDecomposition(vector<vector<int>> T, int n){
      vector<int> I(n+5), sz(n+5), P(n+5);
      function<void(int,int)> dfs = [&](int u, int p){
