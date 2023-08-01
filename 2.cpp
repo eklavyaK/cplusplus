@@ -1,111 +1,156 @@
 #include <bits/stdc++.h>
-#define endl "\n"
-#define ii first
-#define jj second
-typedef long long ll;
-typedef long double ld;
+ 
 using namespace std;
+ 
+#define print_op(...) ostream& operator<<(ostream& out, const __VA_ARGS__& u)
+template<typename A, typename B> print_op(pair<A, B>) { return out << "(" << u.first << ", " << u.second << ")"; }
+template<typename T_container, typename T = typename enable_if<!is_same<T_container, string>::value, typename T_container::value_type>::type> print_op(T_container) { out << "{"; string sep; for (const T &x : u) out << sep << x, sep = ", "; return out << "}"; }
+template<typename T> void dbg_out(string s, T x) {cerr << "\033[1;35m" << s << "\033[0;32m = \033[33m" << x << "\033[0m\n";}
+template<typename T, typename... Args> void dbg_out(string s, T x, Args... args) {for (int i=0, b=0; i<(int)s.size(); i++) if (s[i] == '(' || s[i] == '{') b++; else
+if (s[i] == ')' || s[i] == '}') b--; else if (s[i] == ',' && b == 0) {cerr << "\033[1;35m" << s.substr(0, i) << "\033[0;32m = \033[33m" << x << "\033[31m | "; dbg_out(s.substr(s.find_first_not_of(' ', i + 1)), args...); break;}}
+#ifdef LOCAL
+#define dbg(...) dbg_out(#__VA_ARGS__, __VA_ARGS__)
+#else
+#define dbg(...)
+#endif
+ 
+#define ar array
+#define ll long long
+#define ld long double
+#define sz(x) ((int)x.size())
+#define rep(i, a, b) for (int i = (int)(a); i < (int)(b); i++) 
+#define all(a) (a).begin(), (a).end()
+ 
+const int MAX_N = 1e5 + 5;
+const int MAX_L = 20;
+const int MAX_C = 26;
+const ll MOD = 1e9 + 7;
+const ll INF = 1e9;
+const ld EPS = 1e-9;
 #ifndef ONLINE_JUDGE
 #include "include/debug.h"
 #else
 #define debugarr(a, n) 42
 #define debug(...) 42
 #endif
-
-const int N = 2e5 + 5;
-int pos, n;
-vector<int> id(N), dep(N), sC(N), bigc(N), up(N), par(N), Seg(N*4);
-vector<vector<int>> T;
-
-void dfssz(int u, int p){
-     sC[u] = 1;
-     for(auto v : T[u]){
-          if(v == p) continue;
-          par[v] = u, dep[v] = dep[u] + 1;
-          dfssz(v, u);
-          sC[u] += sC[v];
-          bigc[u] = sC[bigc[u]] < sC[v] ? v : bigc[u];
-     }
-}
-void dfsid(int u, int p){
-     id[u] = pos++;
-     if(bigc[u]) up[bigc[u]] = up[u], dfsid(bigc[u], u);
-     for(auto v : T[u]) if(v != p && v != bigc[u]) dfsid(v, u);
-}
-int lca(int u, int v){
-     while(up[u] != up[v]) dep[up[u]] > dep[up[v]] ? u = par[up[u]] : v = par[up[v]];
-     return dep[u] < dep[v] ? u : v;
-}
-void upd(int node, int l, int r, int pos, int c){
-     if(l == r){
-          Seg[node] = c;
-          return;
-     }
-     int mid = (l + r) >> 1;
-     pos <= mid ? upd(2 * node, l, mid, pos, c) : upd(2 * node + 1, mid + 1, r, pos, c);
-     Seg[node] = max(Seg[2 * node], Seg[2 * node + 1]);
-}
-int qry(int node, int l, int r, int st, int en){
-     if(l > en || r < st || st > en) return 0;
-     if(st <= l && r <= en) return Seg[node];
-     int mid = (l + r) >> 1;
-     return max(qry(2 * node, l, mid, st, en), qry(2 * node + 1, mid + 1, r, st, en));
-}
-void update(int u, int val){
-     upd(1, 0, n - 1, id[u], val);
-}
-int query(int u, int v){
-     int mx = 0;
-     while (up[u] != up[v]){
-          if(dep[up[u]] > dep[up[v]]) mx = max(mx, qry(1, 0, n - 1, id[up[u]], id[u])), u = par[up[u]];
-          else mx = max(mx, qry(1, 0, n - 1, id[up[v]], id[v])), v = par[up[v]];
-     }
-     if(dep[u] > dep[v]) swap(u, v);
-     return max(mx, qry(1, 0, n - 1, id[u], id[v]));
-}
-void HLD(vector<vector<int>> Tree, int N){
-     for(int i = 0; i <= N*4; i++) Seg[i] = 0;
-     for(int i = 0; i <= N; i++) id[i] = dep[i] = sC[i] = bigc[i] = par[i] = 0, up[i] = i;
-     dep[0] = -1, n = N, T = Tree;
-     dfssz(1, 0), dfsid(1, 0);
-}
-
-void code(int TC){
-     int n, q;
-     cin >> n >> q;
-     vector<int> c(n + 5);
-     vector<vector<int>> Tree(n + 5);
-     for(int i = 1; i <= n; i++) cin >> c[i];
-     for(int i = 1; i < n; i++){
-          int u, v;
-          cin >> u >> v;
-          Tree[u].push_back(v);
-          Tree[v].push_back(u);
-     }
-     HLD(Tree, n);
-     for(int i = 1; i <= n; i++) update(i, c[i]);
-     while(q--){
-          int qrt;
-          cin >> qrt;
-          if(qrt == 1){
-               int u, val;
-               cin >> u >> val;
-               update(u, val);
-          }
-          else{
-               int u, v;
-               cin >> u >> v;
-               int lc = lca(u, v);
-               cout << max(query(u, lc), query(v, lc)) << endl;
-          }
-     }
+struct SegmentTree {
+    int n; vector<int> st;
+    
+    void init(int _n) { n = _n; st.resize(2 * _n); }
+    void init(const vector<int> &a) {
+        init(sz(a));
+        for (int i = 0; i < n; i++) st[i + n] = a[i];
+        for (int i = n - 1; i > 0; i--) st[i] = max(st[i << 1], st[i << 1 | 1]);
+    }
+ 
+    int query(int l, int r) {
+        int res = INT_MIN;
+        debug(l+n,r+n);
+        for (l += n, r += n; l < r; l >>= 1, r >>= 1) {
+            if (l & 1) res = max(res, st[l++]), debug(l-1,st[l-1]);
+            if (r & 1) res = max(res, st[--r]), debug(r+1,st[r+1]);
+        }
+        return res;
+    }
+ 
+    void update(int i, int x) {
+        for (st[i += n] = x; i > 1; i >>= 1) st[i >> 1] = max(st[i], st[i ^ 1]);
+    }
+};
+ 
+template<bool VALS_IN_EDGE = false> struct HLD { 
+    int n, ti;
+    vector<vector<int>> adj;
+    vector<int> par, tin, head, dep, sza;
+    SegmentTree st;
+    
+    HLD(int _n) : n(_n), ti(0), adj(_n), par(_n), tin(_n), head(_n), dep(_n), sza(_n) { st.init(_n); }
+    
+    void addEdge(int u, int v) {
+        adj[u].push_back(v);
+        adj[v].push_back(u);
+    }
+    
+    void dfsSz(int u) {
+        sza[u] = 1;
+        for (int &v : adj[u]) {
+            adj[v].erase(find(all(adj[v]), u)); // remove parent
+            par[v] = u; dep[v] = dep[u] + 1;
+            dfsSz(v);
+            sza[u] += sza[v];
+            if (sza[v] > sza[adj[u][0]]) swap(v, adj[u][0]); // store the heavy node at the beginning
+        }
+    }
+    
+    void dfsHld(int u) {
+        tin[u] = ti++;
+        for (int v : adj[u]) {
+            head[v] = (v == adj[u][0] ? head[u] : v);
+            dfsHld(v);
+        }
+    }
+    
+    void init(int s = 0) {
+        par[s] = dep[s] = ti = 0; head[s] = s;
+        dfsSz(s); dfsHld(s);
+    }
+    
+    int lca(int u, int v) {
+        while (head[u] != head[v]) {
+            if (dep[head[u]] > dep[head[v]]) swap(u, v);
+            v = par[head[v]];
+        }
+        return dep[u] < dep[v] ? u : v;
+    }
+    
+    template<class OP> void processPath(int u, int v, OP op) {
+        while (head[u] != head[v]) {
+            if (dep[head[u]] < dep[head[v]]) swap(u, v);
+            op(tin[head[u]], tin[u]);
+            u = par[head[u]];
+        }
+        if (dep[u] > dep[v]) swap(u, v);
+        op(tin[u] + VALS_IN_EDGE, tin[v]);
+    }
+ 
+    void updateNode(int u, int x) { st.update(tin[u], x); }
+    
+    int queryPath(int u, int v) {
+        int res = INT_MIN;
+        processPath(u, v, [this, &res](int l, int r) { res = max(res, st.query(l, r + 1)); });
+        return res;
+    }
+};
+ 
+void solve(int tc = 0) {
+    int n, q; cin >> n >> q;
+    vector<int> a(n);
+    for (int &x : a) cin >> x;
+    HLD hld(n);
+    for (int i = 0; i < n - 1; i++) {
+        int u, v; cin >> u >> v; u--; v--;
+        hld.addEdge(u, v);
+    }
+    hld.init(0);
+    for (int i = 0; i < n; i++) hld.updateNode(i, a[i]);
+    while (q--) {
+        int t; cin >> t;
+        if (t == 1) {
+            int u, x; cin >> u >> x; u--;
+            hld.updateNode(u, x);
+        } else {
+            int u, v; cin >> u >> v; u--; v--;
+            cout << hld.queryPath(u, v) << "\n";
+        }
+    }
 }
  
-signed main(){
-     ios_base::sync_with_stdio(0);
-     cin.tie(0);cout.tie(0);cerr.tie(0);
-     int TT = 1;
-     for(int TC = 1; TC <= TT; TC++)
-          code(TC);
-     return 0;
+signed main() {
+    ios_base::sync_with_stdio(false); cin.tie(NULL);
+    int tc = 1;
+    // cin >> tc;
+    for (int t = 1; t <= tc; t++) {
+        // cout << "Case #" << t << ": ";
+        solve(t);
+    }
 }
