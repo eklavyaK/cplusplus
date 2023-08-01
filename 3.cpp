@@ -1,129 +1,128 @@
-#include <bits/stdc++.h>
-
+#include "bits/stdc++.h"
 using namespace std;
 
-#define print_op(...) ostream& operator<<(ostream& out, const __VA_ARGS__& u)
-template<typename A, typename B> print_op(pair<A, B>) { return out << "(" << u.first << ", " << u.second << ")"; }
-template<typename T_container, typename T = typename enable_if<!is_same<T_container, string>::value, typename T_container::value_type>::type> print_op(T_container) { out << "{"; string sep; for (const T &x : u) out << sep << x, sep = ", "; return out << "}"; }
-template<typename T> void dbg_out(string s, T x) {cerr << "\033[1;35m" << s << "\033[0;32m = \033[33m" << x << "\033[0m\n";}
-template<typename T, typename... Args> void dbg_out(string s, T x, Args... args) {for (int i=0, b=0; i<(int)s.size(); i++) if (s[i] == '(' || s[i] == '{') b++; else
-if (s[i] == ')' || s[i] == '}') b--; else if (s[i] == ',' && b == 0) {cerr << "\033[1;35m" << s.substr(0, i) << "\033[0;32m = \033[33m" << x << "\033[31m | "; dbg_out(s.substr(s.find_first_not_of(' ', i + 1)), args...); break;}}
-#ifdef LOCAL
-#define dbg(...) dbg_out(#__VA_ARGS__, __VA_ARGS__)
-#else
-#define dbg(...)
-#endif
+const int N = 2e5 + 5;
+const int D = 19;
+const int S = (1 << D);
 
-#define ar array
-#define ll long long
-#define ld long double
-#define sz(x) ((int)x.size())
-#define rep(i, a, b) for (int i = (int)(a); i < (int)(b); i++) 
-#define all(a) (a).begin(), (a).end()
+int n, q, v[N];
+vector<int> adj[N];
 
-const int MAX_N = 1e5 + 5;
-const int MAX_L = 20;
-const int MAX_C = 26;
-const ll MOD = 1e9 + 7;
-const ll INF = 1e9;
-const ld EPS = 1e-9;
+int sz[N], p[N][D], dep[N];
+int st[S], id[N], tp[N];
 
-template<typename T> struct FenwickTree {
-    int n; vector<T> ft;
-    
-    void init(int _n) { n = _n; ft.resize(_n); }
-    void init(const vector<int> &a) { init(sz(a)); for (int i = 0; i < n; i++) update(i, a[i]); }
-
-    void update(int x, T v) { for (; x < n; x = x | (x + 1)) ft[x] += v; }
-    void update(int l, int r, T v) { update(l, v); update(r + 1, -v); }
-
-    T query(int x) {
-        T res = 0;
-        for (; x >= 0; x = (x & (x + 1)) - 1) res += ft[x];
-        return res;
-    }
-    T query(int l, int r) { return (l <= r) ? query(r) - query(l - 1) : 0; }
-};
-
-struct CentroidDecomposition {
-    vector<int> sza, par, vis;
-    vector<vector<int>> adj;
-    int l, r; ll ans;
-    FenwickTree<ll> cnt;
-
-    CentroidDecomposition(int n, int _l, int _r) : sza(n), par(n), vis(n), adj(n), l(_l), r(_r), ans(0) { cnt.init(r + 1); }
-
-    void addEdge(int u, int v) {
-        adj[u].push_back(v);
-        adj[v].push_back(u);
-    }
-
-    void build(int u = 0, int p = -1) {
-        u = centroid(u, p, dfsSz(u, p));
-        par[u] = p;
-        vis[u] = 1;
-        cnt.update(0, 1);
-        int mx = 0;
-        for (int v : adj[u]) {
-            if (!vis[v]) {
-                dfsSolve(v, u, 1, true, mx);
-                dfsSolve(v, u, 1, false, mx);
-            }
-        } 
-        for (int i = 0; i <= mx; i++) cnt.update(i, -cnt.query(i, i));
-        for (int v : adj[u])
-            if (!vis[v])
-                build(v, u);
-    }
-
-    void dfsSolve(int u, int p, int d, bool flag, int &mx) {
-        if (d > r) return;
-        mx = max(mx, d);
-        if (flag) ans += cnt.query(max(0, l - d), r - d);
-        else cnt.update(d, 1);
-        for (int v : adj[u]) {
-            if (vis[v] || v == p) continue;
-            dfsSolve(v, u, d + 1, flag, mx);
-        }
-    }
-
-    int dfsSz(int u, int p) {
-        sza[u] = 1;
-        for (int v : adj[u])
-            if (v != p && !vis[v])
-                sza[u] += dfsSz(v, u);
-        return sza[u];
-    }
-
-    int centroid(int u, int p, int nn) {
-        for (int v : adj[u])
-            if (v != p && !vis[v] && sza[v] > nn / 2)
-                return centroid(v, u, nn);
-        return u;
-    }
-
-    int operator [] (int i) const {
-        return par[i];
-    }
-};
- 
-void solve(int tc = 0) {
-    int n, l, r; cin >> n >> l >> r;
-    CentroidDecomposition cd(n, l, r);
-    for (int i = 0; i < n - 1; i++) {
-        int u, v; cin >> u >> v; u--; v--;
-        cd.addEdge(u, v);
-    }
-    cd.build();
-    cout << cd.ans << "\n";
+void update(int idx, int val, int i = 1, int l = 1, int r = n) {
+	if (l == r) {
+		st[i] = val;
+		return;
+	}
+	int m = (l + r) / 2;
+	if (idx <= m) update(idx, val, i * 2, l, m);
+	else update(idx, val, i * 2 + 1, m + 1, r);
+	st[i] = max(st[i * 2], st[i * 2 + 1]);
+}
+int query(int lo, int hi, int i = 1, int l = 1, int r = n) {
+	if (lo > r || hi < l) return 0;
+	if (lo <= l && r <= hi) return st[i];
+	int m = (l + r) / 2;
+	return max(query(lo, hi, i * 2, l, m), query(lo, hi, i * 2 + 1, m + 1, r));
 }
 
-signed main() {
-    ios_base::sync_with_stdio(false); cin.tie(NULL);
-    int tc = 1;
-    // cin >> tc;
-    for (int t = 1; t <= tc; t++) {
-        // cout << "Case #" << t << ": ";
-        solve(t);
-    }
+int dfs_sz(int cur, int par) {
+	sz[cur] = 1;
+	for (int chi : adj[cur]) {
+		if (chi == par) continue;
+		dep[chi] = dep[cur] + 1;
+		p[chi][0] = cur;
+		sz[cur] += dfs_sz(chi, cur);
+	}
+	return sz[cur];
+}
+void init_lca() {
+	for (int d = 1; d < 18; d++)
+		for (int i = 1; i <= n; i++) p[i][d] = p[p[i][d - 1]][d - 1];
+}
+int ct = 1;
+void dfs_hld(int cur, int par, int top) {
+	id[cur] = ct++;
+	tp[cur] = top;
+	update(id[cur], v[cur]);
+	int h_chi = -1, h_sz = -1;
+	for (int chi : adj[cur]) {
+		if (chi == par) continue;
+		if (sz[chi] > h_sz) {
+			h_sz = sz[chi];
+			h_chi = chi;
+		}
+	}
+	if (h_chi == -1) return;
+	dfs_hld(h_chi, cur, top);
+	for (int chi : adj[cur]) {
+		if (chi == par || chi == h_chi) continue;
+		dfs_hld(chi, cur, chi);
+	}
+}
+int lca(int a, int b) {
+	if (dep[a] < dep[b]) swap(a, b);
+	for (int d = D - 1; d >= 0; d--) {
+		if (dep[a] - (1 << d) >= dep[b]) { a = p[a][d]; }
+	}
+	for (int d = D - 1; d >= 0; d--) {
+		if (p[a][d] != p[b][d]) {
+			a = p[a][d];
+			b = p[b][d];
+		}
+	}
+	if (a != b) {
+		a = p[a][0];
+		b = p[b][0];
+	}
+	return a;
+}
+int path(int chi, int par) {
+	int ret = 0;
+	while (chi != par) {
+		if (tp[chi] == chi) {
+			ret = max(ret, v[chi]);
+			chi = p[chi][0];
+		} else if (dep[tp[chi]] > dep[par]) {
+			ret = max(ret, query(id[tp[chi]], id[chi]));
+			chi = p[tp[chi]][0];
+		} else {
+			ret = max(ret, query(id[par] + 1, id[chi]));
+			break;
+		}
+	}
+	return ret;
+}
+int main() {
+
+	scanf("%d%d", &n, &q);
+	for (int i = 1; i <= n; i++) scanf("%d", &v[i]);
+	for (int i = 2; i <= n; i++) {
+		int a, b;
+		scanf("%d%d", &a, &b);
+		adj[a].push_back(b);
+		adj[b].push_back(a);
+	}
+	dfs_sz(1, 1);
+	init_lca();
+	memset(st, 0, sizeof st);
+	dfs_hld(1, 1, 1);
+	while (q--) {
+		int t;
+		scanf("%d", &t);
+		if (t == 1) {
+			int s, x;
+			scanf("%d%d", &s, &x);
+			v[s] = x;
+			update(id[s], v[s]);
+		} else {
+			int a, b;
+			scanf("%d%d", &a, &b);
+			int c = lca(a, b);
+			int res = max(max(path(a, c), path(b, c)), v[c]);
+			printf("%d ", res);
+		}
+	}
 }
