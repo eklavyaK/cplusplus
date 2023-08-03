@@ -123,6 +123,8 @@
 		"C_Cpp.errorSquiggles": "EnabledIfIncludesResolve",
 		"editor.language.colorizedBracketPairs": [
 		
-		]
+		],
+		"editor.tabSize": 5,
+		"editor.indentSize": "tabSize"
 	}
 }
