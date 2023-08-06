@@ -13,39 +13,52 @@ using namespace std;
 #define debug(...) 42
 #endif
 
-int a[4]{0, 6, 8, 12};
-
-int next(int dig, int inc){
-     if(inc == 0) return 0;
-     if(dig != 6) return dig + next((dig + dig) % 10, inc - 1);
-     return (inc / 4) * 20 + a[inc % 4];
-}
-
+const int L = 10, N = 2e5 + 5;
+int c[L], K[L][N];
+set<vector<int>> S;
 
 void code(int TC){
-     int n, k; cin >> n >> k;
-     if(n % 10 == 0){
-          cout << n * k << endl;
+     int n; cin>>n;
+     for(int i = 0; i < n; i++){
+          cin >> c[i];
+          for(int j = 0; j < c[i]; j++) cin >> K[i][j];
      }
-     else if(n % 10 == 5){
-          cout << max(n * k, (n + 5) * (k - 1)) << endl;
-     }
-     else{
-          int l = 0, r = k, ans = 0;
-          while(l <= r){
-               int mid = (l + r) >> 1;
-               int n_n = (n + next(n % 10, mid)), n_m = (n + next(n % 10, mid + 4));
-               if(n_n * (k - mid) >= n_m * (k - mid - 4)){
-                    r = mid - 1;
-                    ans = max(ans, n_n * (k - mid));
-                    for(int j = 1; j < 4; j++){
-                         n_n = n_n + n_n % 10;
-                         ans = max(ans, n_n * (k - mid - j));
-                    }
+     int m; cin >> m;
+     for(int j = 0; j < m; j++){
+          vector<int> v(n);
+          for(int i = 0; i < n; i++) cin >> v[i];
+          S.insert(v);
+     }   
+     vector<pair<int,vector<int>>> C;
+     for(int i = max(0ll, c[0] - m - 1); i < c[0]; i++) C.push_back({K[0][i], vector<int> {i + 1}});
+     for(int i = 1; i < n; i++){
+          priority_queue<pair<int, vector<int>>,vector<pair<int,vector<int>>>,greater<pair<int,vector<int>>>> q;
+          for(int j = c[i] - 1; j >= 0; j--){
+               int ptr = C.size() - 1;
+               while(ptr >= 0 && q.size() < m + 1){
+                    auto [sum, v] = C[ptr];
+                    v.push_back(j + 1);
+                    q.push({sum + K[i][j], v});
+                    ptr = ptr - 1;
                }
-               else l = mid + 1; 
+               while(ptr >= 0 && q.top().ff < C[ptr].ff + K[i][j]){
+                    q.pop();
+                    auto [sum, v] = C[ptr];
+                    v.push_back(j + 1);
+                    q.push({sum + K[i][j], v});
+                    ptr = ptr - 1;
+               }
           }
-          cout << max(n * k, ans) << endl;
+          C.clear();
+          while(!q.empty()) C.push_back(q.top()), q.pop();
+     }
+     while(!C.empty()){
+          if(!S.count(C.back().ss)){
+               auto v = C.back().ss;
+               for(auto i : v) cout << i << " "; cout << endl;
+               break;
+          }
+          C.pop_back();
      }
 }
 
@@ -53,7 +66,7 @@ void code(int TC){
 signed main(){
      ios_base::sync_with_stdio(0);
      cin.tie(0);cout.tie(0);cerr.tie(0);
-     int TT = 1; cin >> TT;
+     int TT = 1;
      for (int TC = 1; TC <= TT; TC++) 
           code(TC);
      return 0;

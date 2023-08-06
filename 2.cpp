@@ -14,27 +14,23 @@ using namespace std;
 #endif
 
 
-int a[4]{0, 6, 8, 12};
 
-int next(int dig, int inc){
-     if(inc == 0) return 0;
-     if(dig != 6) return dig + next((dig + dig) % 10, inc - 1);
-     return (inc / 4) * 20 + a[inc % 4];
-}
 
 
 void code(int TC){
-	int n; cin>>n;
-	cerr << 2 + next(2, n) << endl;
-
+     vector<int> v(10);
+     for(int i = 1; i < 9; i++) v[i] = rand() % 100;
+     debug(v);
+     sort(v.begin(),v.end(),greater<>());
+     debug(v);
 }
 
 
 signed main(){
-	ios_base::sync_with_stdio(0);
-	cin.tie(0);cout.tie(0);cerr.tie(0);
-	int TT = 1; cin >> TT;
-	for (int TC = 1; TC <= TT; TC++) 
-		code(TC);
-	return 0;
+     ios_base::sync_with_stdio(0);
+     cin.tie(0);cout.tie(0);cerr.tie(0);
+     int TT = 1; cin >> TT;
+     for (int TC = 1; TC <= TT; TC++) 
+          code(TC);
+     return 0;
 }

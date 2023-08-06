@@ -3,8 +3,8 @@ import random
 PA = random.randint(12, 13) * 100
 PB = random.randint(14, 15) * 100
 PC = random.randint(16, 18) * 100
-PD = random.randint(19, 20) * 100
-PE = random.randint(21, 23) * 100
+PD = random.randint(19, 21) * 100
+PE = random.randint(22, 23) * 100
 
 print("A:",PA)
 print("B:",PB)

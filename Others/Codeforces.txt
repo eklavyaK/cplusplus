@@ -101,3 +101,5 @@ https://codeforces.com/problemset/problem/1777/E        //Interesting graph (sol
 https://codeforces.com/gym/104471/problem/C             //Classic dp (unsolved)
 https://codeforces.com/contest/1525/problem/E           //Classic Graph (solved)
 https://codeforces.com/contest/1525/problem/E           //Interesting maths (solved)
+https://codeforces.com/contest/1856/problem/E1          //easy tree (solved)
+https://codeforces.com/contest/1574/problem/D           //Interesting dp (solved)
