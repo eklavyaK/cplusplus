@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 #define endl "\n"
-#define F first
-#define S second
+#define ff first
+#define ss second
 #define int long long
 typedef long long ll;
 typedef long double ld;
@@ -9,62 +9,38 @@ using namespace std;
 #ifndef ONLINE_JUDGE
 #include "include/debug.h"
 #else
-#define debug(c)
-#define debugarr(a,n)
-#define debugvar(c)
+#define debugarr(a,n) 42
+#define debug(...) 42
 #endif
 
-int n,k,A;
-const int N = 3e5;
-int T[N * 4], L[N * 4], dp[N];
-vector<pair<int,int>> X[N];
-void pushdown(int node){
-     L[2 * node] += L[node];
-     T[2 * node] += L[node];
-     L[2 * node + 1] += L[node];
-     T[2 * node + 1] += L[node];
-     L[node] = 0;
-}
-void update(int node, int l, int r, int st, int en, int c){
-     if(en < st || st > r || en < l) return;
-     if(st <= l && en >= r){
-          T[node] += c, L[node] += c;
-          return;
+void knapsack(vector<int> & v){
+     int n = v.size(), sum = 0;
+     for(int i = 0; i < n; i++) sum += v[i];
+     vector<int> act, cnt(sum + 1), can(sum + 1);
+     for(int i = 0; i < n; i++) cnt[v[i]]++;
+     for(int i = 1; i <= sum; i++){
+          if(!cnt[i]) continue;
+          int cur = 1;
+          while(cur < cnt[i]) act.push_back(cur * i), cnt[i] -= cur, cur <<= 1;
+          if(cnt[i]) act.push_back(cnt[i] * i);
      }
-     pushdown(node);
-     int mid = (l + r) >> 1;
-     update(2 * node, l, mid, st, en, c);
-     update(2 * node + 1, mid + 1, r, st, en, c);
-     T[node] = min(T[2 * node], T[2 * node + 1]);
-}
-int query(int node, int l, int r, int st, int en){
-     if(en < st || st > r || en < l) return LLONG_MAX;
-     if(st <= l && en >= r) return T[node];
-     pushdown(node);
-     int mid = (l + r) >> 1;
-     return min(query(2 * node, l, mid, st, en), query(2 * node + 1, mid + 1, r, st, en));
+     can[0] = 1;
+     for(auto u : act){
+          for(int i = sum; i >= u; i--) if(can[i - u]) can[i] = 1;
+     }
+	vector<int> ans;
+     for(int i = 1; i <= sum; i++) if(can[i]) can[0] = can[0] + 1, ans.push_back(i);
+	cout << can[0] - 1 << endl;
+	for(auto i : ans) cout << i << " ";
+     cout << endl;
 }
 
 
 void code(int TC){
-    cin>>n>>k>>A;
-    for(int i=0;i<n;i++){
-        int x,y,c;
-        cin>>x>>y>>c;
-        X[x].push_back({y,c});
-    }
-    for(int i=k;i>=0;i--){
-        int curr = 0;
-        for(auto [y,c] : X[i]){
-            update(1,0,k,i+1,k-y-1,c);
-            curr+=c;
-        }
-        dp[i] = dp[i+1] + curr;
-        int q = query(1,0,k,i+1,k);
-        dp[i] = min(dp[i], query(1,0,k,i+1,k)-i*A);
-        update(1,0,k,i,i,dp[i]+i*A);
-    }
-    cout<<dp[0]<<endl;
+     int n; cin >> n;
+	vector<int> v(n);
+	for(int i = 0; i < n; i++) cin >> v[i];
+	knapsack(v);
 }
 
 
