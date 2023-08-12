@@ -1,1 +1,3 @@
-freopen("2err.txt","r",stdin);
+2
+250
+250
