@@ -1,2 +1,8 @@
 In case a problem asks us to determine pairs which equals a particular sum or product. And the maximum value of sum or product is not large we can simply brute force the solution. And for every pair we find the sum and add this pair at it's sum's index, as we can make vector of size of max sum possible because it is not large. Now after we got some pairs in a sum we need to know the maximum numbers pairs a sum can have to confirm an answer. This way we can solve many tricky questions of this type.
 To understand look at the problem: https://codeforces.com/contest/1500/problem/A . It is a classic trick
+
+
+We can convert a N ^ 3 dp to N ^ 2. This the trick I was looking for many days, finally found in question:
+https://codeforces.com/contest/1859/problem/E
+It is a classic educational dp. Here we'are carrying forward dp maximums by increasing the the length of the segments at each step.
+Also if we don't break the modulus into various cases we can't solve it in N ^ 2. So this trick is quite educational too.

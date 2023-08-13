@@ -105,5 +105,6 @@ https://codeforces.com/contest/1856/problem/E1          //easy tree (solved)
 https://codeforces.com/contest/1574/problem/D           //Interesting dp (solved)
 https://codeforces.com/contest/1857/problem/G           //Interesting tree (unsolved)
 https://codeforces.com/contest/1765/problem/F           //Interesting convex hull dp (unsolved)
-https://codeforces.com/contest/1741/problem/G           //Interesting graph
+https://codeforces.com/contest/1741/problem/G           //Interesting graph (solved)
 https://codeforces.com/contest/1500/problem/A           //educational maths problem (unsolved)
+https://codeforces.com/contest/1859/problem/E           //educational excellent dp (unsolved)
