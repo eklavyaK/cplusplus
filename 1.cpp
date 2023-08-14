@@ -18,26 +18,44 @@ using namespace std;
 
 
 void code(int TC){
-     int n, m; cin >> n >> m;
-     if(m < n){
-          cout << 0 << endl;
-          return;
-     }
-     else m = m + 1;
-     int ans = 0;
-     for(int i = 32; i >= 0; i--){
-          if((m & (1ll << i)) && !(n & (1ll << i))) ans += (1ll << i);
-          else if(!(m & (1ll << i)) && (n & (1ll << i))) break;
-     }
-     cout << ans << endl;
+	int n, m; cin >> n >> m;
+	vector<int> ans(n), s(n);
+	vector<pair<int, int>> v(n);
+	for(int i = 0; i < n; i++) cin >> s[i] >> v[i].ff, v[i].ss = i;
+	sort(v.begin(), v.end());
+	int l = 1;
+	for(int i = 0; i < n; i++){
+		if(v[i].ff == 2) break;
+		if(l > m){
+			cout << -1 << endl;
+			return;
+		}
+		else ans[v[i].ss] = l, l += s[v[i].ss];
+	}
+	int r = l + 1;
+	for(int i = 0; i < n; i++){
+		if(v[i].ff == 1) continue;
+		if(l < r){
+			if(l > m || l + (v[i].ss - 1) * 2){
+				cout << -1 << endl;
+				return;
+			}
+		}
+		else if(r < l){
+			if(r > m){
+				cout << -1 << endl;
+				return;
+			}
+		}
+	}
 }
 
 
 signed main(){
-     ios_base::sync_with_stdio(0);
-     cin.tie(0);cout.tie(0);cerr.tie(0);
-     int TT = 1; cin >> TT;
-     for (int TC = 1; TC <= TT; TC++) 
-          code(TC);
-     return 0;
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);cout.tie(0);cerr.tie(0);
+	int TT = 1; cin >> TT;
+	for (int TC = 1; TC <= TT; TC++) 
+		code(TC);
+	return 0;
 }
