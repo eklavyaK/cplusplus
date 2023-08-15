@@ -18,36 +18,8 @@ using namespace std;
 
 
 void code(int TC){
-	int n, m; cin >> n >> m;
-	vector<int> ans(n), s(n);
-	vector<pair<int, int>> v(n);
-	for(int i = 0; i < n; i++) cin >> s[i] >> v[i].ff, v[i].ss = i;
-	sort(v.begin(), v.end());
-	int l = 1;
-	for(int i = 0; i < n; i++){
-		if(v[i].ff == 2) break;
-		if(l > m){
-			cout << -1 << endl;
-			return;
-		}
-		else ans[v[i].ss] = l, l += s[v[i].ss];
-	}
-	int r = l + 1;
-	for(int i = 0; i < n; i++){
-		if(v[i].ff == 1) continue;
-		if(l < r){
-			if(l > m || l + (v[i].ss - 1) * 2){
-				cout << -1 << endl;
-				return;
-			}
-		}
-		else if(r < l){
-			if(r > m){
-				cout << -1 << endl;
-				return;
-			}
-		}
-	}
+	
+
 }
 
 
