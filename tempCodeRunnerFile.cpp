@@ -18,17 +18,25 @@ using namespace std;
 
 
 void code(int TC){
-	int n, k; cin >> n >> k;
-	int a[n];
-	for(int i = 0; i < n; i++) cin >> a[i];
-	sort(a, a + n);
-	int g = 0;
-	for(int i = 1; i < n; i++){
-		g = gcd(g, a[i] - a[0]);
+	int n; cin >> n;
+	vector<pair<int,int>> v(n);
+	for(int i = 0; i < n; i++){
+		int l, r; cin >> l >> r;
+		v[i] = {l, r};
 	}
-	k -= a[0];
-	if(g == 0 && k == 0) cout << "YES" << endl;
-	else cout << ((k % g == 0)? "YES" : "NO") << endl;
+	sort(v.begin(), v.end());
+	vector<pair<int,int>> s;
+	for(int i = 0; i < n; i++){
+		int c = i;
+		while(i + 1 < n  && v[i + 1].ff <= v[c].ss) i = i + 1, s.push_back({v[i].ff, v[i].ss});
+	}
+	n = s.size();
+	for(int i = 1; i < n; i++){
+		if(s[i].ff <= s[i - 1].ss){
+			cout << "NO" << endl;
+		}
+	}
+	cout << "YES" << endl;
 }
 
 
