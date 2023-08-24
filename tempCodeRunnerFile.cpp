@@ -14,29 +14,66 @@ using namespace std;
 #endif
 
 
+const int N = 2005;
 
+vector<vector<int>> T(N);
+vector<int> mark(N), I(N);
 
+int qry(int u, int v){
+	cout << "? " << u << " " << v << endl << flush;
+	cin >> u; return u;
+}
+
+void remove(int u, int p){
+	mark[u] = 1;
+	for(auto v : T[u]) if(v != p && !mark[v]) remove(v, u);
+}
 
 void code(int TC){
 	int n; cin >> n;
-	vector<pair<int,int>> v(n);
-	for(int i = 0; i < n; i++){
-		int l, r; cin >> l >> r;
-		v[i] = {l, r};
+	int mxI = 0, uI = 0, edges = 0, rt = 1;
+	for(int i = 0; i < n - 1; i++){
+		int u, v; cin >> u >> v;
+		T[u].push_back(v);
+		T[v].push_back(u);
+		I[u] += 1, I[v] += 1;
+		if(I[u] > mxI) mxI = I[u], uI = u;
+		if(I[v] > mxI) mxI = I[v], uI = v;
+		edges = edges + 1;
 	}
-	sort(v.begin(), v.end());
-	vector<pair<int,int>> s;
-	for(int i = 0; i < n; i++){
-		int c = i;
-		while(i + 1 < n  && v[i + 1].ff <= v[c].ss) i = i + 1, s.push_back({v[i].ff, v[i].ss});
-	}
-	n = s.size();
-	for(int i = 1; i < n; i++){
-		if(s[i].ff <= s[i - 1].ss){
-			cout << "NO" << endl;
+	while(true){
+		if(edges == 0){
+			cout << "! " << rt << endl << flush;
+			return;
+		}
+		else if(edges == 1){
+			for(auto u : T[rt]){
+				rt = qry(rt, u);
+			}
+			edges = 0;
+		}
+		else{
+			rt = qry(T[uI][0], T[uI][1]);
+			if(rt != uI) remove(uI, rt);
+			else remove(T[uI][0], rt), remove(T[uI][1], rt);
+			I.assign(N, 0);
+			mxI = 0, uI = 0, edges = 0;
+			vector<vector<int>> newT(N);
+			for(int i = 1; i <= n; i++){
+				for(int j = 0; j < T[i].size(); j++){
+					if(mark[T[i][j]] || T[i][j] < i) continue;
+					debug(T[i][j], i);
+					newT[T[i][j]].push_back(i);
+					newT[i].push_back(T[i][j]);
+					I[i] += 1, I[T[i][j]] += 1;
+					if(I[i] > mxI) mxI = I[i], uI = i;
+					if(I[T[i][j]] > mxI) mxI = I[T[i][j]], uI = T[i][j];
+					edges = edges + 1;
+				}
+			}
+			T = newT;
 		}
 	}
-	cout << "YES" << endl;
 }
 
 
@@ -44,7 +81,7 @@ signed main(){
 	ios_base::sync_with_stdio(0);
 	cin.tie(0);cout.tie(0);cerr.tie(0);
 	cout.precision(30);
-	int TT = 1; cin >> TT;
+	int TT = 1;
 	for (int TC = 1; TC <= TT; TC++) 
 		code(TC);
 	return 0;
