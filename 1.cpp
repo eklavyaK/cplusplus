@@ -18,23 +18,8 @@ using namespace std;
 
 
 void code(int TC){
-	int n, m, dx, dy; cin >> n >> m >> dx >> dy;
-	vector<int> c(n);
-	vector<pair<int,int>> p(n);
-	vector<int> mod(n);
-	for(int i = 0; i < n; i++){
-		mod[(i * dx) % n] = i * dy % n;
-	}
-	for(int j = 0; j < m; j++){
-		int x, y; cin >> x >> y;
-		c[((y - mod[x]) % n + n) % n] += 1;
-		p[((y - mod[x]) % n + n) % n] = {x, y};
-	}
-	int mx = 0, ansx = 0, ansy = 0;
-	for(int i = 0; i < n; i++){
-		if(c[i] > mx) mx = c[i], ansx = p[i].ff, ansy = p[i].ss;
-	}
-	cout << ansx << " " << ansy << endl;
+	
+
 }
 
 
@@ -42,7 +27,7 @@ signed main(){
 	ios_base::sync_with_stdio(0);
 	cin.tie(0);cout.tie(0);cerr.tie(0);
 	cout.precision(30);
-	int TT = 1;
+	int TT = 1; cin >> TT;
 	for (int TC = 1; TC <= TT; TC++) 
 		code(TC);
 	return 0;

@@ -114,3 +114,5 @@ https://codeforces.com/problemset/problem/1858/E2	      //Interesting implementa
 https://codeforces.com/problemset/problem/1477/A		 //Excellent educational maths (unsolved)
 https://codeforces.com/problemset/problem/1851/G		 //Good graph (solved)
 https://codeforces.com/contest/1632/problem/E2		 //Interesting Tree (unsolved)
+https://codeforces.com/contest/1809/problem/E	      //Excellent constructive
+https://codeforces.com/problemset/problem/1843/F2		 //Excellent tree dp divide and conquer (unsolved)
