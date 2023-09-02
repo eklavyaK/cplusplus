@@ -2,12 +2,12 @@ import webbrowser
 import time
 import random
 
-PA = random.randint(16, 17) * 100
-PB = random.randint(18, 19) * 100
-PC = random.randint(20, 21) * 100
-PD = random.randint(22, 22) * 100
-PE = random.randint(23, 23) * 100
-PF = random.randint(23, 23) * 100
+PA = random.randint(16, 16) * 100
+PB = random.randint(17, 17) * 100
+PC = random.randint(18, 18) * 100
+PD = random.randint(19, 19) * 100
+PE = random.randint(20, 20) * 100
+PF = random.randint(21, 22) * 100
 PG = random.randint(23, 23) * 100
 
 print("A: ", PA)
@@ -31,9 +31,9 @@ time.sleep(1)
 webbrowser.open(f'https://codeforces.com/problemset?tags={tags},{PC}-{PC}', new = 2)
 time.sleep(1)
 webbrowser.open(f'https://codeforces.com/problemset?tags={tags},{PD}-{PD}', new = 2)
-# time.sleep(1)
-# webbrowser.open(f'https://codeforces.com/problemset?tags={tags},{PE}-{PE}', new = 2)
-# time.sleep(1)
-# webbrowser.open(f'https://codeforces.com/problemset?tags={tags},{PF}-{PF}', new = 2)
-# time.sleep(1)
-# webbrowser.open(f'https://codeforces.com/problemset?tags={tags},{PG}-{PG}', new = 2)
+time.sleep(1)
+webbrowser.open(f'https://codeforces.com/problemset?tags={tags},{PE}-{PE}', new = 2)
+time.sleep(1)
+webbrowser.open(f'https://codeforces.com/problemset?tags={tags},{PF}-{PF}', new = 2)
+time.sleep(1)
+webbrowser.open(f'https://codeforces.com/problemset?tags={tags},{PG}-{PG}', new = 2)
