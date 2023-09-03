@@ -2,6 +2,9 @@
 	"folders": [
 		{
 			"path": "."
+		},
+		{
+			"path": "../CP Algorithms"
 		}
 	],
 	"settings": {
