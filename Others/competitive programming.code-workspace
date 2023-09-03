@@ -6,5 +6,10 @@
 		{
 			"path": "../../CP Algorithms"
 		}
-	]
+	],
+	"settings": {
+		"files.associations": {
+			"iostream": "cpp"
+		}
+	}
 }
