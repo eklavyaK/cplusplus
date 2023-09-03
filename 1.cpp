@@ -18,8 +18,12 @@ using namespace std;
 
 
 void code(int TC){
-	
-
+	int n; cin >> n;
+	vector<int> a(n), b(n - 1);
+	for(int i = 0; i < n; i++) cin >> a[i];
+	int sum = 0;
+	for(int i = 0; i < n - 1; i++) if(!(i & 1)) sum += a[i + 1] - a[i];
+	cout << ((n & 1) || (sum >= 0) ? "YES" : "NO") << endl;
 }
 
 
