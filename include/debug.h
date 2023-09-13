@@ -37,6 +37,7 @@ freopen("1err.txt", "w", stderr);
 #define debugarr(a,n) std::cerr << "## " << #a << " => " << __printarr(a,n) << '\n'
 #define min_pq(T) std::priority_queue<T,std::vector<T>,std::greater<T>>
 
+void __print(__int128 x){ std::cerr << (int) x; }
 void __print(signed x){ std::cerr<<x; }
 void __print(unsigned x){ std::cerr<<x; }
 void __print(signed long x){ std::cerr<<x; }

@@ -18,12 +18,47 @@ using namespace std;
 
 
 void code(int TC){
-	int n; cin >> n;
-	vector<int> a(n);
-	int ans = 1e9;
-	for(int i = 0; i < n; i++) cin >> a[i], ans = min(ans, abs(a[i]));
-	cout << ans << endl;
-
+	int n, k; cin >> n >> k;
+	vector<int> a(n + 1);
+	for(int i = 1; i <= n; i++) cin >> a[i];
+	if(k == 1){
+		for(int i = 1; i <= n; i++){
+			if(a[i] != i){
+				cout << "NO" << endl;
+				return;
+			}
+		}
+		cout << "YES" << endl;
+		return;
+	}
+	vector<int> done(n + 1);
+	bool ans = 0;
+	for(int i = 1; i <= n; i++){
+		if(done[i]) continue;
+		int l = i, f = i;
+		for(int j = 1; j <= k; j++){
+			if(done[l]){
+				if(done[l] == i){
+					cout << "NO" << endl;
+					return;
+				}
+				else break;
+			}
+			if(j != k) done[l] = i;
+			f = l;
+			l = a[l];
+		}
+		debug(l, f, i);
+		if(l == i) done[f] = i;
+		debug(done);
+	}
+	for(int i = 1; i <= n; i++){
+		if(!done[i]){
+			cout << "NO" << endl;
+			return;
+		}
+	}
+	cout << "YES" << endl;
 }
 
 
