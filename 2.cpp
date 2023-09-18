@@ -18,14 +18,10 @@ using namespace std;
 
 
 void code(int TC){
-	int n = 10;
-	set<int> st;
-	for(int i = 0; i < n; i++){
-		for(int j = i; j < n; j++){
-			st.insert((1 << j) - (1 << i));
-		}
-	}
-	cout << st.size() << endl;
+	vector<int> v;
+	int id = lower_bound(v.begin(), v.end(), 0) - v.begin();
+	cout << id << endl;
+
 }
 
 
