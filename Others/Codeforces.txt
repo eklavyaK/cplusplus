@@ -121,3 +121,4 @@ https://codeforces.com/contest/1861/problem/E		 //Excellent standard dp (unsolve
 https://codeforces.com/problemset/problem/1695/D1		 //Interesting tree (solved)
 https://codeforces.com/contest/1866/problem/G		 //Excellent binary search (solved)
 https://codeforces.com/problemset/problem/1704/E		 //Excellent graph (unsolved)
+https://codeforces.com/problemset/problem/1561/D1		 //Classic Maths dp (solved)
