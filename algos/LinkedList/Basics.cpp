@@ -23,6 +23,8 @@ struct Node{          // struct declaration and initialization
 
 void code(int TC){
 
+	// Note: Dont' declare two struct pointers separated using commas like - Node* a, b; do these in different lines to prevent mistakes
+	
 	// simple variable initilization of a struct
 	// Z is a variable of Type Node and has it's own values and we access them by . operator
 	Node Z(1, "HELLO", 0, NULL);
@@ -43,6 +45,7 @@ void code(int TC){
 	// we can also move from change H pointer to N pointer
 	H = H -> N;
 	cout << H -> a << endl;
+
 }
 
 
