@@ -1,0 +1,3 @@
+https://www.interviewbit.com/problems/list-cycle/   (cycle finding in linked list)
+https://www.interviewbit.com/problems/sort-list/	  (merge sort on linked list)
+https://www.interviewbit.com/problems/reverse-linked-list/  (reversing linked list)
