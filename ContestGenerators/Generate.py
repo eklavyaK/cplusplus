@@ -11,8 +11,6 @@ A = [P[0], P[1], P[2]]
 random.shuffle(A)
 P = [A[0], A[1], A[2], P[3]]
 
-# time limit constraints for problems
-
 # 800, 900 - 3 min
 # 1000, 1100 - 6 min
 # 1200, 1300 - 9 min
@@ -26,16 +24,26 @@ P = [A[0], A[1], A[2], P[3]]
 # 2200 - 55 min
 # 2300 - 60 min
 
-print("A: ", P[0]) 
-print("B: ", P[1])
-print("C: ", P[2])
-print("D: ", P[3])
+
 
 #     0         1         2      3            4                5               6                     7                   8
 
-T = ["math", "graphs", "trees", "dp", "binary%20search", "probabilities", "number%20theory", "divide%20and%20conquer", "strings"]
+A = ["math", "graphs", "trees", "dp", "binary%20search", "probabilities", "number%20theory", "divide%20and%20conquer", "strings"]
 
-tags = "math"
+G = [0, 4, 5, 6, 7, 8]
+
+random.shuffle(G)
+
+T = [A[G[0]], A[1], A[2], A[3]]
+
+random.shuffle(T)
+
+
+print("A: ", P[0], T[0]) 
+print("B: ", P[1], T[1])
+print("C: ", P[2], T[2])
+print("D: ", P[3], T[3])
+
 
 webbrowser.open(f'https://codeforces.com/mashup/new', new = 2)
 time.sleep(1)
