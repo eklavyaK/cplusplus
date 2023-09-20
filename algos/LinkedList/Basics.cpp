@@ -23,7 +23,7 @@ struct Node{          // struct declaration and initialization
 
 void code(int TC){
 
-	// Note: Dont' declare two struct pointers separated using commas like - Node* a, b; do these in different lines to prevent mistakes
+	// Note: Dont' declare two struct pointers separated using commas like - Node* a, b; // correct method is - Node *a, *b;
 	
 	// simple variable initilization of a struct
 	// Z is a variable of Type Node and has it's own values and we access them by . operator
