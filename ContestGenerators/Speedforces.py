@@ -10,8 +10,8 @@ random.shuffle(P)
 # time limit constraints for problems
 
 # 800, 900 - 3 min
-# 1000, 1100 - 6 min
-# 1200, 1300 - 9 min
+# 1000, 1100 - 7 min
+# 1200, 1300 - 11 min
 # 1400, 1500 - 15 min
 # 1600 - 20 min
 # 1700 - 25 min
@@ -22,14 +22,16 @@ random.shuffle(P)
 # 2200 - 55 min
 # 2300 - 60 min
 
-print("A: ", P[0]) 
-print("B: ", P[1])
-print("C: ", P[2])
-print("D: ", P[3])
-print("E: ", P[4])
-print("F: ", P[5])
-print("G: ", P[6])
-print("H: ", P[7])
+f = open(r"C:\Users\MY_PC\cp\ContestGenerators\Difficulty.txt", "w")
+f.write(f"A: {P[0]}\n") 
+f.write(f"B: {P[1]}\n")
+f.write(f"C: {P[2]}\n")
+f.write(f"D: {P[3]}\n")
+f.write(f"E: {P[4]}\n")
+f.write(f"F: {P[5]}\n")
+f.write(f"G: {P[6]}\n")
+f.write(f"H: {P[7]}\n")
+f.close()
 
 webbrowser.open(f'https://codeforces.com/problemset?tags={P[0]}-{P[0]}', new = 2)
 time.sleep(1)
