@@ -1,3 +1,6 @@
 https://www.interviewbit.com/problems/list-cycle/   (cycle finding in linked list)
 https://www.interviewbit.com/problems/sort-list/	  (merge sort on linked list)
 https://www.interviewbit.com/problems/reverse-linked-list/  (reversing linked list)
+https://www.interviewbit.com/problems/red-zone/     (implementation and geometry)
+https://www.interviewbit.com/problems/triplets-with-sum-between-given-range/ (logic)
+https://www.interviewbit.com/problems/find-nth-fibonacci/	(matrix exponentiation)

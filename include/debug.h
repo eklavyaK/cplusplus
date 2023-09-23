@@ -19,7 +19,7 @@
  
 
 #ifndef ONLINE_JUDGE
-freopen("1err.txt", "w", stderr);
+freopen("6.txt", "w", stderr);
 #endif
 
 ***************************************************************/
