@@ -6,6 +6,13 @@
 typedef long long ll;
 typedef long double ld;
 using namespace std;
+#ifndef ONLINE_JUDGE
+#include "include/debug.h"
+#else
+#define debugarr(a, n) 42
+#define debug(...) 42
+#endif
+
 
 
 
@@ -98,8 +105,10 @@ void code(int TC){
 	int q, qsum = 0; cin >> q;
 	while(q--){
 		int u, v; cin >> u >> v;
+		int tu = u, tv = v;
 		u = p[u], v = p[v];
-		int lc = lca(u, v), ans = min({M[lc], M[u], M[v]});
+		int lc = lca(u, v);
+		int ans = min({M[lc], M[u], M[v]});
 		int du = dep[u] - dep[lc], dv = dep[v] - dep[lc];
 		for(int i = 0; i < 20; i++) if((1 << i) & du) ans = min(ans, L[u][i]), u = K[u][i];
 		for(int i = 0; i < 20; i++) if((1 << i) & dv) ans = min(ans, L[v][i]), v = K[v][i];
