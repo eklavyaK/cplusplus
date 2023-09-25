@@ -4,3 +4,7 @@ https://www.interviewbit.com/problems/reverse-linked-list/  (reversing linked li
 https://www.interviewbit.com/problems/red-zone/     (implementation and geometry)
 https://www.interviewbit.com/problems/triplets-with-sum-between-given-range/ (logic)
 https://www.interviewbit.com/problems/find-nth-fibonacci/	(matrix exponentiation)
+https://www.interviewbit.com/problems/stringoholics/      (string)
+https://www.interviewbit.com/problems/single-number-ii/   (logic)
+https://www.interviewbit.com/problems/3-sum/			   (two pointers)
+https://www.interviewbit.com/problems/container-with-most-water/   (two pointers logic)
