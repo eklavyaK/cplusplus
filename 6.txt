@@ -1,4 +1,90 @@
-Case #1: 5
-Case #2: -2
-Case #3: 0
-Case #4: -2
+REC_CMPL1
+GCD_CMPL
+Large Factorial
+Maximum Absolute Difference
+Merge Intervals
+Next Smallest Palindrome!
+Excel Column Title
+Flip
+Triplets with Sum between given range
+Set Intersection
+Find Nth Fibonacci
+Trailing Zeros in Factorial
+Sorted Permutation Rank with Repeats
+Numbers of length N and value less than K
+City Tour
+K-th Permutation
+Powerful Divisors
+Red Zone
+Simple Queries
+Median of Array
+Stringoholics
+Single Number II
+Divide Integers
+Count Total Set Bits
+3 Sum
+Subarrays with distinct integers!
+Max Continuous Series of 1s
+Array 3 Pointers
+Container With Most Water
+Min Stack
+MAXSPPROD
+Combination Sum II
+Combination Sum
+Letter Phone
+4 Sum
+Fraction
+Ways to form Max Heap
+N max pair combinations
+LRU Cache
+Copy List
+Substring Concatenation
+Subarray with given XOR
+Points on the Straight Line
+Valid BST from Preorder
+Longest Common Subsequence
+Longest Palindromic Subsequence
+Edit Distance
+Scramble String
+Regular Expression Match
+Regular Expression II
+Intersecting Chords in a Circle
+Tushar's Birthday Bombs
+N digit numbers with digit sum S
+Shortest common superstring
+Best Time to Buy and Sell Stock atmost B times
+Evaluate Expression To True
+Egg Drop Problem!
+Longest valid Parentheses
+Max edge queries!
+Max Sum Path in Binary Tree
+Minimum Difference Subsets!
+Max Rectangle in Binary Matrix
+Rod Cutting
+Potions
+Double Increasing Series
+Dice Throw
+Tushar's Birthday Party
+Equal Average Partition
+Unique Binary Search Trees II
+Count Permutations of BST
+Palindrome Partitioning II
+Good Graph
+Smallest Multiple With 0 and 1
+Snake Ladder Problem!
+Valid Path
+Min Cost Path
+Word Ladder I
+Word Ladder II
+Mother Vertex
+Majority Element
+Gas Station
+Sort List
+K reverse linked list
+Reorder List
+Vertical Order traversal of Binary Tree
+Populate Next Right Pointers Tree
+Sum Root to Leaf Numbers
+Inorder Traversal of Cartesian Tree
+Construct Binary Tree From Inorder And Preorder
+Binary Tree From Inorder And Postorder
