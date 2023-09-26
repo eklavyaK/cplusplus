@@ -1,1 +1,4 @@
-Level order
+Level order Transversal - BFS
+preorder Transversal - root -> left subtree -> right subtree
+postorder Transversal - left subtree -> right subtree -> root
+inorder Transversal - left subtree -> root -> right subtree
