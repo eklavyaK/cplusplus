@@ -2,3 +2,5 @@ Level order Transversal - BFS
 preorder Transversal - root -> left subtree -> right subtree
 postorder Transversal - left subtree -> right subtree -> root
 inorder Transversal - left subtree -> root -> right subtree
+
+BST - Binary search tree: All the nodes in left subtree are less than root and all the nodes in right subtree is greater than root
