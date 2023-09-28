@@ -18,26 +18,11 @@ using namespace std;
 
 
 void code(int TC){
-	int n; cin >> n;
-	vector<int> a(n);
-	for(int i = 0; i < n; i++) cin >> a[i];
-	int ans = 0;
-	for(int i = 2; i < n; i++){
-		if(a[i] >= 0) ans += a[i];
+	int n, k, x; cin >> n >> k >> x;
+	if(n * k - (k - 1) * k / 2 >= x){
+		cout << "YES" << endl;
 	}
-	if(n == 1){
-		if(a[0] >= 0) cout << a[0] << endl;
-		else cout << 0 << endl;
-		return;
-	}
-	if(a[0] < 0 && a[1] >= 0){
-		ans += max(0ll, a[1] + a[0]);
-	}
-	else{
-		if(a[0] >= 0) ans += a[0];
-		if(a[1] >= 0) ans += a[1];
-	}
-	cout << ans << endl;
+	else cout << "NO" << endl;
 }
 
 

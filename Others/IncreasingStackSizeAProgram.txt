@@ -1,0 +1,14 @@
+C:\Users\MY_PC\cp> g++ -Wl,--stack,268435465 1.cpp -o 1.exe
+C:\Users\MY_PC\cp> 1.exe
+
+Explanation:
+	-Wl,--stack,SIZE
+	This command line allocates the memory for program to run. In case any large input is giving stack overflow we can use this technique
+	to allocate greater memory for our program.
+	
+	SIZE is in Bytes:
+	1024 * 1024 = 1048576 Bytes = 1MB,
+	To get memory upto 512 MB = do 1048576 * 512 = 536870912 = SIZE
+	To get memory upto 256 MB = do 1048576 * 256 = 268435456 = SIZE
+
+	1.cpp is the file name
