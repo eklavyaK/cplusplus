@@ -1,5 +1,9 @@
-C:\Users\MY_PC\cp> g++ -Wl,--stack,268435465 1.cpp -o 1.exe
+commands:
+``````````````````````````
+cd C:\Users\MY_PC\cp
+C:\Users\MY_PC\cp> g++ -Wl,--stack,268435456 1.cpp -o 1.exe
 C:\Users\MY_PC\cp> 1.exe
+```````````````````````````
 
 Explanation:
 	-Wl,--stack,SIZE

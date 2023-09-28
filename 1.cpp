@@ -1,8 +1,4 @@
 #include<bits/stdc++.h>
-#include<windows.h>
-#include<cstdlib>
-#include<malloc.h>
-#pragma comment(linker, "/STACK: 2000000000")
 #define endl "\n"
 #define ff first
 #define ss second
@@ -128,16 +124,6 @@ signed main(){
 	freopen("6.txt", "w", stdout);
 	freopen("6.txt", "w", stderr);
 	cout.precision(30);
-	// size_t newStackSize = 1024LL * 1024 * 256; // 512 MB
-	// // if (_setcrtmblocksize(newStackSize) != 0) {
-	// // 	std::cerr << "Failed to set stack size" << std::endl;
-	// // 	return 1;
-	// // }
-
-	// // Check if the stack overflow flag is set
-	// if (_resetstkoflw() != 0) {
-	// 	std::cerr << "Stack overflow flag is set. Stack size may not have been increased." << endl;
-	// }
 	int TT = 1; cin >> TT;
 	for (int TC = 1; TC <= TT; TC++) 
 		cout << "Case #" << TC << ": " << code(TC) <<  endl << flush;

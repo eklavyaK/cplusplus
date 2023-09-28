@@ -1,7 +1,7 @@
 Case #1: 5
 Case #2: -2
-Case #3: -2
-Case #4: 0
+Case #3: 0
+Case #4: -2
 Case #5: 270676
 Case #6: 121294
 Case #7: 3051989226
