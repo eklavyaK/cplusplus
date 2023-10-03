@@ -19,3 +19,5 @@ https://www.interviewbit.com/problems/equal-average-partition/      (excellent k
 https://www.interviewbit.com/problems/word-ladder-i/      (modified dijkstra)
 https://www.interviewbit.com/problems/smallest-multiple-with-0-and-1/		(good logic)
 https://www.interviewbit.com/problems/gas-station/hints/		(good logic)
+https://www.interviewbit.com/problems/populate-next-right-pointers-tree/    (link tree)
+https://www.interviewbit.com/problems/construct-binary-tree-from-inorder-and-preorder/    (best link tree problem, do without recursion)
