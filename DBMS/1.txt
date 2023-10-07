@@ -1,0 +1,31 @@
+What are keys?
+Keys in relational database management systems helps you to identify a row in a relation. They establish relation between two tables
+
+
+Candidate key: 
+the minimual set off attributes that can uniquely identify a tuple (or row) is known as candidate key. the value of candidate key is unique and not null
+for ex: roll number is a candidate key, because it is unique for all the person details
+
+
+what are prime attributes?
+all the candidate keys or attributes come under prime attributes
+
+
+primary key:
+out of all candidate keys, we can select one of them as primary key as required, for ex: one of - aadhaar no, roll no, pan no
+
+
+alternate key:
+if we select one of the candidate keys as primary key, then all the remaining candidate keys are called alternate keys, for ex: if we select roll no as primary key then, aadhaar no and pan no are alternate keys
+
+
+super key:
+the set of attributes that can uniquely identify a tuple is known as super key, for ex: (roll no, name), (adhaar no, city) all these two sets can be used to find a person uniquely so, these sets are super keys. Adding zero or more keys to a candidate key gives you a super key set. If non candidate keys used on combination to generate a uniqueness then that set of keys will be called a super key
+
+
+foreign key:
+foreign keys are the column of the table which is used to point to the primary key of another table.
+Here another table which is used as source is called parent table and current which is using the source to extract information is called child table
+
+
+
