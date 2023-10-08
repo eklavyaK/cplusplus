@@ -1,0 +1,56 @@
+ER - model is entity relationship model. It is the blueprint or logical structure of a database
+
+entity:
+It is an object. Table is an entity. An entity is represented as rectangle in ER diagram
+strong entity:
+It must have primary key
+weak entity:
+We cannot classify the records uniquely. it is represented as double rectangle
+
+Attribute:
+an attribute describes the property of an entity. Column are attributes. Attributes are represented as oval in ER diagram.
+Primary key is called key attribute. Key attribute:
+attribute which is unique for all the rows
+Simple attribute:
+it cannot be divided into more  simpler components. for ex- roll no
+Composite attribute:
+it can be divided into more simpler components. for ex- name, it can be divided into first name and surname
+Single valued attribute:
+It cannot take multiple values for each instance. for ex- age
+multi-valued attribute:
+It can take multiple values, for ex- phone no, it can be two or more for same instance or person. It is represented as double oval
+stored attribute: 
+an attribute which is permanent, for ex- name, dob
+derived attribute:
+an attribute which is derived from another, for ex- age is derived from dob. derived attributes are generally represented by dashed line oval
+
+relationship: 
+association between entities are called relationship. It is represented by diamond symbol
+for ex- employee works for an organization. here entities are employee and organization and relationship between is  "works for"
+weak relationship:
+it is used to connect with weak entity. here symbol used is double diamond
+degree of relationship:
+number of entities are involved in the relationship. The n-ary relationship is general for degree n
+unary relationship:
+relationship exists between members of same set, for ex- empolyee <-> manager relationship. here both of them are employees (same set).
+binary relationship:
+here the relationship exist between members of two different sets or classes. for ex- employee and organization.
+
+Cardinality of a relationship:
+one to one relationship:
+a single instance of an entity is associated with single instance of another entity, for ex- person to passport
+one to many relationship:
+a single instance of an entity is associated with many instances of another entity. for ex- person having many mobile numbers
+many to many relationship: more than one instance of an entity is associated with more than one instance of another entity.
+for ex- student <-> project relationship. one student can do many projects, similary many students can work on one project
+many to one relationship:
+reverse of one to many relationship
+
+Cardinality ratio:
+Min cardinality: minimum number of relationship made by one member of the set
+Max cardinality: maximum number of relationship made by one member of the set
+if min cardinality is 0: partial participation (at least entity is not participating). It is represented with single line
+if min cardinality is 1: total participation (all entities are participating at least once). It is represented with double line
+
+
+
