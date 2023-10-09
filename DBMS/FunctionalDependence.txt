@@ -1,0 +1,59 @@
+functional dependency is valid if one vaule always the same final value everytime
+X -> Y is FD if for every value of X, the value of Y produced is constant
+
+trivial functional dependency:
+A -> B has trivial functional dependency if B is a subset of A
+for ex: -  (employee id, employee name) -> employee id
+
+
+non trivial functional dependency:
+A -> B has non trivial functional dependency is B is not a subset of A
+employee id -> employee name
+
+Reflexive rule:
+if y is a subset of x, then x determines y
+ex- abs -> bc
+
+Augmentation rule:
+if x determines y, then xz determines yz. According to this rule if we add one instance to both sides then FD is still valid
+
+transitive rule:
+if x determines y and y determines z then we can say x determines z
+
+union rule:
+if x determines y and x determines z then x determines yz
+
+decomposition rule:
+x determines yz, then x -> y and x -> z
+
+FD closure of an attribute of set of attributes:
+it is a set which cantains all the attributes which can be derived directly or indirectly from it. It is represented by A+, here it represents FD closure of attribute A.
+
+Candidate key:
+It's closure contains all the attributes.
+
+Super key:
+It closure constains all the attributes. But it is made of two or more keys
+
+Equivalence of functional dependencies:
+If we can derive functional dependency of one set from functional dependency of another set, and also vice versa is possible then both the sets are considered equivalent. 
+
+Partial functional dependency:
+A functional dependency X -> Y is a partial dependency if proper subset of X determines a non - key attribute
+for ex- AB -> C, B -> D
+now AB+ = {A, B, C, D}, here D can be derieved from AB, but it can also be derieved from B which is a proper subset of AB. So it is partial functional dependence, i.e., D is not fully dependent on AB only it is only partially dependent on AB
+
+Full functional dependency:
+If X and Y are an attribute set of a relation, Y is fully functional dependent on X, if Y can be derieved from on X but not from any proper subset of X
+
+Update anomaly:
+When duplicated date is updated at one instance and not across all instances where it was duplicated. That's an update anomaly.
+
+Deletion Anomaly:
+Deletion of some attribute which causes deletion of other attributes is deletion anomaly.
+
+Insertion anomaly: 
+An insert anomaly occurs when attributes cannot be inserted into the database  without the presence of other attributes. Usually when a child is inserted without parent.
+
+Anomalies are avoided by normalization and try to bring the tables to grnular state.
+In simple words, it tries to split tables into multiple tables and defines relationships between the using keys.

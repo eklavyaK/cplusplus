@@ -18,17 +18,17 @@ using namespace std;
 
 
 void code(int TC){
-	
+    
 
 }
 
 
 signed main(){
-	ios_base::sync_with_stdio(0);
-	cin.tie(0);cout.tie(0);cerr.tie(0);
-	cout.precision(30);
-	int TT = 1; cin >> TT;
-	for (int TC = 1; TC <= TT; TC++) 
-		code(TC);
-	return 0;
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);cout.tie(0);cerr.tie(0);
+    cout.precision(30);
+    int TT = 1; cin >> TT;
+    for (int TC = 1; TC <= TT; TC++) 
+        code(TC);
+    return 0;
 }

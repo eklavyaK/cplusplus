@@ -1,0 +1,18 @@
+First Normal form (1NF):
+It contains atomic values. No multiple values. Two values  in a cell is not allowed
+for ex- phone number can take multiple values for a person in that case to make 1NF form we must duplicate the record and keep two different phone numbers in both the rows to make it 1NF form
+
+Second Normal Form (2NF):
+It should have all the  properties of the first normal  form (1NF)
+Additonal condition that, every non-primary-key attribute is fully functional dependent on the primary key.
+In case of partial functional dependency, we have to split the table into more subtables, so that no attribute is fully functional dependent on any proper subset of a primary key.
+
+Third Normal Form (3NF):
+It should have the properties of the second normal form (2NF)
+there is no transitive dependency for non-prime attributes.
+Transitive dependency occurs when a non prime attribute is dependent on another non - prime attribute. In this case we can make another table where non prime attribute on which another non prime attribute depends can be made prime attribute in this table
+
+Boyce Codd Normal Form (BCNF)
+It should be 3NF
+Every non-trivial functional dependence (x -> y), x should be a super key, i.e. lhs of every functional dependence should be have closure containing all the attributes.
+If there is functional dependence that doesn't follow this condition we make a separate table for it

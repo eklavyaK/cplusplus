@@ -1,50 +1,62 @@
-#include<bits/stdc++.h>
-#define endl "\n"
-#define ff first
-#define ss second
-#define int long long
-typedef long long ll;
-typedef long double ld;
-using namespace std;
-#ifndef ONLINE_JUDGE
-#include "include/debug.h"
-#else
-#define debugarr(a, n) 42
-#define debug(...) 42
-#endif
+#include <bits/stdc++.h>
+  using namespace std;
+  
+  vector<vector<vector<int>>> dp;
+  string ans;
+  
+  void raam( string& s, int i, int ct, char ch){
+    
+    if(i==s.size()){
+      // cout<<s<<endl;
+      ans= min(ans,s);
+      return;
+    }
+    
+    if(dp[i][ct][ch-'a']!=-1) return;
+    dp[i][ct][ch-'a']=0;
+    
+    
+    if(s[i]=='?' && ((ch=='a' && ct<2) || (ch!='a'))){
+      s[i]='a';
+      int cnt= ( ch=='a') ? ct+1: 1;
 
+      raam(s,i+1,cnt,'a');
+      s[i]='?';
+    } 
+    
+    //b daalo
+    if(s[i]=='?' && ((ch=='b' && ct<2) || (ch!='b'))){
+      s[i]='b';
+      int cnt= ( ch=='b') ? ct+1: 1;
+      raam(s,i+1,cnt,'b');
 
+      s[i]='?';
+    }
+    
+    //kuch na
+    if(s[i]!='?' && ((ch==s[i] && ct<2) || (ch!=s[i]))){
+      // cout<<s[i]<<" "<<i<<endl;
+      int cnt= ( ch==s[i]) ? ct+1: 1;
+      raam(s,i+1,cnt,s[i]);
+    }
+    
+    return;
+  }
+  
 
+  int main() {
 
+    // int n;
+    string s = "??bb?baab???";
+    ans="z";
+    dp.resize(s.size()+1,vector<vector<int>>(4, vector<int>(27,-1)));
+    
+    raam(s,0,0,'c');
+    if(ans=="z") cout<<"-1"<<endl;
+    else{
+       cout<<ans<<endl;
+    }
+    
+    // cin>>n;
 
-void code(int TC){
-	vector<int> A{11, 7, 11, 17, 12, 12, 16, 10, 11};
-	int B = 4;
-	int n = A.size();
-	B = min(2 * B, n);
-	vector<vector<long long>> dp(B + 5, vector<long long> (2, -1E9));
-	dp[0][0] = 0;
-	for(int i = 0; i < n; i++){
-		vector<vector<long long>> ndp(B + 5, vector<long long> (2, -1E18));
-		for(int j = 0; j <= B; j++){
-			ndp[j][0] = max(dp[j][0], dp[j][1] + A[i]);
-			ndp[j][1] = max(dp[j][1], dp[j][0] - A[i]);
-		}
-		dp = ndp;
-		debug(dp);
-	}
-	int ans = 0;
-	for(int i = 0; i <= B; i++) ans = max((long long) ans, dp[i][0]);
-	cout << ans << endl;
-}
-
-
-signed main(){
-	ios_base::sync_with_stdio(0);
-	cin.tie(0);cout.tie(0);cerr.tie(0);
-	cout.precision(30);
-	int TT = 1; cin >> TT;
-	for (int TC = 1; TC <= TT; TC++) 
-		code(TC);
-	return 0;
-}
+  }
