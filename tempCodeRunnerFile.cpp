@@ -18,50 +18,34 @@ using namespace std;
 
 
 void code(int TC){
-    string s; cin >> s;
-    deque<char> c;
-    int n = s.size();
-    int x; cin >> x;
-    int cur = n;
-    for(int i = 0; i < n; i++){
-        if(cur >= x){
-            x--;
-            while(x > 0 && !c.empty()) c.pop_front(), x--;
-            if(!c.empty()){
-                cout << c.front();
-                return;
-            }
-            while(x > 0) i++, x--;
-            cout << s[i];
-            return;
-        }
-        while(!c.empty() && cur < x && c.back() > s[i]) c.pop_back(), x -= cur, cur--;
-        if(cur >= x){
-            x--;
-            while(x > 0 && !c.empty()) c.pop_front(), x--;
-            if(!c.empty()){
-                cout << c.front();
-                return;
-            }
-            while(x > 0) i++, x--;
-            cout << s[i];
-            return;
-        }
-        c.push_back(s[i]);
-    }
-    while(x > cur) c.pop_back(), x -= cur, cur--;
-    x--;
-    while(x > 0) c.pop_front(), x--;
-    cout << c.front();
+	int n, k; cin >> n >> k;
+	string s; cin >> s;
+	vector<int> one(k), zero(k);
+	for(int i = 0; i < n; i++){
+		if(s[i] == '1') one[(i + 1) % k] += 1;
+		else zero[(i + 1) % k] += 1;
+	}
+	int o = 0, z = 0;
+	for(int i = 0; i < k; i++){
+		if(zero[i] == 0 && one[i] == 0) continue;
+		else{
+			if(one[i] == 0) o += 1E9;
+			else o += zero[i];
+			if(zero[i] == 0 && one[i] == 1) z += 1E9;
+			else if(one[i] == 1) z += 2;
+			else z += (one[i] + 1) / 2;
+		}
+	}
+	cout << min(o , z) << endl;
 }
 
 
 signed main(){
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);cout.tie(0);cerr.tie(0);
-    cout.precision(30);
-    int TT = 1; cin >> TT;
-    for (int TC = 1; TC <= TT; TC++) 
-        code(TC);
-    return 0;
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);cout.tie(0);cerr.tie(0);
+	cout.precision(30);
+	int TT = 1; cin >> TT;
+	for (int TC = 1; TC <= TT; TC++) 
+		code(TC);
+	return 0;
 }
