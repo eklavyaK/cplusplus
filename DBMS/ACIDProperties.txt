@@ -1,0 +1,13 @@
+ACID - atomicity consistency isolation durability
+
+atomicity:
+either all the  operatoins of a transaction are executed or none of them is executed. like consider a transaction in which some data is read from a database and some operations are performed on it, then if before committing the change the transaction fails then we've to rollback all the changes and bring it back to initial state.
+
+consistency:
+sum of all the values involved in the trasaction should remain the same before and after the trasaction
+
+isolation:
+A DBMS's isolation feature ensures that several transactions can take place simultaneously and that no data from one database should have an impact on another. for ex- many people can withdraw money from their bank account simultaneously
+
+durability:
+it means updates done are permanent. It cannot get changed/reversed on it's own, unless we make another update
