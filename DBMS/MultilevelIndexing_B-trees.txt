@@ -1,0 +1,35 @@
+B - Trees:
+The B - Tree is a generaliztion of a BST in that a node can have more tha twho children. It is height balanced search tree. Height of every leaf is same
+
+order of a B - Tree (n):
+number of block pointers we can place in a node of a B - Tree. Each node of a B - tree contains (n) block pointers and (n - 1) keys with their record pointer. A record pointer contains a key and a record pointer with it. Generally a node of a B - Tree is placed in a block. Assume that block size is B, and order is n, and a block pointer size is P, and a record pointer size is Pr and a key size is K, so following relation should hold
+n * P + (n - 1) * (K + Pr) <= B, because total node memory shouldn't exceed block size
+
+Insertion in B - Tree:
+A neww element is always insert at leaf. First we find the suitable node for insertion. If node is empty we insert it there. If it is full, we just insert it there and take the middle element out from it and try to insert it in the higher level, if there are no levels left we create a new level at top. In this manner the height of the B - Tree remains same.
+for better understanding: https://www.udemy.com/course/relational-database-management-systemrdbms-complete-pack/learn/lecture/30866990#content
+
+Deleteion operation on a B - Tree:
+for better understanding
+https://www.udemy.com/course/relational-database-management-systemrdbms-complete-pack/learn/lecture/30921830#content
+
+
+B+ trees:
+structure - we can modify a B - Tree to for a B+ Tree
+1. leaf node : Remove all tree pointers and every node conatains only key, record pointers and one block pointer.
+2. Internal node: Remove all record pointers and contains only key and tree pionters.
+
+order of a leaf node (n):
+n * (K + Pr) <= B
+n is the order and K is the key size and Pr is the pointer size and B is the block size
+
+order of a internal node:
+n * P + (n - 1) * K <= B
+n is the order, P is the pointer size
+K is the key size
+
+for better understanding of structure of B+ Trees: 
+https://www.udemy.com/course/relational-database-management-systemrdbms-complete-pack/learn/lecture/30925734#content
+
+for better understanding splitting, insertion in B+ Trees:
+https://www.udemy.com/course/relational-database-management-systemrdbms-complete-pack/learn/lecture/30952354#content
