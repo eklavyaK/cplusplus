@@ -18,25 +18,21 @@ using namespace std;
 
 
 void code(int TC){
-	int n, k; cin >> n >> k;
-	string s; cin >> s;
-	vector<int> one(k), zero(k);
-	for(int i = 0; i < n; i++){
-		if(s[i] == '1') one[(i + 1) % k] += 1;
-		else zero[(i + 1) % k] += 1;
+	int n, m; cin >> n >> m;
+	vector<int> a(n);
+	for(int i = 0; i < n; i++) cin >> a[i];
+	auto check = [&](int k){
+		int c = 0;
+		for(auto i : a) c += (i + k - 1) / k;
+		return c <= m;
+	};
+	int l = 0, r = 1E18;
+	while(l <= r){
+		int mid = (l + r) >> 1;
+		if(check(mid)) r = mid - 1;
+		else l = mid + 1;
 	}
-	int o = 0, z = 0;
-	for(int i = 0; i < k; i++){
-		if(zero[i] == 0 && one[i] == 0) continue;
-		else{
-			if(one[i] == 0) o += 1E9;
-			else o += zero[i];
-			if(zero[i] == 0 && one[i] == 1) z += 1E9;
-			else if(one[i] == 1) z += 2;
-			else z += (one[i] + 1) / 2;
-		}
-	}
-	cout << min(o , z) << endl;
+	cout << r + 1 << endl;
 }
 
 
