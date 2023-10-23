@@ -11,7 +11,7 @@ aaaa_testfile3.cpp
 *.prob
 # Log file
 *.log
-
+*.pdf
 # BlueJ files
 *.ctxt
 

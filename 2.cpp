@@ -13,61 +13,73 @@ using namespace std;
 #define debug(...) 42
 #endif
 
+class Trie{
+	public:
+	struct node{
+		node* b[2];
+		node(){b[0] = b[1] = NULL;}
+	};
+	node* head;
+	Trie(){head = new node();}
+	void add(int k, int bit){
+		node* cur = head;
+		for(int i = bit; i >= 0; i--){
+			int b = ((1 << i) & k) > 0;
+			if(!cur -> b[b]) cur -> b[b] = new node();
+			cur = cur -> b[b];
+		}
+	}
+	int get(int k, int bit){
+		int ans = 0;
+		node* cur = head;
+		for(int i = bit; i >= 0; i--){
+			int b = ((1 << i) & k) > 0;
+			if(cur -> b[b]) cur = cur -> b[b];
+			else if(cur -> b[1 - b]) cur = cur -> b[1 - b], ans += (1 << i);
+			else return ans;
+		}
+		return ans;
+	}
+	void destroy(node* head){
+		if(NULL != head -> b[0]) destroy(head -> b[0]);
+		if(NULL != head -> b[1]) destroy(head -> b[1]);
+		delete head;
+	}
+};
 
-const int N = 1e6 + 5;
-vector<int> spf(N), pfac, fac, prime;
-vector<int> f(N, -1);
-void spfac(int n){
-	for(int i = 0; i <= n; i++) spf[i] = i;
-	for(int i = 2; i * i <= n; i++){
-		if(spf[i] != i) continue;
-		for(int c = i * i; c <= n; c += i) if(spf[c] == c) spf[c] = i;
-	}
-	for(int i = 2; i <= n; i++) if(spf[i] == i) prime.push_back(i);
+int findedge(vector<int> &a, vector<int> &b, int bit){
+	if(bit < 0) return 0;
+	int n = a.size(), m = b.size();
+	Trie* obj = new Trie();
+	for(int i = 0; i < n; i++) obj -> add(a[i], bit);
+	int mn = 1 << 30;
+	for(int i = 0; i < m; i++) mn = min(mn, obj -> get(b[i], bit));
+	obj -> destroy(obj -> head);
+	return mn;
 }
-void primefactor(int n){
-	pfac.clear();
-	int k = n;
-	while(n != 1) pfac.push_back(spf[n]), n /= spf[n];
-	int c = 0, sz = pfac.size();
-	for(int i = 0; i < sz; i++){
-		c += 1;
-		while(i + 1 < sz && pfac[i + 1] == pfac[i]) i += 1;
+
+int calc(vector<int> &a, int b){
+	int n = a.size();
+	if(n == 1) return 0;
+	if(n == 2) return a[0] ^ a[1];
+	vector<int> l, r;
+	for(int i = 0; i < n; i++){
+		if(a[i] & (1 << b)) l.push_back(a[i]);
+		else r.push_back(a[i]);
 	}
-	f[k] = c;
-}
+	int ans = 0;
+	if(l.size() && b != 0) ans += calc(l, b - 1);
+	if(r.size() && b != 0) ans += calc(r, b - 1);
+	if(l.size() && r.size()) ans += findedge(l, r, b - 1) + (1 << b);
+	return ans;
+};
 
 
 void code(int TC){
 	int n; cin >> n;
-	vector<vector<int>> dp(n, vector<int> (n, 1E9)), vis(n, vector<int> (n)), G(n, vector<int> (n));
-	for(int i = 0; i < n; i++){
-		for(int j = 0; j < n; j++) cin >> G[i][j];
-	}
-	auto check = [&](int &x, int &y){
-		return x >= 0 && x <= n - 1 && y >= 0 && y <= n - 1;
-	};
-	dp[0][0] = 0;
-	priority_queue<tuple<int, int, int>, vector<tuple<int, int, int>>, greater<tuple<int, int, int>>> q;
-	q.push({0, 0, 0}); 
-	while(!q.empty()){
-		auto [d, x, y] = q.top(); q.pop();
-		if(vis[x][y]) continue;
-		vis[x][y] = 1;
-		if(f[G[x][y]] == -1) primefactor(G[x][y]);
-		int p = f[G[x][y]], c = sqrt(G[x][y]);
-		for(int i = y - p; i <= y + p; i++){
-			int h = p - abs(y - i);
-			for(int j = x - h; j <= x + h; j++){
-				if(1 - check(i, j)) continue;
-				if(dp[i][j] > dp[x][y] + c){
-					dp[i][j] = dp[x][y] + c;
-					q.push({dp[i][j], i, j});
-				}
-			}
-		}
-	}
-	cout << dp[n - 1][n - 1] << endl;
+	vector<int> a(n);
+	for(int i = 0; i < n; i++) cin >> a[i];
+	cout << calc(a, 30) << endl;
 }
 
 
@@ -75,7 +87,6 @@ signed main(){
 	ios_base::sync_with_stdio(0);
 	cin.tie(0);cout.tie(0);cerr.tie(0);
 	cout.precision(30);
-	spfac(N - 5);
 	int TT = 1;
 	for (int TC = 1; TC <= TT; TC++) 
 		code(TC);

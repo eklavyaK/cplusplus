@@ -1,0 +1,12 @@
+Overfitting:
+It is an undesirable machine learning behavior that occurs when the machine learning model gives accurate predictions for training data but not for new data. An overfit model gets a low loss during training but does a poor job predicting new data. If a model fits the current sample well, how can we trust that it will make good predictions on new data? As you'll see later on, overfitting is caused by making a model more complex than necessary. The fundamental tension of machine learning is between fitting our data well, but also fitting the data as simply as possible.
+
+Test data and Validation data:
+It is a set of data used to validate the correctness, completeness, and quality of a software program or system. It is typically used to test the functionality of the program or system before it is released into production. It can have some impact on training hyperparameters, like reducing error rate if loss is not changing. But doing it over and over again, it might be possible that our model my overfit according to test data. To avoid this process we should use another data set which is called validation set. In this case we evaluate our model on validation and use this result to confirm it with test data.
+
+Partitioning Data Set:
+Training set - a subset to train a model
+Test set - a subset to test the trained model
+Precaution: never train on test data, because it will make the model look much more accurate when it's not.
+
+

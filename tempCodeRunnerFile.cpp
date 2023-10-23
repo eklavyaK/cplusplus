@@ -18,21 +18,41 @@ using namespace std;
 
 
 void code(int TC){
-	int n, m; cin >> n >> m;
-	vector<int> a(n);
+	int n; cin >> n;
+	vector<int> a(n), b(n);
 	for(int i = 0; i < n; i++) cin >> a[i];
-	auto check = [&](int k){
-		int c = 0;
-		for(auto i : a) c += (i + k - 1) / k;
-		return c <= m;
-	};
-	int l = 0, r = 1E18;
-	while(l <= r){
-		int mid = (l + r) >> 1;
-		if(check(mid)) r = mid - 1;
-		else l = mid + 1;
+	for(int i = 0; i < n; i++) cin >> b[i];
+	for(int i = 0; i < n; i++){
+		a[i] = b[i] - a[i];
+		if(a[i] < 0){
+			cout << -1 << endl;
+			return;
+		}
 	}
-	cout << r + 1 << endl;
+	int cnt = 0, ans = 0;
+	for(int i = 0; i < n; i++){
+		a[i] -= cnt;
+		if(a[i] < 0){
+			cout << - 1 << endl;
+			return;
+		}
+		if(i + 1 < n && a[i + 1] - cnt > a[i]){
+			cnt += a[i + 1] - cnt - a[i];
+		}
+	}
+	ans = cnt;
+	cnt = 0;
+	for(int i = n - 1; i >= 0; i--){
+		a[i] -= cnt;
+		if(a[i] < 0){
+			cout << -1 << endl;
+			return;
+		}
+		if(i - 1 >= 0 && a[i - 1] - cnt > a[i]){
+			cnt += a[i - 1] - cnt - a[i];
+		}
+	}
+	cout << ans + cnt + a[0] << endl;
 }
 
 
