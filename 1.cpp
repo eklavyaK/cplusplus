@@ -15,31 +15,11 @@ using namespace std;
 
 
 
+
+
 void code(int TC){
 	int n; cin >> n;
-	vector<pair<int, int>> a(n);
-	for(int i = 0; i < n; i++){
-		a[i].ff = 1 + rand() % 5;
-		a[i].ss = i;
-		cerr << a[i].ff << " ";
-	}
-	cerr << endl;
-	sort(a.begin(), a.end());
-	vector<int> ans(n);
-	stack<int> st;
-	int cur = 0;
-	for(int i = 0; i < n; i++){
-		while(!st.empty() && a[i].ff > cur) ans[st.top()] = cur, cur += 1, st.pop();
-		cur = a[i].ff;
-		ans[a[i].ss] = cur;
-		cur += 1;
-		int c = i;
-		while(i + 1 < n && a[i + 1].ff == a[i].ff) i += 1;
-		for(int j = i; j >= c + 1; j--) st.push(a[j].ss);
-	}
-	while(!st.empty()) ans[st.top()] = cur, cur += 1, st.pop();
-	for(auto i : ans) cerr << i << " ";
-	cerr << endl;
+
 }
 
 
