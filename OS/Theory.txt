@@ -7,3 +7,6 @@ Multi-Tasking (context switching with fixed interval and also at I/O): Multitask
 Multi-processing (multiple processors are involved along with multi-tasking): Multiprocessor operating systems are used in operating systems to boost the performance of multiple CPUs within a single computer system. Multiple CPUs are linked together so that a job can be divided and executed more quickly. When a job is completed, the results from all CPUs are compiled to provide the final output.
 
 Multithreading : In multithreading, multiple threads are created within same process, executing independently but concurrently sharing process resources, i.e. no memory isolation.
+
+
+Peterson's solutin to avoid race condition and ensure dispartiality: https://www.youtube.com/watch?v=gYCiTtgGR5Q
