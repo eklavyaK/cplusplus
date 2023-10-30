@@ -1,0 +1,66 @@
+OSI model is 7 layer model. And it is theoretical model. Mainly we use TCP/IP model which is implementable and is used.
+
+Physical layer:
+This layer mainly consists of physical objects, like cables
+	-> There are various topologies - star, mesh, bus, hybrid
+	-> Hardwares like repeaters and hubs
+	-> Transmission mode - simplex, duplex, half-duplex
+	-> Multiplexing and encoding
+In this layer we convert bits to analog signals
+
+
+Topologies:
+Mesh - fully connected graph, cables = n * (n - 1) / 2, highly reliable (failure of one wire does lead to failure of network), high cost, high security(because two devices can directly without other devices knowing it). total ports required = n * (n - 1), here every device requires n - 1 ports to connect to every incoming cable
+
+Hub or Star - it has a central hub, cables = n, number of ports = 2 * n, not highly reliable, cost is still higher, security is lesser than mesh
+
+Bus - It has a single thick wire called hub, and all the devices are connected over to it, like electricity transmission line cable. cables = n + 1, number of ports = n.
+
+Ring - It has a bus cable, which is circular. All the other devices are connected to that circular cable. Tramission happens such that sender sends message to it's neighbor device only and message tramits sequentially so there is 0 security
+
+Hybrid - It combines many topologies according to need
+
+Cables:
+cables are generally represented as - X Base/Broad Y, which means X is speed in Mbps and Base means baseband (only one signal is transmitted at a time), for broadband (many signals of different frequencies can be transmidded parallely). Y means the distance in 100 meters which the cable can transmit without signal getting completely attenuated.
+Various types of cables are:-
+Unshielded twisted pair cable: made of twisted copper wires, ex - ethernet
+Coaxial cable: generally used for cable tv tranmission it has two copper cylinders
+Fire optic: they are made of transparent fibres
+
+Repeaters:
+They are used to amplify and reconstruct the signal.
+
+Hub:
+Hub is a multiport repeater
+
+Bridge:
+Bridges are used to connect two different LANs or networks. It can check whether the data should be transmitted to next side or not, unlike repeater which transmits all the data to the next side even though it is not required. Bridges have their software to do this job. There are two types of bridges - static and dynamic. In static bridges we have to define the routes and in case if configuration is changed, we must change the data given to static bridge, but in dynamic routing it learns the route over the course of transmission and updates the changes itself.
+
+switches:
+It is layer - 2 (data link layer) device, it multiport bridge, full duplex links are present, collision is 0. As soon two devices want to communicate with each other switch forms a different route between them, which forms a point to point connection.
+
+router:
+It checks not only mac address (data link layer), but also ip address (network layer). Router routing table to determine the direction along which data is to be sent.
+
+Collsion domain and Broadcast domain:
+A collision domain is defined as the domain in which, the signals that are transmitted by the devices over the network collide with each other. A broadcast domain is a domain that consists of all the devices that can receive a broadcast message that is sent by any other device that is present in the domain.
+
+Repeater doesn't change collsion domain or broadcast domain
+Hub does the same as repeater
+Bridge reduces the collision domain to half (either sides are separeted), broadcast domain remains the same
+Switch does same bridge
+Router reduces the collision doman to half and also reduces the broadcast domain
+
+Circuit switching:
+It is obselete method used for telephone communication. It has a circuit  containing many switches initially open, when request is made switches are joined in such a way to establish a route between the to points.
+total time = setup time (time to establish the circuit) + transmission time + propagation delay + tear down time (freeing up the switches)
+
+Packet switching:
+Unlike circuit switching, here data is sent to the switch without any circuit is established and now it is the job of the switch to make sure it goes in the optimal direction. Here first packets of data are stored in the buffer of the switch and then switch executes the algorithm to determine the way it should be transmitted.
+total time = transmission time + propagation delay
+
+Datagram switching vs virtual switching: https://www.geeksforgeeks.org/difference-between-datagram-switching-virtual-circuit/
+
+Unicasting: one sender sends messages to one receiver
+Broadcasting: one sender sends message to many receivers
+multicasting:  one sends sends message to a particular set of receiver
