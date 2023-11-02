@@ -18,28 +18,8 @@ using namespace std;
 
 
 void code(int TC){
-	int n = 1410;
-	map<string, int> m;
-	string S = "";
-	int l = 0;
-	for(int i = 0; i < n; i++){
-		string s; cin >> s;
-		if(s[0] > 60){
-			S += " " + s;
-			l = 1;
-		}
-		else{
-			if(l == 1){
-				m[S] += 1;
-				S = "";
-			}
-			l = 0;
-		}
-	}
-	int cnt = 0;
-	for(auto [u, v] : m){
-		if(v == 2) cout << ++cnt << ". " << u << endl;
-	}
+	
+
 }
 
 

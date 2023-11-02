@@ -1,0 +1,31 @@
+Random Access Protocols:
+
+Pure Aloha:
+In this a channel is reserved for 2 * TT so vulnerable time is 2 * TT where TT is the transmission time. The data is transmitted in the second half of the vulnerable so as to make sure that any device shouldn't have started transmission after t - TT time, which will lead to collision.
+
+Transmission Time (TT) = Total data / throughput = data size / bandwidth
+
+Efficiency in pure Aloha at a time is = G * e ^ (-2 * G), where G is the number of devices who want to transmit the data at any given time.
+
+Maximum efficiency in pure aloha = 18.4 %. And this efficiency is achieved when G = 0.5 stations transmitting the data at any point
+
+Slotted Aloha:
+In this the time is divide into slots which is equal to the amount of time taken by a device to send a message. The transmission can only start at the start of a slot. There is possibility that two or more devices start transmitting at the start of the slot in that case there  will be collision and their slots will be postponed by a random amount of time slot forward. Here vulnerable time is equal to time slot which equal to TT. 
+
+Efficiency in pure Aloha at a time is = G * e ^ (-G), where G is the number of devices who want to transmit the data at any given time. In this case maximum efficiency is 36.8 % which will be achieved when G = 1 station starts transmitting the data at any point, so that there will be no collision.
+
+CSMA (Carrier - seonsor multiple access) protocol:
+In this devices have a carrier sensor which has capability to check whether the bus has a signal or not, and they check not over whole  bus line but only at their point of connection to the bus. If there is no signal (no other device is transmitting at the moment through the connection point) detected they instantly transmit the data.
+Types:
+1 - persistent: It persistently checks the bus at regular intervals with very little difference between two checks. Now if bus is found empty then data is transmitted otherwise not. But assume that two devices are checking in the similar manner, and as soon as bus is found idle both start their transmission, which lead to collision, then they'll again check next time and again transmit at the simultaneously which will again lead to collision. So this type is highly collidable.
+0 - persistent: If there is collision it stops for random time then checks again. In this case it is more collision free than 1 - persistent but there is possibility it might wait for long time than required.
+p - persistent: It does same as 1 - persistent but when it finds channel idle, it has a probability associated with it to transmit the data, i.e. if probability is 0.2 there is low chance it'll tarnsmit the data now and high chance it'll wait check again, if probability is high there is high chance it'll transmit the data.
+
+CSMA / CD (collision detection) happens in case of wired transmission:
+In case of simple CSMA there was acknoledgement sent to verify the successful transmission. But this makes collision more frequent becasue there acknoledgement + data. So to avoid it, CSMA/CD ueses collision detection system to check whether the sent data collided in between or reached correctly. When a device is transmitting the data and at the time of transmission a collided signal is received at it's point of contact to bus. It'll be able to know that it's data has collided with another device's data. But there is possibility that collision might happen after it stopped transmission and in this case collision will go unnoticed.
+for possibility of collision TT >= 2 * PD (propagation delay).
+for more info: https://www.youtube.com/watch?v=v_z888gQWq0&list=PLxCzCOWd7aiGFBD2-2joCpWOLUrDLvVV_&index=36
+
+CSMA / CA (collision avoidance) happens in case of wireless transmission:
+This method was developed to decrease the chances of collisions when two or more stations start sending their signals over the data link layer. Carrier Sense multiple access requires that each station first check the state of the medium before sending.
+for more info: https://www.youtube.com/watch?v=reQ938TeFHM&list=PLxCzCOWd7aiGFBD2-2joCpWOLUrDLvVV_&index=37

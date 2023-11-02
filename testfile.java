@@ -1,20 +1,18 @@
 import java.util.*;
-import java.lang.*;
+public class testfile{
+    
 
-public class testfile
-{
-	public static void main(String args[])
-	{
-		Scanner sc = new Scanner(System.in);
-		int n = sc.nextInt();
-		ArrayList<Integer> a = new ArrayList<>();
-		for(int i = 0; i < n; i++){
-			a.add(sc.nextInt());
-		}
-		Collections.sort(a, (x, y) -> {return y - x;});
-		for(int i = 0; i < n; i++){
-			System.out.print(a.get(i) + " ");
-		}
-		sc.close();
-	}
+    public static void main(String[] args) {
+     //    try{
+		args = new String[3];
+		args[0] = "2";
+		args[0] = "2";
+		args[0] = "2";
+		Arrays.sort(args);
+		System.out.println(args[1]);
+	//    }
+	//    catch(Exception e){
+	// 	System.out.println("Exception occurred");
+	//    }
+     }
 }

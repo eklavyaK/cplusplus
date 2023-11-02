@@ -1,0 +1,47 @@
+Data link layer:
+Data link layer is responsible for transferring messages for a given node to all the other chosen nodes. This layer handles error control, flow control and receives the acknoledgement from the receiver.
+
+Stop and wait ARQ protocol:
+In this sender sends a frame of data then it waits for the receiver for the acknoledgement about whether it has received the frame or not. In case of positive acknoledgement senders the next frame and process goes. In case of negative acknoledgement, sender sends the frame again.
+
+Sliding window protocol:
+Since Stop and wait protocol has high latency, because of acknowledgement part, sliding window protocol is used more preferably. In this many future data are sent before receiving the acknowledgement of the previous data. Receiver receives the data and sends the acknowledgement and as soon as it sends the acknowledgement, it instantly gets the next data. sender also simultaneously analyses the acknowledgement of the previous data and sends the next data simultaneously.
+
+Go-back-to-N ARQ protocol:
+window size < 2 ^ m
+It is a sliding window protocol. more here: https://www.youtube.com/watch?v=zc88y9HTAOA&list=PLxCzCOWd7aiGFBD2-2joCpWOLUrDLvVV_&index=24
+
+Selective Repeat:
+window size = 2 ^ m
+https://www.youtube.com/watch?v=08y_Vrs1vHo&list=PLxCzCOWd7aiGFBD2-2joCpWOLUrDLvVV_&index=25
+
+Bit stuffing refers to the insertion of one or more bits into a data transmission as a way to provide signaling information to a receiver
+
+Error detection and correction:
+length of error = difference between the position of first error bit and last error bit.
+
+types or error:
+single bit error - only one bit is changed
+burst error - many bits are changed
+
+Single parity:
+This detection technique is used to detect single bit error or generally if number of bits changed is odd. A parity bit is added at the end of the sequence which denotes the parity of the sequence. for ex:- assume sent packet is 010110'1 (the last bit denotes the parity, here 3 ones are there so parity is 1), if received sequence is 010100'1, we can conclude that there is error in the sequence as parity bit is 1 but number of ones is 2 which denotes even parity.
+
+cyclic redundancy check (CRC):
+It is a powerful detection based on binary division. Here we have a polynomial equation or a binary divisor. We can extract the binary divisor from the polynomial equation by making all the positions which are present in the polynomial as a degree as 1. for ex: if polynomial is x ^ 4 + x ^ 2 + 1, so binary divisor is 10101, here powers present are 4, 2, 0 so we have set the bits at those positions.
+There might be possibility that datapacket is given in binary or polynomial again (we'll use the same method to convert it into binary). Now we'll add ((length of divisor - 1) or basically the degree of the divisor) zeros at the end of the datapacket and divide it by the divisor and obtiain the remainder. Now we'll replace those added zeros with the remainder. Now the datapacket is ready to be sent. At receiver same divisor will be used and remainder will be obtained. If remainder is 0 means received value is correct, otherwise there is error.
+
+Hamming code:
+It is a technique which is used for error detection and correction, if there is error in the single bit.
+Along with the data bits, redundant bits are sent which are called parity bits. The position of the parity bits is 2 ^ n, where n = 0, 1, 2... number of parity bits is decided by 2 ^ n >= n + d + 1, where d represents total number of data bits and n is the total number of parity bits, n takes the minimum value satisfying the euation
+for 7 bit of data, 3 are parity bits and 4 are data bits,
+[ D4 D3 D2 P3 D1 P2 P1 ], we can see positions 2 ^ 0, 2 ^ 1, 2 ^ 2 parity bits are present.
+P1 = D1 xor D3 xor D5 xor D7.. (take one leave one, starts from 2 ^ 0)
+P2 = D2 xor D3 xor D6 xor D7 xor D10 xor D11.. (take two leave two, starts from 2 ^ 1)
+P3 = D4 xor D5 xor D6 xor D7 xor D12 xor D13 xor D14 xor D15.. (take four leave four, starts from 2 ^ 2)
+
+Error Detection using hamming code:
+if Received data bits and parity bits do not match using the above formulas there is a error in the code.
+
+Error correction using hamming code:
+Let's assume newly received data sequence has error as parity bits are contradictory. We form a number ..P3P2P1 from the received data sequence using the formula above, and the obtained number is converted to decimal which the gives the index number of the error bit, we flip the bit at that position.
