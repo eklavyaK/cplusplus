@@ -1,0 +1,59 @@
+Token ring (mentioned in IEE 802.5):
+It is applied in ring topology, a token circulates in the ring. A device can trasmit data only if it has token with it. It should the capture the token while token is passing through it and then it can transmit the data for in the circuit while holding the token with. After sending it can release the token to again revolve in the circuit.
+
+Network layer:
+Translation of IP address to MAC address.
+Routing is one of the most important function of network layer. It decides the route along which data packet will traverse before reaching the destination.
+It is also responsible for packet fragmentation according to the need.
+
+IP address are 32 bit long, it is divided into 4 parts, each part contains 8 bits and each can have a value ranging from 0 to 255.
+
+Class A in IP addressing:
+Class A is represented by 0 as it's first bit, so it's first part ranges from 0 to 127. In class A first octet represents network number and next 24 bits represent host number in a network.
+
+Class B in IP addressing:
+Class B is represented by 10 as it's first two bits, so it's first part ranges from 128 to 191. First 16 bits of class B IP addressing represents network number, and next 16 bits of class B represents host number, in a network
+
+first IP address of a network represents a network and last IP address represents broadcast address. These two addresses are not given to any host.
+
+Class C in IP addressing:
+Class C is represented as 110 as it's first three bits, it's first octet ranges from 192 to 223. first 3 octets represent network and next 8 bits represent host offset of a network.
+
+Class D:
+It has first 4 bits as 1110, it ranges from 224 to 239 in first octet.
+
+Class E:
+It has first 4 bits as 1111, it ranges from 240 to 255 in first octet.
+
+Class D and E are reserved for military purposes.
+
+
+Classless Addressing:
+classful addressing had many disadvantages - inefficiency of assigning IP addresses in this manner increased as the internet expanded. Military reservation caused lot of resource wastage. It required more bandwidth
+
+In classless addressing we do not divide the IP addresses in various classes. That's why there is lot of flexibility in assigning IP addresses.
+200.30.40.40/28 Here slash represents that first 28 bits i.e. 200.30.40.32/28 represents the network number and remaining 4 bits represents the host number.
+
+
+Subnetting:
+Subnetting is a network within a network. It is done by dividing the host bits. for ex:- 200.30.40.  is the network and we want to divide it into four subnets or networks. In this case we'd consider the first 2 bits of the last octet to decide the subnet number, i.e. 00,10,01,11
+Subnet mask is the mask with which oring a IP address gives the subnet network.
+We can further divide a subnet depending on requirement.
+
+
+Fragmentation in IPv4:
+A datapacket contains a header and data bytes, when the data bytes are divided (because there might be possibility that a channel may not accept big data packet at once so we have to fragment the data packet into smaller packets). for ex- a data packet contains 3000 bytes where 20 bytes is header and 2980 bytes is data, and channel supports only 500 bytes of capacity. So now we break the data packet where each packet should have 20 bytes of header each, so total number of packets = 2980 / 480 ~ 7, last packet will only have 100 bytes of data. Each fragment will contain 20 bytes of header.
+
+
+Routing Table in distance vector routing:
+Distance vector routing is a part of intradomain routing where many routers are connected with each other. Every router has a routing table. Each routing contains three columns - router number, distance vector, next router. router number contains the router destination routers it can be same router itself, distance vector contains the shortest distance from this router to the destination router and next router contains the name of the neighbouring router through which the data must be sent to achieve the minimum distance.
+
+Count to infinity problem in distance vector routing:
+https://www.youtube.com/watch?v=UYASPR4jEkk&list=PLxCzCOWd7aiGFBD2-2joCpWOLUrDLvVV_&index=60
+
+Link state routing:
+The basic difference between distance vector routing and link state routing is that in distance vector routing only neighbours used to minimize the distance between any two nodes (like dijkstra) but in link state routing any node can be used to minimize the distance (like floyd warshall).
+The basic concept of link-state routing is that every node constructs a map of the connectivity to the network, in the form of a graph, showing which nodes are connected to which other nodes. Each node then independently calculates the next best logical path from it to every possible destination in the network.
+
+NAT:
+https://www.youtube.com/watch?v=47PUj7OSGkA&list=PLxCzCOWd7aiGFBD2-2joCpWOLUrDLvVV_&index=63

@@ -1,0 +1,10 @@
+Transport Layer:
+Transport layer is responsible for delivering delivering the data to the specific process which asked for the data. Data is not demanded by a device, rather by a process in the device. When process is demands the data, it demands through a particular port in that device, and process which sends the data is present in another device. Sender also sends through a particular port. The determination of source and destination devices are work of network and determination of source and destination ports is work of the transport layer. This is genrally done using multiplexing. Where the data from various sources are packed in one bandwidth and send alternately between the processes.
+Transport layer is also responsible for error control (checksum method is used),  flow control, congestion control.
+TCP method is used in transport layer which provides reliability. Transport layer is responsible of arrangement of the datapackets in correct order at the destination as they're received in random order as data packets deliver through different routes.
+
+
+Socket address:
+It is the combination of port number and IP address, if port number is P1 and IP  address is IP1 then socket address  is IP1P1. When a device access a server then server assigns it a port number to the device. If multiple processes from same device tries to access the server then all the processes will be assigned a different port number because for same port number socket address IP1P1 might become more than one in number which is prohibited. And number of port numbers are fixed but they are enough in quantity to handle a device. Two different devices can be assigned same port number because their IP addresses are different so IP1P1 will always differ from IP2P1
+
+TCP (Transmission Control Protocol):
