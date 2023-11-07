@@ -8,3 +8,48 @@ Socket address:
 It is the combination of port number and IP address, if port number is P1 and IP  address is IP1 then socket address  is IP1P1. When a device access a server then server assigns it a port number to the device. If multiple processes from same device tries to access the server then all the processes will be assigned a different port number because for same port number socket address IP1P1 might become more than one in number which is prohibited. And number of port numbers are fixed but they are enough in quantity to handle a device. Two different devices can be assigned same port number because their IP addresses are different so IP1P1 will always differ from IP2P1
 
 TCP (Transmission Control Protocol):
+In this protocol, the data is transmitted after 3 steps are fulfilled. first sender sends acknoledgement that it wants to send, receiver sends acknoledgement that it is ready to receive the data or not, then again receiver sends  that it is ready to send the data. If there positive response on all the three steps then only the data is transmitted. This increases the reliability as compared to UDP protocol
+TCP allows full duplex transmission.
+
+Piggybacking:
+Piggybacking is the technique of delaying outgoing acknowledgment and attaching it to the next data packet. 
+Instead of sending acknowledgement alone in a frame, it is attached to the the next data packet so as to prevent the delay and utilize the bandwidth efficiently. This data + acknoledgement frame is called piggyback and method is called piggybacking.
+Pure acknoledgement also sent which do not contain data in it. 
+https://www.youtube.com/watch?v=7zPfuIf4GL0&list=PLxCzCOWd7aiGFBD2-2joCpWOLUrDLvVV_&index=69
+
+UDP (user datagram protocol):
+User Datagram Protocol (UDP) is a Transport Layer protocol. UDP is a part of the Internet Protocol suite, referred to as UDP/IP suite. Unlike TCP, it is an unreliable and connectionless protocol. So, there is no need to establish a connection prior to data transfer. The UDP helps to establish low-latency and loss-tolerating connections establish over the network.The UDP enables process to process communication.
+
+Differences between TCP and UDP:
+In TCP connection is established before sending the data, for UDP various routes are taken by different data frames so it is connectionless.
+TCP is more reliable in UDP there is more chances of losing the data so it is less reliable.
+UDP is faster than TCP in terms of speed at which data is transmitted
+TCP has higher overload (20 bytes header), UDP has 8 bytes of header
+TCP can control the flow and congestion control, it doesn't happen in UDP
+protocols that TCP are HTTP, FTP, protocols that use UDP are DNS, BOOTP, DHCP, RIP
+
+Session layer:
+functionalities is session restoration.
+Sesion layer restores the values of the previous session in terms of checkpoints. Like in chrome (restore tabs), downloads (resume). In banking like netbanking they doesn't allow session restoration.
+
+presentation layer:
+functionalities are code conversion, encryption / decryption, compression.
+code conversion is basically conversion one code format (ASCII to EBSDIC).
+
+DNS:
+The Domain Name System (DNS) serves as a crucial component of the internet and plays a fundamental role in its functioning. Its primary purpose is to translate human-friendly domain names (e.g., www.example.com) into IP addresses (e.g., 192.168.1.1) that computers and network devices use to identify each other on the internet.
+DNS does load balancing: DNS can be used to distribute traffic across multiple servers or data centers.
+DNS operates in a hierarchical structure, with a distributed network of DNS servers organized into levels or zones. 
+https://www.youtube.com/watch?v=BZISxpdl4lQ&list=PLxCzCOWd7aiGFBD2-2joCpWOLUrDLvVV_&index=79
+
+Persistent (1.1) and non - persistent (1.0) HTTP
+Persistent HTTP maintains the connection after once the connection is established. To access anything after the connection is established, to get any further data the time required to transfer the data is needed to get it. To get the next data we use the same connection to get the data as connection is maintained unless we disconnect it manually.
+Non - persistent HTTP after sending the data once it automatically disconnects the connection and to get the next data we have to make the connection once again.
+So over head in case of NP HTTP is more.
+
+SMTP, POP3 and IMAP protocols are used while transferring the mail:
+SMTP is used to push the mail to the server from the sender.
+POP is used to 'moves' the mail from server to receiver.
+IMAP is same as POP but it 'copies' the mail from server to receiver mailbox. A copy remains with the server.
+All three user TCP or UDP protocols.
+https://www.youtube.com/watch?v=cjPVlxmf_Vk&list=PLxCzCOWd7aiGFBD2-2joCpWOLUrDLvVV_&index=82

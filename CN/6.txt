@@ -1,0 +1,26 @@
+Symmetric key cryptography:
+In symmetric key cryptography they algorithm is such designed that there is only one key which is used for both encryption and decryption. For n devices connected in the network there should be n * (n - 1) / 2 keys (n is the number of devices), because every pair should have a different key to make sure others do not access their communication.
+
+Asymmetric key cryptography:
+In this one key is used for encryption and other is used for decryption. For each device there is a public key and a private key. Public key (others can see it) of a device is used by other devices to encrypt the data before sending to it. And private key (one device has access to it) is used by the device to decrypt the data sent to it. So there are 2 * n keys in total (n is the number of devices).
+
+Firewall:
+It acts as a barrier between a trusted internal network and untrusted external networks, such as the internet, to protect the internal network from unauthorized access, cyberattacks, and other security threats.
+Firewalls work by examining the data packets that are transmitted between devices on a network and making decisions about whether to allow or block those packets based on various criteria, including source and destination IP addresses, port numbers, and the type of protocol being used.
+https://www.youtube.com/watch?v=o_vyfo3Hw0Y&list=PLxCzCOWd7aiGFBD2-2joCpWOLUrDLvVV_&index=88
+
+socket programming:
+https://www.youtube.com/watch?v=XTVTlEhGS6w&list=PLxCzCOWd7aiGFBD2-2joCpWOLUrDLvVV_&index=93
+
+"Transport mode" and "tunnel mode" are two modes used in the context of Virtual Private Networks (VPNs) and IPsec (Internet Protocol Security) to secure and protect network communications.
+Transport Mode: In transport mode, IPsec is used to protect the payload (the actual data) of an IP packet while leaving the IP header (which contains the source and destination IP addresses) intact. This mode is typically used for end-to-end communication between two hosts or devices. It is not used for securing communication between entire networks. In transport mode, the original IP header is preserved, and the encryption and authentication processes are applied to the payload and any additional data.
+Tunnel Mode: Tunnel mode, on the other hand, is used to protect the entire IP packet, including both the IP header and the payload. This means that the original packet is encapsulated within a new IP packet that is secured with IPsec. Tunnel mode is typically used when securing communication between entire networks (e.g., site-to-site VPNs). In this case, entire packets are encrypted and authenticated before being sent over the network. The original IP packet essentially becomes the payload of a new packet with a different IP header, which is used to route the packet through the VPN tunnel.
+
+Transducer is used to convert physical signals like voice, speech, image to electrical signals.
+
+Ping and Loopback:
+Ping:
+Ping is a command-line utility used to test the reachability of a host on an Internet Protocol (IP) network. It is often used to check if a remote host or device is responsive and measure the round-trip time for packets to travel to and from that host. The ping command sends an Internet Control Message Protocol (ICMP) Echo Request message to the target host and waits for an Echo Reply. If it receives a response, it means the host is reachable.
+Ping is commonly used for network troubleshooting, diagnosing connectivity issues, and determining the latency (ping time) between two devices on a network.
+Loopback:
+Loopback, in the context of networking, refers to a special network interface or address used to establish communication within a single device, such as a computer or server, without involving external network hardware. The loopback address is typically represented by the IP address 127.0.0.1, and it is sometimes referred to as "localhost." Data sent to the loopback address is not transmitted over a physical network; instead, it is routed internally within the device itself. Loopback is commonly used for testing network-related software or services running on the same machine. It allows applications to communicate with each other locally, simulating network communication without the need for an actual network.

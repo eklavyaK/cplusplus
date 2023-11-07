@@ -1,0 +1,15 @@
+A real-time operating system (RTOS) is an operating system designed to manage and control computer hardware in real-time applications. Real-time applications are those that require immediate and predictable responses to external events, typically with very low latency and high reliability.
+
+key characteristics of real time operating systems:
+1. priority based sheduling
+2. there are two types of RTOS - hard and soft, hard RTOS are strict to timing requirements, while soft RTOS can tolerate occasional delays.
+3. Some examples: VxWorks, QNX, FreeRTOS, RTLinux
+
+Types of tasks in RTOS:
+1. Periodic Tasks - they are executed at regular intervals. They are recurring on after fixed period. These tasks have 4 attributes - period, deadline, execution time, phase. Ex - reading sensor data every 100 milliseconds, controlling a motor at a fixed rate.
+2. Dynamic Tasks - process that can be created and terminated during the execution of the system, as opposed to being predefined at system startup. 
+There are two types dynamic tasks - aperiodic tasks(time interval is random, soft deadlines), sporadic tasks(random time, hard deadlines)
+
+Classification is also based on multiprocessing:
+Single - tasking RTOS: Only one task runs at a time.
+Multi - tasking RTOS: many tasks run at a time.
