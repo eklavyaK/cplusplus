@@ -1,0 +1,40 @@
+Peterson's solution works for only two threads:
+
+It has two variables: flag[2], turn
+
+Turn represents the whose turn it is to enter the critical section, flag[i] represents whether process i wants to enter the critical section or not
+
+------------------------------------------------------------------
+process i:
+
+do{
+	flag[i] = true;                           // flag[i] represents process i wants to enter the critical section
+	turn = j;                                 // the reason it sets the turn to j because whoever comes last sets the turn to the one which came before so eventually it is done to work correctly
+	
+	while(flag[j] && turn == j) continue;     // process i will wait until flag[j] is false or turn is set to i, i.e. either process j has exited the critical section or process j has set the turn to i
+	
+	// critical section
+	
+	flag[i] = false;
+	
+	// remainder section
+	
+}while(true);
+	
+-----------------------------------------------------------------
+process j:
+
+do{
+	flag[j] = true;
+	turn = i;
+	
+	while(flag[i] && turn == i) continue;
+	
+	// critical section
+	
+	flag[j] = false;
+	
+	// remainder section
+	
+}while(true)
+----------------------------------------------------------------

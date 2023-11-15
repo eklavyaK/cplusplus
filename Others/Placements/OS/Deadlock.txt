@@ -1,0 +1,91 @@
+Four criteria for deadlock to occur:
+
+1. Mutual Exclusion: If a process is using a resource then if other process requests it then it won't be provided to it until first process completes using it. In other words, only one process can use the resource at a time.
+
+2. Hold and wait: A process must be holding one resource and must be waiting to acquire another resource.
+
+3. No preemption: Resource preemption means resource can be taken away from a process without causing any ill effects to the process. In case of non - preemption a process is first completed entirely then a new process enters, there is no context switching.
+
+4. Circular wait: Process waiting for resources to acquire must form a cycle.
+
+
+Methods to tackle deadlock:
+
+1. Prevent deadlock
+2. allow the systrm to Detect deadlock state and recover it
+3. ostrich algorithm (assuming that there is no deadlock)
+
+
+Deadlock Prevention and Avoidance:
+Finding a safe sequence, a safe state is when process are scheduled in such a way that there is no chance for deadlock to occur. A unsafe state may or may not lead to deadlock. The main key of the deadlock avoidance method is whenever the request is made for resources then the request must only be approved only in the case if the resulting state is a safe state.
+
+If there is cycle in Resource Allocation graph (RAG) there there is possibility that deadlock to occur, but if there is no cycle then deadlock will not occur.
+
+Live lock is a condition such that, a process A and B are simultaneously requesting for a resource R, so due to collision both don't get the resource, then in next cycle again same thing happens, and this continues and none are able to get the resource.
+
+Banker's algorithm of deadlock avoidance:
+
+Alocated -> how many instances a process is currently holding for each resource
+Max need -> how many instances of a resource a process needs to complete a work
+Remaining need -> how many more instances are required = (max need - allocated)
+Available -> no. of instances of a resource is available currently
+
+Example:
+
+Total number of instances of each resource (A, B, C) present are 10 5 7
+______________________________________________________________________________________
+Processes      Allocated       Max need          Available          Remaining need
+			A   B   C	      A   B   C         A   B   C            A   B   C 
+
+p1			0   1   0       7   5   3
+p2			2   0   0       3   2   2
+p3			3   0   2       9   0   2
+p4			2   1   1       4   2   2
+p5			0   0   2       5   3   3
+			__________
+	Total  -  7   2   5
+________________________________________________________________________________________
+Let's calculate the remaining need (max need - allocated) for each resource
+
+________________________________________________________________________________________
+Processes      Allocated       Max need          Available          Remaining need
+			A   B   C	      A   B   C         A   B   C            A   B   C 
+
+p1			0   1   0       7   5   3                              7   4   3
+p2			2   0   0       3   2   2      					1   2   2
+p3			3   0   2       9   0   2      					6   0   0
+p4			2   1   1       4   2   2      					2   1   1
+p5			0   0   2       5   3   3      					5   3   1
+			__________
+	Total  -  7   2   5
+_______________________________________________________________________________________
+
+Total occupied resorces are 7  2  5, so tatal avaiable = 3  3  2
+
+now p1 cannot be scheduled as it requires 7 instances of A
+Schedule p2, and wait for p2 to complete and release it's resources
+now available resources are 5 3 2
+Schedule p4 as it's remaining need is satisfied
+on completion of p4 the available resources are 7 4 3
+Schedule p5
+after p5 is finished, available resources are 7 4 5
+schedule p3
+now available resources are 10 4 7
+schedule p1
+
+so schedule is: p2 -> p4 -> p5 -> p3 -> p1
+
+
+Deadlock Detection:
+In this way of deadlock handing, we would check after some regular intervals whether system is in deadlock or not. If deadlock is present we would recover the system by preempting the resources from some processes.
+
+For only one instace of each resource is present:
+In this case we make a 'wait-for' graph, by removing the resource from cycle and joining the incoming and out going edges at a resource. By this we make a graph which contains only nodes as processes. In this case if there is a cycle present. They there is possibility of deadlock.
+
+Multiple instance of each resource is present:
+In this case we use bankers algorithm to detect unsafe state. If a safe sequence is possible them there is no possiblity of deadlock otherwise there might be possibility of deadlock.
+
+Recovery from deadlock in case of detection:
+1. terminate the processes which are in deadlock (harsh step)
+2. abort one process at a time based on lowest priority until all the cycles are eliminated
+3. preempt the all the resources of a low priority process.

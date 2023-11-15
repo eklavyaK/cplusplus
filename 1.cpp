@@ -18,10 +18,7 @@ using namespace std;
 
 
 void code(int TC){
-	struct{
-		float radius, angle;
-	} * vector[10];
-	cout << sizeof(vector) << endl;
+	
 
 }
 

@@ -1,0 +1,25 @@
+Conditional variable is basically a condition which becomes true or false.
+If a thread is executing a critical section, it'll first make the conditional variable false so that no other thread can access it at the same time. Now when it finishes modifying the conditional variable, the thread must execute a statement notify_all(), this statement will wake up all the threads which were waiting for that condition to be true, they'll check the condition again, and if it is true they'll enter the critical section, otherwise again wait.
+Wait and wake is performed by locks and mutexes, wait() function halts the execution of the thread until a new notification is received, then thread again checks the condition if it is true it'll start executing the critical section.
+
+
+shared_resource = 0         // a global variable is declared as conditional variable
+
+def producer():           
+
+   	with mutex:
+
+		// perform the operation on the shared resource
+
+		shared_resource += 1		// making the condition true and notifying
+		condition.notify_all()
+
+def consumer():
+
+	with mutex:
+		// Wait for a certain condition to become true
+		while shared_resource < 1:
+			condition.wait()		// when it receives the notification it again check the condition for the shared_resource to be >= 1
+
+		shared_resource -= 1
+

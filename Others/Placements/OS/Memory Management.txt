@@ -1,0 +1,47 @@
+Operating system provides a logical address space for user or process to execute it's code. It ranges from 0 to a MAX value. But actual physical address is different from virtual of logical address. If process uses 16 kb of memory then OS provides it that amount of memory if it can, after that process has to maintain it's stack such that it remains within allocated memory, it can map it contents using logical address which ranges from 0 to 16 kb, but OS will give it a base value B, which will be added to logical address to get the actual physical address of the process' content. Every different has different base value. This provides memory isolation.
+When a process tries to access a memory which is outside the range (B, B + MAX) then OS stops the process by throwing a runtime error.
+
+Internal fragmentation:
+When memory is divided into fixed size partitions and when process running in a partition is smaller in size than the partition then internal fragmentation happens, because the remaining memory cannot be allocated to any other process.
+
+External fragmentation:
+The total area available in the memory is sufficient for a process to run but the process cannot be alloted the memory because it is present in non - contigous manner this type of fragmentation is known as external fragmentation.
+
+
+Memory partitioning:
+1. Fixed size partitioning:
+In this case memory is divided into partitions of fixed size. In this case there can be lots of internal fragmentation and external fragmentation. If a process which has size greater than the size of a partition, then it cannot run on the computer. Degree of multiprogramming is limited to the number of partitions the memory has.
+
+2. Dynamic partitioning:
+In this case memory is not partitioned initially. A process is allocated the memory chunk which is required by it. External fragmentation is possible, but no internal fragmentation, better degree of multiprogramming than fixed size partitionning.
+
+
+Defragmentation / Compaction:
+It is the process of merging various fragments by transferring the process from one position to another is alled defragmentation. this process is very time comsuming ans is completely a overhead.
+
+Free list: it is a linked list which stores the size and base of a fragment. it is in form of 9 -> 100 -> 89 -> 45 -> null, where 9, 100.. are size of fragments, it also has the base address of the fragments in the node.
+
+Ways of handling freelists:
+
+1. first - fit: every node starting from first is compared with the process size, as soon as a fragment with larger size is found, the memory is the fragment is allocated to it, and free list is updated again. this process as less time consuming;
+
+2. next - fit: it is same as first - fit but it starts trasversing the free list from the position it was there before. this makes allocation uniform accross the free list as in case of first fit the nodes which are in prefix of the linked list were changed more than the ones which are at last.
+
+3. best - fit: in this all the linked list is traversed and the node which is just greater than the size of the proces is allocated, this process is time consuming.
+
+4. worst - fit: this is just opposite to best - fit. in this the largest node is allocated everytime if it is big enough. again it is also time consuming
+
+
+
+Paging:
+This is a method to fight fragmentation. In this a process can be allocated memory in non - contigous manner. To the user it'll look that the memory provided to it's process is contigous by giving them illusion  of virtual memory. In this process is divided into virtual pages of fixed sizes which are mapped to physical memory's frames. The physical memory is divided into frames. the conversion from vpn to pfn is done using page table (page table is different for different processes) which is stored in main memory in process control block area (PCB), Page Table Base Register (PTBR) points to the base of the page table.
+
+TLB:
+To make the process faster of vpn to pfn conversion we use a small cache called transation lookaside  buffer.
+Address space identifier (ASIDs) is stored in each entry of TLB. ASID uniquely identifies each process and is used to provide address space protection and allow to TLB to contain entries for several different processes. When TLB attempts to resolve virtual page numbers, it ensures that the ASID for the currently executing process matches.
+
+Segmentation:
+It is different from paging in user's view of the process. In paging same function can be divided into multiple pages but in segmentation a function is allocated a segment of the physical memory. In this case size of partition is not fixed like pages. Here user can feel that his every function is present in one segment only.
+In segmentation the page table contains limit (size of the segment) and base (starting address of the segment) for each segment number. When a logical address is generated, it has first few bits as segment number, the remaining bits represent the address of the data w.r.t the segment, firstly the remaining bits are compared with the limit, if they're inside the limit then base is added to these bits and data is fetched from the physical memory.
+
+One disadvantage of segmentation which is not present in paging is external fragmentation. Because in paging external fragmentation is avoided due to non contigous allocation of a segment. But in segmentation a segment is allocated contigously which may not always be feasible in case of external fragmentation.

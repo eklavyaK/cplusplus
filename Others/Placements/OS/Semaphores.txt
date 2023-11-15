@@ -1,0 +1,35 @@
+Busy-waiting is a process in which a process repeatedly checks to see if a condition is true, such as whether keyboard input or a lock is available.
+
+In semaphores there two terms, wait and signal, a signal operation on a semaphore activates a process blocked on the semaphore, if any, or increments the value of the semahphore by 1.
+When  a process performs a wait operaiton on a semaphore, the value of the semaphore and lets the process continue its execution, otherwise, it blocks the process on the sempahore.
+
+Processes use wait and signal operation to synchronize their execution with respect to one another. The intial value of the semaphore determines how many processes can get past the wait operation. A process that does not get past a wait operation is blocked on the semaphore.
+
+Semaphores are generally used when there are multiple instances of same resource are present. If there are N instances of a resource, then initilly S is assigned as S = N, when a process wants to use that resource and S > 0 then S-- happens and process is assigned that a instance of the resource, now if S = 0 and a process wants to use a instance of the resource, that process is blocked by wait() and whenever a process finishes using the instance of a particular resource, it calls signal(), which causes for S++, and waiting process is awakened and it checks the condition  of semaphores again if S > 0 then it does S--, and takes one of the instance of the resource.
+
+queue<process> q;
+int S = N;
+
+wait(process p){
+	q.push(p);
+	p.block();
+}
+
+signal(){
+	S++;
+	if(S <= 0) return;
+	process p = q.front();
+	p.wakeup();
+	S--;
+}
+
+int main(){
+	while(process p){
+		if(S == 0){
+			wait(p);
+		}
+		else{
+			S--;
+		}
+	}
+}
