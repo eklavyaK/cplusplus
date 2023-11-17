@@ -51,6 +51,3 @@ Min cardinality: minimum number of relationship made by one member of the set
 Max cardinality: maximum number of relationship made by one member of the set
 if min cardinality is 0: partial participation (at least entity is not participating). It is represented with single line
 if min cardinality is 1: total participation (all entities are participating at least once). It is represented with double line
-
-
-

@@ -1,0 +1,461 @@
+What are keys?
+Keys in relational database management systems helps you to identify a row in a relation. They establish relation between two tables
+
+
+Candidate key: 
+the minimual set off attributes that can uniquely identify a tuple (or row) is known as candidate key. the value of candidate key is unique and not null
+for ex: roll number is a candidate key, because it is unique for all the person details
+
+
+what are prime attributes?
+all the candidate keys or attributes come under prime attributes
+
+
+primary key:
+out of all candidate keys, we can select one of them as primary key as required, for ex: one of - aadhaar no, roll no, pan no
+
+
+alternate key:
+if we select one of the candidate keys as primary key, then all the remaining candidate keys are called alternate keys, for ex: if we select roll no as primary key then, aadhaar no and pan no are alternate keys
+
+
+super key:
+the set of attributes that can uniquely identify a tuple is known as super key, for ex: (roll no, name), (adhaar no, city) all these two sets can be used to find a person uniquely so, these sets are super keys. Adding zero or more keys to a candidate key gives you a super key set. If non candidate keys used on combination to generate a uniqueness then that set of keys will be called a super key
+
+
+foreign key:
+foreign keys are the column of the table which is used to point to the primary key of another table.
+Here another table which is used as source is called parent table and current which is using the source to extract information is called child table
+
+################################### ER - MODEL ##########################################
+
+ER - model is entity relationship model. It is the blueprint or logical structure of a database
+
+entity:
+It is an object. Table is an entity. An entity is represented as rectangle in ER diagram
+strong entity:
+It must have primary key
+weak entity:
+We cannot classify the records uniquely. it is represented as double rectangle
+
+Attribute:
+an attribute describes the property of an entity. Column are attributes. Attributes are represented as oval in ER diagram.
+Primary key is called key attribute. Key attribute:
+attribute which is unique for all the rows
+Simple attribute:
+it cannot be divided into more  simpler components. for ex- roll no
+Composite attribute:
+it can be divided into more simpler components. for ex- name, it can be divided into first name and surname
+Single valued attribute:
+It cannot take multiple values for each instance. for ex- age
+multi-valued attribute:
+It can take multiple values, for ex- phone no, it can be two or more for same instance or person. It is represented as double oval
+stored attribute: 
+an attribute which is permanent, for ex- name, dob
+derived attribute:
+an attribute which is derived from another, for ex- age is derived from dob. derived attributes are generally represented by dashed line oval
+
+relationship: 
+association between entities are called relationship. It is represented by diamond symbol
+for ex- employee works for an organization. here entities are employee and organization and relationship between is  "works for"
+weak relationship:
+it is used to connect with weak entity. here symbol used is double diamond
+degree of relationship:
+number of entities are involved in the relationship. The n-ary relationship is general for degree n
+unary relationship:
+relationship exists between members of same set, for ex- empolyee <-> manager relationship. here both of them are employees (same set).
+binary relationship:
+here the relationship exist between members of two different sets or classes. for ex- employee and organization.
+
+Cardinality of a relationship:
+one to one relationship:
+a single instance of an entity is associated with single instance of another entity, for ex- person to passport
+one to many relationship:
+a single instance of an entity is associated with many instances of another entity. for ex- person having many mobile numbers
+many to many relationship: more than one instance of an entity is associated with more than one instance of another entity.
+for ex- student <-> project relationship. one student can do many projects, similary many students can work on one project
+many to one relationship:
+reverse of one to many relationship
+
+Cardinality ratio:
+Min cardinality: minimum number of relationship made by one member of the set
+Max cardinality: maximum number of relationship made by one member of the set
+if min cardinality is 0: partial participation (at least entity is not participating). It is represented with single line
+if min cardinality is 1: total participation (all entities are participating at least once). It is represented with double line
+
+################################### FUNCTIONAL - DEPENDENCE ##########################################
+
+functional dependency is valid if one vaule always the same final value everytime
+X -> Y is FD if for every value of X, the value of Y produced is constant
+
+trivial functional dependency:
+A -> B has trivial functional dependency if B is a subset of A
+for ex: -  (employee id, employee name) -> employee id
+
+
+non trivial functional dependency:
+A -> B has non trivial functional dependency is B is not a subset of A
+employee id -> employee name
+
+Reflexive rule:
+if y is a subset of x, then x determines y
+ex- abs -> bc
+
+Augmentation rule:
+if x determines y, then xz determines yz. According to this rule if we add one instance to both sides then FD is still valid
+
+transitive rule:
+if x determines y and y determines z then we can say x determines z
+
+union rule:
+if x determines y and x determines z then x determines yz
+
+decomposition rule:
+x determines yz, then x -> y and x -> z
+
+FD closure of an attribute of set of attributes:
+it is a set which cantains all the attributes which can be derived directly or indirectly from it. It is represented by A+, here it represents FD closure of attribute A.
+
+Candidate key:
+It's closure contains all the attributes.
+
+Super key:
+It closure constains all the attributes. But it is made of two or more keys
+
+Equivalence of functional dependencies:
+If we can derive functional dependency of one set from functional dependency of another set, and also vice versa is possible then both the sets are considered equivalent. 
+
+Partial functional dependency:
+A functional dependency X -> Y is a partial dependency if proper subset of X determines a non - key attribute
+for ex- AB -> C, B -> D
+now AB+ = {A, B, C, D}, here D can be derieved from AB, but it can also be derieved from B which is a proper subset of AB. So it is partial functional dependence, i.e., D is not fully dependent on AB only it is only partially dependent on AB
+
+Full functional dependency:
+If X and Y are an attribute set of a relation, Y is fully functional dependent on X, if Y can be derieved from on X but not from any proper subset of X
+
+Update anomaly:
+When duplicated date is updated at one instance and not across all instances where it was duplicated. That's an update anomaly.
+
+Deletion Anomaly:
+Deletion of some attribute which causes deletion of other attributes is deletion anomaly.
+
+Insertion anomaly: 
+An insert anomaly occurs when attributes cannot be inserted into the database  without the presence of other attributes. Usually when a child is inserted without parent.
+
+Anomalies are avoided by normalization and try to bring the tables to grnular state.
+In simple words, it tries to split tables into multiple tables and defines relationships between the using keys.
+
+################################### NORMALIZATION ##########################################
+
+First Normal form (1NF):
+It contains atomic values. No multiple values. Two values  in a cell is not allowed
+for ex- phone number can take multiple values for a person in that case to make 1NF form we must duplicate the record and keep two different phone numbers in both the rows to make it 1NF form
+
+Second Normal Form (2NF):
+It should have all the  properties of the first normal  form (1NF)
+Additonal condition that, every non-primary-key attribute is fully functional dependent on the primary key.
+In case of partial functional dependency, we have to split the table into more subtables, so that no attribute is fully functional dependent on any proper subset of a primary key.
+
+Third Normal Form (3NF):
+It should have the properties of the second normal form (2NF)
+there is no transitive dependency for non-prime attributes.
+Transitive dependency occurs when a non prime attribute is dependent on another non - prime attribute. In this case we can make another table where non prime attribute on which another non prime attribute depends can be made prime attribute in this table
+
+Boyce Codd Normal Form (BCNF)
+It should be 3NF
+Every non-trivial functional dependence (x -> y), x should be a super key, i.e. lhs of every functional dependence should be have closure containing all the attributes.
+If there is functional dependence that doesn't follow this condition we make a separate table for it
+
+################################### SELECT STATEMENT ##########################################
+
+-- "Select" statement structure
+SELECT () FROM () WHERE () GROUP BY () HAVING () ORDER BY ()
+
+SELECT job, employee id--columns name separated by commas, to select all columns simply use * symbol, to select distinct values from a column use -
+SELECT DISTINCT -- It can be used to extract only distinct values present in the set of columns
+FROM --table name
+WHERE job = 'CLERK' -- here, only rows having clerk are displayed
+
+-- in sql != operator is  prepresented as <>
+
+-- in sql &, |, ! are written as AND, OR, NOT
+
+ORDER BY -- ASC - for ascending, DESC - for descending
+-- columns separated by commas, first column is most priority in case of sorting like first column of a row in case of sorting 2D vectors
+
+LIKE 
+
+Wildcard operators:
+They are used to match zero or more characters of a string. They are used with where clause:
+
+% matches zero, one or more characters
+_ matches one characters
+
+for ex-
+WHERE job LIKE '_R_D%'
+
+this can match TRADER, _ matches with T, _ matches with A, and % matches with ER
+
+
+
+NULL
+
+some cells may be empty, these cells are considered to have NULL value
+to check whether they're null we use:
+IS NULL
+IS NOT NULL
+
+for ex-
+WHERE ph_no IS NULL
+it selects only records where ph_no is not provided by a person
+
+
+SUM(ATTRIBUTE), AVG(), MIN(), MAX(), COUNT() -- SUM(cost), AVG(marks)
+SELECT SUM(marks) FROM marksheet; -- it sums all the values in marks column
+SELECT SUM(DISTINCT marks) -- it sums only distinct values in the column
+SELECT COUNT(*) FROM markseet -- returns the number of records
+SELECT COUNT(col_name) -- returns total number of records excluding NULL values
+SELECT COUNT(DISTINCT col_name) -- returns total number of distinct not null values
+
+GROUP BY dept_number; -- columns by commas
+
+if we don't apply GROUP BY clause, all the records are considered while applying aggregate functions, but when we apply GROUP BY clause, all the records where dept_number (or a group of columns) having same values are groped to form a single record in final output, and aggregate functions are applied on each group separately
+
+for ex-
+SELECT dept_number, SUM(salary) AS TCTC
+GROUP BY dept_number;
+
+AS is alias name of the COLUMN produced by SUM
+all the records having same dept_number will be summed their salary
+and will be represented as one record having two attributes dept_number and TCTC
+
+
+HAVING count(*) > 4
+
+HAVING clause is used to filter groups
+in above case all the dept_numbers having more than 4 occurances are filtered for the final result
+
+
+-- HAVING FILTERS GROUPS, WHERE FILTER RECORDS
+
+################################### SET MANIPULATION ##########################################
+
+-- Set Manipulation operators
+
+
+In order to take UNION or INTERSECTION of two relations R and S
+1. R and S must have the same quantity of attributes
+2. Attribute domains must be compatible
+3. Duplicate tuples get automatically eliminated
+
+
+UNION -- it used to compile the results of two or more SELECT statements, given the output produced by all of them is compatible
+
+SELECT cust_name FROM depositor
+UNION -- union is possible if both tables have compatible records
+SELECT cust_name FROM borrower
+
+
+INTERSECT -- it used to take intersection of the results of two or more SELECT statements, given the output produced by all of them is compatible
+
+SELECT cust_name FROM depositor
+INTERSECT -- intersection is possible if both tables have compatible records
+SELECT cust_name FROM borrower
+
+
+MINUS -- it used to take remove the intersection  of the results of one SELECT statement from another, given the output produced by all of them is compatible
+
+SELECT cust_name FROM depositor
+MINUS
+SELECT cust_name FROM borrower
+
+
+################################### JOIN ##########################################
+
+Join -- this statement is used to combine data or rows from two or more tables based on a common field between them.
+
+------ inner joins - equi, natural, self joins
+
+EQUI join -- it is done when a theta join uses only the equivalence condition, i.e. = operatior is used in the condition
+
+NATURAL join
+-- In this type of join, the attribute should have the same name and domain. In natural join, there should be at least one common attribute between two relations. It does not utilize any of the comparision operators. It performs selection forming equality on those attributes which appear in both relations and eliminates the duplicate attributes
+-- ex- 
+SELECT * FROM R1 NATURAL JOIN R2; --R1 and R2 are relations
+
+SELF join
+-- A self join is a join in which a table is joined with itself. It is also called unary relationships, especially when the table has foreign key which references its own primary key.
+
+------ outer joins - left, right, full
+
+LEFT JOIN -- we use ON keyword to specify the condition of join, in this case left table comes in output completely but records satisfying the condition in ON keyword comes in left join
+ex-
+SELECT *
+FROM table1 RIGHT JOIN table2
+ON table.column_name - table2.column_name
+
+RIGHT JOIN -- reverse of left join
+
+FULL OUTER JOIN -- all the records comes in output (matched or unmatched), matched will be placed against each other but unmatched records will have NULL values in rows or attributes corresponding or other table
+
+
+################################### ALGEBRA ##########################################
+
+-- Selection and Projection
+
+Pi symbol is used for selection (like SELECT clause)
+sigma symbol is used for applying condition (like WHERE clause)
+
+
+-- Set manipulation operators - union, intersection, difference
+
+Union - same as union as discussed, symbol is U
+Intersection - same as intersection as discussed, symbol is inverse(U)
+Difference - same as minus as discussed, symbol is -
+
+
+-- Cartesian product of R1 and R2 - for each record of R1 we'll place each record of R2, so total number of records will get multiplied and total number of attributes will get added
+
+-- rename operator (symbol is rho) - it used to change the name of a relation
+
+-- conditional join / theta join also called inner join (joininig two tables based on a condition), symbol is horizontal hour glass
+
+-- outer join has all the rows of the first table and matched rows of second table, symbol is two match sticks attached at corners of hour glass symbol accordingly (for left, right, full)
+
+-- division operator
+A / B -- it means that all the tuples in A which have relation with every tuple in B comes in output where attributes of B are not presen in the output
+
+
+################################### ACID PROPERTIES ##########################################
+
+ACID - atomicity consistency isolation durability
+
+atomicity:
+either all the  operatoins of a transaction are executed or none of them is executed. like consider a transaction in which some data is read from a database and some operations are performed on it, then if before committing the change the transaction fails then we've to rollback all the changes and bring it back to initial state.
+
+consistency:
+sum of all the values involved in the trasaction should remain the same before and after the trasaction
+
+isolation:
+A DBMS's isolation feature ensures that several transactions can take place simultaneously and that no data from one database should have an impact on another. for ex- many people can withdraw money from their bank account simultaneously
+
+durability:
+it means updates done are permanent. It cannot get changed/reversed on it's own, unless we make another update
+
+
+################################## TRANSACTION ##########################################
+
+Transaction -- it is a collection of operations that performs a single logical unito of work
+
+Schedule -- A schedule is the arrangement of transaction operations. It is the order in which the operations of a transaction are executed.
+
+-- we do concurrent scheduling instead of series scheduling to save time due to execution of two or more schedules simultaneously. But there can be read - write, write - write conflict which we have to take care of
+
+-- Classification of schedules based on recoverability
+
+
+Non recoverable schedule (classification of non serial schedule):
+A schedule is recoverable if each transaction commits only after all the transactions from which it has read have committed. In other words, if some transaction Ty reads a value that has been updated/written by some other transaction Tx, then the commit of Ty must occur after the commit of Tx. This is because if Tx is aborted then we have a chance to abort Ty to maintain a consistent database state.
+
+Recoverable schedule (classification of non serial schedule):
+If a transaction reads the value of an operation from an uncommitted transaction and commits before the transaction from where it has read the value, then such a schedule is called Non-Recoverable schedule. A non-recoverable schedule means when there is a system failure, we may not be able to recover to a consistent database state. If the commit operation of Ti doesn't occur before the commit operation of Tj, it is non-recoverable. Because Tj has already the update the database permanently, and if Ti fails then database might have inconsistent data, because database was update by Tj and the source of data for Tj was Ti which was a failure.
+
+cascading rollbacks (classification of recoverable schedule):
+This schedule are not recommended.
+In this case there are series of transactions which are executed where next transaction takes value form previous one. In this case the the commit of a transaction is scheduled after it's source. In this case it is okay if it's parent's trasaction is aborted, because we can abort the subsequent trasactions as their commits are scheduled after.
+
+cascadeless schedule (classification of recoverable schedule):
+This schedule are recommended.
+If in a schedule, a transaction is not allowed to read a data item until and unless the last transaction that has been written is committed/aborted, then such a schedule is called a Cascadeless Schedule. It avoids cascading rollback and thus saves CPU time. To prevent cascading rollbacks, it disallows a transaction from reading uncommitted changes from another transaction in the same Schedule. In other words, if some transaction Ty wants to read a value that has been updated or written by some other transaction Tx, then only after the commit of Tx, the commit of Ty must read it.
+
+strict schedule:
+This schedule are recommended.
+In this case a transaction can read the data from the database only after a pervious trasaction which was operating on the same data has been completed (committed / aborted). In this case there no chance of incosistency as data read is always original.
+Every strict schedule is cacadeless.
+
+
+-- serializability
+
+
+serial schedule - every transaction is performed in series. so they are always consistent but it takes lot of time. wastage of resources
+
+non serial schedule - executing some operations from one trasaction and then executing some operations from another trasaction. Here we're not completing one trasaction completely before moving onto another. so this is a non serial schedule
+
+
+-- classification of non serial schedule
+
+
+conflict serializable schedules:
+A schedule is called conflict serializable if after swapping non-conflicting operations, it can transform into a serial schedule.
+
+conflicting operations - 1. they must operate on the same data. 2. these operations must belong to different transactions. 3. at least one  of the operations must be write (because read - read cannot be conflicting)
+for better understanding : https://www.youtube.com/watch?v=zv0ba0Iok1Y
+
+
+################################## FILE ORGANIZATION ##########################################
+
+Blocking factor -- average number of records which can be stored in a block
+
+spanned strategy -- it allows partial record to be stored in a block. this is used in variable length records
+--- advantages - no memory wastage
+--- disadvantages - a record might be in two blocks so increased access time
+
+unspanned strategy -- it doesn't allow partial storing
+-- used for fixed length records, memory wastage, low access time
+
+unordered file organization -- placing the file is easy, because we don't follow any order. searching is linear time
+
+ordered file organization -- placing is difficult, but searching is easy (log n) time
+
+-- mostly ordered file organization is used because searchig is done more often than insertion
+
+sparse index -- the index record appears only for a few items in the data file. each items points to  a block as shows. To locate a record, we find the index record with the largest search key value less than or equal to the search key value we are looking for using binary search
+
+dense index -- a record is created for every search key value in the database. This helps you to search faster but needs more space to store index records. In this indexing, method records contain search key value and points to the real record on the disk.
+
+-- index table contains - search key in first column and it's corresponding block pointer in second column
+
+primary indexing -- It is sparse indexing. Primary Index is an ordered file whose records are of fixed length with two fields. The first field of the index replicates the primary key of the data file in an ordered manner, and the second field of the ordered file contains a pointer that points to the data-block where a record containing the key is available.
+
+Cluster indexing -- A clustered index is an index that specifies the physical arrangement of a database's table records. There can only be one clustered index per table since there can only be one method that records are physically maintained in a database table. It stores the records in sorted order.
+
+secondary indexing -- It is like dense indexing. Secondary Indexing: It is a two-level indexing technique used to reduce the mapping size of the primary index. The secondary index points to a certain location where the data is to be found but the actual data is not sorted like in the primary indexing. Secondary Indexing is also known as non-clustered Indexing.
+
+
+################################## B - TREES ##########################################
+
+B - Trees:
+The B - Tree is a generaliztion of a BST in that a node can have more tha twho children. It is height balanced search tree. Height of every leaf is same
+
+order of a B - Tree (n):
+number of block pointers we can place in a node of a B - Tree. Each node of a B - tree contains (n) block pointers and (n - 1) keys with their record pointer. A record pointer contains a key and a record pointer with it. Generally a node of a B - Tree is placed in a block. Assume that block size is B, and order is n, and a block pointer size is P, and a record pointer size is Pr and a key size is K, so following relation should hold
+n * P + (n - 1) * (K + Pr) <= B, because total node memory shouldn't exceed block size
+
+Insertion in B - Tree:
+A neww element is always insert at leaf. First we find the suitable node for insertion. If node is empty we insert it there. If it is full, we just insert it there and take the middle element out from it and try to insert it in the higher level, if there are no levels left we create a new level at top. In this manner the height of the B - Tree remains same.
+for better understanding: https://www.udemy.com/course/relational-database-management-systemrdbms-complete-pack/learn/lecture/30866990#content
+
+Deleteion operation on a B - Tree:
+for better understanding
+https://www.udemy.com/course/relational-database-management-systemrdbms-complete-pack/learn/lecture/30921830#content
+
+
+B+ trees:
+structure - we can modify a B - Tree to for a B+ Tree
+1. leaf node : Remove all tree pointers and every node conatains only key, record pointers and one block pointer.
+2. Internal node: Remove all record pointers and contains only key and tree pionters.
+
+order of a leaf node (n):
+n * (K + Pr) <= B
+n is the order and K is the key size and Pr is the pointer size and B is the block size
+
+order of a internal node:
+n * P + (n - 1) * K <= B
+n is the order, P is the pointer size
+K is the key size
+
+for better understanding of structure of B+ Trees: 
+https://www.udemy.com/course/relational-database-management-systemrdbms-complete-pack/learn/lecture/30925734#content
+
+for better understanding splitting, insertion in B+ Trees:
+https://www.udemy.com/course/relational-database-management-systemrdbms-complete-pack/learn/lecture/30952354#content

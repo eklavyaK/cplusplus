@@ -26,6 +26,3 @@ the set of attributes that can uniquely identify a tuple is known as super key, 
 foreign key:
 foreign keys are the column of the table which is used to point to the primary key of another table.
 Here another table which is used as source is called parent table and current which is using the source to extract information is called child table
-
-
-

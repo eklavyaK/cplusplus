@@ -1,34 +1,57 @@
-#include<bits/stdc++.h>
-#define endl "\n"
-#define ff first
-#define ss second
-#define int long long
-typedef long long ll;
-typedef long double ld;
+#include <bits/stdc++.h>
 using namespace std;
-#ifndef ONLINE_JUDGE
-#include "include/debug.h"
-#else
-#define debugarr(a, n) 42
-#define debug(...) 42
-#endif
 
-
-
-
-
-void code(int TC){
-
+void bournVita()
+{
+ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
 
 }
 
+int reverseNum(int n) {
+int num = 0;
 
-signed main(){
-	ios_base::sync_with_stdio(0);
-	cin.tie(0);cout.tie(0);cerr.tie(0);
-	cout.precision(30);
-	int TT = 1; cin >> TT;
-	for (int TC = 1; TC <= TT; TC++) 
-		code(TC);
-	return 0;
+while(n != 0) {
+    num = n % 10 + num * 10;
+    n = n / 10;
+} 
+
+return num;
+}
+
+bool checkPalindrome(int n) {
+
+int revNum = reverseNum(n);
+cout << n << " " << revNum << endl;
+if(revNum == n) {
+    return true;
+}
+
+return false;
+}
+
+void solve() {
+int n;
+cin >> n;
+
+while(checkPalindrome(n) == false) {
+    int revNum = reverseNum(n);
+    n = n + revNum;
+}
+
+cout << n << endl;
+}
+
+int main(){
+
+bournVita();
+
+
+int t;
+cin >> t;
+
+while(t--) {
+    solve();
+}
+
+return 0;
 }
