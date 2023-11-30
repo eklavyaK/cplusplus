@@ -64,6 +64,13 @@ ListNode* detectCycle(ListNode* A) {
 		slow = slow -> next;
 		if(fast == slow) break;
 	}
+	// fast pointer moves 2 * (X + Z), 
+	// slow pointer moves (X + Z), 
+	// where X is it's movement in the cycle, 
+	// so circumference of the cycle is:
+	// X + Z (difference between the distance of two), 
+	// so now moving another Z distance from this point 
+	// will lead to start of the cycle
 	while(H != fast){
 		H = H -> next;
 		fast = fast -> next;
