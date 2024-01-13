@@ -18,17 +18,24 @@ using namespace std;
 
 
 void code(int TC){
-	int n; cin >> n;
-	vector<vector<int>> dp(n, vector<int> (n));
-	vector<int> a(n), p(n);
-	for(int i = 0; i < n; i++) cin >> a[i], p[i] = a[i] + p[i - (i != 0)];
+	int n, m; cin >> n >> m;
+	string a, b; cin >> a >> b;
+	int ans = 0;
+	vector<int> dp(m, -1E18);
 	for(int i = 0; i < n; i++){
-		for(int j = i; j >= 0; j--){
-			if(j == i) dp[j][i] = a[i];
-			else dp[j][i] = max(a[i] + (p[i - 1] - (j == 0 ? 0 : p[j - 1]) - dp[j][i - 1]), a[j] + p[i] - p[j] - dp[j + 1][i]);
+		int mn = -1E18;
+		vector<int> ndp(dp.begin(), dp.end());
+		for(int j = 0; j < m; j++){
+			if(a[i] == b[j]){
+				ans = max(ans, max(2LL, 4 + mn - i - j));
+				ndp[j] = max(ndp[j], max(2 + i + j, 4 + mn));
+			}
+			mn = max(mn, dp[j]);
 		}
+		dp = ndp;
 	}
-	cout << dp[0][n - 1] << endl;
+	debug(dp);
+	cout << ans << endl;
 }
 
 

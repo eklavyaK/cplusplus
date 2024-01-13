@@ -1,5 +1,0 @@
-DFSAR:
-Dual frequency synthetic aperture radar, it works in two bands - (1–2 GHz (L-band), 2–4 GHz (S-band))
-Synthetic Aperture Radar (SAR) is a remote sensing technology that uses radar to create high-resolution images
-
-Polarimetric analysis is a technique used in remote sensing and radar systems to analyze the polarization properties of electromagnetic waves.

@@ -1,0 +1,21 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"iostream": "cpp",
+			"chrono": "cpp",
+			"cmath": "cpp",
+			"valarray": "cpp",
+			"iomanip": "cpp",
+			"random": "cpp",
+			"*.tcc": "cpp",
+			"string": "cpp",
+			"bitset": "cpp",
+			"ostream": "cpp"
+		}
+	}
+}
