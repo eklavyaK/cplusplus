@@ -18,24 +18,18 @@ using namespace std;
 
 
 void code(int TC){
-	int n, m; cin >> n >> m;
-	string a, b; cin >> a >> b;
-	int ans = 0;
-	vector<int> dp(m, -1E18);
-	for(int i = 0; i < n; i++){
-		int mn = -1E18;
-		vector<int> ndp(dp.begin(), dp.end());
-		for(int j = 0; j < m; j++){
-			if(a[i] == b[j]){
-				ans = max(ans, max(2LL, 4 + mn - i - j));
-				ndp[j] = max(ndp[j], max(2 + i + j, 4 + mn));
-			}
-			mn = max(mn, dp[j]);
-		}
-		dp = ndp;
+	int n; cin >> n;
+	if(n <= 2){
+		cout << -1 << endl;
+		return;
 	}
-	debug(dp);
-	cout << ans << endl;
+	for(int i = 0; i < n; i++){
+		int x; cin >> x;
+		if(x == 1) cout << 3 << " ";
+		else if(x == 3) cout << 1 << " ";
+		else cout << x << endl;
+	}
+	cout << endl;
 }
 
 
@@ -43,7 +37,7 @@ signed main(){
 	ios_base::sync_with_stdio(0);
 	cin.tie(0);cout.tie(0);cerr.tie(0);
 	cout.precision(30);
-	int TT = 1;
+	int TT = 1; cin >> TT;
 	for (int TC = 1; TC <= TT; TC++) 
 		code(TC);
 	return 0;
