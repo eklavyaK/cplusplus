@@ -12,26 +12,34 @@ using namespace std;
 #define debugarr(a, n) 42
 #define debug(...) 42
 #endif
-
-
-is A>B
-Yes
-is A>C
-Yes
-print A
-No
-print C
-si
-No
-is B>C
-Yes
-print B
-No
-print C
-si
-A B C
-1 2 3
-
+1
+5
+<
+=
+=
+>
+<
+<
+>
+>
+<
+>
+<
+<
+=
+>
+>
+>
+=
+>
+<
+<
+>
+<
+=
+>
+>
+=
 
 void code(int TC){
     
