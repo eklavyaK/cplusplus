@@ -22,32 +22,7 @@ random.shuffle(P)
 # 2200 - 55 min
 # 2300 - 60 min
 
-f = open(r"C:\Users\MY_PC\cp\ContestGenerators\Difficulty.txt", "w")
-f.write(f"A: {P[0]}\n") 
-f.write(f"B: {P[1]}\n")
-f.write(f"C: {P[2]}\n")
-f.write(f"D: {P[3]}\n")
-f.write(f"E: {P[4]}\n")
-f.write(f"F: {P[5]}\n")
-f.write(f"G: {P[6]}\n")
-f.write(f"H: {P[7]}\n")
-f.close()
 
-webbrowser.open(f'https://codeforces.com/problemset?tags={P[0]}-{P[0]}', new = 2)
-time.sleep(1)
-webbrowser.open(f'https://codeforces.com/problemset?tags={P[1]}-{P[1]}', new = 2)
-time.sleep(1)
-webbrowser.open(f'https://codeforces.com/problemset?tags={P[2]}-{P[2]}', new = 2)
-time.sleep(1)
-webbrowser.open(f'https://codeforces.com/problemset?tags={P[3]}-{P[3]}', new = 2)
-time.sleep(1)
-webbrowser.open(f'https://codeforces.com/problemset?tags={P[4]}-{P[4]}', new = 2)
-time.sleep(1)
-webbrowser.open(f'https://codeforces.com/problemset?tags={P[5]}-{P[5]}', new = 2)
-time.sleep(1)
-webbrowser.open(f'https://codeforces.com/problemset?tags={P[6]}-{P[6]}', new = 2)
-time.sleep(1)
-webbrowser.open(f'https://codeforces.com/problemset?tags={P[7]}-{P[7]}', new = 2)
 
 
 firefox_path = "C:/Program Files/Mozilla Firefox/firefox.exe"

@@ -12,38 +12,49 @@ using namespace std;
 #define debugarr(a, n) 42
 #define debug(...) 42
 #endif
-1
-5
-<
-=
-=
->
-<
-<
->
->
-<
->
-<
-<
-=
->
->
->
-=
->
-<
-<
->
-<
-=
->
->
-=
+
+
+
+
 
 void code(int TC){
-    
+    int n, m, t;
+    string r;
+    cin >> n >> m >> t >> r;
+    vector<string> s(m);
+    for(int i = 0; i < m; i++){
+        cin >> s[i];
+    }
+    vector<int> x(t), y(t), l(t), I(t);
+    for(int i = 0; i < t; i++){
+        cin >> I[i] >> x[i] >> l[i] >> y[i];
+        x[i]--;
+        y[i]--;
+        I[i]--;
+    }
+    set<int> st;
+    for(int i = 0; i < n; i++) st.insert(i);
+    for(int i = t - 1; i >= 0; i--){
+        int id = x[i];
+        auto it = st.lower_bound(y[i]);
+        int fid = y[i] + l[i] - 1;
+        if(it == st.end()) continue;
+        id += (*it) - y[i];
+        while(it != st.end()){
+            auto itn = it;
+            itn++;
+            if(*it <= fid){
+                r[*it] = s[I[i]][id];
 
+            }
+            else break;
+            id += (*itn) - (*it);
+            st.erase(*it);
+            it = itn;
+        }
+        debug(r);
+    }
+    cout << r << endl;
 }
 
 
@@ -51,7 +62,7 @@ signed main(){
     ios_base::sync_with_stdio(0);
     cin.tie(0);cout.tie(0);cerr.tie(0);
     cout.precision(30);
-    int TT = 1; cin >> TT;
+    int TT = 1;
     for (int TC = 1; TC <= TT; TC++) 
         code(TC);
     return 0;
