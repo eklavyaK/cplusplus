@@ -18,10 +18,22 @@ using namespace std;
 
 
 void code(int TC){
-	for(int i = 0; i < 10; i++){
-		cout << i << endl;
+	int n, k; cin >> n >> k;
+	if(n < k){
+		cout << "NO" << endl;
+		return;
 	}
-
+	else if(n == k){
+		cout << "YES" << endl;
+		cout << 1 << endl;
+		cout << n << endl;
+		return;
+	}
+	vector<int> ans;
+	for(int i = 0; i < 60; i++){
+		
+	}
+	
 }
 
 

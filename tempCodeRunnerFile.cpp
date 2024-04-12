@@ -18,54 +18,22 @@ using namespace std;
 
 
 void code(int TC){
-	int n, x; cin >> n >> x;
-	vector<int> a(n);
-	int xr = 0, r = 0;
-	for(int i = 0; i < n; i++) cin >> a[i], xr ^= a[i], r |= a[i];
-	if(xr > x){
-		cout << -1 << endl;
-		return;
+	int n; cin >> n;
+	string s; cin >> s;
+	vector<int> c(4);
+	for(int i = 0; i < n; i+=2){
+		if(s[i] == '1' && s[i + 1] == '0') c[3] += 1;
+		if(s[i] == '1' && s[i + 1] == '1') c[2] += 1;
+		if(s[i] == '0' && s[i + 1] == '0') c[1] += 1;
+		if(s[i] == '0' && s[i + 1] == '1') c[0] += 1;
 	}
-	else if(xr < x){
-		int anse = 1, anss = 1, cur = 0;
-		for(int i = 32; i >= 0; i--){
-			int ab = (xr >> i) & 1;
-			int bb = (x >> i) & 1;
-			int rb = (r >> i) & 1;
-			if(ab == 1 && bb == 0){
-				cout << anss << endl;
-				return;
-			}
-			if(ab == 0 && bb == 0 && rb == 0) continue;
-			if(ab == 0 && bb == 1){
-				int xx = 0, cnt = 0;
-				for(int i = 0; i < n; i++){
-					xx ^= (a[i] & cur);
-					if(xx == 0) cnt += 1;
-				}
-				anse = max(anse, cnt);
-				cur += (1LL << i);
-				xx = 0, cnt = 0;
-				for(int i = 0; i < n; i++){
-					xx ^= (a[i] & cur);
-					if(xx == 0) cnt += 1;
-				}
-				anss = max(anss, cnt);
-				cur -= (1LL << i);
-			}
-			if(ab == 0 && bb == 0 && rb == 1) cur += (1LL << i);
-		}
-		cout << max(anse, anss) << endl;
-	}
-	else{
-		int ans = 0, cur = 0;
-		int now = ((1LL << 35) - 1) ^ xr;
-		for(int i = 0; i < n; i++){
-			cur ^= (a[i] & now);
-			if(cur == 0) ans += 1, cur = 0;
-		}
-		cout << ans << endl;
-	}
+	int ans = 0;
+	if(c[3]) ans += 1, c[3] -= 1;
+	ans += c[1] * 2;
+	if(c[0]) ans += 2;
+	ans += c[2] * 2;
+	if(c[2] || c[0]) ans += c[3] > 0;
+	cout << ans << endl;
 }
 
 
