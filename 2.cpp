@@ -15,46 +15,24 @@ using namespace std;
 
 
 
-
+const ld pi = 3.14159265359;
 
 void code(int TC){
-    int n, m, t;
-    string r;
-    cin >> n >> m >> t >> r;
-    vector<string> s(m);
-    for(int i = 0; i < m; i++){
-        cin >> s[i];
+    ld h, a; cin >> h >> a;
+    ld H = h, refine = 1000;
+    ld r = 100;
+    ld mh = h / refine, mr = r / refine, all = 0, s = 0, l = 0;
+    r = mr;
+    for(int i = 1; i <= refine; i++){
+        int pts = pi * (r * r - l * l) / a;
+        all += pts;
+        s += pts * (h * h);
+        h -= mh;
+        l = r;
+        r += mr;
     }
-    vector<int> x(t), y(t), l(t), I(t);
-    for(int i = 0; i < t; i++){
-        cin >> I[i] >> x[i] >> l[i] >> y[i];
-        x[i]--;
-        y[i]--;
-        I[i]--;
-    }
-    set<int> st;
-    for(int i = 0; i < n; i++) st.insert(i);
-    for(int i = t - 1; i >= 0; i--){
-        int id = x[i];
-        auto it = st.lower_bound(y[i]);
-        int fid = y[i] + l[i] - 1;
-        if(it == st.end()) continue;
-        id += (*it) - y[i];
-        while(it != st.end()){
-            auto itn = it;
-            itn++;
-            if(*it <= fid){
-                r[*it] = s[I[i]][id];
-
-            }
-            else break;
-            id += (*itn) - (*it);
-            st.erase(*it);
-            it = itn;
-        }
-        debug(r);
-    }
-    cout << r << endl;
+    cout << H * sqrt((ld) 1 / 6) << endl;
+    cout << sqrt(s / all) << endl;
 }
 
 

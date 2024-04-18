@@ -19,21 +19,19 @@ using namespace std;
 
 void code(int TC){
 	int n; cin >> n;
-	string s; cin >> s;
-	vector<int> c(4);
-	for(int i = 0; i < n; i+=2){
-		if(s[i] == '1' && s[i + 1] == '0') c[3] += 1;
-		if(s[i] == '1' && s[i + 1] == '1') c[2] += 1;
-		if(s[i] == '0' && s[i + 1] == '0') c[1] += 1;
-		if(s[i] == '0' && s[i + 1] == '1') c[0] += 1;
+	vector<int> a(n);
+	for(int i = 0; i < n; i++) cin >> a[i];
+	int mn = 0, cur = 0, sum = 0, el = 0;
+	for(int i = 0; i < n; i++){
+		cur += a[i];
+		el += 1;
+		sum += a[i];
+		if(cur < 0){ 
+			if(el > 1) mn = min(mn, cur);
+		}
+		else cur = 0, el = 0;
 	}
-	int ans = 0;
-	if(c[3]) ans += 1, c[3] -= 1;
-	ans += c[1] * 2;
-	if(c[0]) ans += 2;
-	ans += c[2] * 2;
-	if(c[2] || c[0]) ans += c[3] > 0;
-	cout << ans << endl;
+	cout << (sum - mn) + abs(mn) << endl;
 }
 
 

@@ -18,8 +18,15 @@ using namespace std;
 
 
 void code(int TC){
-	
-
+	int n; cin >> n;
+	ld ans = 0, k = 0;
+	for(int i = 0; i < n; i++){
+		long double s; cin >> s;
+		ans += s;
+		cout << s << " ";
+	}
+	cout << endl;
+	cout << ans / n << endl;
 }
 
 
@@ -27,7 +34,7 @@ signed main(){
 	ios_base::sync_with_stdio(0);
 	cin.tie(0);cout.tie(0);cerr.tie(0);
 	cout.precision(30);
-	int TT = 1; cin >> TT;
+	int TT = 1;
 	for (int TC = 1; TC <= TT; TC++) 
 		code(TC);
 	return 0;
