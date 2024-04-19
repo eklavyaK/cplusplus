@@ -18,7 +18,13 @@ using namespace std;
 
 
 void code(int TC){
-	cout << (1 << 13) << endl;
+	int n = 100;
+	vector<int> a(n);
+	for(int i = 1; i <= n; i++) a[i - 1] = i;
+	random_shuffle(a.begin(), a.end());
+	random_shuffle(a.begin(), a.end());
+	for(auto i : a) cout << i << " ";
+	cout << endl;
 
 }
 
