@@ -2,9 +2,7 @@
 #include<iomanip>
 #include<cmath>
 
-
 const long double pi = 3.14159265359;
-
 
 int main(){
 	long double grid_size, R, steps; 
