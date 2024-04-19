@@ -1,41 +1,24 @@
-#include<bits/stdc++.h>
-#define endl "\n"
-#define ff first
-#define ss second
-#define int long long
-typedef long long ll;
-typedef long double ld;
-using namespace std;
-#ifndef ONLINE_JUDGE
-#include "include/debug.h"
-#else
-#define debugarr(a, n) 42
-#define debug(...) 42
-#endif
+#include<iostream>
+#include<iomanip>
+#include<cmath>
 
 
+const long double pi = 3.14159265359;
 
 
-
-void code(int TC){
-	int n; cin >> n;
-	ld ans = 0, k = 0;
-	for(int i = 0; i < n; i++){
-		long double s; cin >> s;
-		ans += s;
-		cout << s << " ";
+int main(){
+	long double grid_size, R, steps; 
+	std::cout << "Enter the Radius of the Hemisphere: " << std::endl; std::cin >> R;
+	std::cout << "Enter the No. of Samples in Radial Direction: " << std::endl; std::cin >> steps;
+	std::cout << "Enter the Grid Cell Size: " << std::endl; std::cin >> grid_size;
+	long double mr = R / steps, Total_points = 0, sum = 0, l = 0;
+	long double r = mr;
+	for(int i = 1; i <= steps - 1; i++){
+		long double pts = (2 * pi * r * R / sqrt(R * R - r * r) * mr) / grid_size;
+		Total_points += pts;
+		sum += pts * (R * R - r * r);
+		l += mr, r += mr;
 	}
-	cout << endl;
-	cout << ans / n << endl;
-}
-
-
-signed main(){
-	ios_base::sync_with_stdio(0);
-	cin.tie(0);cout.tie(0);cerr.tie(0);
-	cout.precision(30);
-	int TT = 1;
-	for (int TC = 1; TC <= TT; TC++) 
-		code(TC);
-	return 0;
+	std::cout << std::fixed << std::setprecision(6) << R * sqrt((long double) 1 / 3) << std::endl;
+	std::cout << std::fixed << std::setprecision(6) << sqrt(sum / Total_points) << std::endl;
 }
