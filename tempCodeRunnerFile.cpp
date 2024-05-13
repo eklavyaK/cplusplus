@@ -16,41 +16,21 @@ using namespace std;
 
 
 
+
 void code(int TC){
 	int n; cin >> n;
-	string s; cin >> s;
-	if(n & 1){
-		cout << -1 << endl;
-		return;
+	vector<int> a(n);
+	for(int i = 0; i < n; i++) cin >> a[i];
+	sort(a.begin(), a.end());
+	vector<int> p(n);
+	for(int i = 0; i < n; i++) p[i] = p[i - (i != 0)] + a[i];
+	int l = n, ans = 0;
+	for(int i = 0; i < n; i++){
+		while(l - 1 >= 0 && a[l - 1] + a[i] >= 1E8) l -= 1;
+		int r = max(i + 1, l);
+		ans = ans + (p[n - 1] - p[i]) + (n - 1 - i) * a[i] - (n - r) * (1E8);
 	}
-	int l = 0, r = n - 1;
-	vector<int> ans;
-	while(l < r){
-		int n = s.size();
-		if(s[l] != s[r]){
-			l += 1;
-			r -= 1;
-			continue;
-		}
-		if(s[l] == '0'){
-			ans.push_back(r + 1);
-			if(r + 1 < n) s = s.substr(0, r + 1) + "01" + s.substr(r + 1);
-			else s = s.substr(0, r + 1) + "01";
-			l += 1;
-			r += 1;
-		}
-		else{
-			ans.push_back(l);
-			if(l != 0) s = s.substr(0, l) + "01" + s.substr(l);
-			else s = "01" + s;
-			l += 1;
-			r -= 1;
-		}
-	}
-	cout << (int) ans.size() << endl;
-	for(auto i : ans){
-		cout << i << endl;
-	}
+	cout << ans << endl;
 }
 
 
@@ -58,7 +38,7 @@ signed main(){
 	ios_base::sync_with_stdio(0);
 	cin.tie(0);cout.tie(0);cerr.tie(0);
 	cout.precision(30);
-	int TT = 1; cin >> TT;
+	int TT = 1;
 	for (int TC = 1; TC <= TT; TC++) 
 		code(TC);
 	return 0;
