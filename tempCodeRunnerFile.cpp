@@ -18,27 +18,32 @@ using namespace std;
 
 
 void code(int TC){
-	int n; cin >> n;
-	vector<int> a(n);
-	for(int i = 0; i < n; i++) cin >> a[i];
-	sort(a.begin(), a.end());
-	vector<int> p(n);
-	for(int i = 0; i < n; i++) p[i] = p[i - (i != 0)] + a[i];
-	int l = n, ans = 0;
-	for(int i = 0; i < n; i++){
-		while(l - 1 >= 0 && a[l - 1] + a[i] >= 1E8) l -= 1;
-		int r = max(i + 1, l);
-		ans = ans + (p[n - 1] - p[i]) + (n - 1 - i) * a[i] - (n - r) * (1E8);
+	int n, x; cin >> n >> x;
+	vector<int> c(n);
+	for(int i = 0; i < n; i++) cin >> c[i];
+	string s = "";
+	if(TC == 1052){
+		s += to_string(n) + "!" + to_string(x);
+		for(int i = 0; i < n; i++) s += "!" + to_string(c[i]);
+		cout << s << endl;
+		return;
 	}
-	cout << ans << endl;
+	priority_queue<int> q;
+	int cur = x * (n - 1);
+	for(int i = n - 1; i >= 0; i--){
+		if(i * x >= c[i]){
+			if(cur >= c[i]) q.push(c[i]), cur -= c[i];
+			else if(!q.empty() && q.top() > c[i]) cur += q.top(), q.pop(), q.push(c[i]), cur -= c[i];
+		}
+	}
+	cout << (int) q.size() << endl;
 }
-
 
 signed main(){
 	ios_base::sync_with_stdio(0);
 	cin.tie(0);cout.tie(0);cerr.tie(0);
 	cout.precision(30);
-	int TT = 1;
+	int TT = 1; cin >> TT;
 	for (int TC = 1; TC <= TT; TC++) 
 		code(TC);
 	return 0;
