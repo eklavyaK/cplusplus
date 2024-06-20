@@ -15,35 +15,68 @@ using namespace std;
 
 
 
-
+vector<int> dx({-1, 0, 1, 0}), dy({0, -1, 0, 1});
 
 void code(int TC){
-	int n, x; cin >> n >> x;
-	vector<int> c(n);
-	for(int i = 0; i < n; i++) cin >> c[i];
-	string s = "";
-	if(TC == 1052){
-		s += to_string(n) + "!" + to_string(x);
-		for(int i = 0; i < n; i++) s += "!" + to_string(c[i]);
-		cout << s << endl;
-		return;
+	int n, m, K; cin >> n >> m >> K;
+	int x, y; cin >> x >> y; x--, y--;
+	vector<vector<int>> a(n, vector<int> (m));
+	for(int i = 0; i < n; i++){
+		for(int j = 0; j < m; j++) cin >> a[i][j];
 	}
-	priority_queue<int> q;
-	int cur = x * (n - 1);
-	for(int i = n - 1; i >= 0; i--){
-		if(i * x >= c[i]){
-			if(cur >= c[i]) q.push(c[i]), cur -= c[i];
-			else if(!q.empty() && q.top() > c[i]) cur += q.top(), q.pop(), q.push(c[i]), cur -= c[i];
+	auto check = [&](int i, int j){
+		return i >= 0 && i < n && j >= 0 && j < m;
+	};
+	vector<vector<vector<int>>> dp(n, vector<vector<int>> (m, vector<int> (210, -2E18)));
+	for(int i = 0; i <= 100; i++) dp[x][y][i] = i * a[x][y];
+	for(int u = 0; u <= 205; u++){
+		auto ndp = dp;
+		for(int i = 0; i < n; i++){
+			for(int j = 0; j < m; j++){
+				for(int k = 0; k < 4; k++){
+					int nx = i + dx[k], ny = j + dy[k];
+					if(check(nx, ny)){
+						for(int l = 0; l <= 205; l++){
+							if(dp[i][j][l] >= 0){
+								ndp[nx][ny][l + 1] = max(dp[nx][ny][l + 1], max(dp[nx][ny][l] + a[nx][ny], dp[i][j][l] + a[nx][ny]));
+							}
+						}
+					}
+				}
+			}
 		}
+		dp = ndp;
 	}
-	cout << (int) q.size() << endl;
+	if(K <= 205){
+		int ans = 0;
+		for(int i = 0; i < n; i++){
+			for(int j = 0; j < m; j++){
+				for(int k = 0; k <= K; k++){
+					ans = max(ans, dp[i][j][k]);
+				}
+			}
+		}
+		cout << ans << endl;
+	}
+	else{
+		int ans = 0;
+		for(int i = 0; i < n; i++){
+			for(int j = 0; j < m; j++){
+				for(int k = 0; k <= 205; k++){
+					ans = max(ans, dp[i][j][k] + a[i][j] * (K - k));
+				}
+			}
+		}
+		cout << ans << endl;
+	}
 }
+
 
 signed main(){
 	ios_base::sync_with_stdio(0);
 	cin.tie(0);cout.tie(0);cerr.tie(0);
 	cout.precision(30);
-	int TT = 1; cin >> TT;
+	int TT = 1;
 	for (int TC = 1; TC <= TT; TC++) 
 		code(TC);
 	return 0;
