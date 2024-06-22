@@ -1,1 +1,6 @@
-https://codeforces.com/contests?filterTypes=div2&filterTypes=div1div2&filterTypes=educational&filterTypes=ton&filterTypes=global&filterTypes=vkcup&filterRated=yes&filterTried=noSolved&filterSubstring=
+codeforces:
+
+dec 17, 2020
+
+atcoder:
+ABC 347
