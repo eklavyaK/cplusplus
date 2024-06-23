@@ -18,14 +18,17 @@ using namespace std;
 
 
 void code(int TC){
-	int ans = 0;
-	for(int i = 100; i < 1000; i++){
-		set<int> st;
-		int c = i;
-		while(c > 0) st.insert(c % 10), c /= 10;
-		if(st.size() == 2) ans += 1;
+	int u, v, x, y; cin >> u >> v >> x >> y;
+	if((u % 2) == 0){
+		if(v % 2) u -= 1;
 	}
-	cout << ans << endl;
+	else if(v % 2 == 0) u -= 1;
+	if((x % 2) == 0){
+		if(y % 2) x -= 1;
+	}
+	else if(y % 2 == 0) x -= 1;
+	if(2 * abs(y - v) < abs(u - x)) cout << abs(y - v) + abs(2 * abs(y - v) - abs(u - x)) / 2 << endl;
+	else cout << abs(y - v) << endl;
 }
 
 
@@ -33,7 +36,7 @@ signed main(){
 	ios_base::sync_with_stdio(0);
 	cin.tie(0);cout.tie(0);cerr.tie(0);
 	cout.precision(30);
-	int TT = 1; cin >> TT;
+	int TT = 1;
 	for (int TC = 1; TC <= TT; TC++) 
 		code(TC);
 	return 0;

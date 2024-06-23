@@ -18,25 +18,8 @@ using namespace std;
 
 
 void code(int TC){
-     int n, h; cin >> h >> n;
-     vector<int> a(n), c(n);
-     for(int i = 0; i < n; i++) cin >> a[i];
-     for(int i = 0; i < n; i++) cin >> c[i];
-     auto check = [&](int x){
-          int sum = 0;
-          for(int i = 0; i < n; i++){
-               sum += (1 + (x - 1) / c[i]) * a[i];
-			if(sum >= 1E18) return true;
-          }
-          return sum >= h;
-     };
-     int l = 1, r = 1E11;
-     while(l <= r){
-          int mid = (l + r) >> 1;
-          if(check(mid)) r = mid - 1;
-          else l = mid + 1;
-     }
-     cout << r + 1 << endl;
+     
+
 }
 
 
