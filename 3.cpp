@@ -18,17 +18,31 @@ using namespace std;
 
 
 void code(int TC){
-	int u, v, x, y; cin >> u >> v >> x >> y;
-	if((u % 2) == 0){
-		if(v % 2) u -= 1;
+	int n; cin >> n;
+	vector<int> a(n);
+	for(int i = 0; i < n; i++) cin >> a[i];
+	auto check = [&](int k){
+		int l = 0, r = 0;
+		for(int i = 0; i < n; i++){
+			if(a[i] >= k){
+				r += 1;
+				continue;
+			}
+			l += 1;
+			while(i + 1 < n && a[i + 1] < k) i += 1;
+		}
+		return l < r;
+	};
+	int l = 1, r = *max_element(a.begin(), a.end());
+	while(l <= r){
+		int mid = (l + r) >> 1;
+		if(check(mid)) l = mid + 1;
+		else r = mid - 1;
 	}
-	else if(v % 2 == 0) u -= 1;
-	if((x % 2) == 0){
-		if(y % 2) x -= 1;
+	for(int i = 0; i < n; i++){
+		cout << (a[i] <= l - 1 ? 1 : 0);
 	}
-	else if(y % 2 == 0) x -= 1;
-	if(2 * abs(y - v) < abs(u - x)) cout << abs(y - v) + abs(2 * abs(y - v) - abs(u - x)) / 2 << endl;
-	else cout << abs(y - v) << endl;
+	cout << endl;
 }
 
 
@@ -36,7 +50,7 @@ signed main(){
 	ios_base::sync_with_stdio(0);
 	cin.tie(0);cout.tie(0);cerr.tie(0);
 	cout.precision(30);
-	int TT = 1;
+	int TT = 1; cin >> TT;
 	for (int TC = 1; TC <= TT; TC++) 
 		code(TC);
 	return 0;

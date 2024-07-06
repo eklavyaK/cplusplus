@@ -1,1 +1,5 @@
-https://www.linkedin.com/jobs/view/3759201602/?alternateChannel=search&trk=d_flagship3_search_srp_jobs
+git and github
+Machine Learning
+Deep Learning
+Probability and statistics
+statistical inference methods (hypothesis testing, likelihood estimations, bayesian inference)

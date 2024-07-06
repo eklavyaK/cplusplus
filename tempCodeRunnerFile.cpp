@@ -15,60 +15,64 @@ using namespace std;
 
 
 
-vector<int> dx({-1, 0, 1, 0}), dy({0, -1, 0, 1});
+int calc(vector<int> &a){
+	int cur = 0, mx = 0;
+	debug(a);
+	for(auto i : a){
+		cur += i;
+		if(cur < 0) cur = 0;
+		else mx = max(mx, cur);
+	}
+	debug(mx);
+	return mx;
+}
 
 void code(int TC){
-	int n, m, K; cin >> n >> m >> K;
-	int x, y; cin >> x >> y; x--, y--;
-	vector<vector<int>> a(n, vector<int> (m));
-	for(int i = 0; i < n; i++){
-		for(int j = 0; j < m; j++) cin >> a[i][j];
+	int n; cin >> n;
+	vector<int> a(n + 1);
+	int ans = 0, mx = 0;
+	vector<int> dp(n + 1);
+	for(int i = 1; i <= n; i++){
+		cin >> a[i];
+		mx = max(a[i], mx);
+		if(mx == i) ans += 1, dp[i] = 1;
 	}
-	auto check = [&](int i, int j){
-		return i >= 0 && i < n && j >= 0 && j < m;
-	};
-	vector<vector<vector<int>>> dp(n, vector<vector<int>> (m, vector<int> (210, -2E18)));
-	for(int i = 0; i <= 100; i++) dp[x][y][i] = i * a[x][y];
-	for(int u = 0; u <= 205; u++){
-		auto ndp = dp;
-		for(int i = 0; i < n; i++){
-			for(int j = 0; j < m; j++){
-				for(int k = 0; k < 4; k++){
-					int nx = i + dx[k], ny = j + dy[k];
-					if(check(nx, ny)){
-						for(int l = 0; l <= 205; l++){
-							if(dp[i][j][l] >= 0){
-								ndp[nx][ny][l + 1] = max(dp[nx][ny][l + 1], max(dp[nx][ny][l] + a[nx][ny], dp[i][j][l] + a[nx][ny]));
-							}
-						}
-					}
-				}
-			}
+	vector<int> cur;
+	mx = 0;
+	for(int i = 1; i <= n; i++){
+		if(i & 1){
+			if(i + 1 > n) continue;
+			int c = -(dp[i] + dp[i + 1]);
+			swap(a[i], a[i + 1]);
+			int mx1 = max(mx, a[i]);
+			int mx2 = max(mx1, a[i + 1]);
+			if(mx1 == i) c += 1;
+			if(mx2 == i + 1) c += 1;
+			swap(a[i], a[i + 1]);
+			cur.push_back(c);
 		}
-		dp = ndp;
+		mx = max(a[i], mx);
 	}
-	if(K <= 205){
-		int ans = 0;
-		for(int i = 0; i < n; i++){
-			for(int j = 0; j < m; j++){
-				for(int k = 0; k <= K; k++){
-					ans = max(ans, dp[i][j][k]);
-				}
-			}
+	debug(ans);
+	ans = max(ans, ans + calc(cur));
+	cur.clear();
+	mx = 0;
+	for(int i = 1; i <= n; i++){
+		if((i - 1) & 1){
+			if(i + 1 > n) continue;
+			int c = -(dp[i] + dp[i + 1]);
+			swap(a[i], a[i + 1]);
+			int mx1 = max(mx, a[i]);
+			int mx2 = max(mx1, a[i + 1]);
+			if(mx1 == i) c += 1;
+			if(mx2 == i + 1) c += 1;
+			swap(a[i], a[i + 1]);
+			cur.push_back(c);
 		}
-		cout << ans << endl;
+		mx = max(a[i], mx);
 	}
-	else{
-		int ans = 0;
-		for(int i = 0; i < n; i++){
-			for(int j = 0; j < m; j++){
-				for(int k = 0; k <= 205; k++){
-					ans = max(ans, dp[i][j][k] + a[i][j] * (K - k));
-				}
-			}
-		}
-		cout << ans << endl;
-	}
+	ans = max(ans, ans + calc(cur));
+	cout << ans << endl;
 }
 
 
@@ -76,7 +80,7 @@ signed main(){
 	ios_base::sync_with_stdio(0);
 	cin.tie(0);cout.tie(0);cerr.tie(0);
 	cout.precision(30);
-	int TT = 1;
+	int TT = 1; cin >> TT;
 	for (int TC = 1; TC <= TT; TC++) 
 		code(TC);
 	return 0;
