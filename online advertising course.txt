@@ -1,0 +1,175 @@
+Online advertising is basically using internet to delever marketing messaging and attract customers.
+
+Online advertising: activity of attracting public attention to a product or business through electronic media.
+
+IAB - interactive advertising beaureu
+
+Advantages of online advertising:
+Better targeting
+accuracy in measuring response/ roi
+less wastage
+elicit immediate response
+greater interaction 
+message tailoring 
+immediate publising of information
+
+Objectives of advertisers:
+Promoting your brand
+enhancing client engagement
+increasing offline sales (vouchers, digital codes)
+generating leads
+stressing your brand message
+
+
+Animation:
+A programmatically generated display of sequential images, creating the illusion that objects in the image are moving. Not digital video, as it relates to this document (see the definition for “Video”).
+
+audio, banner, between-the-page, billboard, bitrate, blog or web log, bookmarks/favorites, button 2 (120 x 60 pixels), byte, cache, caching, campaign, cdn (content distributed network), CGI (common gateway interface), more...
+
+types of ad formats:
+
+banner ads: image based, rectangular, graphic display, stretches accross the top or bottom of the website
+
+text ads: ad title, ad description, url
+
+In-text ads:
+In-text advertising is a form of contextual advertising where specific keywords within the text of a web-page are matched with advertising and/or related information units.
+
+pop-ups/pop-under: new web browser windows to display advertisements.
+
+Interstitial ads: between two web pages
+
+overlays a ds:
+It is displayed while a video is played, they are displayed at the bottom, near captains
+
+Mobile ads: mobile aps, sms, mms
+
+Rich media:
+standard flash - it is advanced and smooth animations, even with interactivity if required.
+expandable ads - they have expanding and collapsing banner by the user
+roll-over ads: expandable ads, which expand on roll-over
+
+html banners: they're embedded in html
+
+floating ads: these ads hover over the content webpage, as you open any webpage, they can be closed by clicking cross
+
+push down ads: expandable ads
+
+floor ads: bottom of the webpage, mostly width is same as webpage
+
+flimpstrip: Long threads of banners which users can expand to see more, standard size (300 x 600), storytelling kind as you go expand further.
+
+portrait ads: size 300 x 1050, segmented into 3 panels (all 3 panels show different things, like video, text, animation), portrait ads attracts attention 35 % faster than competiting units
+
+video ads:
+
+Interactive Ads:
+Interactive advertising refers to promotional techniques that include an element of feedback from those to whom the advertisements are directed. This feedback gives the advertiser analytical data that can be used to improve the advertising methods being employed.
+
+cookies store: password, language, login, preferences, time-zone etc.
+
+Search engine optimisation (seo):
+The technique involves optimizing the website, adding keywords in the Title, Meta tags, content and Meta description, frequently updating a website and increasing the speed at which it loads on a desktop and mobile device.
+Techniques:
+on page optimization: keyword optimization, putting specific keyword in title, content, meta description
+off page optimization: including backlinks in other websites
+black hat seo technique: strategies to get higher rankings of website. this is unethical
+white hat seo tecnhique: This technique which involves optimizing the websites according to the set rules, like making the website keeping in focus user experience, increasing the loading speed of websites by removing unnecessary advertisements and making web pages responsive, along with following other guidelines.
+
+social media optimization (smo):
+It means developing profiles on social media networks about your business/website such that members of that network can view and share your profile/page with others.
+
+search engine marketing:
+SEM has a lot of features and tools that have been developed by ad platform creators for webmasters. If you wish to enter the field of paid traffic, you need to consider all keywords associated with it, such as geographic location, Click Through Rates (CTR), Cost Per Click (CPC), advertisement copy and may other factors.
+ppc campaign: PPC advertising works by allowing advertisers to bid on specific keywords or phrases that they want their ads to appear for in search engine results
+
+social media marketing:
+It tends to also include ‘Paid Social Search’ or paid advertising on social media channels. Although paid social search is similar to SEM, it adds behavioral tendency into the search equation. The major part of the advertising is, however, the same as SEM, where an advertiser only pays when a user clicks on his or her advertisement.
+
+SEO vs SEM:
+SEO tends to give back quality hits, and higher rankings but that may take years. SEM, on the other hand, is quick and tends to give you instant results, like a lot of hits in a very short period of time.
+SEO vs SEM can be simple explained. SEO is equity, where you add something every few days and get results later, SEM, on the other hand, is the instant result for every rupee spent. As the rupee stops coming in, so do the benefits.
+
+ad inventory: 
+Online advertising inventory is often calculated in terms of the number of page impressions -- an impression being defined as one user looking at one ad
+Also classified as 'Premium Inventory' and 'Remnant Inventory'
+
+ATF:
+Above the fold in website design refer to the portion of the webpage that is visible without scrolling.
+
+BTF:
+The part of the page that is not above the fold.
+The part of a webpage that can't be seen without scrolling down.
+
+Ad impression:
+An ad impression is a measure of the number of times an ad is seen. clicking is not accounted.
+
+CTR:
+ad clicks / impressions
+
+invalid clicks:
+illegitimate clicks such as unintentionl clicks resulting from maclicious software.
+
+keyword:
+A keyword, in the context of search engine optimization, is a particular word or phrase that describes the contents of a Web page.
+
+Landing Page:
+In the purest sense, a landing page is any web page that a visitor can arrive at or “land” on.
+
+Ad Server:
+An ad server is a computer server, specifically a web server backed by a database server, that stores advertisements used in online marketing and delivers them to website visitors.
+
+Content delivery network:
+A content delivery network or content distribution network (CDN) is a large distributed system of servers deployed in multiple data centers across the Internet.
+
+
+Ad Tag:
+A code that an advertiser provides to a publisher or an ad network that calls the advertisers ad server for the purpose of displaying an advertisement.
+
+Roi:
+return of interest = (gain - cost) / cost
+
+cookies:
+A cookie, also known as an HTTP cookie, web cookie, Internet cookie or browser cookie, is a small piece of data sent from a website and stored in a user’s web browser
+
+pixel tags:
+Pixel tags (also called clear GIFs, web beacons, or pixels) are small blocks of code on a webpage that allow websites to do things like read and place cookies.
+It is generally an a technique that allows tracking of who is reading a web page or email, when and from what device.
+
+I-frame:
+An I-frame is a frame within an HTML document that allows you to embed another document within it.
+It has a scroll bar and loads as an independent element within the page.
+
+viewable impressions:
+This metric shows the number of times your ad's impressions were considered viewable. An ad is counted as viewable if at least 50% of its area is visible for at least 1 second for display ads, or at least 2 seconds for video ads.
+
+Heatmaps:
+A website heat map is a graphical representation of visitor activity on a web page, using colours.
+Heatmaps are roughly divided between mousetracking heatmaps and eyetracking heatmaps.
+
+Ad targeting:
+showing advertisement to a particular trait of people.
+
+Contextual targeting: showing ads based on context of the page.
+semantic targeging: showing based on sentiment of page.
+behavioral targeting: based on user online behavior
+audience targeting: based on group of people behavior
+geographic targeting:
+creative targeting: A method that enables advertisers to show an ad specifically to visitors that previously were exposed to or interacted with the advertisers
+site retargeting: This targeting enables advertisers to show an ad specifically to previous site visitors.
+time based targeting: day night evening
+demographic targeting: The targeting of users on the basis of demographic information such as age, gender and income etc is called as demographic targeting.
+
+read:
+cpc - cost per click
+cpa - cost per action
+cpl - cost per lead (sign up)
+cpv - cost per view
+cmp - cost per mille (1K)
+eCPM - effective cost per mille (total earnings / total 1K impressions)
+oCPM - optimized CPM (facebook uses), here advertiser can choose an objective and facebook optmizes ads delivery to meet these objectives. For example, if you set up an ad to get more page likes it will show your ad to people who have responded well to page like ads before. This should result in more actions for your budget than either of the other options, so more likes or more interactions.
+
+video pre-roll pricing: video ad plays before the video, cost varies depending on users demographic
+
+
+revenue sharing - between publisher and ad network

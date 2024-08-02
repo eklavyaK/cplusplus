@@ -18,31 +18,8 @@ using namespace std;
 
 
 void code(int TC){
-	int n; cin >> n;
-	vector<int> a(n);
-	for(int i = 0; i < n; i++) cin >> a[i];
-	auto check = [&](int k){
-		int l = 0, r = 0;
-		for(int i = 0; i < n; i++){
-			if(a[i] >= k){
-				r += 1;
-				continue;
-			}
-			l += 1;
-			while(i + 1 < n && a[i + 1] < k) i += 1;
-		}
-		return l < r;
-	};
-	int l = 1, r = *max_element(a.begin(), a.end());
-	while(l <= r){
-		int mid = (l + r) >> 1;
-		if(check(mid)) l = mid + 1;
-		else r = mid - 1;
-	}
-	for(int i = 0; i < n; i++){
-		cout << (a[i] <= l - 1 ? 1 : 0);
-	}
-	cout << endl;
+	
+
 }
 
 
