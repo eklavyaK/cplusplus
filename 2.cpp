@@ -18,7 +18,7 @@ using namespace std;
 
 
 void code(int TC){
-     
+     cout << (11 ^ 22) << " " << (71 ^ 92) << endl;
 
 }
 

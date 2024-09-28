@@ -14,44 +14,43 @@ using namespace std;
 #endif
 
 
-
-
+string f = "narek";
+set<char> st({'n', 'a', 'r', 'e', 'k'});
 
 void code(int TC){
-	int n, k; cin >> n >> k;
-	map<int, int> m;
+	int n, m; cin >> n >> m;
+	vector<pair<int, int>> dp(n);
+	vector<string> s(n);
+	for(int i = 0; i < n; i++) cin >> s[i];
 	for(int i = 0; i < n; i++){
-		int x; cin >> x;
-		m[x] += 1;
-	}
-	vector<int> vec;
-	for(auto [u, v] : m){
-		vec.push_back(u);
-	}
-	int g = vec[0];
-	for(int i = 1; i < vec.size(); i++){
-		g = gcd(g, vec[i] - vec[i - 1]);
-	}
-	set<int> st;
-	if(n == 1){
-		if(k >= vec[0] + 1) cout << k << endl;
-		else cout << k - 1 << endl;
-	}
-	else{
-		if(k > (n - 1) * g - (n - 1)){
-			cout << k + (n - 1) << endl;
-			return;
-		}
-		else{
-			int l = 1, r = (n - 1) * g - 1, ans = 1;
-			while(l <= r){
-				int mid = (l + r) >> 1;
-				if(k >= mid - mid / g) l = mid + 1, ans = mid;
-				else r = mid - 1;
+		int id = m;
+		for(int j = 0; j < m; j++){
+			if(s[i][j] == 'n'){
+				id = j;
+				break;
 			}
-			cout << ans << endl;
+		}
+		int cur = 5, all = 0, tf = 0;
+		for(int j = id - 1; j >= 0; j--){
+			if(cur > 0 && s[i][j] == f[cur - 1]) cur -= 1;
+			if(st.count(s[i][j])) all += 1;
+		}
+		for(int j = id; j < m; j++){
+			if(st.count(s[i][j])) all += 1;
+			if(f[tf % 5] == s[i][j]) tf += 1;
+		}
+		dp[i].ss = tf % 5;
+		dp[i].ff = tf - (all - tf);
+		for(int j = 0; j < i; j++){
+			if(dp[j].ss >= cur) dp[i].ff = max(dp[i].ff, dp[j].ff + (5 - dp[j].ss) + tf - (all - tf - (5 - dp[j].ss)));
+			else dp[i].ff = max(dp[i].ff, dp[j].ff + tf - (all - tf) - 2 * dp[j].ss);
 		}
 	}
+	int ans = 0;
+	for(int i = 0; i < n; i++){
+		ans = max(ans, dp[i].ff - 2 * dp[i].ss);
+	}
+	cout << ans << endl;
 }
 
 
